@@ -56,23 +56,22 @@ struct TimeOfDayToggleStyle: ToggleStyle {
 }
 
 struct TimeOfDayToggle: View {
-    private let selection: Binding<TimeOfDay>
-
-    @State var tapped = false
-
-    init(selection: Binding<TimeOfDay>) {
-        self.selection = selection
-    }
+    @Binding var selection: TimeOfDay
+    @State private var toggleIsOn = false
 
     var body: some View {
-        Toggle("Time of Day", isOn: $tapped)
+        Toggle("Time of Day", isOn: $toggleIsOn)
                 .toggleStyle(TimeOfDayToggleStyle())
+                .onReceive([toggleIsOn].publisher.first()) { (value) in
+                    selection = toggleIsOn ? TimeOfDay.pm : TimeOfDay.am
+                    print("Toggle: \(selection)")
+                }
     }
 }
 
 struct RecordTabbedView: View {
-    @State var selectedDate = Date()
-    @State var timeOfDay = TimeOfDay.am
+    @State private var selectedDate = Date()
+    @State private var timeOfDay = TimeOfDay.am
 
     var body: some View {
         TabbedView("Record", "plus.square", 1) {
