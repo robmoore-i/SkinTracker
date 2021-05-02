@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B9C548D9189C4C6A8360F59 /* VisualizeTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5A0F59076A6FA4D5229E /* VisualizeTabbedView.swift */; };
+		1B9C5A364B6DDC15FBBD1515 /* LearnTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */; };
+		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
 		1B9C5CAB4F5DA6B6710FF6B4 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52E26080AB9DF7724E50 /* TabbedView.swift */; };
 		D4F4408C2635621B00B85A1B /* skintrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4408B2635621B00B85A1B /* skintrackerApp.swift */; };
 		D4F4408E2635621B00B85A1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4408D2635621B00B85A1B /* ContentView.swift */; };
@@ -34,7 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnTabbedView.swift; sourceTree = "<group>"; };
 		1B9C52E26080AB9DF7724E50 /* TabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
+		1B9C5A0F59076A6FA4D5229E /* VisualizeTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizeTabbedView.swift; sourceTree = "<group>"; };
+		1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTabbedView.swift; sourceTree = "<group>"; };
 		D4F440882635621B00B85A1B /* skintracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skintracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F4408B2635621B00B85A1B /* skintrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skintrackerApp.swift; sourceTree = "<group>"; };
 		D4F4408D2635621B00B85A1B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +109,9 @@
 				D4F440942635621C00B85A1B /* Info.plist */,
 				D4F440912635621C00B85A1B /* Preview Content */,
 				1B9C52E26080AB9DF7724E50 /* TabbedView.swift */,
+				1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */,
+				1B9C5A0F59076A6FA4D5229E /* VisualizeTabbedView.swift */,
+				1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */,
 			);
 			path = skintracker;
 			sourceTree = "<group>";
@@ -265,6 +274,9 @@
 				D4F4408E2635621B00B85A1B /* ContentView.swift in Sources */,
 				D4F4408C2635621B00B85A1B /* skintrackerApp.swift in Sources */,
 				1B9C5CAB4F5DA6B6710FF6B4 /* TabbedView.swift in Sources */,
+				1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */,
+				1B9C548D9189C4C6A8360F59 /* VisualizeTabbedView.swift in Sources */,
+				1B9C5A364B6DDC15FBBD1515 /* LearnTabbedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

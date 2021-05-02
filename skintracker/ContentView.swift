@@ -10,23 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            TabbedView("Record", "plus.square", 1) {
-                Form {
-                    Section {
-                        Text("First View")
-                    }
-                }
-            }
-
-            TabbedView("Visualize", "chart.bar.xaxis", 2) {
-                Text("Second View")
-                        .padding()
-            }
-
-            TabbedView("Learn", "book.closed", 3) {
-                Text("Third View")
-                        .padding()
-            }
+            RecordTabbedView()
+            VisualizeTabbedView()
+            LearnTabbedView()
         }
     }
 }
