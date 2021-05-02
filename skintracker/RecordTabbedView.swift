@@ -64,7 +64,6 @@ struct TimeOfDayToggle: View {
                 .toggleStyle(TimeOfDayToggleStyle())
                 .onReceive([toggleIsOn].publisher.first()) { (value) in
                     selection = toggleIsOn ? TimeOfDay.pm : TimeOfDay.am
-                    print("Toggle: \(selection)")
                 }
     }
 }
@@ -77,7 +76,6 @@ struct RecordTabbedView: View {
         TabbedView("Record", "plus.square", 1) {
             Form {
                 DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
-
                 TimeOfDayToggle(selection: $timeOfDay)
 
                 Button("Save") {
