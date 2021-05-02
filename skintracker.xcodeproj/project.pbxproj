@@ -80,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D44C092F263EA2A100DBD819 /* record */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */,
+			);
+			path = record;
+			sourceTree = "<group>";
+		};
 		D4F4407F2635621A00B85A1B = {
 			isa = PBXGroup;
 			children = (
@@ -103,13 +111,13 @@
 		D4F4408A2635621B00B85A1B /* skintracker */ = {
 			isa = PBXGroup;
 			children = (
+				D44C092F263EA2A100DBD819 /* record */,
 				D4F4408B2635621B00B85A1B /* skintrackerApp.swift */,
 				D4F4408D2635621B00B85A1B /* ContentView.swift */,
 				D4F4408F2635621C00B85A1B /* Assets.xcassets */,
 				D4F440942635621C00B85A1B /* Info.plist */,
 				D4F440912635621C00B85A1B /* Preview Content */,
 				1B9C52E26080AB9DF7724E50 /* TabbedView.swift */,
-				1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */,
 				1B9C5A0F59076A6FA4D5229E /* VisualizeTabbedView.swift */,
 				1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */,
 			);
