@@ -13,7 +13,9 @@ struct FaceRegionSpotCounter: View {
         HStack {
             Text(FaceRegion.forehead.rawValue)
             Spacer()
-            TextField("", text: $forehead).keyboardType(.numberPad)
+            TextField("", text: $forehead)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
         }
     }
 }
