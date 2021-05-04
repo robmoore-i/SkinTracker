@@ -7,14 +7,13 @@ import SwiftUI
 struct RecordTabbedView: View {
     @State private var selectedDate = Date()
     @State private var selectedTimeOfDay = TimeOfDay.am
-    @State private var selectedFaceRegion = FaceRegion.cheek
 
     var body: some View {
         TabbedView("Record", "plus.square"){
             Form {
                 DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
                 TimeOfDayToggle(selection: $selectedTimeOfDay)
-                FaceRegionSpotCounter(selection: $selectedFaceRegion)
+                FaceRegionSpotCountField(region: FaceRegion.forehead)
                 Button("Save") {
                     print("Save pressed!")
                 }
