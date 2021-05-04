@@ -9,11 +9,15 @@ struct RecordTabbedView: View {
     @State private var selectedTimeOfDay = TimeOfDay.am
 
     var body: some View {
-        TabbedView("Record", "plus.square"){
+        TabbedView("Record", "plus.square") {
             Form {
                 DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
                 TimeOfDayToggle(selection: $selectedTimeOfDay)
-                FaceRegionSpotCountField(region: FaceRegion.forehead)
+
+                List(FaceRegion.allCases, id: \.rawValue) { region in
+                    FaceRegionSpotCountField(region: region)
+                }
+
                 Button("Save") {
                     print("Save pressed!")
                 }
