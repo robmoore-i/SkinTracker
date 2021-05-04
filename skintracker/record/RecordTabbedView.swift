@@ -11,11 +11,15 @@ struct RecordTabbedView: View {
     var body: some View {
         TabbedView("Record", "plus.square") {
             Form {
-                DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
-                TimeOfDayToggle(selection: $selectedTimeOfDay)
+                Section {
+                    DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
+                    TimeOfDayToggle(selection: $selectedTimeOfDay)
+                }
 
-                List(FaceRegion.allCases, id: \.rawValue) { region in
-                    FaceRegionSpotCountField(region: region)
+                Section {
+                    List(FaceRegion.allCases, id: \.rawValue) { region in
+                        FaceRegionSpotCountField(region: region)
+                    }
                 }
 
                 Button("Save") {
