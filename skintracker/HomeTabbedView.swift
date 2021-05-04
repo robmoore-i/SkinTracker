@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeTabbedView: View {
     var body: some View {
-        TabbedView("Home", "house", 1) {
+        TabbedView("Home", "house"){
             Text("Home View").padding()
         }
     }

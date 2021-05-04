@@ -6,7 +6,7 @@ import SwiftUI
 
 struct LearnTabbedView: View {
     var body: some View {
-        TabbedView("Learn", "book.closed", 4) {
+        TabbedView("Learn", "book.closed"){
             Text("Learn View").padding()
         }
     }
