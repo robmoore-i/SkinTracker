@@ -1,7 +1,4 @@
 //
-//  HomeTabbedView.swift
-//  skintracker
-//
 //  Created by Rob on 4/5/21.
 //
 
