@@ -7,9 +7,12 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
+    @State private var selectedTab = 2
+
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
+            HomeTabbedView()
             RecordTabbedView()
             VisualizeTabbedView()
             LearnTabbedView()
@@ -19,6 +22,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

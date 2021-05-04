@@ -6,9 +6,8 @@ import SwiftUI
 
 struct VisualizeTabbedView: View {
     var body: some View {
-        TabbedView("Visualize", "chart.bar.xaxis", 2) {
-            Text("Second View")
-                    .padding()
+        TabbedView("Visualize", "chart.bar.xaxis", 3) {
+            Text("Visualize View").padding()
         }
     }
 }

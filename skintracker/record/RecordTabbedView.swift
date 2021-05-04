@@ -10,7 +10,7 @@ struct RecordTabbedView: View {
     @State private var selectedFaceRegion = FaceRegion.cheek
 
     var body: some View {
-        TabbedView("Record", "plus.square", 1) {
+        TabbedView("Record", "plus.square", 2) {
             Form {
                 DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
                 TimeOfDayToggle(selection: $selectedTimeOfDay)

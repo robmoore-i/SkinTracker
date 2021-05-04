@@ -15,8 +15,9 @@
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
 		1B9C5CAB4F5DA6B6710FF6B4 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52E26080AB9DF7724E50 /* TabbedView.swift */; };
 		1B9C5F5F831186F9849F510A /* FaceRegionSpotCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5BFDC498D95A6EA1AC35 /* FaceRegionSpotCounter.swift */; };
+		D47AEC1C264101E4007CFAC4 /* HomeTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AEC1B264101E4007CFAC4 /* HomeTabbedView.swift */; };
 		D4F4408C2635621B00B85A1B /* skintrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4408B2635621B00B85A1B /* skintrackerApp.swift */; };
-		D4F4408E2635621B00B85A1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4408D2635621B00B85A1B /* ContentView.swift */; };
+		D4F4408E2635621B00B85A1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4408D2635621B00B85A1B /* MainView.swift */; };
 		D4F440902635621C00B85A1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F4408F2635621C00B85A1B /* Assets.xcassets */; };
 		D4F440932635621C00B85A1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F440922635621C00B85A1B /* Preview Assets.xcassets */; };
 		D4F4409E2635621C00B85A1B /* skintrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4409D2635621C00B85A1B /* skintrackerTests.swift */; };
@@ -49,9 +50,10 @@
 		1B9C5B6AAA595A0D80424614 /* TimeOfDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
 		1B9C5BFDC498D95A6EA1AC35 /* FaceRegionSpotCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegionSpotCounter.swift; sourceTree = "<group>"; };
 		1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTabbedView.swift; sourceTree = "<group>"; };
+		D47AEC1B264101E4007CFAC4 /* HomeTabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbedView.swift; sourceTree = "<group>"; };
 		D4F440882635621B00B85A1B /* skintracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skintracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F4408B2635621B00B85A1B /* skintrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skintrackerApp.swift; sourceTree = "<group>"; };
-		D4F4408D2635621B00B85A1B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D4F4408D2635621B00B85A1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D4F4408F2635621C00B85A1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4F440922635621C00B85A1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D4F440942635621C00B85A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,13 +127,14 @@
 			children = (
 				D44C092F263EA2A100DBD819 /* record */,
 				D4F4408B2635621B00B85A1B /* skintrackerApp.swift */,
-				D4F4408D2635621B00B85A1B /* ContentView.swift */,
+				D4F4408D2635621B00B85A1B /* MainView.swift */,
 				D4F4408F2635621C00B85A1B /* Assets.xcassets */,
 				D4F440942635621C00B85A1B /* Info.plist */,
 				D4F440912635621C00B85A1B /* Preview Content */,
 				1B9C52E26080AB9DF7724E50 /* TabbedView.swift */,
 				1B9C5A0F59076A6FA4D5229E /* VisualizeTabbedView.swift */,
 				1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */,
+				D47AEC1B264101E4007CFAC4 /* HomeTabbedView.swift */,
 			);
 			path = skintracker;
 			sourceTree = "<group>";
@@ -291,7 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F4408E2635621B00B85A1B /* ContentView.swift in Sources */,
+				D4F4408E2635621B00B85A1B /* MainView.swift in Sources */,
 				D4F4408C2635621B00B85A1B /* skintrackerApp.swift in Sources */,
 				1B9C5CAB4F5DA6B6710FF6B4 /* TabbedView.swift in Sources */,
 				1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */,
@@ -301,6 +304,7 @@
 				1B9C51A130CFE11812E12EE3 /* TimeOfDay.swift in Sources */,
 				1B9C5F5F831186F9849F510A /* FaceRegionSpotCounter.swift in Sources */,
 				1B9C5AAB23D2CBA2C83C81DB /* FaceRegion.swift in Sources */,
+				D47AEC1C264101E4007CFAC4 /* HomeTabbedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
