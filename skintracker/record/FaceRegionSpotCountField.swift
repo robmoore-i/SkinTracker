@@ -16,16 +16,18 @@ struct FaceRegionSpotCountField: View {
 
     var body: some View {
         HStack {
-            Text("\(region.rawValue.capitalized) |")
+            Text("\(region.rawValue.capitalized)")
             Spacer()
-            Text("L")
+            Text("Left")
             TextField("0", text: $left)
                     .keyboardType(.numberPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-            Text("R")
+                    .frame(maxWidth: 40)
+            Text("Right")
             TextField("0", text: $right)
                     .keyboardType(.numberPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(maxWidth: 40)
         }
     }
 }
