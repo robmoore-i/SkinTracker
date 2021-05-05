@@ -22,18 +22,16 @@ struct RecordTabbedView: View {
                     }
                 }
 
-                Button("Save") {
-                    print("Save pressed!")
+                Section {
+                    HStack {
+                        Spacer()
+                        Button("Save") {
+                            print("Save pressed!")
+                        }.frame(maxWidth: 100).padding(10.0)
+                        Spacer()
+                    }
                 }
-            }.onTapGesture(perform: self.hideKeyboard)
+            }
         }
     }
 }
-
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
