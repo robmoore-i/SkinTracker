@@ -7,6 +7,7 @@ import SwiftUI
 struct RecordTabbedView: View {
     @State private var selectedDate = Date()
     @State private var selectedTimeOfDay = TimeOfDay.am
+    @State private var selectedSpotCounts: [FaceRegion: (left: Int, right: Int)] = [:]
 
     var body: some View {
         TabbedView("Record", "plus.square") {
@@ -17,9 +18,7 @@ struct RecordTabbedView: View {
                 }
 
                 Section {
-                    List(FaceRegion.allCases, id: \.rawValue) { region in
-                        FaceRegionSpotCountField(region: region)
-                    }
+                    FaceRegionSpotCountGroup(selection: $selectedSpotCounts)
                 }
 
                 Section {
