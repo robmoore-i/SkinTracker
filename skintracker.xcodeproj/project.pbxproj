@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B9C50A23B713A41FF6F2ABB /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C58EA72A75848B0F3BB13 /* Recording.swift */; };
 		1B9C51A130CFE11812E12EE3 /* TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5B6AAA595A0D80424614 /* TimeOfDay.swift */; };
 		1B9C53C49A7DC93C4522F103 /* FaceRegionSpotCountGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */; };
 		1B9C548D9189C4C6A8360F59 /* VisualizeTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5A0F59076A6FA4D5229E /* VisualizeTabbedView.swift */; };
@@ -51,6 +52,7 @@
 		1B9C52E26080AB9DF7724E50 /* TabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
 		1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayToggle.swift; sourceTree = "<group>"; };
+		1B9C58EA72A75848B0F3BB13 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		1B9C5A0F59076A6FA4D5229E /* VisualizeTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizeTabbedView.swift; sourceTree = "<group>"; };
 		1B9C5B6AAA595A0D80424614 /* TimeOfDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
 		1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTabbedView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				1B9C5B6AAA595A0D80424614 /* TimeOfDay.swift */,
 				1B9C50BBF7A263DD1E40A5EB /* FaceRegion.swift */,
 				1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */,
+				1B9C58EA72A75848B0F3BB13 /* Recording.swift */,
 			);
 			path = record;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				D47AEC1C264101E4007CFAC4 /* HomeTabbedView.swift in Sources */,
 				1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */,
 				1B9C53C49A7DC93C4522F103 /* FaceRegionSpotCountGroup.swift in Sources */,
+				1B9C50A23B713A41FF6F2ABB /* Recording.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 // Created by Rob on 2/5/21.
 //
 
-enum TimeOfDay {
-    case am
-    case pm
+enum TimeOfDay: String {
+    case am = "am"
+    case pm = "pm"
 }
