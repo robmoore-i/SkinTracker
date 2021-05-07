@@ -26,7 +26,7 @@ struct MainView: View {
         TabView(selection: $selectedTab) {
             HomeTabbedView()
             RecordTabbedView(realm)
-            VisualizeTabbedView(recordingsModel: RecordingsModel(realm))
+            VisualizeTabbedView(realm)
             LearnTabbedView()
         }
     }
