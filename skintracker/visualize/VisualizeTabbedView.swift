@@ -3,18 +3,17 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct VisualizeTabbedView: View {
-    private let realm: Realm
+    private let recordingStorage: RecordingStorage
 
-    init(_ realm: Realm) {
-        self.realm = realm
+    init(_ recordingStorage: RecordingStorage) {
+        self.recordingStorage = recordingStorage
     }
 
     var body: some View {
         TabbedView("Visualize", "chart.bar.xaxis") {
-            RecordingsListView(realm)
+            RecordingsListView(recordingStorage)
         }
     }
 }

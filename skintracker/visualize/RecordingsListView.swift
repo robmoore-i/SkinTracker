@@ -4,21 +4,20 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct RecordingsListView: View {
-    @State var arrayData: [String] = []
+    private let recordingStorage: RecordingStorage
 
-    private let realm: Realm
+    @State private var recordingDescriptions: [String]
 
-    init(_ realm: Realm) {
-        self.realm = realm
+    init(_ recordingStorage: RecordingStorage) {
+        self.recordingStorage = recordingStorage
+        recordingDescriptions = recordingStorage.all.map(\.description)
     }
 
     private func latestRecordingsEntries() -> [String] {
-        realm.objects(RecordingRealmObjectV1.self)
-                .map(Recording.fromRealmObjectV1)
-                .map(\.description)
+        recordingStorage.refresh()
+        return recordingStorage.all.map(\.description)
     }
 
     var body: some View {
@@ -33,7 +32,7 @@ struct RecordingsListView: View {
             Divider()
             RefreshableScrollView(progressTint: .black, arrowTint: .black) {
                 VStack {
-                    ForEach(arrayData, id: \.self) { value in
+                    ForEach(recordingDescriptions, id: \.self) { value in
                         HStack {
                             Text(value)
                             Spacer()
@@ -41,7 +40,7 @@ struct RecordingsListView: View {
                     }
                 }.padding().background(Color.white)
             } onUpdate: {
-                arrayData = latestRecordingsEntries()
+                recordingDescriptions = latestRecordingsEntries()
             }
         }
     }

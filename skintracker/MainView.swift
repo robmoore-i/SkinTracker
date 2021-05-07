@@ -6,27 +6,21 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct MainView: View {
     @State private var selectedTab = 2
 
-    private let realm: Realm
+    private let recordingStorage: RecordingStorage
 
     init() {
-        do {
-            realm = try Realm()
-        } catch let error {
-            print(error.localizedDescription)
-            fatalError("Couldn't initialise Realm")
-        }
+        recordingStorage = RecordingStorage()
     }
 
     var body: some View {
         TabView(selection: $selectedTab) {
             HomeTabbedView()
-            RecordTabbedView(realm)
-            VisualizeTabbedView(realm)
+            RecordTabbedView(recordingStorage)
+            VisualizeTabbedView(recordingStorage)
             LearnTabbedView()
         }
     }

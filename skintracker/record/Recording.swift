@@ -78,20 +78,13 @@ extension Recording {
 
     static func fromRealmObjectV1(_ r: RecordingRealmObjectV1) -> Recording {
         var regionalSpotCounts: [FaceRegion: (left: Int, right: Int)] = [:]
-        regionalSpotCounts[.forehead]?.left = r.foreheadLeft
-        regionalSpotCounts[.forehead]?.right = r.foreheadRight
-        regionalSpotCounts[.eye]?.left = r.eyeLeft
-        regionalSpotCounts[.eye]?.right = r.eyeRight
-        regionalSpotCounts[.cheek]?.left = r.cheekLeft
-        regionalSpotCounts[.cheek]?.right = r.cheekRight
-        regionalSpotCounts[.jawline]?.left = r.jawlineLeft
-        regionalSpotCounts[.jawline]?.right = r.jawlineRight
-        regionalSpotCounts[.nose]?.left = r.noseLeft
-        regionalSpotCounts[.nose]?.right = r.noseRight
-        regionalSpotCounts[.mouth]?.left = r.mouthLeft
-        regionalSpotCounts[.mouth]?.right = r.mouthRight
-        regionalSpotCounts[.chin]?.left = r.chinLeft
-        regionalSpotCounts[.chin]?.right = r.chinRight
+        regionalSpotCounts[.forehead] = (left: r.foreheadLeft, right: r.foreheadRight)
+        regionalSpotCounts[.eye] = (left: r.eyeLeft, right: r.eyeRight)
+        regionalSpotCounts[.cheek] = (left: r.cheekLeft, right: r.cheekRight)
+        regionalSpotCounts[.jawline] = (left: r.jawlineLeft, right: r.jawlineRight)
+        regionalSpotCounts[.nose] = (left: r.noseLeft, right: r.noseRight)
+        regionalSpotCounts[.mouth] = (left: r.mouthLeft, right: r.mouthRight)
+        regionalSpotCounts[.chin] = (left: r.chinLeft, right: r.chinRight)
         let timeOfDay: TimeOfDay = TimeOfDay.init(rawValue: r.timeOfDay)!
         return Recording(r.date, timeOfDay, regionalSpotCounts)
     }

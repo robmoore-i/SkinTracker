@@ -3,17 +3,16 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct RecordTabbedView: View {
     @State private var selectedDate = Date()
     @State private var selectedTimeOfDay = TimeOfDay.am
     @State private var selectedSpotCounts: [FaceRegion: (left: Int, right: Int)] = [:]
 
-    private let realm: Realm
+    private let recordingStorage: RecordingStorage
 
-    init(_ realm: Realm) {
-        self.realm = realm
+    init(_ recordingStorage: RecordingStorage) {
+        self.recordingStorage = recordingStorage
     }
 
     var body: some View {
@@ -32,25 +31,12 @@ struct RecordTabbedView: View {
                     HStack {
                         Spacer()
                         Button("Save") {
-                            onSave()
+                            recordingStorage.store(Recording(selectedDate, selectedTimeOfDay, selectedSpotCounts))
                         }.frame(maxWidth: 100).padding(10.0)
                         Spacer()
                     }
                 }
             }
-        }
-    }
-
-    private func onSave() {
-        let recording = Recording(selectedDate, selectedTimeOfDay, selectedSpotCounts)
-        print("Saving: \(recording)")
-        do {
-            try realm.write {
-                realm.add(recording.toRealmObjectV1())
-                print("Wrote successfully")
-            }
-        } catch let error {
-            print(error.localizedDescription)
         }
     }
 }
