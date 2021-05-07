@@ -39,7 +39,7 @@ struct TimeOfDayToggle: View {
     @State private var toggleIsOn = false
 
     var body: some View {
-        Toggle("Time of Day", isOn: $toggleIsOn)
+        Toggle("Time of day", isOn: $toggleIsOn)
                 .toggleStyle(TimeOfDayToggleStyle())
                 .onReceive([toggleIsOn].publisher.first()) { (value) in
                     selection = toggleIsOn ? TimeOfDay.pm : TimeOfDay.am
