@@ -4,12 +4,12 @@
 
 import Foundation
 
-class Recording: CustomStringConvertible {
+class Recording: CustomStringConvertible, Identifiable {
     private let date: Date
     private let timeOfDay: TimeOfDay
     private let regionalSpotCounts: [FaceRegion: (left: Int, right: Int)]
 
-    init(date: Date, timeOfDay: TimeOfDay, regionalSpotCounts: [FaceRegion: (left: Int, right: Int)]) {
+    init(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCounts: [FaceRegion: (left: Int, right: Int)]) {
         self.date = date
         self.timeOfDay = timeOfDay
         self.regionalSpotCounts = regionalSpotCounts
@@ -19,26 +19,8 @@ class Recording: CustomStringConvertible {
         "Recording(date: \(date), timeOfDay: \(timeOfDay), regionalSpotCounts: \(regionalSpotCounts))"
     }
 
-    func toRealmObject() -> RecordingRealmObjectV1 {
-        let o = RecordingRealmObjectV1()
-        o.id = UUID().hashValue
-        o.date = date
-        o.timeOfDay = timeOfDay.rawValue
-        o.foreheadLeft = regionalSpotCounts[.forehead]?.left ?? 0
-        o.foreheadRight = regionalSpotCounts[.forehead]?.right ?? 0
-        o.eyeLeft = regionalSpotCounts[.eye]?.left ?? 0
-        o.eyeRight = regionalSpotCounts[.eye]?.right ?? 0
-        o.cheekLeft = regionalSpotCounts[.cheek]?.left ?? 0
-        o.cheekRight = regionalSpotCounts[.cheek]?.right ?? 0
-        o.jawlineLeft = regionalSpotCounts[.jawline]?.left ?? 0
-        o.jawlineRight = regionalSpotCounts[.jawline]?.right ?? 0
-        o.noseLeft = regionalSpotCounts[.nose]?.left ?? 0
-        o.noseRight = regionalSpotCounts[.nose]?.right ?? 0
-        o.mouthLeft = regionalSpotCounts[.mouth]?.left ?? 0
-        o.mouthRight = regionalSpotCounts[.mouth]?.right ?? 0
-        o.chinLeft = regionalSpotCounts[.chin]?.left ?? 0
-        o.chinRight = regionalSpotCounts[.chin]?.right ?? 0
-        return o
+    var id: Date {
+        date
     }
 }
 
@@ -68,5 +50,49 @@ class RecordingRealmObjectV1: Object {
 
     override static func primaryKey() -> String? {
         "id"
+    }
+}
+
+extension Recording {
+    func toRealmObjectV1() -> RecordingRealmObjectV1 {
+        let o = RecordingRealmObjectV1()
+        o.id = UUID().hashValue
+        o.date = date
+        o.timeOfDay = timeOfDay.rawValue
+        o.foreheadLeft = regionalSpotCounts[.forehead]?.left ?? 0
+        o.foreheadRight = regionalSpotCounts[.forehead]?.right ?? 0
+        o.eyeLeft = regionalSpotCounts[.eye]?.left ?? 0
+        o.eyeRight = regionalSpotCounts[.eye]?.right ?? 0
+        o.cheekLeft = regionalSpotCounts[.cheek]?.left ?? 0
+        o.cheekRight = regionalSpotCounts[.cheek]?.right ?? 0
+        o.jawlineLeft = regionalSpotCounts[.jawline]?.left ?? 0
+        o.jawlineRight = regionalSpotCounts[.jawline]?.right ?? 0
+        o.noseLeft = regionalSpotCounts[.nose]?.left ?? 0
+        o.noseRight = regionalSpotCounts[.nose]?.right ?? 0
+        o.mouthLeft = regionalSpotCounts[.mouth]?.left ?? 0
+        o.mouthRight = regionalSpotCounts[.mouth]?.right ?? 0
+        o.chinLeft = regionalSpotCounts[.chin]?.left ?? 0
+        o.chinRight = regionalSpotCounts[.chin]?.right ?? 0
+        return o
+    }
+
+    static func fromRealmObjectV1(_ r: RecordingRealmObjectV1) -> Recording {
+        var regionalSpotCounts: [FaceRegion: (left: Int, right: Int)] = [:]
+        regionalSpotCounts[.forehead]?.left = r.foreheadLeft
+        regionalSpotCounts[.forehead]?.right = r.foreheadRight
+        regionalSpotCounts[.eye]?.left = r.eyeLeft
+        regionalSpotCounts[.eye]?.right = r.eyeRight
+        regionalSpotCounts[.cheek]?.left = r.cheekLeft
+        regionalSpotCounts[.cheek]?.right = r.cheekRight
+        regionalSpotCounts[.jawline]?.left = r.jawlineLeft
+        regionalSpotCounts[.jawline]?.right = r.jawlineRight
+        regionalSpotCounts[.nose]?.left = r.noseLeft
+        regionalSpotCounts[.nose]?.right = r.noseRight
+        regionalSpotCounts[.mouth]?.left = r.mouthLeft
+        regionalSpotCounts[.mouth]?.right = r.mouthRight
+        regionalSpotCounts[.chin]?.left = r.chinLeft
+        regionalSpotCounts[.chin]?.right = r.chinRight
+        let timeOfDay: TimeOfDay = TimeOfDay.init(rawValue: r.timeOfDay)!
+        return Recording(r.date, timeOfDay, regionalSpotCounts)
     }
 }

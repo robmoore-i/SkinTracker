@@ -10,6 +10,12 @@ struct RecordTabbedView: View {
     @State private var selectedTimeOfDay = TimeOfDay.am
     @State private var selectedSpotCounts: [FaceRegion: (left: Int, right: Int)] = [:]
 
+    private let realm: Realm
+
+    init(_ realm: Realm) {
+        self.realm = realm
+    }
+
     var body: some View {
         TabbedView("Record", "plus.square") {
             Form {
@@ -36,15 +42,11 @@ struct RecordTabbedView: View {
     }
 
     private func onSave() {
-        let recording = Recording(
-                date: selectedDate,
-                timeOfDay: selectedTimeOfDay,
-                regionalSpotCounts: selectedSpotCounts)
+        let recording = Recording(selectedDate, selectedTimeOfDay, selectedSpotCounts)
         print("Saving: \(recording)")
         do {
-            let realm = try Realm()
             try realm.write {
-                realm.add(recording.toRealmObject())
+                realm.add(recording.toRealmObjectV1())
                 print("Wrote successfully")
             }
         } catch let error {
