@@ -18,14 +18,7 @@ struct RecordTabbedView: View {
     var body: some View {
         TabbedView("Record", "plus.square") {
             VStack(spacing: 0) {
-                HStack {
-                    Text("You've got this 😊")
-                            .font(.largeTitle)
-                            .fontWeight(.medium)
-                            .foregroundColor(.black)
-                    Spacer()
-                }.padding()
-                Divider()
+                TabHeader("You've got this 😊")
                 Form {
                     Section {
                         DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
