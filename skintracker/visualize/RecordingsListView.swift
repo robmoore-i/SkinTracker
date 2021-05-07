@@ -24,14 +24,14 @@ struct RecordingsListView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Kavsoft")
+                Text("You're getting there 🙏")
                         .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.purple)
+                        .fontWeight(.medium)
+                        .foregroundColor(.black)
                 Spacer()
             }.padding().background(Color.white.ignoresSafeArea(.all, edges: .top))
             Divider()
-            RefreshableScrollView(progressTint: .purple, arrowTint: .purple) {
+            RefreshableScrollView(progressTint: .black, arrowTint: .black) {
                 VStack {
                     ForEach(arrayData, id: \.self) { value in
                         HStack {
@@ -43,7 +43,7 @@ struct RecordingsListView: View {
             } onUpdate: {
                 arrayData = latestRecordingsEntries()
             }
-        }.background(Color.black.opacity(0.06).ignoresSafeArea())
+        }
     }
 }
 
