@@ -5,30 +5,30 @@
 import SwiftUI
 
 struct FaceRegionSpotCountGroup: View {
-    @Binding var selection: [FaceRegion: (left: Int, right: Int)]
+    @Binding var selection: RegionalSpotCount
 
     var body: some View {
         List(FaceRegion.allCases, id: \.rawValue) { region in
-            FaceRegionSpotCountField(region: region, regionalSpotCounts: $selection)
+            FaceRegionSpotCountField(region: region, regionalSpotCount: $selection)
         }
     }
 }
 
 private struct FaceRegionSpotCountField: View {
     let region: FaceRegion
-    @Binding var regionalSpotCounts: [FaceRegion: (left: Int, right: Int)]
+    @Binding var regionalSpotCount: RegionalSpotCount
 
     var body: some View {
         HStack {
             Text("\(region.rawValue.capitalized)").onTapHideKeyboard()
             Spacer()
-            SpotCountTextField(label: "Left", region: region, regionalSpotCounts: $regionalSpotCounts,
+            SpotCountTextField(label: "Left", region: region, regionalSpotCount: $regionalSpotCount,
                     updateSpotCountsForRegion: { regionalSpotCounts, spotCountInput in
-                        regionalSpotCounts[region]?.left = spotCountInput
+                        regionalSpotCounts.put(region: region, left: spotCountInput)
                     })
-            SpotCountTextField(label: "Right", region: region, regionalSpotCounts: $regionalSpotCounts,
-                    updateSpotCountsForRegion: { regionalSpotCounts, spotCountInput in
-                        regionalSpotCounts[region]?.right = spotCountInput
+            SpotCountTextField(label: "Right", region: region, regionalSpotCount: $regionalSpotCount,
+                    updateSpotCountsForRegion: { regionalSpotCount, spotCountInput in
+                        regionalSpotCount.put(region: region, right: spotCountInput)
                     })
         }
     }
@@ -37,8 +37,8 @@ private struct FaceRegionSpotCountField: View {
 private struct SpotCountTextField: View {
     let label: String
     let region: FaceRegion
-    @Binding var regionalSpotCounts: [FaceRegion: (left: Int, right: Int)]
-    let updateSpotCountsForRegion: (_: inout [FaceRegion: (left: Int, right: Int)], _: Int) -> ()
+    @Binding var regionalSpotCount: RegionalSpotCount
+    let updateSpotCountsForRegion: (_: inout RegionalSpotCount, _: Int) -> ()
 
     @State private var text: String = ""
 
@@ -49,11 +49,8 @@ private struct SpotCountTextField: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(maxWidth: 40)
                 .onChange(of: text) { newText in
-                    if (regionalSpotCounts[region] == nil) {
-                        regionalSpotCounts[region] = (0, 0)
-                    }
-                    updateSpotCountsForRegion(&regionalSpotCounts, Int(newText) ?? 0)
-                    print("Selection[\(region)] is \(regionalSpotCounts[region]!)")
+                    updateSpotCountsForRegion(&regionalSpotCount, Int(newText) ?? 0)
+                    print("Selection[\(region)] is \(regionalSpotCount.get(region))")
                 }
     }
 }

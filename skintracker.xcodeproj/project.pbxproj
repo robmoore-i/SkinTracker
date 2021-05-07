@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B9C50A23B713A41FF6F2ABB /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C58EA72A75848B0F3BB13 /* Recording.swift */; };
-		1B9C51A130CFE11812E12EE3 /* TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5B6AAA595A0D80424614 /* TimeOfDay.swift */; };
-		1B9C52C3D75D1814F6BA0181 /* RecordingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5D8CD3154F691F8F9BEB /* RecordingStorage.swift */; };
+		1B9C504F84DEAFDC13EFDFE6 /* RecordingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */; };
+		1B9C518F2F23482594BCDF59 /* FaceRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52C1ED55C5F77349A9FB /* FaceRegion.swift */; };
+		1B9C5202763EA6EE4FB31C9A /* TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C59B5059330F1D6E5C7E0 /* TimeOfDay.swift */; };
 		1B9C53C49A7DC93C4522F103 /* FaceRegionSpotCountGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */; };
 		1B9C550DF791D4A957CC1DAB /* TimeOfDayToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */; };
 		1B9C55AD28CA840548B0610B /* RecordingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5889E8AE5EE90E90E104 /* RecordingsListView.swift */; };
 		1B9C576FC9D66BD41EA5B8F5 /* VisualizeTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C50734FD2384D8B7B4AF8 /* VisualizeTabbedView.swift */; };
+		1B9C588F62E88DA3128CED07 /* RegionalSpotCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */; };
 		1B9C5A364B6DDC15FBBD1515 /* LearnTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */; };
-		1B9C5AAB23D2CBA2C83C81DB /* FaceRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C50BBF7A263DD1E40A5EB /* FaceRegion.swift */; };
 		1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */; };
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
 		1B9C5CAB4F5DA6B6710FF6B4 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52E26080AB9DF7724E50 /* TabbedView.swift */; };
+		1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53AA81780815A3FDEE84 /* Recording.swift */; };
 		D47AEC1C264101E4007CFAC4 /* HomeTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AEC1B264101E4007CFAC4 /* HomeTabbedView.swift */; };
 		D4E5DE5726436DDB00FB44BA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5626436DDB00FB44BA /* Realm */; };
 		D4E5DE5926436DDB00FB44BA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5826436DDB00FB44BA /* RealmSwift */; };
@@ -49,16 +50,17 @@
 
 /* Begin PBXFileReference section */
 		1B9C50734FD2384D8B7B4AF8 /* VisualizeTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizeTabbedView.swift; sourceTree = "<group>"; };
-		1B9C50BBF7A263DD1E40A5EB /* FaceRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegion.swift; sourceTree = "<group>"; };
 		1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegionSpotCountGroup.swift; sourceTree = "<group>"; };
 		1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnTabbedView.swift; sourceTree = "<group>"; };
+		1B9C52C1ED55C5F77349A9FB /* FaceRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegion.swift; sourceTree = "<group>"; };
 		1B9C52E26080AB9DF7724E50 /* TabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
+		1B9C53AA81780815A3FDEE84 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
+		1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingStorage.swift; sourceTree = "<group>"; };
 		1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayToggle.swift; sourceTree = "<group>"; };
 		1B9C5889E8AE5EE90E90E104 /* RecordingsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsListView.swift; sourceTree = "<group>"; };
-		1B9C58EA72A75848B0F3BB13 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
-		1B9C5B6AAA595A0D80424614 /* TimeOfDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
-		1B9C5D8CD3154F691F8F9BEB /* RecordingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingStorage.swift; sourceTree = "<group>"; };
+		1B9C59B5059330F1D6E5C7E0 /* TimeOfDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
+		1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalSpotCount.swift; sourceTree = "<group>"; };
 		1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTabbedView.swift; sourceTree = "<group>"; };
 		D47AEC1B264101E4007CFAC4 /* HomeTabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbedView.swift; sourceTree = "<group>"; };
 		D4F440882635621B00B85A1B /* skintracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skintracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B9C56D3607E509136C02655 /* recording */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */,
+				1B9C53AA81780815A3FDEE84 /* Recording.swift */,
+				1B9C52C1ED55C5F77349A9FB /* FaceRegion.swift */,
+				1B9C59B5059330F1D6E5C7E0 /* TimeOfDay.swift */,
+				1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */,
+			);
+			path = recording;
+			sourceTree = "<group>";
+		};
 		1B9C57C0CB11C1AF33845C54 /* visualize */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +130,7 @@
 			children = (
 				1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */,
 				1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */,
-				1B9C5B6AAA595A0D80424614 /* TimeOfDay.swift */,
-				1B9C50BBF7A263DD1E40A5EB /* FaceRegion.swift */,
 				1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */,
-				1B9C58EA72A75848B0F3BB13 /* Recording.swift */,
 			);
 			path = record;
 			sourceTree = "<group>";
@@ -158,7 +169,7 @@
 				D47AEC1B264101E4007CFAC4 /* HomeTabbedView.swift */,
 				1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */,
 				1B9C57C0CB11C1AF33845C54 /* visualize */,
-				1B9C5D8CD3154F691F8F9BEB /* RecordingStorage.swift */,
+				1B9C56D3607E509136C02655 /* recording */,
 			);
 			path = skintracker;
 			sourceTree = "<group>";
@@ -331,15 +342,16 @@
 				1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */,
 				1B9C5A364B6DDC15FBBD1515 /* LearnTabbedView.swift in Sources */,
 				1B9C550DF791D4A957CC1DAB /* TimeOfDayToggle.swift in Sources */,
-				1B9C51A130CFE11812E12EE3 /* TimeOfDay.swift in Sources */,
-				1B9C5AAB23D2CBA2C83C81DB /* FaceRegion.swift in Sources */,
 				D47AEC1C264101E4007CFAC4 /* HomeTabbedView.swift in Sources */,
 				1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */,
 				1B9C53C49A7DC93C4522F103 /* FaceRegionSpotCountGroup.swift in Sources */,
-				1B9C50A23B713A41FF6F2ABB /* Recording.swift in Sources */,
 				1B9C576FC9D66BD41EA5B8F5 /* VisualizeTabbedView.swift in Sources */,
 				1B9C55AD28CA840548B0610B /* RecordingsListView.swift in Sources */,
-				1B9C52C3D75D1814F6BA0181 /* RecordingStorage.swift in Sources */,
+				1B9C504F84DEAFDC13EFDFE6 /* RecordingStorage.swift in Sources */,
+				1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */,
+				1B9C518F2F23482594BCDF59 /* FaceRegion.swift in Sources */,
+				1B9C5202763EA6EE4FB31C9A /* TimeOfDay.swift in Sources */,
+				1B9C588F62E88DA3128CED07 /* RegionalSpotCount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

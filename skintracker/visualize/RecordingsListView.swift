@@ -8,16 +8,16 @@ import SwiftUI
 struct RecordingsListView: View {
     private let recordingStorage: RecordingStorage
 
-    @State private var recordingDescriptions: [String]
+    @State private var recordings: [Recording]
 
     init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage
-        recordingDescriptions = recordingStorage.all.map(\.description)
+        recordings = recordingStorage.all
     }
 
-    private func latestRecordingsEntries() -> [String] {
+    private func latestRecordings() -> [Recording] {
         recordingStorage.refresh()
-        return recordingStorage.all.map(\.description)
+        return recordingStorage.all
     }
 
     var body: some View {
@@ -32,15 +32,15 @@ struct RecordingsListView: View {
             Divider()
             RefreshableScrollView(progressTint: .black, arrowTint: .black) {
                 VStack {
-                    ForEach(recordingDescriptions, id: \.self) { value in
+                    ForEach(recordings, id: \.self) { value in
                         HStack {
-                            Text(value)
+                            Text(value.description)
                             Spacer()
                         }.padding()
                     }
                 }.padding().background(Color.white)
             } onUpdate: {
-                recordingDescriptions = latestRecordingsEntries()
+                recordings = latestRecordings()
             }
         }
     }

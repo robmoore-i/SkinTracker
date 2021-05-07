@@ -7,7 +7,7 @@ import SwiftUI
 struct RecordTabbedView: View {
     @State private var selectedDate = Date()
     @State private var selectedTimeOfDay = TimeOfDay.am
-    @State private var selectedSpotCounts: [FaceRegion: (left: Int, right: Int)] = [:]
+    @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
 
     private let recordingStorage: RecordingStorage
 
