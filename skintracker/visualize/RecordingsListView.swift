@@ -21,27 +21,17 @@ struct RecordingsListView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("You're getting there 🙏")
-                        .font(.largeTitle)
-                        .fontWeight(.medium)
-                        .foregroundColor(.black)
-                Spacer()
-            }.padding()
-            Divider()
-            RefreshableScrollView(progressTint: .black, arrowTint: .black) {
-                VStack {
-                    ForEach(recordings, id: \.self) { value in
-                        HStack {
-                            Text(value.description)
-                            Spacer()
-                        }.padding()
-                    }
-                }.padding().background(Color.white)
-            } onUpdate: {
-                recordings = latestRecordings()
-            }
+        RefreshableScrollView(progressTint: .black, arrowTint: .black) {
+            VStack {
+                ForEach(recordings, id: \.self) { value in
+                    HStack {
+                        Text(value.description)
+                        Spacer()
+                    }.padding()
+                }
+            }.padding().background(Color.white)
+        } onUpdate: {
+            recordings = latestRecordings()
         }
     }
 }

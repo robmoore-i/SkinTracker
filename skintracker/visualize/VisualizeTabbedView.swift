@@ -13,7 +13,17 @@ struct VisualizeTabbedView: View {
 
     var body: some View {
         TabbedView("Visualize", "chart.bar.xaxis") {
-            RecordingsListView(recordingStorage)
+            VStack(spacing: 0) {
+                HStack {
+                    Text("You're getting there 🙏")
+                            .font(.largeTitle)
+                            .fontWeight(.medium)
+                            .foregroundColor(.black)
+                    Spacer()
+                }.padding()
+                Divider()
+                RecordingsListView(recordingStorage)
+            }
         }
     }
 }
