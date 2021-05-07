@@ -29,7 +29,7 @@ struct RecordingsListView: View {
                         .fontWeight(.medium)
                         .foregroundColor(.black)
                 Spacer()
-            }.padding().background(Color.white.ignoresSafeArea(.all, edges: .top))
+            }.padding()
             Divider()
             RefreshableScrollView(progressTint: .black, arrowTint: .black) {
                 VStack {
@@ -113,7 +113,7 @@ struct RefreshableScrollView<Content: View>: View {
     }
 
     func fireUpdate() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.async {
             withAnimation(Animation.linear) {
                 if refresh.startOffset == refresh.offset {
                     onUpdate()
