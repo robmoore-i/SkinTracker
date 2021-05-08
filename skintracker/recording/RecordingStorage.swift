@@ -2,6 +2,7 @@
 // Created by Rob on 7/5/21.
 //
 
+import Foundation
 import RealmSwift
 
 class RecordingStorage {
@@ -33,6 +34,20 @@ class RecordingStorage {
             }
         } catch let error {
             print(error.localizedDescription)
+        }
+    }
+
+    func hasEntryFor(date: Date, time: TimeOfDay) -> Bool {
+        all.anySatisfy { recording in
+            recording.isFor(date: date, time: time)
+        }
+    }
+}
+
+extension Array {
+    func anySatisfy(condition: (Element) -> Bool) -> Bool {
+        !allSatisfy { element in
+            !condition(element)
         }
     }
 }

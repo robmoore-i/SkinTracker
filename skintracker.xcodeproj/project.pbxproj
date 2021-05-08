@@ -19,8 +19,11 @@
 		1B9C5A364B6DDC15FBBD1515 /* LearnTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */; };
 		1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */; };
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
+		1B9C5D66A292821EB9970895 /* RecordingDateComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C56EEFF4FE4DA9786F0BC /* RecordingDateComparisonTests.swift */; };
 		1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C593352F029084B32DD55 /* TabHeader.swift */; };
 		1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53AA81780815A3FDEE84 /* Recording.swift */; };
+		D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5D926457D7F00BBAD0D /* SwiftDate */; };
+		D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */; };
 		D47AEC1C264101E4007CFAC4 /* HomeTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AEC1B264101E4007CFAC4 /* HomeTabbedView.swift */; };
 		D4E5DE5726436DDB00FB44BA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5626436DDB00FB44BA /* Realm */; };
 		D4E5DE5926436DDB00FB44BA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5826436DDB00FB44BA /* RealmSwift */; };
@@ -57,6 +60,7 @@
 		1B9C53A262ECA94894B87166 /* TabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
 		1B9C53AA81780815A3FDEE84 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
+		1B9C56EEFF4FE4DA9786F0BC /* RecordingDateComparisonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingDateComparisonTests.swift; sourceTree = "<group>"; };
 		1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingStorage.swift; sourceTree = "<group>"; };
 		1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayToggle.swift; sourceTree = "<group>"; };
 		1B9C5889E8AE5EE90E90E104 /* RecordingsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsListView.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 			files = (
 				D4E5DE5926436DDB00FB44BA /* RealmSwift in Frameworks */,
 				D4E5DE5726436DDB00FB44BA /* Realm in Frameworks */,
+				D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */,
+				D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +204,7 @@
 			children = (
 				D4F4409D2635621C00B85A1B /* skintrackerTests.swift */,
 				D4F4409F2635621C00B85A1B /* Info.plist */,
+				1B9C56EEFF4FE4DA9786F0BC /* RecordingDateComparisonTests.swift */,
 			);
 			path = skintrackerTests;
 			sourceTree = "<group>";
@@ -230,6 +237,8 @@
 			packageProductDependencies = (
 				D4E5DE5626436DDB00FB44BA /* Realm */,
 				D4E5DE5826436DDB00FB44BA /* RealmSwift */,
+				D42CC5D926457D7F00BBAD0D /* SwiftDate */,
+				D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */,
 			);
 			productName = skintracker;
 			productReference = D4F440882635621B00B85A1B /* skintracker.app */;
@@ -304,6 +313,7 @@
 			mainGroup = D4F4407F2635621A00B85A1B;
 			packageReferences = (
 				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */,
+				D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */,
 			);
 			productRefGroup = D4F440892635621B00B85A1B /* Products */;
 			projectDirPath = "";
@@ -372,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F4409E2635621C00B85A1B /* skintrackerTests.swift in Sources */,
+				1B9C5D66A292821EB9970895 /* RecordingDateComparisonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +696,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.1;
+			};
+		};
 		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
@@ -696,6 +715,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D42CC5D926457D7F00BBAD0D /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
+		};
+		D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDateStatic;
+		};
 		D4E5DE5626436DDB00FB44BA /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;

@@ -5,11 +5,11 @@
 import SwiftUI
 
 struct RecordTabbedView: View {
+    private let recordingStorage: RecordingStorage
+
     @State private var selectedDate = Date()
     @State private var selectedTimeOfDay = TimeOfDay.am
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
-
-    private let recordingStorage: RecordingStorage
 
     init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage
@@ -32,14 +32,38 @@ struct RecordTabbedView: View {
                     Section {
                         HStack {
                             Spacer()
-                            Button("Save") {
-                                recordingStorage.store(Recording(selectedDate, selectedTimeOfDay, selectedSpotCounts))
-                            }.frame(maxWidth: 100).padding(10.0)
+                            SubmitButton(
+                                    selectedDate: $selectedDate,
+                                    selectedTimeOfDay: $selectedTimeOfDay,
+                                    selectedSpotCounts: $selectedSpotCounts,
+                                    recordingStorage: recordingStorage)
                             Spacer()
                         }
                     }
                 }
             }
+        }
+    }
+}
+
+private struct SubmitButton: View {
+    @Binding var selectedDate: Date
+    @Binding var selectedTimeOfDay: TimeOfDay
+    @Binding var selectedSpotCounts: RegionalSpotCount
+
+    let recordingStorage: RecordingStorage
+
+    var body: some View {
+        Button(buttonLabel()) {
+            recordingStorage.store(Recording(selectedDate, selectedTimeOfDay, selectedSpotCounts))
+        }.frame(maxWidth: 100).padding(10.0)
+    }
+
+    func buttonLabel() -> String {
+        if (recordingStorage.hasEntryFor(date: selectedDate, time: selectedTimeOfDay)) {
+            return "Update"
+        } else {
+            return "Save"
         }
     }
 }

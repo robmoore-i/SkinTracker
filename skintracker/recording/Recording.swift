@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import SwiftDate
 
 class Recording: CustomStringConvertible, Identifiable, Hashable {
     private let date: Date
@@ -46,6 +47,18 @@ class Recording: CustomStringConvertible, Identifiable, Hashable {
             return false
         }
         return true
+    }
+
+    /**
+      For the user's timezone, if the date of this instance is the same as the date given, and the time of day of this
+      instance is the same as the time of day given, then true. Otherwise false.
+     */
+    func isFor(date: Date, time: TimeOfDay) -> Bool {
+        let convertedDate = date.convertTo(region: self.date.region)
+        return self.date.year == convertedDate.year
+                && self.date.month == convertedDate.month
+                && self.date.day == convertedDate.day
+                && timeOfDay == time
     }
 }
 
