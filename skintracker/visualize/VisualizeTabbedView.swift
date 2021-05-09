@@ -15,7 +15,7 @@ struct VisualizeTabbedView: View {
         TabbedView("Visualize", "chart.bar.xaxis") {
             VStack(spacing: 0) {
                 TabHeader("You're getting there 🙏")
-                RecordingsListView(recordingStorage)
+                RecordingsListView(recordingStorage: recordingStorage)
             }
         }
     }
