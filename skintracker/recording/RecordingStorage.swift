@@ -5,9 +5,9 @@
 import Foundation
 import RealmSwift
 
-class RecordingStorage {
+class RecordingStorage: ObservableObject {
     private let realm: Realm
-    public private(set) var all: [Recording] = []
+    @Published public private(set) var all: [Recording] = []
 
     init() {
         do {
@@ -30,6 +30,7 @@ class RecordingStorage {
         do {
             try realm.write {
                 realm.add(r.toRealmObjectV1())
+                all.append(r)
                 print("Wrote successfully")
             }
         } catch let error {

@@ -51,7 +51,7 @@ private struct SubmitButton: View {
     @Binding var selectedTimeOfDay: TimeOfDay
     @Binding var selectedSpotCounts: RegionalSpotCount
 
-    let recordingStorage: RecordingStorage
+    @ObservedObject var recordingStorage: RecordingStorage
 
     var body: some View {
         Button(buttonLabel()) {
