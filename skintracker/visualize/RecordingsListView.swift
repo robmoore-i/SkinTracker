@@ -13,9 +13,9 @@ struct RecordingsListView: View {
             VStack {
                 ForEach(recordingStorage.all.sorted { recording1, recording2 in
                     recording1 > recording2
-                }, id: \.self) { value in
+                }, id: \.self) { recording in
                     HStack {
-                        Text(value.description)
+                        Text(recording.description)
                         Spacer()
                     }.padding()
                 }
