@@ -10,11 +10,7 @@ import SwiftUI
 struct MainView: View {
     @State private var selectedTab = 2
 
-    private let recordingStorage: RecordingStorage
-
-    init() {
-        recordingStorage = RecordingStorage()
-    }
+    private let recordingStorage: RecordingStorage = RecordingStorage()
 
     var body: some View {
         TabView(selection: $selectedTab) {

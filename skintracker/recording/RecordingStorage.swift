@@ -25,12 +25,36 @@ class RecordingStorage: ObservableObject {
         print("Recordings(RecordingStorage): \(all)")
     }
 
-    func store(_ r: Recording) {
-        print("Saving: \(r)")
+    func hasEntryFor(date: Date, time: TimeOfDay) -> Bool {
+        all.anySatisfy { recording in
+            recording.isFor(date: date, time: time)
+        }
+    }
+
+    func store(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
+        let newRecord = Recording(date, timeOfDay, regionalSpotCount)
+        if let existingRecord = all.first(where: { recording in
+            recording.isFor(date: date, time: timeOfDay)
+        }) {
+            overwrite(existingRecord: existingRecord, newRecord: newRecord)
+        } else {
+            add(newRecord: newRecord)
+        }
+    }
+
+    private func overwrite(existingRecord: Recording, newRecord: Recording) {
+        print("Overwriting existing entry: \(existingRecord)")
+        print("Saving updated entry: \(newRecord)")
         do {
             try realm.write {
-                realm.add(r.toRealmObjectV1())
-                all.append(r)
+                realm.delete(realm.objects(RecordingRealmObjectV1.self).filter {
+                    $0.id == existingRecord.id
+                })
+                all.removeAll {
+                    $0.id == existingRecord.id
+                }
+                realm.add(newRecord.toRealmObjectV1())
+                all.append(newRecord)
                 print("Wrote successfully")
             }
         } catch let error {
@@ -38,9 +62,16 @@ class RecordingStorage: ObservableObject {
         }
     }
 
-    func hasEntryFor(date: Date, time: TimeOfDay) -> Bool {
-        all.anySatisfy { recording in
-            recording.isFor(date: date, time: time)
+    private func add(newRecord: Recording) {
+        print("Saving new entry: \(newRecord)")
+        do {
+            try realm.write {
+                realm.add(newRecord.toRealmObjectV1())
+                all.append(newRecord)
+                print("Wrote successfully")
+            }
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }

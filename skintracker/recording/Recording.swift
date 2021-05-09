@@ -6,25 +6,29 @@ import Foundation
 import SwiftDate
 
 class Recording: CustomStringConvertible, Identifiable, Hashable {
+    let id: Int
+
     private let date: Date
     private let timeOfDay: TimeOfDay
     private let regionalSpotCount: RegionalSpotCount
 
-    init(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
+    convenience init(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
+        self.init(UUID().hashValue, date, timeOfDay, regionalSpotCount)
+    }
+
+    init(_ id: Int, _ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
+        self.id = id
         self.date = date
         self.timeOfDay = timeOfDay
         self.regionalSpotCount = regionalSpotCount
     }
 
     var description: String {
-        "Recording(date: \(date), timeOfDay: \(timeOfDay), regionalSpotCounts: \(regionalSpotCount))"
-    }
-
-    var id: Date {
-        date
+        "Recording(id: \(id), date: \(date), timeOfDay: \(timeOfDay), regionalSpotCounts: \(regionalSpotCount))"
     }
 
     func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
         hasher.combine(date)
         hasher.combine(timeOfDay)
         hasher.combine(regionalSpotCount)
@@ -35,6 +39,9 @@ class Recording: CustomStringConvertible, Identifiable, Hashable {
             return true
         }
         if type(of: lhs) != type(of: rhs) {
+            return false
+        }
+        if lhs.id != rhs.id {
             return false
         }
         if lhs.date != rhs.date {
@@ -94,7 +101,7 @@ class RecordingRealmObjectV1: Object {
 extension Recording {
     func toRealmObjectV1() -> RecordingRealmObjectV1 {
         let o = RecordingRealmObjectV1()
-        o.id = UUID().hashValue
+        o.id = id
         o.date = date
         o.timeOfDay = timeOfDay.rawValue
         o.foreheadLeft = regionalSpotCount.get(.forehead).left
@@ -124,6 +131,6 @@ extension Recording {
         regionalSpotCount.put(region: .mouth, left: r.mouthLeft, right: r.mouthRight)
         regionalSpotCount.put(region: .chin, left: r.chinLeft, right: r.chinRight)
         let timeOfDay: TimeOfDay = TimeOfDay.init(rawValue: r.timeOfDay)!
-        return Recording(r.date, timeOfDay, regionalSpotCount)
+        return Recording(r.id, r.date, timeOfDay, regionalSpotCount)
     }
 }

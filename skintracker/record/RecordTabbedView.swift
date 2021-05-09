@@ -55,7 +55,7 @@ private struct SubmitButton: View {
 
     var body: some View {
         Button(buttonLabel()) {
-            recordingStorage.store(Recording(selectedDate, selectedTimeOfDay, selectedSpotCounts))
+            recordingStorage.store(selectedDate, selectedTimeOfDay, selectedSpotCounts)
         }.frame(maxWidth: 100).padding(10.0)
     }
 
