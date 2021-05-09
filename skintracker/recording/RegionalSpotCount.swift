@@ -30,6 +30,35 @@ class RegionalSpotCount: Equatable, Hashable, CustomStringConvertible {
         map[region]?.right = right
     }
 
+    func totalSpots() -> Int {
+        map.values.map { pair in
+            pair.left + pair.right
+        }.reduce(0) { (result: Int, next: Int) -> Int in
+            result + next
+        }
+    }
+
+    func mostAffectedRegions() -> [String] {
+        map.reduce((n: 1, regionDescriptions: [])) {
+            (result: (n: Int, regionDescriptions: [String]),
+             tuple: (key: FaceRegion, value: (left: Int, right: Int))) -> (n: Int, regionDescriptions: [String]) in
+            var nextResult = result
+            if tuple.value.left > nextResult.n {
+                nextResult.n = tuple.value.left
+                nextResult.regionDescriptions = ["\(tuple.key.rawValue.capitalized) left"]
+            } else if tuple.value.left == nextResult.n {
+                nextResult.regionDescriptions.append("\(tuple.key.rawValue.capitalized) left")
+            }
+            if tuple.value.right > nextResult.n {
+                nextResult.n = tuple.value.right
+                nextResult.regionDescriptions = ["\(tuple.key.rawValue.capitalized) right"]
+            } else if tuple.value.right == nextResult.n {
+                nextResult.regionDescriptions.append("\(tuple.key.rawValue.capitalized) right")
+            }
+            return nextResult
+        }.regionDescriptions
+    }
+
     var description: String {
         "RegionalSpotCount(map: \(map))"
     }

@@ -22,6 +22,7 @@ class RecordingStorage: ObservableObject {
     func refresh() {
         all = realm.objects(RecordingRealmObjectV1.self)
                 .map(Recording.fromRealmObjectV1)
+                .sorted(by: Recording.chronologicalSortCriteria)
         print("Recordings(RecordingStorage): \(all)")
     }
 
@@ -54,7 +55,7 @@ class RecordingStorage: ObservableObject {
                     $0.id == existingRecord.id
                 }
                 realm.add(newRecord.toRealmObjectV1())
-                all.append(newRecord)
+                all.insertSorted(newRecord)
                 print("Wrote successfully")
             }
         } catch let error {
@@ -67,7 +68,25 @@ class RecordingStorage: ObservableObject {
         do {
             try realm.write {
                 realm.add(newRecord.toRealmObjectV1())
-                all.append(newRecord)
+                all.insertSorted(newRecord)
+                print("Wrote successfully")
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+
+    func deleteItem(atIndex index: Int) {
+        let recordToDelete = all[index]
+        print("Deleting record: \(recordToDelete)")
+        do {
+            try realm.write {
+                realm.delete(realm.objects(RecordingRealmObjectV1.self).filter {
+                    $0.id == recordToDelete.id
+                })
+                all.removeAll {
+                    $0.id == recordToDelete.id
+                }
                 print("Wrote successfully")
             }
         } catch let error {
@@ -81,5 +100,12 @@ extension Array {
         !allSatisfy { element in
             !condition(element)
         }
+    }
+}
+
+extension Array where Element == Recording {
+    mutating func insertSorted(_ r: Recording) {
+        append(r)
+        sort(by: Recording.chronologicalSortCriteria)
     }
 }

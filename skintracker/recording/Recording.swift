@@ -90,7 +90,28 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         return self.date.year == convertedDate.year
                 && self.date.month == convertedDate.month
                 && self.date.day == convertedDate.day
-                && timeOfDay == time
+                && isFor(time: timeOfDay)
+    }
+
+    func isFor(time: TimeOfDay) -> Bool {
+        timeOfDay == time
+    }
+
+    func dateDescription() -> String {
+        "\(date.weekdayName(.short)) \(date.ordinalDay) \(date.month) \(date.year)"
+    }
+
+    func spotsShortDescription() -> String {
+        let mostAffectedRegions = regionalSpotCount.mostAffectedRegions()
+        if mostAffectedRegions.isEmpty {
+            return "Clear"
+        } else {
+            return "Total: \(regionalSpotCount.totalSpots()) , Most affected: \(mostAffectedRegions)"
+        }
+    }
+
+    static let chronologicalSortCriteria: (Recording, Recording) -> Bool = { recording1, recording2 in
+        recording1 > recording2
     }
 }
 
