@@ -6,7 +6,7 @@ import XCTest
 import SwiftDate
 @testable import skintracker
 
-class RecordingDateComparisonTests: XCTestCase {
+class RecordingIsForTests: XCTestCase {
     let GMT = Region(zone: TimeZone(abbreviation: "GMT")!)
 
     func testRecordingMatchesOwnDate() throws {

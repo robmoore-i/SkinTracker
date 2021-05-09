@@ -5,7 +5,7 @@
 import Foundation
 import SwiftDate
 
-class Recording: CustomStringConvertible, Identifiable, Hashable {
+class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     let id: Int
 
     private let date: Date
@@ -54,6 +54,31 @@ class Recording: CustomStringConvertible, Identifiable, Hashable {
             return false
         }
         return true
+    }
+
+    /**
+     Interpretation: R1 < R2 <=> R1 is for an earlier date/time than R2.
+     */
+    static func <(lhs: Recording, rhs: Recording) -> Bool {
+        if (lhs.date.year < rhs.date.year) {
+            return true
+        }
+        if (lhs.date.year == rhs.date.year
+                && lhs.date.month < rhs.date.month) {
+            return true
+        }
+        if (lhs.date.year == rhs.date.year
+                && lhs.date.month == rhs.date.month
+                && lhs.date.day < rhs.date.day) {
+            return true
+        }
+        if (lhs.date.year == rhs.date.year
+                && lhs.date.month == rhs.date.month
+                && lhs.date.day == rhs.date.day
+                && lhs.timeOfDay == .am && rhs.timeOfDay == .pm) {
+            return true
+        }
+        return false
     }
 
     /**

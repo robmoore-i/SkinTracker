@@ -11,7 +11,9 @@ struct RecordingsListView: View {
     var body: some View {
         RefreshableScrollView(progressTint: .black, arrowTint: .black) {
             VStack {
-                ForEach(recordingStorage.all, id: \.self) { value in
+                ForEach(recordingStorage.all.sorted { recording1, recording2 in
+                    recording1 > recording2
+                }, id: \.self) { value in
                     HStack {
                         Text(value.description)
                         Spacer()
