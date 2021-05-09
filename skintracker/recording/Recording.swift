@@ -90,7 +90,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         return self.date.year == convertedDate.year
                 && self.date.month == convertedDate.month
                 && self.date.day == convertedDate.day
-                && isFor(time: timeOfDay)
+                && isFor(time: time)
     }
 
     func isFor(time: TimeOfDay) -> Bool {
