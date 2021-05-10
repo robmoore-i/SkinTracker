@@ -93,6 +93,10 @@ class RecordingStorage: ObservableObject {
             print(error.localizedDescription)
         }
     }
+
+    func allAsJson() -> String {
+        "[]"
+    }
 }
 
 extension Array {
