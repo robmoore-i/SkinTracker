@@ -27,22 +27,3 @@ struct VisualizeTabbedView: View {
         }
     }
 }
-
-import SwiftUICharts
-
-struct FromTheStartDataView: View {
-    @ObservedObject var recordingStorage: RecordingStorage
-
-    var body: some View {
-        HStack {
-            LineChartView(data: recordingStorage.all.map {
-                Double($0.totalSpotCount())
-            }.reversed(),
-                    title: "From the start",
-                    rateValue: nil,
-                    dropShadow: false,
-                    valueSpecifier: "%.0f")
-            Spacer()
-        }
-    }
-}
