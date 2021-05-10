@@ -16,10 +16,11 @@ struct VisualizeTabbedView: View {
             VStack(spacing: 0) {
                 TabHeader("You're getting there 🙏")
                 HStack {
-                    Text("Recordings").font(.title).padding()
-                    ExportRecordingsButton(recordingStorage: recordingStorage)
+                    Text("Your Recordings").font(.title).padding(.trailing)
+                    ExportRecordingsButton(recordingStorage: recordingStorage).padding(.trailing)
+                    ImportRecordingsButton(recordingStorage: recordingStorage)
                     Spacer()
-                }
+                }.padding(.leading).padding(.top)
                 RecordingsListView(recordingStorage: recordingStorage)
             }
         }

@@ -13,7 +13,7 @@ struct ExportRecordingsButton: View {
 
     var body: some View {
         Button(action: {
-            print("--- Exporting all recordings to JSON ---")
+            print("Exporting recordings")
             print(recordingStorage.allAsJson())
             isExporting = true
         }) {
