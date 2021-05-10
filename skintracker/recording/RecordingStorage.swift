@@ -95,7 +95,7 @@ class RecordingStorage: ObservableObject {
     }
 
     func allAsJson() -> String {
-        "[]"
+        "[\(all.map { $0.toJson() }.joined(separator: ", "))]"
     }
 }
 

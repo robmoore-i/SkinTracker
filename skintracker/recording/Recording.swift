@@ -110,14 +110,29 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         }
     }
 
+    func toJson() -> String {
+        let encodedData = try! JSONEncoder().encode(toRealmObjectV1())
+        return String(data: encodedData, encoding: .utf8)!
+    }
+
+    static func fromJsonV1(_ json: String) -> Recording {
+        let dataFromJsonString = json.data(using: .utf8)!
+        let realmObjectV1 = try! JSONDecoder().decode(RecordingRealmObjectV1.self, from: dataFromJsonString)
+        return Recording.fromRealmObjectV1(realmObjectV1)
+    }
+
     static let chronologicalSortCriteria: (Recording, Recording) -> Bool = { recording1, recording2 in
         recording1 > recording2
     }
 }
 
+private enum SerializationError: Error {
+    case couldNotSerialize
+}
+
 import RealmSwift
 
-class RecordingRealmObjectV1: Object {
+class RecordingRealmObjectV1: Object, Codable {
     @objc dynamic var modelVersion = 1
 
     @objc dynamic var id = 0
