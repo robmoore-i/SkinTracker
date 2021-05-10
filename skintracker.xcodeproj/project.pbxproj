@@ -20,6 +20,7 @@
 		1B9C59D85F0AB7E6F7179E45 /* RecordingIsForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52AFF554CCB28DC5A8CC /* RecordingIsForTests.swift */; };
 		1B9C5A364B6DDC15FBBD1515 /* LearnTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */; };
 		1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */; };
+		1B9C5BAD31DDA6B1811E7366 /* ExportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C525EADFC71CF0C304880 /* ExportRecordingsButton.swift */; };
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
 		1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C593352F029084B32DD55 /* TabHeader.swift */; };
 		1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53AA81780815A3FDEE84 /* Recording.swift */; };
@@ -57,6 +58,7 @@
 		1B9C50734FD2384D8B7B4AF8 /* VisualizeTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizeTabbedView.swift; sourceTree = "<group>"; };
 		1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegionSpotCountGroup.swift; sourceTree = "<group>"; };
 		1B9C519403F9C28B92F808F3 /* LearnTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnTabbedView.swift; sourceTree = "<group>"; };
+		1B9C525EADFC71CF0C304880 /* ExportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportRecordingsButton.swift; sourceTree = "<group>"; };
 		1B9C52AFF554CCB28DC5A8CC /* RecordingIsForTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingIsForTests.swift; sourceTree = "<group>"; };
 		1B9C52C1ED55C5F77349A9FB /* FaceRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegion.swift; sourceTree = "<group>"; };
 		1B9C53A262ECA94894B87166 /* TabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				1B9C50734FD2384D8B7B4AF8 /* VisualizeTabbedView.swift */,
 				1B9C5889E8AE5EE90E90E104 /* RecordingsListView.swift */,
+				1B9C525EADFC71CF0C304880 /* ExportRecordingsButton.swift */,
 			);
 			path = visualize;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				1B9C588F62E88DA3128CED07 /* RegionalSpotCount.swift in Sources */,
 				1B9C54968C6D6224044C912D /* TabbedView.swift in Sources */,
 				1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */,
+				1B9C5BAD31DDA6B1811E7366 /* ExportRecordingsButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
