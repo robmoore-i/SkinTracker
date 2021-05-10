@@ -101,12 +101,16 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         "\(date.weekdayName(.short)) \(date.ordinalDay) \(date.month) \(date.year)"
     }
 
+    func totalSpotCount() -> Int {
+        regionalSpotCount.totalSpots()
+    }
+
     func spotsShortDescription() -> String {
         let mostAffectedRegions = regionalSpotCount.mostAffectedRegions()
         if mostAffectedRegions.isEmpty {
             return "Clear"
         } else {
-            return "Total: \(regionalSpotCount.totalSpots()) , Most affected: \(mostAffectedRegions)"
+            return "Total: \(totalSpotCount()) , Most affected: \(mostAffectedRegions)"
         }
     }
 

@@ -28,6 +28,7 @@
 		1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53AA81780815A3FDEE84 /* Recording.swift */; };
 		D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5D926457D7F00BBAD0D /* SwiftDate */; };
 		D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */; };
+		D42CC5E126494F4000BBAD0D /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5E026494F4000BBAD0D /* SwiftUICharts */; };
 		D47AEC1C264101E4007CFAC4 /* HomeTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AEC1B264101E4007CFAC4 /* HomeTabbedView.swift */; };
 		D4E5DE5726436DDB00FB44BA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5626436DDB00FB44BA /* Realm */; };
 		D4E5DE5926436DDB00FB44BA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5826436DDB00FB44BA /* RealmSwift */; };
@@ -100,6 +101,7 @@
 				D4E5DE5726436DDB00FB44BA /* Realm in Frameworks */,
 				D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */,
 				D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */,
+				D42CC5E126494F4000BBAD0D /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +261,7 @@
 				D4E5DE5826436DDB00FB44BA /* RealmSwift */,
 				D42CC5D926457D7F00BBAD0D /* SwiftDate */,
 				D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */,
+				D42CC5E026494F4000BBAD0D /* SwiftUICharts */,
 			);
 			productName = skintracker;
 			productReference = D4F440882635621B00B85A1B /* skintracker.app */;
@@ -332,8 +335,9 @@
 			);
 			mainGroup = D4F4407F2635621A00B85A1B;
 			packageReferences = (
-				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */,
+				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */,
+				D42CC5DF26494F4000BBAD0D /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = D4F440892635621B00B85A1B /* Products */;
 			projectDirPath = "";
@@ -728,7 +732,15 @@
 				minimumVersion = 6.3.1;
 			};
 		};
-		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */ = {
+		D42CC5DF26494F4000BBAD0D /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
@@ -749,14 +761,19 @@
 			package = D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDateStatic;
 		};
+		D42CC5E026494F4000BBAD0D /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D42CC5DF26494F4000BBAD0D /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
 		D4E5DE5626436DDB00FB44BA /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
+			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = Realm;
 		};
 		D4E5DE5826436DDB00FB44BA /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
+			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
