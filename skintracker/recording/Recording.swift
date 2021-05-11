@@ -86,10 +86,11 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
       instance is the same as the time of day given, then true. Otherwise false.
      */
     func isFor(date: Date, time: TimeOfDay) -> Bool {
-        let convertedDate = date.convertTo(region: self.date.region)
-        return self.date.year == convertedDate.year
-                && self.date.month == convertedDate.month
-                && self.date.day == convertedDate.day
+        let convertedOtherDate = date.convertTo(region: Region.current)
+        let convertedSelfDate = self.date.convertTo(region: Region.current)
+        return convertedSelfDate.year == convertedOtherDate.year
+                && convertedSelfDate.month == convertedOtherDate.month
+                && convertedSelfDate.day == convertedOtherDate.day
                 && isFor(time: time)
     }
 
