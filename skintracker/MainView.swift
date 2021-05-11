@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  skintracker
 //
 //  Created by Rob on 25/4/21.
