@@ -45,18 +45,28 @@ class RegionalSpotCount: Equatable, Hashable, CustomStringConvertible {
             var nextResult = result
             if tuple.value.left > nextResult.n {
                 nextResult.n = tuple.value.left
-                nextResult.regionDescriptions = ["\(tuple.key.rawValue.capitalized) left"]
+                nextResult.regionDescriptions = [regionDescription(side: "left", region: tuple.key)]
             } else if tuple.value.left == nextResult.n {
-                nextResult.regionDescriptions.append("\(tuple.key.rawValue.capitalized) left")
+                nextResult.regionDescriptions.append(regionDescription(side: "left", region: tuple.key))
             }
             if tuple.value.right > nextResult.n {
                 nextResult.n = tuple.value.right
-                nextResult.regionDescriptions = ["\(tuple.key.rawValue.capitalized) right"]
+                nextResult.regionDescriptions = [regionDescription(side: "right", region: tuple.key)]
             } else if tuple.value.right == nextResult.n {
-                nextResult.regionDescriptions.append("\(tuple.key.rawValue.capitalized) right")
+                nextResult.regionDescriptions.append(regionDescription(side: "right", region: tuple.key))
             }
             return nextResult
         }.regionDescriptions
+    }
+
+    private func regionDescription(side: String, region: FaceRegion) -> String {
+        if ([.cheek, .eye].contains(region)) {
+            return "\(side.capitalized) \(region.rawValue)"
+        } else if ([.mouth, .chin, .jawline, .forehead, .nose].contains(region)) {
+            return "\(side.capitalized) side of \(region.rawValue)"
+        } else {
+            return "\(region.rawValue.capitalized) \(side)"
+        }
     }
 
     var description: String {

@@ -111,7 +111,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         if mostAffectedRegions.isEmpty {
             return "Clear"
         } else {
-            return "Total: \(totalSpotCount()) , Most affected: \(mostAffectedRegions)"
+            return "Total: \(totalSpotCount()). Most affected: \(mostAffectedRegions.joined(separator: ", "))"
         }
     }
 
