@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-struct RecordingsListView: View {
+struct YourRecordingsListView: View {
     @ObservedObject var recordingStorage: RecordingStorage
 
     var body: some View {
