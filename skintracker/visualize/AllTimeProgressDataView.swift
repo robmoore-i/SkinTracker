@@ -5,7 +5,7 @@
 import SwiftUI
 import SwiftUICharts
 
-struct FromTheStartDataView: View {
+struct AllTimeProgressDataView: View {
     @ObservedObject var recordingStorage: RecordingStorage
 
     var body: some View {

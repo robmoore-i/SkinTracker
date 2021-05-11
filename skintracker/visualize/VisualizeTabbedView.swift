@@ -15,7 +15,7 @@ struct VisualizeTabbedView: View {
         TabbedView("Visualize", "chart.bar.xaxis") {
             VStack(spacing: 0) {
                 TabHeader("You're getting there 🙏")
-                FromTheStartDataView(recordingStorage: recordingStorage).padding()
+                AllTimeProgressDataView(recordingStorage: recordingStorage).padding()
                 YourRecordingsListHeader(recordingStorage: recordingStorage)
                 YourRecordingsListView(recordingStorage: recordingStorage)
             }
