@@ -17,7 +17,7 @@ struct MainView: View {
             DashboardTabbedView(recordingStorage: recordingStorage, selectedTab: $selectedTab)
             RecordTabbedView(recordingStorage)
             LearnTabbedView()
-        }
+        }.animation(.linear)
     }
 }
 
