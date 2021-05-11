@@ -40,15 +40,15 @@ private struct TrendIndicator: View {
     }
 
     private func decreasingSpotsTrendIndicator() -> some View {
-        trendIndicator("arrowtriangle.down", Text("\(percentageChange, specifier: "%.0f")%"))
+        trendIndicator("arrowtriangle.down", Text("\(percentageChange, specifier: "%.0f")% spot count"))
     }
 
     private func noChangeTrendIndicator() -> some View {
-        trendIndicator("ellipsis", Text("No change"))
+        trendIndicator("ellipsis", Text("No change in spot count"))
     }
 
     private func increasingSpotsTrendIndicator() -> some View {
-        trendIndicator("arrowtriangle.up", Text("\(percentageChange, specifier: "%.0f")%"))
+        trendIndicator("arrowtriangle.up", Text("+\(percentageChange, specifier: "%.0f")% spot count"))
     }
 
     private func trendIndicator(_ systemImageName: String, _ text: Text) -> some View {
