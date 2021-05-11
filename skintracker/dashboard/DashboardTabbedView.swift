@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct VisualizeTabbedView: View {
+struct DashboardTabbedView: View {
     private let recordingStorage: RecordingStorage
 
     init(_ recordingStorage: RecordingStorage) {
@@ -12,7 +12,7 @@ struct VisualizeTabbedView: View {
     }
 
     var body: some View {
-        TabbedView("Visualize", "chart.bar.xaxis") {
+        TabbedView("Dashboard", "chart.bar.xaxis") {
             VStack(spacing: 0) {
                 TabHeader("You're getting there 🙏")
                 AllTimeProgressDataView(recordingStorage: recordingStorage).padding()

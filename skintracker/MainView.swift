@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var selectedTab = 3
+    @State private var selectedTab = 1
 
     private let recordingStorage: RecordingStorage = RecordingStorage()
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            HomeTabbedView()
+            DashboardTabbedView(recordingStorage)
             RecordTabbedView(recordingStorage)
-            VisualizeTabbedView(recordingStorage)
             LearnTabbedView()
         }
     }

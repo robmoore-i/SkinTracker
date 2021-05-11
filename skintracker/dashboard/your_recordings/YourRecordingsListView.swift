@@ -9,6 +9,17 @@ struct YourRecordingsListView: View {
     @ObservedObject var recordingStorage: RecordingStorage
 
     var body: some View {
+        ZStack {
+            RecordingsList(recordingStorage: recordingStorage).padding(5)
+            AddRecordingFloatingActionButton()
+        }
+    }
+}
+
+private struct RecordingsList: View {
+    var recordingStorage: RecordingStorage
+
+    var body: some View {
         List {
             ForEach(recordingStorage.all) { value in
                 RecordingsListEntryView(recording: value).padding(10)
@@ -22,7 +33,7 @@ struct YourRecordingsListView: View {
                     recordingStorage.deleteItem(atIndex: index)
                 }
             }
-        }.padding().background(Color.white)
+        }.background(Color.white)
     }
 }
 
@@ -53,6 +64,30 @@ private struct RecordingsListEntryView: View {
                 }
                 Spacer()
             }
+        }
+    }
+}
+
+private struct AddRecordingFloatingActionButton: View {
+    var body: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button(action: {
+                    print("Going to Record tab")
+                }, label: {
+                    Text("+")
+                            .font(.system(.largeTitle))
+                            .frame(width: 50, height: 43)
+                            .foregroundColor(Color.white)
+                            .padding(.bottom, 7)
+                })
+                        .background(Color.blue)
+                        .cornerRadius(5)
+                        .padding()
+                        .shadow(color: Color.black.opacity(0.4), radius: 4, x: 4, y: 4)
+            }
+            Spacer()
         }
     }
 }
