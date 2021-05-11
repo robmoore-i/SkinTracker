@@ -34,6 +34,11 @@ class RecordingStorage: ObservableObject {
         }
     }
 
+    func dateRange() -> Range<Date> {
+        // The 'all' collection is ordered from most recent to least recent.
+        all.last!.dateRangeTo(all.first!)
+    }
+
     func store(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
         let newRecord = Recording(date, timeOfDay, regionalSpotCount)
         if let existingRecord = all.first(where: { recording in

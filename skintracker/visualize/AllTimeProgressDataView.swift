@@ -4,6 +4,7 @@
 
 import SwiftUI
 import SwiftUICharts
+import SwiftDate
 
 struct AllTimeProgressDataView: View {
     @ObservedObject var recordingStorage: RecordingStorage
@@ -21,8 +22,8 @@ struct AllTimeProgressDataView: View {
                     dropShadow: false,
                     valueSpecifier: "%.0f spots")
             TrendIndicator(
-                    percentageChange: 100 * (twiceDailyTotals.last! - twiceDailyTotals.first!) / twiceDailyTotals.first!
-                    // Requires the date range in order to show the time period over which this change has happened
+                    percentageChange: 100 * (twiceDailyTotals.last! - twiceDailyTotals.first!) / twiceDailyTotals.first!,
+                    dateRange: recordingStorage.dateRange()
             ).padding(.leading)
             Spacer()
         }
@@ -31,27 +32,31 @@ struct AllTimeProgressDataView: View {
 
 private struct TrendIndicator: View {
     let percentageChange: Double
+    let dateRange: Range<Date>
 
     var body: some View {
         if (percentageChange < 0) {
-            decreasingSpotsTrendIndicator(percentageChange)
+            decreasingSpotsTrendIndicator()
         } else if (percentageChange == 0) {
             noChangeTrendIndicator()
         } else {
-            increasingSpotsTrendIndicator(percentageChange)
+            increasingSpotsTrendIndicator()
         }
     }
 
-    private func decreasingSpotsTrendIndicator(_ percentageChange: Double) -> some View {
-        trendIndicator("arrowtriangle.down", Text("\(percentageChange, specifier: "%.0f")% spot count"))
+    private func decreasingSpotsTrendIndicator() -> some View {
+        trendIndicator(
+                "arrowtriangle.down",
+                Text("\(percentageChange, specifier: "%.0f")% \(whatIsBeingDescribed())")
+        )
     }
 
     private func noChangeTrendIndicator() -> some View {
-        trendIndicator("ellipsis", Text("No change in spot count"))
+        trendIndicator("ellipsis", Text("No change in \(whatIsBeingDescribed())"))
     }
 
-    private func increasingSpotsTrendIndicator(_ percentageChange: Double) -> some View {
-        trendIndicator("arrowtriangle.up", Text("+\(percentageChange, specifier: "%.0f")% spot count"))
+    private func increasingSpotsTrendIndicator() -> some View {
+        trendIndicator("arrowtriangle.up", Text("+\(percentageChange, specifier: "%.0f")% \(whatIsBeingDescribed())"))
     }
 
     private func trendIndicator(_ systemImageName: String, _ text: Text) -> some View {
@@ -61,6 +66,30 @@ private struct TrendIndicator: View {
                     .foregroundColor(Color.blue)
                     .padding(.bottom, 5)
             text
+        }
+    }
+
+    private func whatIsBeingDescribed() -> String {
+        "spot count in last \(dateRange.lengthDescription())"
+    }
+}
+
+extension Range where Bound == Date {
+    // Take the sentence "X has happened in the last Y", in which some event(s) X have happened within a certain
+    // date range (i.e. Range<Date>), and we want to describe it using the above sentence.
+    // The String Y is the return value of this method.
+    func lengthDescription() -> String {
+        let mostRecentDate = upperBound.convertTo(region: Region.current)
+        let startDate = lowerBound.convertTo(region: Region.current)
+        let dayCount: Int = mostRecentDate.difference(in: .day, from: startDate)!
+        if (dayCount == 0) {
+            return "several hours"
+        } else if (dayCount <= 3) {
+            return "\(dayCount.days.in(.hour)!) hours"
+        } else if (dayCount <= 30) {
+            return "\(dayCount) days"
+        } else {
+            return "\(dayCount.days.in(.weekOfYear)!) weeks"
         }
     }
 }

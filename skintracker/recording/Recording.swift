@@ -27,6 +27,15 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         "Recording(id: \(id), date: \(date), timeOfDay: \(timeOfDay), regionalSpotCounts: \(regionalSpotCount))"
     }
 
+    func dateRangeTo(_ laterRecording: Recording) -> Range<Date> {
+        assumedDate()..<laterRecording.assumedDate()
+    }
+
+    private func assumedDate() -> Date {
+        let hour = timeOfDay == .am ? 9 : 21
+        return Date(year: date.year, month: date.month, day: date.day, hour: hour, minute: 0, region: Region.current)
+    }
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(date)
