@@ -115,13 +115,8 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         regionalSpotCount.totalSpots()
     }
 
-    func spotsShortDescription() -> String {
-        let mostAffectedRegions = regionalSpotCount.mostAffectedRegions()
-        if mostAffectedRegions.isEmpty {
-            return "Clear"
-        } else {
-            return "Total: \(totalSpotCount()). Most affected: \(mostAffectedRegions.joined(separator: ", "))"
-        }
+    func mostAffectedRegions() -> [String] {
+        regionalSpotCount.mostAffectedRegions()
     }
 
     func toJson() -> String {

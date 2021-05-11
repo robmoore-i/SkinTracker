@@ -11,7 +11,7 @@ struct YourRecordingsListView: View {
     var body: some View {
         List {
             ForEach(recordingStorage.all) { value in
-                RecordingsListEntryView(recording: value)
+                RecordingsListEntryView(recording: value).padding(10)
             }.onDelete { (v: IndexSet) in
                 if (v.count != 1) {
                     print("Unexpectedly tried to delete \(v.count) recordings at a time, rather than the expected, 1.")
@@ -41,9 +41,18 @@ private struct RecordingsListEntryView: View {
                 Spacer()
             }
             HStack {
-                Text(recording.spotsShortDescription())
+                let mostAffectedRegions = recording.mostAffectedRegions()
+                let totalSpotCount = recording.totalSpotCount()
+                if mostAffectedRegions.isEmpty {
+                    Text("Clear")
+                } else {
+                    VStack(alignment: .leading) {
+                        Text("Total: \(totalSpotCount)")
+                        Text("Most affected: \(mostAffectedRegions.joined(separator: ", "))")
+                    }
+                }
                 Spacer()
             }
-        }.padding()
+        }
     }
 }
