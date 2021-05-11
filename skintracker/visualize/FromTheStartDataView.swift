@@ -15,35 +15,49 @@ struct FromTheStartDataView: View {
             }.reversed()
             let percentageChange = 100 * (data.last! - data.first!) / data.first!
             LineChartView(data: data,
-                    title: "From the start",
+                    title: "All time",
+                    legend: "Total spot count",
                     rateValue: nil,
                     dropShadow: false,
-                    valueSpecifier: "%.0f")
-            TrendArrow(percentageChange: percentageChange).padding()
+                    valueSpecifier: "%.0f spots")
+            TrendIndicator(percentageChange: percentageChange).padding(.leading)
             Spacer()
         }
     }
 }
 
-private struct TrendArrow: View {
+private struct TrendIndicator: View {
     let percentageChange: Double
 
     var body: some View {
-        if (percentageChange > 0) {
-            VStack {
-                Image(systemName: "arrowtriangle.up").foregroundColor(Color.blue)
-                Text("\(percentageChange, specifier: "%.0f")%")
-            }
+        if (percentageChange < 0) {
+            decreasingSpotsTrendIndicator()
         } else if (percentageChange == 0) {
-            VStack {
-                Image(systemName: "ellipsis").foregroundColor(Color.blue)
-                Text("No change")
-            }
+            noChangeTrendIndicator()
         } else {
-            VStack {
-                Image(systemName: "arrowtriangle.down").foregroundColor(Color.blue)
-                Text("\(percentageChange, specifier: "%.0f")%")
-            }
+            increasingSpotsTrendIndicator()
+        }
+    }
+
+    private func decreasingSpotsTrendIndicator() -> some View {
+        trendIndicator("arrowtriangle.down", Text("\(percentageChange, specifier: "%.0f")%"))
+    }
+
+    private func noChangeTrendIndicator() -> some View {
+        trendIndicator("ellipsis", Text("No change"))
+    }
+
+    private func increasingSpotsTrendIndicator() -> some View {
+        trendIndicator("arrowtriangle.up", Text("\(percentageChange, specifier: "%.0f")%"))
+    }
+
+    private func trendIndicator(_ systemImageName: String, _ text: Text) -> some View {
+        VStack {
+            Image(systemName: systemImageName)
+                    .scaleEffect(1.5, anchor: .center)
+                    .foregroundColor(Color.blue)
+                    .padding(.bottom, 5)
+            text
         }
     }
 }
