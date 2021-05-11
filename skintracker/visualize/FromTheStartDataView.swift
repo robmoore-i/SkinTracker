@@ -10,17 +10,20 @@ struct FromTheStartDataView: View {
 
     var body: some View {
         HStack {
-            let data: [Double] = recordingStorage.all.map {
+            // Requires region-aware interpolation to gracefully account for any potentially missing readings.
+            let twiceDailyTotals: [Double] = recordingStorage.all.map {
                 Double($0.totalSpotCount())
             }.reversed()
-            let percentageChange = 100 * (data.last! - data.first!) / data.first!
-            LineChartView(data: data,
+            LineChartView(data: twiceDailyTotals,
                     title: "All time",
                     legend: "Total spot count",
                     rateValue: nil,
                     dropShadow: false,
                     valueSpecifier: "%.0f spots")
-            TrendIndicator(percentageChange: percentageChange).padding(.leading)
+            TrendIndicator(
+                    percentageChange: 100 * (twiceDailyTotals.last! - twiceDailyTotals.first!) / twiceDailyTotals.first!
+                    // Requires the date range in order to show the time period over which this change has happened
+            ).padding(.leading)
             Spacer()
         }
     }
@@ -31,15 +34,15 @@ private struct TrendIndicator: View {
 
     var body: some View {
         if (percentageChange < 0) {
-            decreasingSpotsTrendIndicator()
+            decreasingSpotsTrendIndicator(percentageChange)
         } else if (percentageChange == 0) {
             noChangeTrendIndicator()
         } else {
-            increasingSpotsTrendIndicator()
+            increasingSpotsTrendIndicator(percentageChange)
         }
     }
 
-    private func decreasingSpotsTrendIndicator() -> some View {
+    private func decreasingSpotsTrendIndicator(_ percentageChange: Double) -> some View {
         trendIndicator("arrowtriangle.down", Text("\(percentageChange, specifier: "%.0f")% spot count"))
     }
 
@@ -47,7 +50,7 @@ private struct TrendIndicator: View {
         trendIndicator("ellipsis", Text("No change in spot count"))
     }
 
-    private func increasingSpotsTrendIndicator() -> some View {
+    private func increasingSpotsTrendIndicator(_ percentageChange: Double) -> some View {
         trendIndicator("arrowtriangle.up", Text("+\(percentageChange, specifier: "%.0f")% spot count"))
     }
 
