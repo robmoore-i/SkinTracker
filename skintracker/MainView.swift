@@ -14,7 +14,7 @@ struct MainView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            DashboardTabbedView(recordingStorage)
+            DashboardTabbedView(recordingStorage: recordingStorage, selectedTab: $selectedTab)
             RecordTabbedView(recordingStorage)
             LearnTabbedView()
         }

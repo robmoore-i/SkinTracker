@@ -7,11 +7,12 @@ import SwiftUI
 
 struct YourRecordingsListView: View {
     @ObservedObject var recordingStorage: RecordingStorage
+    @Binding var selectedTab: Int
 
     var body: some View {
         ZStack {
             RecordingsList(recordingStorage: recordingStorage).padding(5)
-            AddRecordingFloatingActionButton()
+            AddRecordingFloatingActionButton(selectedTab: $selectedTab)
         }
     }
 }
@@ -22,7 +23,7 @@ private struct RecordingsList: View {
     var body: some View {
         List {
             ForEach(recordingStorage.all) { value in
-                RecordingsListEntryView(recording: value).padding(10)
+                RecordingsListEntry(recording: value).padding(10)
             }.onDelete { (v: IndexSet) in
                 if (v.count != 1) {
                     print("Unexpectedly tried to delete \(v.count) recordings at a time, rather than the expected, 1.")
@@ -37,7 +38,7 @@ private struct RecordingsList: View {
     }
 }
 
-private struct RecordingsListEntryView: View {
+private struct RecordingsListEntry: View {
     let recording: Recording
 
     var body: some View {
@@ -69,12 +70,14 @@ private struct RecordingsListEntryView: View {
 }
 
 private struct AddRecordingFloatingActionButton: View {
+    @Binding var selectedTab: Int
+
     var body: some View {
         VStack {
             HStack {
                 Spacer()
                 Button(action: {
-                    print("Going to Record tab")
+                    selectedTab = 2
                 }, label: {
                     Text("+")
                             .font(.system(.largeTitle))

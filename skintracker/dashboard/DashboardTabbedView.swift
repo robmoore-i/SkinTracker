@@ -5,11 +5,8 @@
 import SwiftUI
 
 struct DashboardTabbedView: View {
-    private let recordingStorage: RecordingStorage
-
-    init(_ recordingStorage: RecordingStorage) {
-        self.recordingStorage = recordingStorage
-    }
+    let recordingStorage: RecordingStorage
+    @Binding var selectedTab: Int
 
     var body: some View {
         TabbedView("Dashboard", "chart.bar.xaxis") {
@@ -17,7 +14,7 @@ struct DashboardTabbedView: View {
                 TabHeader("You're getting there 🙏")
                 AllTimeProgressDataView(recordingStorage: recordingStorage).padding()
                 YourRecordingsListHeader(recordingStorage: recordingStorage)
-                YourRecordingsListView(recordingStorage: recordingStorage)
+                YourRecordingsListView(recordingStorage: recordingStorage, selectedTab: $selectedTab)
             }
         }
     }
