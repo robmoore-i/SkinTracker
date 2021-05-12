@@ -37,10 +37,10 @@ private struct TrendIndicator: View {
     var body: some View {
         if (percentageChange < 0) {
             decreasingSpotsTrendIndicator()
-        } else if (percentageChange == 0) {
-            noChangeTrendIndicator()
-        } else {
+        } else if (percentageChange > 0) {
             increasingSpotsTrendIndicator()
+        } else {
+            noChangeTrendIndicator()
         }
     }
 
