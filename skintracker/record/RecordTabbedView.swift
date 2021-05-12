@@ -22,6 +22,9 @@ struct RecordTabbedView: View {
                 Form {
                     Section {
                         DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
+                                .onChange(of: selectedDate) { newDate in
+                                    print("Selected date: \(newDate)")
+                                }
                         TimeOfDayToggle(selection: $selectedTimeOfDay)
                     }
 
