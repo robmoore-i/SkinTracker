@@ -13,7 +13,7 @@ struct AllTimeProgressDataView: View {
     var body: some View {
         HStack {
             if (recordingStorage.all.isEmpty) {
-                UserActivationDemoDataView(selectedTab: $selectedTab)
+                UserActivationDemoView(selectedTab: $selectedTab)
             } else {
                 // Requires region-aware interpolation to gracefully account for any potentially missing readings.
                 let twiceDailyTotals: [Double] = recordingStorage.all.map {
