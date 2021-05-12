@@ -18,7 +18,7 @@ struct YourRecordingsListView: View {
 }
 
 private struct RecordingsList: View {
-    var recordingStorage: RecordingStorage
+    @ObservedObject var recordingStorage: RecordingStorage
 
     var body: some View {
         List {

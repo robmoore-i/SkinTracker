@@ -84,6 +84,7 @@ class RecordingStorage: ObservableObject {
     }
 
     func deleteItem(atIndex index: Int) {
+        print("Deleting record at index \(index)")
         let recordToDelete = all[index]
         print("Deleting record: \(recordToDelete)")
         do {
