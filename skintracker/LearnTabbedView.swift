@@ -6,12 +6,10 @@ import SwiftUI
 
 struct LearnTabbedView: View {
 
-    let emojis = ["🙏", "👊", "🙌", "👏", "👑", "🌞", "⭐️", "☀️", "🌈"]
-
     var body: some View {
         TabbedView("Learn", "book.closed") {
             VStack(spacing: 0) {
-                TabHeader("Keep informed \(emojis.randomElement()!)")
+                TabHeader("Learn")
                 Text("Learn view").padding()
                 Spacer()
             }

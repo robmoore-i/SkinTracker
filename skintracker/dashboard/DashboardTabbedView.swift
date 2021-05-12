@@ -8,12 +8,10 @@ struct DashboardTabbedView: View {
     let recordingStorage: RecordingStorage
     @Binding var selectedTab: Int
 
-    let emojis = ["🙏", "👊", "🙌", "👏", "👑", "🌞", "⭐️", "☀️", "🌈"]
-
     var body: some View {
-        TabbedView("Track progress", "chart.bar.xaxis") {
+        TabbedView("Dashboard", "chart.bar.xaxis") {
             VStack(spacing: 0) {
-                TabHeader("SkinTracker \(emojis.randomElement()!)")
+                TabHeader("Visualize")
                 AllTimeProgressDataView(recordingStorage: recordingStorage, selectedTab: $selectedTab).padding()
                 YourRecordingsListHeader(recordingStorage: recordingStorage)
                 YourRecordingsListView(recordingStorage: recordingStorage, selectedTab: $selectedTab)

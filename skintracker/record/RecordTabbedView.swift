@@ -11,8 +11,6 @@ struct RecordTabbedView: View {
     @State private var selectedTimeOfDay = TimeOfDay.am
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
 
-    let emojis = ["🙏", "👊", "🙌", "👏", "👑", "🌞", "⭐️", "☀️", "🌈"]
-
     init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage
     }
@@ -20,7 +18,7 @@ struct RecordTabbedView: View {
     var body: some View {
         TabbedView("Record", "plus.square") {
             VStack(spacing: 0) {
-                TabHeader("Stay committed \(emojis.randomElement()!)")
+                TabHeader("Record")
                 Form {
                     Section {
                         DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
