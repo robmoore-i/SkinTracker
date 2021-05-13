@@ -26,7 +26,6 @@ struct AddRecordingFloatingActionButton: View {
                         .padding()
                         .shadow(color: Color.black.opacity(0.4), radius: 4, x: 4, y: 4)
             }
-            Spacer()
         }
     }
 }
