@@ -32,8 +32,9 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     }
 
     private func assumedDate() -> Date {
+        let localDate = date.convertTo(region: Region.current)
         let hour = timeOfDay == .am ? 9 : 21
-        return Date(year: date.year, month: date.month, day: date.day, hour: hour, minute: 0, region: Region.current)
+        return Date(year: localDate.year, month: localDate.month, day: localDate.day, hour: hour, minute: 0, region: Region.current)
     }
 
     func hash(into hasher: inout Hasher) {
@@ -69,21 +70,23 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
      Interpretation: R1 < R2 <=> R1 is for an earlier date/time than R2.
      */
     static func <(lhs: Recording, rhs: Recording) -> Bool {
-        if (lhs.date.year < rhs.date.year) {
+        let convertedLhs = lhs.date.convertTo(region: Region.current)
+        let convertedRhs = rhs.date.convertTo(region: Region.current)
+        if (convertedLhs.year < convertedRhs.year) {
             return true
         }
-        if (lhs.date.year == rhs.date.year
-                && lhs.date.month < rhs.date.month) {
+        if (convertedLhs.year == convertedRhs.year
+                && convertedLhs.month < convertedRhs.month) {
             return true
         }
-        if (lhs.date.year == rhs.date.year
-                && lhs.date.month == rhs.date.month
-                && lhs.date.day < rhs.date.day) {
+        if (convertedLhs.year == convertedRhs.year
+                && convertedLhs.month == convertedRhs.month
+                && convertedLhs.day < convertedRhs.day) {
             return true
         }
-        if (lhs.date.year == rhs.date.year
-                && lhs.date.month == rhs.date.month
-                && lhs.date.day == rhs.date.day
+        if (convertedLhs.year == convertedRhs.year
+                && convertedLhs.month == convertedRhs.month
+                && convertedLhs.day == convertedRhs.day
                 && lhs.timeOfDay == .am && rhs.timeOfDay == .pm) {
             return true
         }
@@ -95,12 +98,15 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
       instance is the same as the time of day given, then true. Otherwise false.
      */
     func isFor(date: Date, time: TimeOfDay) -> Bool {
+        isFor(date: date) && isFor(time: time)
+    }
+
+    func isFor(date: Date) -> Bool {
         let convertedOtherDate = date.convertTo(region: Region.current)
         let convertedSelfDate = self.date.convertTo(region: Region.current)
         return convertedSelfDate.year == convertedOtherDate.year
                 && convertedSelfDate.month == convertedOtherDate.month
                 && convertedSelfDate.day == convertedOtherDate.day
-                && isFor(time: time)
     }
 
     func isFor(time: TimeOfDay) -> Bool {
@@ -108,7 +114,8 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     }
 
     func dateDescription() -> String {
-        "\(date.weekdayName(.short)) \(date.ordinalDay) \(date.month) \(date.year)"
+        let convertedDate = date.convertTo(region: Region.current)
+        return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.month) \(convertedDate.year)"
     }
 
     func totalSpotCount() -> Int {

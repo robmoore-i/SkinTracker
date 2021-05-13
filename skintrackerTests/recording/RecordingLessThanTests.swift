@@ -44,7 +44,13 @@ class RecordingLessThanTests: XCTestCase {
         XCTAssert(!(recording1 > recording2))
     }
 
-    private func recordingOn(year: Int = 2021, month: Int = 1, day: Int = 1, timeOfDay: TimeOfDay = .am) -> Recording {
-        Recording(Date(year: year, month: month, day: day, hour: 3, minute: 29), timeOfDay, RegionalSpotCount())
+    func testWorksForDaysWhoseDateVariesAcrossTimezones() throws {
+        let recording1 = recordingOn(day: 13, hour: 2, timeOfDay: .am)
+        let recording2 = recordingOn(day: 12, hour: 22, timeOfDay: .pm)
+        XCTAssert(recording1 < recording2)
+    }
+
+    private func recordingOn(year: Int = 2021, month: Int = 1, day: Int = 1, hour: Int = 1, timeOfDay: TimeOfDay = .am) -> Recording {
+        Recording(Date(year: year, month: month, day: day, hour: hour, minute: 15), timeOfDay, RegionalSpotCount())
     }
 }
