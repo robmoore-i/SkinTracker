@@ -21,10 +21,7 @@ struct RecordTabbedView: View {
                 TabHeader("Record")
                 Form {
                     Section {
-                        DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
-                                .onChange(of: selectedDate) { newDate in
-                                    print("Selected date: \(newDate)")
-                                }
+                        LoggedDatePicker(selection: $selectedDate)
                         TimeOfDayToggle(selection: $selectedTimeOfDay)
                     }
 
@@ -46,6 +43,17 @@ struct RecordTabbedView: View {
                 }
             }
         }
+    }
+}
+
+private struct LoggedDatePicker: View {
+    @Binding var selection: Date
+
+    var body: some View {
+        DatePicker("Date", selection: $selection, displayedComponents: .date)
+                .onChange(of: selection) { newDate in
+                    print("Selected date: \(newDate)")
+                }
     }
 }
 
