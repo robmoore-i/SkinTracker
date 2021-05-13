@@ -14,7 +14,7 @@ struct AfterFirstRecordingUserActivationModal: View {
                 Text("You've made your").font(.largeTitle)
                 Text("first recording! 🎉").font(.largeTitle)
             }.padding()
-            Text("Would you like to get a notification in the morning and evening to make recordings?")
+            Text("Would you like to get a notification in the morning (7am) and evening (10pm) to make recordings?")
                     .multilineTextAlignment(.center).padding()
             EnableNotificationsButton().padding()
             Text("Tap anywhere to dismiss.").padding()
