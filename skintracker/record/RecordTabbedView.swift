@@ -57,61 +57,6 @@ private struct LoggedDatePicker: View {
     }
 }
 
-import UserNotifications
-
-private struct EnableNotificationsButton: View {
-    var body: some View {
-        Button(action: {
-            UNUserNotificationCenter.current()
-                    .requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                        if (success) {
-                            print("User authorized notifications")
-                        } else if let e = error {
-                            print(e.localizedDescription)
-                        } else {
-                            print("Notification authorization request failed in a less common way.")
-                        }
-                    }
-        }, label: {
-            HStack {
-                Text("Enable notifications")
-                        .font(.subheadline)
-                        .foregroundColor(Color.white)
-                        .padding(10)
-                Image(systemName: "bell.fill")
-                        .foregroundColor(.white)
-                        .padding(.trailing, 10)
-            }
-        })
-                .background(Color.blue)
-                .cornerRadius(5)
-                .shadow(color: Color.black.opacity(0.4), radius: 4, x: 4, y: 4)
-    }
-}
-
-private struct AfterRecordingModal: View {
-    @Environment(\.presentationMode) var presentationMode
-
-    var body: some View {
-        VStack {
-            VStack(spacing: 0) {
-                Text("You've made your").font(.largeTitle)
-                Text("first recording! 🎉").font(.largeTitle)
-            }.padding()
-            Text("Would you like to get a notification in the morning and evening to make recordings?")
-                    .multilineTextAlignment(.center).padding()
-            EnableNotificationsButton().padding()
-            Text("Tap anywhere to dismiss.").padding()
-            Spacer()
-        }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
-                .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
-                }
-    }
-}
-
 private struct SubmitButton: View {
     @Binding var selectedDate: Date
     @Binding var selectedTimeOfDay: TimeOfDay
@@ -130,7 +75,9 @@ private struct SubmitButton: View {
                 self.showFullScreenModal.toggle()
             }
         }.frame(maxWidth: 100).padding(10.0)
-                .fullScreenCover(isPresented: $showFullScreenModal, content: AfterRecordingModal.init)
+                .fullScreenCover(
+                        isPresented: $showFullScreenModal,
+                        content: AfterFirstRecordingUserActivationModal.init)
     }
 
     func buttonLabel() -> String {

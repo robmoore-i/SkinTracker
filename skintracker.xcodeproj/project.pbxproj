@@ -15,8 +15,10 @@
 		1B9C522291AB526BC943D998 /* RecordingLessThanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C59E9E166D07EDC11C294 /* RecordingLessThanTests.swift */; };
 		1B9C529D1F6877DDC83E9BFA /* RecordingToJsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */; };
 		1B9C53C49A7DC93C4522F103 /* FaceRegionSpotCountGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */; };
+		1B9C53D6CBFD83AA3F4697FC /* AfterFirstRecordingUserActivationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C568A5ED3C30A85DA18D6 /* AfterFirstRecordingUserActivationModal.swift */; };
 		1B9C54968C6D6224044C912D /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53A262ECA94894B87166 /* TabbedView.swift */; };
 		1B9C54A630C304DA942E7794 /* AddRecordingFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C540D8E7A51C6A28C7046 /* AddRecordingFloatingActionButton.swift */; };
+		1B9C54F51BD90C9CFA4C6BD4 /* EnableNotificationsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C57B1154745E7D581B989 /* EnableNotificationsButton.swift */; };
 		1B9C5508D9C19AC3C2AA7728 /* DateRangeLengthDescriptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */; };
 		1B9C550DF791D4A957CC1DAB /* TimeOfDayToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */; };
 		1B9C5595117FC10898B6BF6E /* YourRecordingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52F9AD1F4A6E642E1AB7 /* YourRecordingsListView.swift */; };
@@ -76,8 +78,10 @@
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
 		1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeLengthDescriptionTests.swift; sourceTree = "<group>"; };
 		1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportRecordingsButton.swift; sourceTree = "<group>"; };
+		1B9C568A5ED3C30A85DA18D6 /* AfterFirstRecordingUserActivationModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterFirstRecordingUserActivationModal.swift; sourceTree = "<group>"; };
 		1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingStorage.swift; sourceTree = "<group>"; };
 		1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingToJsonTests.swift; sourceTree = "<group>"; };
+		1B9C57B1154745E7D581B989 /* EnableNotificationsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableNotificationsButton.swift; sourceTree = "<group>"; };
 		1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayToggle.swift; sourceTree = "<group>"; };
 		1B9C59196EC3AD3DA7A1FFAD /* UserActivationDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivationDemoView.swift; sourceTree = "<group>"; };
 		1B9C593352F029084B32DD55 /* TabHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabHeader.swift; sourceTree = "<group>"; };
@@ -144,6 +148,15 @@
 			path = your_recordings;
 			sourceTree = "<group>";
 		};
+		1B9C528CD5B6B00637243B41 /* activation_modal */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C568A5ED3C30A85DA18D6 /* AfterFirstRecordingUserActivationModal.swift */,
+				1B9C57B1154745E7D581B989 /* EnableNotificationsButton.swift */,
+			);
+			path = activation_modal;
+			sourceTree = "<group>";
+		};
 		1B9C56D3607E509136C02655 /* recording */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +213,7 @@
 				1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */,
 				1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */,
 				1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */,
+				1B9C528CD5B6B00637243B41 /* activation_modal */,
 			);
 			path = record;
 			sourceTree = "<group>";
@@ -435,6 +449,8 @@
 				1B9C56E7188685973886EBFD /* YourRecordingsListHeader.swift in Sources */,
 				1B9C54A630C304DA942E7794 /* AddRecordingFloatingActionButton.swift in Sources */,
 				1B9C5177C2FF02D0179EE654 /* UserActivationDemoView.swift in Sources */,
+				1B9C53D6CBFD83AA3F4697FC /* AfterFirstRecordingUserActivationModal.swift in Sources */,
+				1B9C54F51BD90C9CFA4C6BD4 /* EnableNotificationsButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
