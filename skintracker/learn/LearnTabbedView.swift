@@ -14,6 +14,7 @@ struct LearnTabbedView: View {
     var body: some View {
         TabbedView("Learn", "book.closed") {
             NavigationView {
+                Text("I can't summarise everything in this app. Instead it contains pointers to areas that you can research and look into.").padding()
                 List {
                     TextLink("Pathogenesis") {
                         List {
@@ -30,7 +31,7 @@ struct LearnTabbedView: View {
                             link("IGF-1 (e.g. Dairy and other animal products)")
                             link("Glycemic Load (e.g. Sugar)")
                             link("Lipids")
-                            link("Fruit & Vegetables")
+                            link("Vitamins")
                             link("Alcohol")
                         }.navigationBarTitle("Diet")
                     }
