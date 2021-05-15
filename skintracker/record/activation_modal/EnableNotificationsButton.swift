@@ -43,8 +43,8 @@ struct EnableNotificationsButton: View {
         let notificationIdentifier = "skin-recording-reminder--\(timeOfDayString)"
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationIdentifier])
         let content = UNMutableNotificationContent()
-        content.title = "Tap here to make this \(timeOfDayString)'s recording"
-        content.subtitle = "You're on track, stay committed!"
+        content.title = "Tap here to make this \(timeOfDayString)'s recording."
+        content.subtitle = ""
         content.sound = UNNotificationSound.default
         var date = DateComponents()
         date.hour = timeOfDay == .am ? 7 : 22
