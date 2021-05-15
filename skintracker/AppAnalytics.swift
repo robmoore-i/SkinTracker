@@ -1,5 +1,6 @@
 //
 // Created by Rob on 15/5/21.
+// The analytics dashboard is here: https://appcenter.ms/users/robmoore121/apps/SkinTracker/analytics/overview
 //
 
 import AppCenterAnalytics
