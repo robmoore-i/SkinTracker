@@ -4,8 +4,6 @@
 
 import SwiftUI
 
-private var emojis = ["🙏", "👊", "🙌", "👏", "👑", "🌞", "⭐️", "☀️", "🌈"]
-
 struct TabHeader: View {
     private let text: String
 
@@ -13,18 +11,22 @@ struct TabHeader: View {
         self.text = text
     }
 
-    func randomUniqueEmoji() -> String {
-        emojis.remove(at: emojis.indices.randomElement()!)
-    }
-
     var body: some View {
         HStack {
-            Text("\(text) \(randomUniqueEmoji())")
+            Text("\(text) \(RandomEmoji.get())")
                     .font(.largeTitle)
                     .fontWeight(.medium)
                     .foregroundColor(.black)
             Spacer()
         }.padding()
         Divider()
+    }
+}
+
+private struct RandomEmoji {
+    private static var emojis = ["🙏", "👊", "🙌", "👏", "👑", "🌞", "⭐️", "☀️", "🌈"]
+
+    static func get() -> String {
+        emojis.remove(at: emojis.indices.randomElement()!)
     }
 }

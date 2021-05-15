@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var selectedTab = 1
+    @State private var selectedTab = 3
 
     private let recordingStorage: RecordingStorage = RecordingStorage()
 
