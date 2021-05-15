@@ -31,10 +31,14 @@
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
 		1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C593352F029084B32DD55 /* TabHeader.swift */; };
 		1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53AA81780815A3FDEE84 /* Recording.swift */; };
+		1B9C5F074013802781D8AB36 /* AppAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5A2C3EA5C623CA5FDFE6 /* AppAnalytics.swift */; };
 		1B9C5F7723F95FD5A789E186 /* ExportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C531C60E59F6A394A77E2 /* ExportRecordingsButton.swift */; };
 		D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5D926457D7F00BBAD0D /* SwiftDate */; };
 		D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */; };
 		D42CC5E126494F4000BBAD0D /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5E026494F4000BBAD0D /* SwiftUICharts */; };
+		D452D146264FFB7900B210E7 /* AppCenterDistribute in Frameworks */ = {isa = PBXBuildFile; productRef = D452D145264FFB7900B210E7 /* AppCenterDistribute */; };
+		D452D148264FFB7900B210E7 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = D452D147264FFB7900B210E7 /* AppCenterCrashes */; };
+		D452D14A264FFB7900B210E7 /* AppCenterAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D452D149264FFB7900B210E7 /* AppCenterAnalytics */; };
 		D4E5DE5726436DDB00FB44BA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5626436DDB00FB44BA /* Realm */; };
 		D4E5DE5926436DDB00FB44BA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5826436DDB00FB44BA /* RealmSwift */; };
 		D4F4408C2635621B00B85A1B /* skintrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4408B2635621B00B85A1B /* skintrackerApp.swift */; };
@@ -84,6 +88,7 @@
 		1B9C593352F029084B32DD55 /* TabHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabHeader.swift; sourceTree = "<group>"; };
 		1B9C59B5059330F1D6E5C7E0 /* TimeOfDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
 		1B9C59E9E166D07EDC11C294 /* RecordingLessThanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingLessThanTests.swift; sourceTree = "<group>"; };
+		1B9C5A2C3EA5C623CA5FDFE6 /* AppAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAnalytics.swift; sourceTree = "<group>"; };
 		1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalSpotCount.swift; sourceTree = "<group>"; };
 		1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTabbedView.swift; sourceTree = "<group>"; };
 		1B9C5F978515BADCE4F6E651 /* AllTimeProgressDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTimeProgressDataView.swift; sourceTree = "<group>"; };
@@ -109,9 +114,12 @@
 			files = (
 				D4E5DE5926436DDB00FB44BA /* RealmSwift in Frameworks */,
 				D4E5DE5726436DDB00FB44BA /* Realm in Frameworks */,
+				D452D146264FFB7900B210E7 /* AppCenterDistribute in Frameworks */,
 				D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */,
+				D452D14A264FFB7900B210E7 /* AppCenterAnalytics in Frameworks */,
 				D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */,
 				D42CC5E126494F4000BBAD0D /* SwiftUICharts in Frameworks */,
+				D452D148264FFB7900B210E7 /* AppCenterCrashes in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +255,7 @@
 				1B9C57C0CB11C1AF33845C54 /* dashboard */,
 				1B9C56D3607E509136C02655 /* recording */,
 				1B9C5E65B3A26C4DB8C3A8FA /* tab */,
+				1B9C5A2C3EA5C623CA5FDFE6 /* AppAnalytics.swift */,
 			);
 			path = skintracker;
 			sourceTree = "<group>";
@@ -301,6 +310,9 @@
 				D42CC5D926457D7F00BBAD0D /* SwiftDate */,
 				D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */,
 				D42CC5E026494F4000BBAD0D /* SwiftUICharts */,
+				D452D145264FFB7900B210E7 /* AppCenterDistribute */,
+				D452D147264FFB7900B210E7 /* AppCenterCrashes */,
+				D452D149264FFB7900B210E7 /* AppCenterAnalytics */,
 			);
 			productName = skintracker;
 			productReference = D4F440882635621B00B85A1B /* skintracker.app */;
@@ -377,6 +389,7 @@
 				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */,
 				D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				D42CC5DF26494F4000BBAD0D /* XCRemoteSwiftPackageReference "ChartView" */,
+				D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */,
 			);
 			productRefGroup = D4F440892635621B00B85A1B /* Products */;
 			projectDirPath = "";
@@ -443,6 +456,7 @@
 				1B9C5177C2FF02D0179EE654 /* UserActivationDemoView.swift in Sources */,
 				1B9C53D6CBFD83AA3F4697FC /* AfterFirstRecordingUserActivationModal.swift in Sources */,
 				1B9C54F51BD90C9CFA4C6BD4 /* EnableNotificationsButton.swift in Sources */,
+				1B9C5F074013802781D8AB36 /* AppAnalytics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +798,14 @@
 				minimumVersion = 1.5.5;
 			};
 		};
+		D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/microsoft/appcenter-sdk-apple.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
 		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
@@ -809,6 +831,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D42CC5DF26494F4000BBAD0D /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
+		};
+		D452D145264FFB7900B210E7 /* AppCenterDistribute */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
+			productName = AppCenterDistribute;
+		};
+		D452D147264FFB7900B210E7 /* AppCenterCrashes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
+			productName = AppCenterCrashes;
+		};
+		D452D149264FFB7900B210E7 /* AppCenterAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
+			productName = AppCenterAnalytics;
 		};
 		D4E5DE5626436DDB00FB44BA /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

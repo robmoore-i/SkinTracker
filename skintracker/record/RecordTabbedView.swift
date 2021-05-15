@@ -52,6 +52,7 @@ private struct LoggedDatePicker: View {
     var body: some View {
         DatePicker("Date", selection: $selection, displayedComponents: .date)
                 .onChange(of: selection) { newDate in
+                    AppAnalytics.event(.selectDateUsingDatePicker, properties: ["date": "\(newDate)"])
                     print("Selected date: \(newDate)")
                 }
     }
@@ -67,17 +68,19 @@ private struct SubmitButton: View {
     @State var showFullScreenModal = false
 
     var body: some View {
-        Button(buttonLabel()) {
-            let emptyBefore = recordingStorage.all.isEmpty
-            recordingStorage.store(selectedDate, selectedTimeOfDay, selectedSpotCounts)
-            let notEmptyNow = recordingStorage.all.count > 0
-            if (emptyBefore && notEmptyNow) {
-                self.showFullScreenModal.toggle()
-            }
-        }.frame(maxWidth: 100).padding(10.0)
-                .fullScreenCover(
-                        isPresented: $showFullScreenModal,
-                        content: AfterFirstRecordingUserActivationModal.init)
+        let label = buttonLabel()
+        return Button(label) {
+                    AppAnalytics.event(label == "Update" ? .tapUpdateRecordingButton : .tapSaveRecordingButton)
+                    let emptyBefore = recordingStorage.all.isEmpty
+                    recordingStorage.store(selectedDate, selectedTimeOfDay, selectedSpotCounts)
+                    let notEmptyNow = recordingStorage.all.count > 0
+                    if (emptyBefore && notEmptyNow) {
+                        self.showFullScreenModal.toggle()
+                    }
+                }.frame(maxWidth: 100).padding(10.0)
+                        .fullScreenCover(
+                                isPresented: $showFullScreenModal,
+                                content: AfterFirstRecordingUserActivationModal.init)
     }
 
     func buttonLabel() -> String {

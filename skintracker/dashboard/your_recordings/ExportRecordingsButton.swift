@@ -13,6 +13,7 @@ struct ExportRecordingsButton: View {
 
     var body: some View {
         Button(action: {
+            AppAnalytics.event(.tapExportRecordings)
             print("Exporting recordings")
             print(recordingStorage.allAsJson())
             isExporting = true

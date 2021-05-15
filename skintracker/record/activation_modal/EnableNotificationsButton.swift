@@ -9,6 +9,7 @@ import UserNotifications
 struct EnableNotificationsButton: View {
     var body: some View {
         Button(action: {
+            AppAnalytics.event(.tapEnableNotificationsButton)
             UNUserNotificationCenter.current()
                     .requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
                         if (success) {

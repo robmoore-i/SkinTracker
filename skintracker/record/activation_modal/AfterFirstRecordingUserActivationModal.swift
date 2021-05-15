@@ -23,6 +23,7 @@ struct AfterFirstRecordingUserActivationModal: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white)
                 .onTapGesture {
+                    AppAnalytics.event(.dismissAfterFirstRecordingUserActivationModal)
                     presentationMode.wrappedValue.dismiss()
                 }
     }

@@ -20,13 +20,16 @@ private struct FaceRegionSpotCountField: View {
 
     var body: some View {
         HStack {
-            Text("\(region.rawValue.capitalized)").onTapHideKeyboard()
+            Text("\(region.rawValue.capitalized)").onTapGesture {
+                AppAnalytics.event(.tapFaceRegionSpotCountFieldRegionName, properties: ["region": "\(region.rawValue)"])
+                hideKeyboard()
+            }
             Spacer()
-            SpotCountTextField(label: "Left", region: region, regionalSpotCount: $regionalSpotCount,
+            SpotCountTextField(sideLabel: "Left", region: region, regionalSpotCount: $regionalSpotCount,
                     updateSpotCountsForRegion: { regionalSpotCounts, spotCountInput in
                         regionalSpotCounts.put(region: region, left: spotCountInput)
                     })
-            SpotCountTextField(label: "Right", region: region, regionalSpotCount: $regionalSpotCount,
+            SpotCountTextField(sideLabel: "Right", region: region, regionalSpotCount: $regionalSpotCount,
                     updateSpotCountsForRegion: { regionalSpotCount, spotCountInput in
                         regionalSpotCount.put(region: region, right: spotCountInput)
                     })
@@ -35,7 +38,7 @@ private struct FaceRegionSpotCountField: View {
 }
 
 private struct SpotCountTextField: View {
-    let label: String
+    let sideLabel: String
     let region: FaceRegion
     @Binding var regionalSpotCount: RegionalSpotCount
     let updateSpotCountsForRegion: (_: inout RegionalSpotCount, _: Int) -> ()
@@ -43,12 +46,20 @@ private struct SpotCountTextField: View {
     @State private var text: String = ""
 
     var body: some View {
-        Text(label).onTapHideKeyboard()
+        Text(sideLabel).onTapGesture {
+            AppAnalytics.event(.tapFaceRegionSpotCountFieldSideLabel, properties: ["side": sideLabel.lowercased()])
+            hideKeyboard()
+        }
         TextField("0", text: $text)
                 .keyboardType(.numberPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(maxWidth: 40)
                 .onChange(of: text) { newText in
+                    AppAnalytics.event(.changeRecordingSpotCountEntry,
+                            properties: [
+                                "side": "\(sideLabel.lowercased())",
+                                "region": "\(region.rawValue)",
+                                "count": newText])
                     updateSpotCountsForRegion(&regionalSpotCount, Int(newText) ?? 0)
                     print("Selection[\(region)] is \(regionalSpotCount.get(region))")
                 }
