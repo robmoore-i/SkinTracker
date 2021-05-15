@@ -13,7 +13,7 @@ struct TabHeader: View {
 
     var body: some View {
         HStack {
-            Text("\(text) \(RandomEmoji.get())")
+            Text("\(text)")
                     .font(.largeTitle)
                     .fontWeight(.medium)
                     .foregroundColor(.black)
