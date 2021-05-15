@@ -15,6 +15,15 @@ struct LearnTabbedView: View {
         TabbedView("Learn", "book.closed") {
             NavigationView {
                 List {
+                    TextLink("Pathogenesis") {
+                        List {
+                            link("Hypersecretion of sebum")
+                            link("Abnormal follicular keratinization")
+                            link("Colonisation by commensal bacteria")
+                            link("Inflammatory response")
+                            link("Cutaneous dysbiosis")
+                        }.navigationBarTitle("Pathogenesis")
+                    }
                     TextLink("Diet") {
                         List {
                             link("Water")
@@ -29,7 +38,7 @@ struct LearnTabbedView: View {
                         List {
                             link("Morning and evening routine")
                             link("Protecting your face")
-                            link("Dealing with outbreaks")
+                            link("Safely dealing with outbreaks")
                         }.navigationBarTitle("Habits")
                     }
                     TextLink("Lifestyle") {
