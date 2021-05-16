@@ -18,6 +18,10 @@ struct TabHeader: View {
                     .fontWeight(.medium)
                     .foregroundColor(.black)
             Spacer()
+            Image(systemName: "rectangle.and.pencil.and.ellipsis")
+                    .scaleEffect(1.4, anchor: .center)
+                    .foregroundColor(Color.blue)
+                    .padding()
         }.padding()
         Divider()
     }

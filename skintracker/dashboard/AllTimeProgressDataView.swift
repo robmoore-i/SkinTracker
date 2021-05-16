@@ -68,7 +68,7 @@ private struct TrendIndicator: View {
         VStack {
             Image(systemName: systemImageName)
                     .scaleEffect(1.5, anchor: .center)
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(Color.black)
                     .padding(.bottom, 5)
             text
         }
