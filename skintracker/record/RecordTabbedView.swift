@@ -10,15 +10,16 @@ struct RecordTabbedView: View {
     @State private var selectedDate = Date()
     @State private var selectedTimeOfDay = TimeOfDay.am
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
+    @State private var showFeedbackModal = false
 
     init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage
     }
 
     var body: some View {
-        TabbedView("Record", "plus.square") {
+        TabbedView(tabIconSubtitle: "Record", tabIconSfImageName: "plus.square", showFeedbackModal: $showFeedbackModal) {
             VStack(spacing: 0) {
-                TabHeader("Record")
+                TabHeader(text: "Record", showFeedbackModal: $showFeedbackModal)
                 Form {
                     Section {
                         LoggedDatePicker(selection: $selectedDate)
@@ -70,17 +71,17 @@ private struct SubmitButton: View {
     var body: some View {
         let label = buttonLabel()
         return Button(label) {
-                    AppAnalytics.event(label == "Update" ? .tapUpdateRecordingButton : .tapSaveRecordingButton)
-                    let emptyBefore = recordingStorage.all.isEmpty
-                    recordingStorage.store(selectedDate, selectedTimeOfDay, selectedSpotCounts)
-                    let notEmptyNow = recordingStorage.all.count > 0
-                    if (emptyBefore && notEmptyNow) {
-                        self.showFullScreenModal.toggle()
-                    }
-                }.frame(maxWidth: 100).padding(10.0)
-                        .fullScreenCover(
-                                isPresented: $showFullScreenModal,
-                                content: AfterFirstRecordingUserActivationModal.init)
+            AppAnalytics.event(label == "Update" ? .tapUpdateRecordingButton : .tapSaveRecordingButton)
+            let emptyBefore = recordingStorage.all.isEmpty
+            recordingStorage.store(selectedDate, selectedTimeOfDay, selectedSpotCounts)
+            let notEmptyNow = recordingStorage.all.count > 0
+            if (emptyBefore && notEmptyNow) {
+                self.showFullScreenModal.toggle()
+            }
+        }.frame(maxWidth: 100).padding(10.0)
+                .fullScreenCover(
+                        isPresented: $showFullScreenModal,
+                        content: AfterFirstRecordingUserActivationModal.init)
     }
 
     func buttonLabel() -> String {
