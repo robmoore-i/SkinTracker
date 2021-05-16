@@ -12,20 +12,19 @@ private func nextTab() -> Int {
 }
 
 struct TabbedView<Content: View>: View {
-    let content: Content
+    let tabIconSubtitle: String
+    let tabIconSfImageName: String
+    @Binding var showFeedbackModal: Bool
 
-    private let tabTitle: String
-    private let tabSfImageName: String
-
-    init(_ tabTitle: String, _ tabSfImageName: String, content: @escaping () -> Content) {
-        self.content = content()
-        self.tabTitle = tabTitle
-        self.tabSfImageName = tabSfImageName
-    }
+    @ViewBuilder let content: Content
 
     var body: some View {
-        content.tabItem {
-            Label(tabTitle, systemImage: tabSfImageName)
-        }.tag(nextTab())
+        content.sheet(isPresented: $showFeedbackModal, onDismiss: {
+            AppAnalytics.event(.dismissFeedbackModal)
+        }) {
+            FeedbackModal()
+        }.tag(nextTab()).tabItem {
+            Label(tabIconSubtitle, systemImage: tabIconSfImageName)
+        }
     }
 }

@@ -5,11 +5,8 @@
 import SwiftUI
 
 struct TabHeader: View {
-    private let text: String
-
-    init(_ text: String) {
-        self.text = text
-    }
+    let text: String
+    @Binding var showFeedbackModal: Bool
 
     var body: some View {
         HStack {
@@ -22,6 +19,9 @@ struct TabHeader: View {
                     .scaleEffect(1.4, anchor: .center)
                     .foregroundColor(Color.blue)
                     .padding()
+                    .onTapGesture {
+                        showFeedbackModal = true
+                    }
         }.padding()
         Divider()
     }
