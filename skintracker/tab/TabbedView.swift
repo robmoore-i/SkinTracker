@@ -14,12 +14,17 @@ private func nextTab() -> Int {
 struct TabbedView<Content: View>: View {
     let tabIconSubtitle: String
     let tabIconSfImageName: String
-    @Binding var showFeedbackModal: Bool
+    let tabHeader: String
 
-    @ViewBuilder let content: Content
+    @ViewBuilder let content: () -> Content
+
+    @State private var showFeedbackModal = false
 
     var body: some View {
-        content.sheet(isPresented: $showFeedbackModal, onDismiss: {
+        VStack(spacing: 0) {
+            TabHeader(text: tabHeader, showFeedbackModal: $showFeedbackModal)
+            content()
+        }.sheet(isPresented: $showFeedbackModal, onDismiss: {
             AppAnalytics.event(.dismissFeedbackModal)
         }) {
             FeedbackModal()

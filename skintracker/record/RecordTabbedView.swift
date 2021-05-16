@@ -17,29 +17,26 @@ struct RecordTabbedView: View {
     }
 
     var body: some View {
-        TabbedView(tabIconSubtitle: "Record", tabIconSfImageName: "plus.square", showFeedbackModal: $showFeedbackModal) {
-            VStack(spacing: 0) {
-                TabHeader(text: "Record", showFeedbackModal: $showFeedbackModal)
-                Form {
-                    Section {
-                        LoggedDatePicker(selection: $selectedDate)
-                        TimeOfDayToggle(selection: $selectedTimeOfDay)
-                    }
+        TabbedView(tabIconSubtitle: "Record", tabIconSfImageName: "plus.square", tabHeader: "Record") {
+            Form {
+                Section {
+                    LoggedDatePicker(selection: $selectedDate)
+                    TimeOfDayToggle(selection: $selectedTimeOfDay)
+                }
 
-                    Section {
-                        FaceRegionSpotCountGroup(selection: $selectedSpotCounts)
-                    }
+                Section {
+                    FaceRegionSpotCountGroup(selection: $selectedSpotCounts)
+                }
 
-                    Section {
-                        HStack {
-                            Spacer()
-                            SubmitButton(
-                                    selectedDate: $selectedDate,
-                                    selectedTimeOfDay: $selectedTimeOfDay,
-                                    selectedSpotCounts: $selectedSpotCounts,
-                                    recordingStorage: recordingStorage)
-                            Spacer()
-                        }
+                Section {
+                    HStack {
+                        Spacer()
+                        SubmitButton(
+                                selectedDate: $selectedDate,
+                                selectedTimeOfDay: $selectedTimeOfDay,
+                                selectedSpotCounts: $selectedSpotCounts,
+                                recordingStorage: recordingStorage)
+                        Spacer()
                     }
                 }
             }
