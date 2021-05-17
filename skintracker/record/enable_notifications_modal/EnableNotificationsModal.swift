@@ -41,7 +41,7 @@ struct EnableNotificationsModal: View {
                     AppAnalytics.event(TrackedEvent.tapCancelNotificationsModalButton)
                     presentation.wrappedValue.dismiss()
                 }, label: {
-                    Text("Cancel")
+                    Text("Dismiss")
                             .font(.subheadline)
                             .foregroundColor(Color.blue)
                             .padding(10)
