@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct AfterFirstRecordingUserActivationModal: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentation
 
     var body: some View {
         VStack {
@@ -24,7 +24,7 @@ struct AfterFirstRecordingUserActivationModal: View {
                 .background(Color.white)
                 .onTapGesture {
                     AppAnalytics.event(.dismissAfterFirstRecordingUserActivationModal)
-                    presentationMode.wrappedValue.dismiss()
+                    presentation.wrappedValue.dismiss()
                 }
     }
 }
