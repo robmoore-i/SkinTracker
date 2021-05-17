@@ -17,7 +17,7 @@ struct RecordTabbedView: View {
     }
 
     var body: some View {
-        TabbedView(tabIconSubtitle: "Record", tabIconSfImageName: "plus.square", tabHeader: "Record") {
+        TabbedView(tabName: "Record", tabIconSfImageName: "plus.square") {
             Form {
                 Section {
                     LoggedDatePicker(selection: $selectedDate)

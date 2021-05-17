@@ -12,9 +12,8 @@ private func nextTab() -> Int {
 }
 
 struct TabbedView<Content: View>: View {
-    let tabIconSubtitle: String
+    let tabName: String
     let tabIconSfImageName: String
-    let tabHeader: String
 
     @ViewBuilder let content: () -> Content
 
@@ -23,7 +22,7 @@ struct TabbedView<Content: View>: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            TabHeader(text: tabHeader,
+            TabHeader(text: tabName,
                     showFeedbackModal: $showFeedbackModal,
                     showNotificationsModal: $showNotificationsModal)
             content()
@@ -51,7 +50,7 @@ struct TabbedView<Content: View>: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(Color.white)
                 }).tag(nextTab()).tabItem {
-                    Label(tabIconSubtitle, systemImage: tabIconSfImageName)
+                    Label(tabName, systemImage: tabIconSfImageName)
                 }
     }
 }
