@@ -82,9 +82,13 @@ private struct SubmitButton: View {
                             Text("You've made your").font(.largeTitle)
                             Text("first recording! 🎉").font(.largeTitle)
                         }.padding()
-                        Text("Would you like to get a notification in the morning (7am) and evening (10pm) to make recordings?")
-                                .multilineTextAlignment(.center).padding()
-                        NotificationConfigurationButtonRow()
+                        VStack(spacing: 0) {
+                            let font: Font = .headline
+                            Text("Would you like reminder notifications").font(font)
+                            Text("in the morning (7am) and evening (10pm)?").font(font)
+                        }.padding()
+                        Text("This app sends no other notifications.").foregroundColor(.gray).padding(.bottom)
+                        NotificationConfigurationButtonRow(buttons: [.enable, .dismiss])
                         Spacer()
                     }.frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.white)
                 })

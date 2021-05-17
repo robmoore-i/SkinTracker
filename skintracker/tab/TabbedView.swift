@@ -40,12 +40,12 @@ struct TabbedView<Content: View>: View {
                         }.padding()
                         VStack(spacing: 0) {
                             let font: Font = .headline
-                            Text("Reminders are sent daily in the").font(font)
-                            Text("morning (7am) and evening (10pm).").font(font)
+                            Text("Reminder notifications are sent daily").font(font)
+                            Text("in the morning (7am) and evening (10pm).").font(font)
                             Text("Would you like them?").font(font)
                         }.padding()
                         Text("This app sends no other notifications.").foregroundColor(.gray).padding(.bottom)
-                        NotificationConfigurationButtonRow()
+                        NotificationConfigurationButtonRow(buttons: [.enable, .disable, .cancel])
                         Spacer()
                     }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
