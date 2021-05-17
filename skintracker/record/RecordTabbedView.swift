@@ -63,7 +63,7 @@ private struct SubmitButton: View {
 
     @ObservedObject var recordingStorage: RecordingStorage
 
-    @State var showEnableNotificationsModal = false
+    @State private var showEnableNotificationsModal = false
 
     var body: some View {
         let label = buttonLabel()
