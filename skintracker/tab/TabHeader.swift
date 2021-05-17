@@ -20,6 +20,7 @@ struct TabHeader: View {
                     .foregroundColor(Color.blue)
                     .padding()
                     .onTapGesture {
+                        AppAnalytics.event(.tapFeedbackButton)
                         showFeedbackModal = true
                     }
         }.padding()

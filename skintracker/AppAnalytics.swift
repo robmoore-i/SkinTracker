@@ -18,6 +18,7 @@ enum TrackedEvent: String {
     case changeRecordingSpotCountEntry = "changeRecordingSpotCountEntry"
     case tapFaceRegionSpotCountFieldRegionName = "tapFaceRegionSpotCountFieldRegionName"
     case tapFaceRegionSpotCountFieldSideLabel = "tapFaceRegionSpotCountFieldSideLabel"
+    case tapFeedbackButton = "tapFeedbackButton"
     case dismissFeedbackModal = "dismissFeedbackModal"
 }
 
