@@ -19,7 +19,7 @@ struct TabHeader: View {
             Image(systemName: "bell")
                     .scaleEffect(1.4, anchor: .center)
                     .foregroundColor(Color.blue)
-                    .padding()
+                    .padding([.leading, .trailing])
                     .onTapGesture {
                         AppAnalytics.event(.tapNotificationsButton)
                         showNotificationsModal = true
@@ -27,7 +27,7 @@ struct TabHeader: View {
             Image(systemName: "rectangle.and.pencil.and.ellipsis")
                     .scaleEffect(1.4, anchor: .center)
                     .foregroundColor(Color.blue)
-                    .padding()
+                    .padding([.leading, .trailing])
                     .onTapGesture {
                         AppAnalytics.event(.tapFeedbackButton)
                         showFeedbackModal = true
