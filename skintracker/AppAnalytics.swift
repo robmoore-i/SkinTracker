@@ -26,10 +26,26 @@ enum TrackedEvent: String {
 
 struct AppAnalytics {
     static func event(_ event: TrackedEvent) {
-        Analytics.trackEvent(event.rawValue)
+        var properties: [String: String] = [:]
+        AppAnalytics.applyDeviceId(&properties)
+        AppAnalytics.event(event, properties: properties)
     }
 
     static func event(_ event: TrackedEvent, properties: [String: String]) {
-        Analytics.trackEvent(event.rawValue, withProperties: properties)
+        var propertiesCopy = properties
+        AppAnalytics.applyDeviceId(&propertiesCopy)
+        Analytics.trackEvent(event.rawValue, withProperties: propertiesCopy)
+    }
+
+    private static func applyDeviceId(_ properties: inout [String: String]) {
+        properties["deviceIdForVendor"] = UIDevice.current.idForVendor()
+    }
+}
+
+import UIKit
+
+extension UIDevice {
+    func idForVendor() -> String {
+        identifierForVendor?.uuidString ?? "device-id-unavailable"
     }
 }
