@@ -6,16 +6,19 @@ import SwiftUI
 
 struct FeedbackModal: View {
     @Environment(\.presentationMode) var presentation
-    @State private var text: String = "This app would be better for me if..."
+    @State private var text: String = "This app might be better if..."
     @State private var tapped: Bool = false
 
     var body: some View {
         VStack {
-            Text("Your feedback️ is so important to me")
-                    .font(.largeTitle)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding()
-                    .onTapGesture(perform: hideKeyboard)
+            VStack(spacing: 0) {
+                Text("Your feedback️ is")
+                        .font(.largeTitle)
+                Text("so important")
+                        .font(.largeTitle)
+
+            }.padding().onTapGesture(perform: hideKeyboard)
+
             TextEditor(text: $text)
                     .foregroundColor(.gray)
                     .padding()
