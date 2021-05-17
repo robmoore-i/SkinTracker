@@ -34,7 +34,7 @@ struct TabbedView<Content: View>: View {
                 .sheet(isPresented: $showNotificationsModal, onDismiss: {
                     AppAnalytics.event(TrackedEvent.dismissNotificationsModal)
                 }, content: {
-                    NotificationsModal {
+                    VStack {
                         VStack(spacing: 0) {
                             Text("Reminder Notifications").font(.largeTitle)
                         }.padding()
@@ -44,8 +44,12 @@ struct TabbedView<Content: View>: View {
                             Text("morning (7am) and evening (10pm).").font(font)
                             Text("Would you like them?").font(font)
                         }.padding()
-                        Text("This app sends no other notifications.").foregroundColor(.gray)
+                        Text("This app sends no other notifications.").foregroundColor(.gray).padding(.bottom)
+                        NotificationConfigurationButtonRow()
+                        Spacer()
                     }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color.white)
                 }).tag(nextTab()).tabItem {
                     Label(tabIconSubtitle, systemImage: tabIconSfImageName)
                 }
