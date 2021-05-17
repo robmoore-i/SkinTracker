@@ -26,9 +26,7 @@ struct TabbedView<Content: View>: View {
             content()
         }.sheet(isPresented: $showFeedbackModal, onDismiss: {
             AppAnalytics.event(.dismissFeedbackModal)
-        }) {
-            FeedbackModal()
-        }.tag(nextTab()).tabItem {
+        }, content: FeedbackModal.init).tag(nextTab()).tabItem {
             Label(tabIconSubtitle, systemImage: tabIconSfImageName)
         }
     }

@@ -12,7 +12,7 @@ enum TrackedEvent: String {
     case selectDateUsingDatePicker = "selectDateUsingDatePicker"
     case tapUpdateRecordingButton = "tapUpdateRecordingButton"
     case tapSaveRecordingButton = "tapSaveRecordingButton"
-    case dismissAfterFirstRecordingUserActivationModal = "dismissAfterFirstRecordingUserActivationModal"
+    case tapAnywhereToDismissEnableNotificationsModal = "tapAnywhereToDismissEnableNotificationsModal"
     case tapEnableNotificationsButton = "tapEnableNotificationsButton"
     case toggleRecordingTimeOfDay = "toggleRecordingTimeOfDay"
     case changeRecordingSpotCountEntry = "changeRecordingSpotCountEntry"

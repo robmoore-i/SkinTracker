@@ -16,7 +16,7 @@
 		1B9C529D1F6877DDC83E9BFA /* RecordingToJsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */; };
 		1B9C53A9FA73E75A29CBC3D9 /* FeedbackModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5BF899437DEB8E0EE090 /* FeedbackModal.swift */; };
 		1B9C53C49A7DC93C4522F103 /* FaceRegionSpotCountGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */; };
-		1B9C53D6CBFD83AA3F4697FC /* AfterFirstRecordingUserActivationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C568A5ED3C30A85DA18D6 /* AfterFirstRecordingUserActivationModal.swift */; };
+		1B9C53D6CBFD83AA3F4697FC /* EnableNotificationsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C568A5ED3C30A85DA18D6 /* EnableNotificationsModal.swift */; };
 		1B9C54968C6D6224044C912D /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53A262ECA94894B87166 /* TabbedView.swift */; };
 		1B9C54A630C304DA942E7794 /* AddRecordingFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C540D8E7A51C6A28C7046 /* AddRecordingFloatingActionButton.swift */; };
 		1B9C54F51BD90C9CFA4C6BD4 /* EnableNotificationsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C57B1154745E7D581B989 /* EnableNotificationsButton.swift */; };
@@ -80,7 +80,7 @@
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
 		1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeLengthDescriptionTests.swift; sourceTree = "<group>"; };
 		1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportRecordingsButton.swift; sourceTree = "<group>"; };
-		1B9C568A5ED3C30A85DA18D6 /* AfterFirstRecordingUserActivationModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterFirstRecordingUserActivationModal.swift; sourceTree = "<group>"; };
+		1B9C568A5ED3C30A85DA18D6 /* EnableNotificationsModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableNotificationsModal.swift; sourceTree = "<group>"; };
 		1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingStorage.swift; sourceTree = "<group>"; };
 		1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingToJsonTests.swift; sourceTree = "<group>"; };
 		1B9C57B1154745E7D581B989 /* EnableNotificationsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableNotificationsButton.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		1B9C528CD5B6B00637243B41 /* activation_modal */ = {
 			isa = PBXGroup;
 			children = (
-				1B9C568A5ED3C30A85DA18D6 /* AfterFirstRecordingUserActivationModal.swift */,
+				1B9C568A5ED3C30A85DA18D6 /* EnableNotificationsModal.swift */,
 				1B9C57B1154745E7D581B989 /* EnableNotificationsButton.swift */,
 			);
 			path = activation_modal;
@@ -457,7 +457,7 @@
 				1B9C56E7188685973886EBFD /* YourRecordingsListHeader.swift in Sources */,
 				1B9C54A630C304DA942E7794 /* AddRecordingFloatingActionButton.swift in Sources */,
 				1B9C5177C2FF02D0179EE654 /* UserActivationDemoView.swift in Sources */,
-				1B9C53D6CBFD83AA3F4697FC /* AfterFirstRecordingUserActivationModal.swift in Sources */,
+				1B9C53D6CBFD83AA3F4697FC /* EnableNotificationsModal.swift in Sources */,
 				1B9C54F51BD90C9CFA4C6BD4 /* EnableNotificationsButton.swift in Sources */,
 				1B9C5F074013802781D8AB36 /* AppAnalytics.swift in Sources */,
 				1B9C53A9FA73E75A29CBC3D9 /* FeedbackModal.swift in Sources */,

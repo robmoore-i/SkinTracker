@@ -63,7 +63,7 @@ private struct SubmitButton: View {
 
     @ObservedObject var recordingStorage: RecordingStorage
 
-    @State var showFullScreenModal = false
+    @State var showEnableNotificationsModal = false
 
     var body: some View {
         let label = buttonLabel()
@@ -73,12 +73,12 @@ private struct SubmitButton: View {
             recordingStorage.store(selectedDate, selectedTimeOfDay, selectedSpotCounts)
             let notEmptyNow = recordingStorage.all.count > 0
             if (emptyBefore && notEmptyNow) {
-                self.showFullScreenModal.toggle()
+                showEnableNotificationsModal = true
             }
         }.frame(maxWidth: 100).padding(10.0)
-                .fullScreenCover(
-                        isPresented: $showFullScreenModal,
-                        content: AfterFirstRecordingUserActivationModal.init)
+                .sheet(
+                        isPresented: $showEnableNotificationsModal,
+                        content: EnableNotificationsModal.init)
     }
 
     func buttonLabel() -> String {

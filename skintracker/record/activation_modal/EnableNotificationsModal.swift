@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-struct AfterFirstRecordingUserActivationModal: View {
+struct EnableNotificationsModal: View {
     @Environment(\.presentationMode) var presentation
 
     var body: some View {
@@ -23,7 +23,7 @@ struct AfterFirstRecordingUserActivationModal: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white)
                 .onTapGesture {
-                    AppAnalytics.event(.dismissAfterFirstRecordingUserActivationModal)
+                    AppAnalytics.event(.tapAnywhereToDismissEnableNotificationsModal)
                     presentation.wrappedValue.dismiss()
                 }
     }
