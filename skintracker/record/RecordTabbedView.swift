@@ -76,9 +76,7 @@ private struct SubmitButton: View {
                 showEnableNotificationsModal = true
             }
         }.frame(maxWidth: 100).padding(10.0)
-                .sheet(
-                        isPresented: $showEnableNotificationsModal,
-                        content: EnableNotificationsModal.init)
+                .sheet(isPresented: $showEnableNotificationsModal, content: EnableNotificationsModal.init)
     }
 
     func buttonLabel() -> String {
