@@ -55,6 +55,7 @@ struct FeedbackModal: View {
                         .padding(5)
                         .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
             }
+            Spacer()
         }
     }
 }
