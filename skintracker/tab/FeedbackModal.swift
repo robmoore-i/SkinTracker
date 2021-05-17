@@ -7,6 +7,7 @@ import SwiftUI
 struct FeedbackModal: View {
     @Environment(\.presentationMode) var presentation
     @State private var text: String = "This app might be better if..."
+    @State private var textColor: Color = .gray
     @State private var tapped: Bool = false
 
     var body: some View {
@@ -18,9 +19,8 @@ struct FeedbackModal: View {
                         .font(.largeTitle)
 
             }.padding().onTapGesture(perform: hideKeyboard)
-
             TextEditor(text: $text)
-                    .foregroundColor(.gray)
+                    .foregroundColor(textColor)
                     .padding()
                     .frame(width: 300, height: 150)
                     .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray))
@@ -28,19 +28,36 @@ struct FeedbackModal: View {
                         if (!tapped) {
                             text = ""
                             tapped = true
+                            textColor = .black
                         }
                     }
-            Button(action: {
-                print("Submitted feedback '\(text)'")
-            }, label: {
-                Text("Submit")
-                        .foregroundColor(Color.white)
-                        .padding()
-            })
-                    .background(Color.blue)
-                    .cornerRadius(5)
-                    .padding(5)
-                    .shadow(color: Color.black.opacity(0.4), radius: 4, x: 4, y: 4)
+            HStack {
+                Button(action: {
+                    AppAnalytics.event(.tapSubmitFeedbackModalButton, properties: ["text": text])
+                    print("Submitted feedback '\(text)'")
+                    presentation.wrappedValue.dismiss()
+                }, label: {
+                    Text("Submit")
+                            .foregroundColor(Color.white)
+                            .padding()
+                })
+                        .background(Color.blue)
+                        .cornerRadius(5)
+                        .padding(5)
+                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                Button(action: {
+                    AppAnalytics.event(.tapCancelFeedbackModalButton)
+                    presentation.wrappedValue.dismiss()
+                }, label: {
+                    Text("Cancel")
+                            .foregroundColor(Color.blue)
+                            .padding()
+                })
+                        .background(Color.white)
+                        .cornerRadius(5)
+                        .padding(5)
+                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+            }
         }
     }
 }

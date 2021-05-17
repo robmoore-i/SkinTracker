@@ -20,6 +20,8 @@ enum TrackedEvent: String {
     case tapFaceRegionSpotCountFieldSideLabel = "tapFaceRegionSpotCountFieldSideLabel"
     case tapFeedbackButton = "tapFeedbackButton"
     case dismissFeedbackModal = "dismissFeedbackModal"
+    case tapSubmitFeedbackModalButton = "tapSubmitFeedbackModalButton"
+    case tapCancelFeedbackModalButton = "tapCancelFeedbackModalButton"
 }
 
 struct AppAnalytics {
