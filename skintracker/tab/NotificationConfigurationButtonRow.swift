@@ -35,60 +35,69 @@ struct NotificationConfigurationButtonRow: View {
     }
 
     private func enableButton() -> some View {
-        Button(action: {
-            AppAnalytics.event(.tapEnableNotificationsModalButton)
-            reminderNotificationScheduler.scheduleReminders()
-            presentation.wrappedValue.dismiss()
-        }, label: {
-            HStack {
-                Text("Enable")
-                        .font(.subheadline)
-                        .foregroundColor(Color.white)
-                        .padding([.leading, .top, .bottom], 10)
-                Image(systemName: "bell.fill")
-                        .foregroundColor(.white)
-                        .padding(.trailing, 10)
-            }
-        })
-                .background(Color.blue)
-                .cornerRadius(5)
-                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+        StyledButton(backgroundColor: .blue,
+                action: {
+                    AppAnalytics.event(.tapEnableNotificationsModalButton)
+                    reminderNotificationScheduler.scheduleReminders()
+                    presentation.wrappedValue.dismiss()
+                },
+                label: {
+                    StyledIconLabel(text: "Enable", foregroundColor: .white, iconSfImageName: "bell.fill")
+                })
     }
 
     private func disableButton() -> some View {
-        Button(action: {
-            AppAnalytics.event(.tapDisableNotificationsModalButton)
-            reminderNotificationScheduler.removeReminders()
-            presentation.wrappedValue.dismiss()
-        }, label: {
-            HStack {
-                Text("Disable")
-                        .font(.subheadline)
-                        .foregroundColor(Color.red)
-                        .padding([.leading, .top, .bottom], 10)
-                Image(systemName: "bell.slash.fill")
-                        .foregroundColor(.red)
-                        .padding(.trailing, 10)
-            }
-        })
-                .background(Color.white)
-                .cornerRadius(5)
-                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+        StyledButton(backgroundColor: .white,
+                action: {
+                    AppAnalytics.event(.tapDisableNotificationsModalButton)
+                    reminderNotificationScheduler.removeReminders()
+                    presentation.wrappedValue.dismiss()
+                },
+                label: {
+                    StyledIconLabel(text: "Disable", foregroundColor: .red, iconSfImageName: "bell.slash.fill")
+                })
     }
 
     private func dismissButton(text: String) -> some View {
-        Button(action: {
-            AppAnalytics.event(TrackedEvent.tapCancelNotificationsModalButton)
-            presentation.wrappedValue.dismiss()
-        }, label: {
-            Text(text)
-                    .font(.subheadline)
-                    .foregroundColor(Color.blue)
-                    .padding(10)
-        })
-                .background(Color.white)
+        StyledButton(backgroundColor: .white,
+                action: {
+                    AppAnalytics.event(TrackedEvent.tapCancelNotificationsModalButton)
+                    presentation.wrappedValue.dismiss()
+                },
+                label: {
+                    Text(text).font(.subheadline).foregroundColor(Color.blue).padding(10)
+                })
+    }
+}
+
+private struct StyledButton<Label: View>: View {
+    let backgroundColor: Color
+    let action: () -> Void
+    let label: () -> Label
+
+    var body: some View {
+        Button(action: action, label: label)
+                .background(backgroundColor)
                 .cornerRadius(5)
                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+    }
+}
+
+private struct StyledIconLabel: View {
+    let text: String
+    let foregroundColor: Color
+    let iconSfImageName: String
+
+    var body: some View {
+        HStack {
+            Text(text)
+                    .font(.subheadline)
+                    .foregroundColor(foregroundColor)
+                    .padding([.leading, .top, .bottom], 10)
+            Image(systemName: iconSfImageName)
+                    .foregroundColor(foregroundColor)
+                    .padding(.trailing, 10)
+        }
     }
 }
 
