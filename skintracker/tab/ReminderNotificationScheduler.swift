@@ -22,6 +22,12 @@ struct ReminderNotificationScheduler {
                 }
     }
 
+    func removeReminders() {
+        print("Removing all notifications")
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
+
     private func scheduleReminderNotification(timeOfDay: TimeOfDay) {
         let timeOfDayString = timeOfDay == .am ? "morning" : "evening"
         let notificationIdentifier = "skin-recording-reminder--\(timeOfDayString)"

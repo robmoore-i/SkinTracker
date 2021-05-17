@@ -7,6 +7,7 @@ import SwiftUI
 struct TabHeader: View {
     let text: String
     @Binding var showFeedbackModal: Bool
+    @Binding var showNotificationsModal: Bool
 
     var body: some View {
         HStack {
@@ -15,6 +16,14 @@ struct TabHeader: View {
                     .fontWeight(.medium)
                     .foregroundColor(.black)
             Spacer()
+            Image(systemName: "bell")
+                    .scaleEffect(1.4, anchor: .center)
+                    .foregroundColor(Color.blue)
+                    .padding()
+                    .onTapGesture {
+                        AppAnalytics.event(.tapNotificationsButton)
+                        showNotificationsModal = true
+                    }
             Image(systemName: "rectangle.and.pencil.and.ellipsis")
                     .scaleEffect(1.4, anchor: .center)
                     .foregroundColor(Color.blue)

@@ -1,22 +1,18 @@
 //
-// Created by Rob on 13/5/21.
-// Created using Paul Hudson's video on creating a full screen modal: https://www.youtube.com/watch?v=SdIWZzl9h-w
+// Created by Rob on 17/5/21.
 //
 
 import SwiftUI
 
-struct EnableNotificationsModal: View {
+struct NotificationsModal<Content: View>: View {
     @Environment(\.presentationMode) var presentation
+    @ViewBuilder let content: () -> Content
+
     private let reminderNotificationScheduler = ReminderNotificationScheduler()
 
     var body: some View {
         VStack {
-            VStack(spacing: 0) {
-                Text("You've made your").font(.largeTitle)
-                Text("first recording! 🎉").font(.largeTitle)
-            }.padding()
-            Text("Would you like to get a notification in the morning (7am) and evening (10pm) to make recordings?")
-                    .multilineTextAlignment(.center).padding()
+            content().padding(.bottom)
             HStack {
                 Button(action: {
                     AppAnalytics.event(.tapEnableNotificationsModalButton)
@@ -24,7 +20,7 @@ struct EnableNotificationsModal: View {
                     presentation.wrappedValue.dismiss()
                 }, label: {
                     HStack {
-                        Text("Enable notifications")
+                        Text("Enable")
                                 .font(.subheadline)
                                 .foregroundColor(Color.white)
                                 .padding([.leading, .top, .bottom], 10)
@@ -36,7 +32,24 @@ struct EnableNotificationsModal: View {
                         .background(Color.blue)
                         .cornerRadius(5)
                         .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                        .padding()
+                Button(action: {
+                    AppAnalytics.event(.tapDisableNotificationsModalButton)
+                    reminderNotificationScheduler.removeReminders()
+                    presentation.wrappedValue.dismiss()
+                }, label: {
+                    HStack {
+                        Text("Disable")
+                                .font(.subheadline)
+                                .foregroundColor(Color.red)
+                                .padding([.leading, .top, .bottom], 10)
+                        Image(systemName: "bell.slash.fill")
+                                .foregroundColor(.red)
+                                .padding(.trailing, 10)
+                    }
+                })
+                        .background(Color.white)
+                        .cornerRadius(5)
+                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                 Button(action: {
                     AppAnalytics.event(TrackedEvent.tapCancelNotificationsModalButton)
                     presentation.wrappedValue.dismiss()
@@ -56,3 +69,4 @@ struct EnableNotificationsModal: View {
                 .background(Color.white)
     }
 }
+

@@ -76,7 +76,16 @@ private struct SubmitButton: View {
                 showEnableNotificationsModal = true
             }
         }.frame(maxWidth: 100).padding(10.0)
-                .sheet(isPresented: $showEnableNotificationsModal, content: EnableNotificationsModal.init)
+                .sheet(isPresented: $showEnableNotificationsModal, content: {
+                    NotificationsModal {
+                        VStack(spacing: 0) {
+                            Text("You've made your").font(.largeTitle)
+                            Text("first recording! 🎉").font(.largeTitle)
+                        }.padding()
+                        Text("Would you like to get a notification in the morning (7am) and evening (10pm) to make recordings?")
+                                .multilineTextAlignment(.center).padding()
+                    }
+                })
     }
 
     func buttonLabel() -> String {
