@@ -24,17 +24,19 @@ private struct RecordingsList: View {
         List {
             ForEach(recordingStorage.all) { value in
                 RecordingsListEntry(recording: value).padding(10)
-            }.onDelete { (v: IndexSet) in
-                if (v.count != 1) {
-                    print("Unexpectedly tried to delete \(v.count) recordings at a time, rather than the expected, 1.")
-                    print("Offending IndexSet of offsets: \(v)")
-                    return
-                }
-                if let index = v.first {
-                    recordingStorage.deleteItem(atIndex: index)
-                }
-            }
+            }.onDelete(perform: onDelete)
         }.background(Color.white)
+    }
+
+    func onDelete(v: IndexSet) {
+        if (v.count != 1) {
+            print("Unexpectedly tried to delete \(v.count) recordings at a time, rather than the expected, 1.")
+            print("Offending IndexSet of offsets: \(v)")
+        } else if let index = v.first {
+            UsageAnalytics.event(.swipeToDeleteRecording, properties: ["index": "\(index)"])
+            let recording = recordingStorage.deleteItem(atIndex: index)
+            UsageAnalytics.event(.deleteRecording, properties: ["recording": "\(recording.toAnalyticsJson())"])
+        }
     }
 }
 

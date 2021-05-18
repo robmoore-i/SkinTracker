@@ -36,7 +36,7 @@ class RecordingStorage: ObservableObject {
 
     func dateRange() -> Range<Date> {
         // The 'all' collection is ordered from most recent to least recent.
-        all.last!.dateRangeTo(all.first!)
+        all.last!.until(all.first!)
     }
 
     func store(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
@@ -83,7 +83,7 @@ class RecordingStorage: ObservableObject {
         }
     }
 
-    func deleteItem(atIndex index: Int) {
+    func deleteItem(atIndex index: Int) -> Recording {
         print("Deleting record at index \(index)")
         let recordToDelete = all[index]
         print("Deleting record: \(recordToDelete)")
@@ -100,6 +100,7 @@ class RecordingStorage: ObservableObject {
         } catch let error {
             print(error.localizedDescription)
         }
+        return recordToDelete
     }
 
     func allAsJson() -> String {

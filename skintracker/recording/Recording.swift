@@ -27,14 +27,69 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         "Recording(id: \(id), date: \(date), timeOfDay: \(timeOfDay), regionalSpotCounts: \(regionalSpotCount))"
     }
 
-    func dateRangeTo(_ laterRecording: Recording) -> Range<Date> {
+    /**
+     The date, with the hour adjusted to match an assumed value based on the time of day for the recording.
+     */
+    private func assumedDate() -> Date {
+        let localDate = date.convertTo(region: Region.current)
+        let hour = timeOfDay == .am ? 7 : 22
+        return Date(year: localDate.year, month: localDate.month, day: localDate.day, hour: hour, minute: 0, region: Region.current)
+    }
+
+    func until(_ laterRecording: Recording) -> Range<Date> {
         assumedDate()..<laterRecording.assumedDate()
     }
 
-    private func assumedDate() -> Date {
-        let localDate = date.convertTo(region: Region.current)
-        let hour = timeOfDay == .am ? 9 : 21
-        return Date(year: localDate.year, month: localDate.month, day: localDate.day, hour: hour, minute: 0, region: Region.current)
+    /**
+      For the user's timezone, if the date of this instance is the same as the date given, and the time of day of this
+      instance is the same as the time of day given, then true. Otherwise false.
+     */
+    func isFor(date: Date, time: TimeOfDay) -> Bool {
+        isFor(date: date) && isFor(time: time)
+    }
+
+    func isFor(date: Date) -> Bool {
+        let convertedOtherDate = date.convertTo(region: Region.current)
+        let convertedSelfDate = self.date.convertTo(region: Region.current)
+        return convertedSelfDate.year == convertedOtherDate.year
+                && convertedSelfDate.month == convertedOtherDate.month
+                && convertedSelfDate.day == convertedOtherDate.day
+    }
+
+    func isFor(time: TimeOfDay) -> Bool {
+        timeOfDay == time
+    }
+
+    func dateDescription() -> String {
+        let convertedDate = date.convertTo(region: Region.current)
+        return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.month) \(convertedDate.year)"
+    }
+
+    func totalSpotCount() -> Int {
+        regionalSpotCount.totalSpots()
+    }
+
+    func mostAffectedRegions() -> [String] {
+        regionalSpotCount.mostAffectedRegions()
+    }
+
+    func toJson() -> String {
+        let encodedData = try! JSONEncoder().encode(toRealmObjectV1())
+        return String(data: encodedData, encoding: .utf8)!
+    }
+
+    static func fromJsonV1(_ json: String) -> Recording {
+        let dataFromJsonString = json.data(using: .utf8)!
+        let realmObjectV1 = try! JSONDecoder().decode(RecordingRealmObjectV1.self, from: dataFromJsonString)
+        return Recording.fromRealmObjectV1(realmObjectV1)
+    }
+
+    func toAnalyticsJson() -> String {
+        "{\"date\": \"\(date)\", \"timeOfDay\": \"\(timeOfDay.rawValue)\"}"
+    }
+
+    static let chronologicalSortCriteria: (Recording, Recording) -> Bool = { recording1, recording2 in
+        recording1 > recording2
     }
 
     func hash(into hasher: inout Hasher) {
@@ -91,54 +146,6 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
             return true
         }
         return false
-    }
-
-    /**
-      For the user's timezone, if the date of this instance is the same as the date given, and the time of day of this
-      instance is the same as the time of day given, then true. Otherwise false.
-     */
-    func isFor(date: Date, time: TimeOfDay) -> Bool {
-        isFor(date: date) && isFor(time: time)
-    }
-
-    func isFor(date: Date) -> Bool {
-        let convertedOtherDate = date.convertTo(region: Region.current)
-        let convertedSelfDate = self.date.convertTo(region: Region.current)
-        return convertedSelfDate.year == convertedOtherDate.year
-                && convertedSelfDate.month == convertedOtherDate.month
-                && convertedSelfDate.day == convertedOtherDate.day
-    }
-
-    func isFor(time: TimeOfDay) -> Bool {
-        timeOfDay == time
-    }
-
-    func dateDescription() -> String {
-        let convertedDate = date.convertTo(region: Region.current)
-        return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.month) \(convertedDate.year)"
-    }
-
-    func totalSpotCount() -> Int {
-        regionalSpotCount.totalSpots()
-    }
-
-    func mostAffectedRegions() -> [String] {
-        regionalSpotCount.mostAffectedRegions()
-    }
-
-    func toJson() -> String {
-        let encodedData = try! JSONEncoder().encode(toRealmObjectV1())
-        return String(data: encodedData, encoding: .utf8)!
-    }
-
-    static func fromJsonV1(_ json: String) -> Recording {
-        let dataFromJsonString = json.data(using: .utf8)!
-        let realmObjectV1 = try! JSONDecoder().decode(RecordingRealmObjectV1.self, from: dataFromJsonString)
-        return Recording.fromRealmObjectV1(realmObjectV1)
-    }
-
-    static let chronologicalSortCriteria: (Recording, Recording) -> Bool = { recording1, recording2 in
-        recording1 > recording2
     }
 }
 
