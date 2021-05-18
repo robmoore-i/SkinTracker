@@ -42,6 +42,7 @@
 		D452D146264FFB7900B210E7 /* AppCenterDistribute in Frameworks */ = {isa = PBXBuildFile; productRef = D452D145264FFB7900B210E7 /* AppCenterDistribute */; };
 		D452D148264FFB7900B210E7 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = D452D147264FFB7900B210E7 /* AppCenterCrashes */; };
 		D452D14A264FFB7900B210E7 /* AppCenterAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D452D149264FFB7900B210E7 /* AppCenterAnalytics */; };
+		D4B1E36B26536A2B0084C820 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = D4B1E36A26536A2B0084C820 /* Mixpanel */; };
 		D4E5DE5726436DDB00FB44BA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5626436DDB00FB44BA /* Realm */; };
 		D4E5DE5926436DDB00FB44BA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5826436DDB00FB44BA /* RealmSwift */; };
 		D4F4408C2635621B00B85A1B /* skintrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4408B2635621B00B85A1B /* skintrackerApp.swift */; };
@@ -124,6 +125,7 @@
 				D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */,
 				D452D14A264FFB7900B210E7 /* AppCenterAnalytics in Frameworks */,
 				D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */,
+				D4B1E36B26536A2B0084C820 /* Mixpanel in Frameworks */,
 				D42CC5E126494F4000BBAD0D /* SwiftUICharts in Frameworks */,
 				D452D148264FFB7900B210E7 /* AppCenterCrashes in Frameworks */,
 			);
@@ -322,6 +324,7 @@
 				D452D145264FFB7900B210E7 /* AppCenterDistribute */,
 				D452D147264FFB7900B210E7 /* AppCenterCrashes */,
 				D452D149264FFB7900B210E7 /* AppCenterAnalytics */,
+				D4B1E36A26536A2B0084C820 /* Mixpanel */,
 			);
 			productName = skintracker;
 			productReference = D4F440882635621B00B85A1B /* skintracker.app */;
@@ -395,10 +398,11 @@
 			);
 			mainGroup = D4F4407F2635621A00B85A1B;
 			packageReferences = (
-				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */,
+				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				D42CC5DF26494F4000BBAD0D /* XCRemoteSwiftPackageReference "ChartView" */,
-				D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */,
+				D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
+				D4B1E36926536A2B0084C820 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = D4F440892635621B00B85A1B /* Products */;
 			projectDirPath = "";
@@ -810,7 +814,7 @@
 				minimumVersion = 1.5.5;
 			};
 		};
-		D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */ = {
+		D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/microsoft/appcenter-sdk-apple.git";
 			requirement = {
@@ -818,7 +822,15 @@
 				minimumVersion = 4.1.1;
 			};
 		};
-		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */ = {
+		D4B1E36926536A2B0084C820 /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.3;
+			};
+		};
+		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
@@ -846,27 +858,32 @@
 		};
 		D452D145264FFB7900B210E7 /* AppCenterDistribute */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
 			productName = AppCenterDistribute;
 		};
 		D452D147264FFB7900B210E7 /* AppCenterCrashes */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
 			productName = AppCenterCrashes;
 		};
 		D452D149264FFB7900B210E7 /* AppCenterAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
 			productName = AppCenterAnalytics;
+		};
+		D4B1E36A26536A2B0084C820 /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B1E36926536A2B0084C820 /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
 		};
 		D4E5DE5626436DDB00FB44BA /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
+			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = Realm;
 		};
 		D4E5DE5826436DDB00FB44BA /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
+			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

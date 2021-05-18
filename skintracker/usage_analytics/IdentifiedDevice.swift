@@ -6,7 +6,7 @@ import UIKit
 
 extension UIDevice {
     func idForVendor() -> String {
-        identifierForVendor?.uuidString ?? "device-id-unavailable"
+        identifierForVendor?.uuidString ?? "unavailable-device-id"
     }
 }
 

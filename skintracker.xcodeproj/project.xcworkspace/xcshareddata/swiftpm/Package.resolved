@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "Mixpanel",
+        "repositoryURL": "https://github.com/mixpanel/mixpanel-swift",
+        "state": {
+          "branch": null,
+          "revision": "5db72735f28b072defa54506280ab7a8751a66a2",
+          "version": "2.9.3"
+        }
+      },
+      {
         "package": "PLCrashReporter",
         "repositoryURL": "https://github.com/microsoft/PLCrashReporter.git",
         "state": {
