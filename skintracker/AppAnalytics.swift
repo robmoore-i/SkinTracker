@@ -1,9 +1,11 @@
 //
 // Created by Rob on 15/5/21.
-// The analytics dashboard is here: https://appcenter.ms/users/robmoore121/apps/SkinTracker/analytics/overview
+// The AppCenter dashboard is here: https://appcenter.ms/users/robmoore121/apps/SkinTracker/analytics/overview
 //
 
+import AppCenter
 import AppCenterAnalytics
+import AppCenterCrashes
 
 enum TrackedEvent: String {
     case tapImportRecordings = "tapImportRecordings"
@@ -28,6 +30,10 @@ enum TrackedEvent: String {
 }
 
 struct AppAnalytics {
+    static func initialiseAnalyticsVendor() {
+        AppCenter.start(withAppSecret: "8edb0034-b2ca-4ffb-b8db-3278744e9f7a", services: [Analytics.self, Crashes.self])
+    }
+
     static func event(_ event: TrackedEvent) {
         var properties: [String: String] = [:]
         AppAnalytics.applyDeviceId(&properties)
