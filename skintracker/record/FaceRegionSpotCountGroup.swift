@@ -21,7 +21,7 @@ private struct FaceRegionSpotCountField: View {
     var body: some View {
         HStack {
             Text("\(region.rawValue.capitalized)").onTapGesture {
-                AppAnalytics.event(.tapFaceRegionSpotCountFieldRegionName, properties: ["region": "\(region.rawValue)"])
+                UsageAnalytics.event(.tapFaceRegionSpotCountFieldRegionName, properties: ["region": "\(region.rawValue)"])
                 hideKeyboard()
             }
             Spacer()
@@ -47,7 +47,7 @@ private struct SpotCountTextField: View {
 
     var body: some View {
         Text(sideLabel).onTapGesture {
-            AppAnalytics.event(.tapFaceRegionSpotCountFieldSideLabel, properties: ["side": sideLabel.lowercased()])
+            UsageAnalytics.event(.tapFaceRegionSpotCountFieldSideLabel, properties: ["side": sideLabel.lowercased()])
             hideKeyboard()
         }
         TextField("0", text: $text)
@@ -55,7 +55,7 @@ private struct SpotCountTextField: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(maxWidth: 40)
                 .onChange(of: text) { newText in
-                    AppAnalytics.event(.changeRecordingSpotCountEntry,
+                    UsageAnalytics.event(.changeRecordingSpotCountEntry,
                             properties: [
                                 "side": "\(sideLabel.lowercased())",
                                 "region": "\(region.rawValue)",

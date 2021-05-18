@@ -16,6 +16,6 @@ struct skintrackerApp: App {
     }
 
     init() {
-        AppAnalytics.initialiseAnalyticsVendor()
+        UsageAnalytics.setup()
     }
 }

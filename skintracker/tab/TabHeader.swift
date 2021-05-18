@@ -21,7 +21,7 @@ struct TabHeader: View {
                     .foregroundColor(Color.blue)
                     .padding([.leading, .trailing])
                     .onTapGesture {
-                        AppAnalytics.event(.tapNotificationsButton)
+                        UsageAnalytics.event(.tapNotificationsButton)
                         showNotificationsModal = true
                     }
             Image(systemName: "rectangle.and.pencil.and.ellipsis")
@@ -29,7 +29,7 @@ struct TabHeader: View {
                     .foregroundColor(Color.blue)
                     .padding([.leading, .trailing])
                     .onTapGesture {
-                        AppAnalytics.event(.tapFeedbackButton)
+                        UsageAnalytics.event(.tapFeedbackButton)
                         showFeedbackModal = true
                     }
         }.padding()

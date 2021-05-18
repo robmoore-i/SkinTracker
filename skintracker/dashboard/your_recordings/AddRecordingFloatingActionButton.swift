@@ -13,7 +13,7 @@ struct AddRecordingFloatingActionButton: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    AppAnalytics.event(.tapAddRecordingFloatingActionButton)
+                    UsageAnalytics.event(.tapAddRecordingFloatingActionButton)
                     selectedTab = 2
                 }, label: {
                     Text("+")

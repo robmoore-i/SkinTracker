@@ -27,12 +27,14 @@
 		1B9C57C994F163DA93101740 /* AllTimeProgressDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F978515BADCE4F6E651 /* AllTimeProgressDataView.swift */; };
 		1B9C588F62E88DA3128CED07 /* RegionalSpotCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */; };
 		1B9C59D85F0AB7E6F7179E45 /* RecordingIsForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52AFF554CCB28DC5A8CC /* RecordingIsForTests.swift */; };
+		1B9C5A82FBF9A31C6787912C /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */; };
+		1B9C5ACF258CC71CE02AE8A5 /* TrackedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C561BAF6FF09E645CDFD5 /* TrackedEvent.swift */; };
 		1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */; };
+		1B9C5C82F7DA0C098BB12A86 /* IdentifiedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C544709B1E9D7300F5A9D /* IdentifiedDevice.swift */; };
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
 		1B9C5D45C2C5694A631F985D /* ReminderNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C55479508AA4E2DAA30D1 /* ReminderNotificationScheduler.swift */; };
 		1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C593352F029084B32DD55 /* TabHeader.swift */; };
 		1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53AA81780815A3FDEE84 /* Recording.swift */; };
-		1B9C5F074013802781D8AB36 /* AppAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5A2C3EA5C623CA5FDFE6 /* AppAnalytics.swift */; };
 		1B9C5F7723F95FD5A789E186 /* ExportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C531C60E59F6A394A77E2 /* ExportRecordingsButton.swift */; };
 		D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5D926457D7F00BBAD0D /* SwiftDate */; };
 		D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */; };
@@ -78,10 +80,12 @@
 		1B9C53A262ECA94894B87166 /* TabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
 		1B9C53AA81780815A3FDEE84 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		1B9C540D8E7A51C6A28C7046 /* AddRecordingFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordingFloatingActionButton.swift; sourceTree = "<group>"; };
+		1B9C544709B1E9D7300F5A9D /* IdentifiedDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiedDevice.swift; sourceTree = "<group>"; };
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
 		1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeLengthDescriptionTests.swift; sourceTree = "<group>"; };
 		1B9C55479508AA4E2DAA30D1 /* ReminderNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderNotificationScheduler.swift; sourceTree = "<group>"; };
 		1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportRecordingsButton.swift; sourceTree = "<group>"; };
+		1B9C561BAF6FF09E645CDFD5 /* TrackedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackedEvent.swift; sourceTree = "<group>"; };
 		1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingStorage.swift; sourceTree = "<group>"; };
 		1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingToJsonTests.swift; sourceTree = "<group>"; };
 		1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayToggle.swift; sourceTree = "<group>"; };
@@ -89,10 +93,10 @@
 		1B9C593352F029084B32DD55 /* TabHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabHeader.swift; sourceTree = "<group>"; };
 		1B9C59B5059330F1D6E5C7E0 /* TimeOfDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
 		1B9C59E9E166D07EDC11C294 /* RecordingLessThanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingLessThanTests.swift; sourceTree = "<group>"; };
-		1B9C5A2C3EA5C623CA5FDFE6 /* AppAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAnalytics.swift; sourceTree = "<group>"; };
 		1B9C5BF899437DEB8E0EE090 /* FeedbackModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackModal.swift; sourceTree = "<group>"; };
 		1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalSpotCount.swift; sourceTree = "<group>"; };
 		1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTabbedView.swift; sourceTree = "<group>"; };
+		1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
 		1B9C5F978515BADCE4F6E651 /* AllTimeProgressDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTimeProgressDataView.swift; sourceTree = "<group>"; };
 		1B9C5FBBB71FCC7E41E0D881 /* YourRecordingsListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRecordingsListHeader.swift; sourceTree = "<group>"; };
 		D4F440882635621B00B85A1B /* skintracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skintracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +181,16 @@
 			path = dashboard;
 			sourceTree = "<group>";
 		};
+		1B9C583A512DD73713814EFF /* usage_analytics */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */,
+				1B9C544709B1E9D7300F5A9D /* IdentifiedDevice.swift */,
+				1B9C561BAF6FF09E645CDFD5 /* TrackedEvent.swift */,
+			);
+			path = usage_analytics;
+			sourceTree = "<group>";
+		};
 		1B9C593E7BCA12EB9718C330 /* recording */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,7 +264,7 @@
 				1B9C57C0CB11C1AF33845C54 /* dashboard */,
 				1B9C56D3607E509136C02655 /* recording */,
 				1B9C5E65B3A26C4DB8C3A8FA /* tab */,
-				1B9C5A2C3EA5C623CA5FDFE6 /* AppAnalytics.swift */,
+				1B9C583A512DD73713814EFF /* usage_analytics */,
 			);
 			path = skintracker;
 			sourceTree = "<group>";
@@ -449,10 +463,12 @@
 				1B9C56E7188685973886EBFD /* YourRecordingsListHeader.swift in Sources */,
 				1B9C54A630C304DA942E7794 /* AddRecordingFloatingActionButton.swift in Sources */,
 				1B9C5177C2FF02D0179EE654 /* UserActivationDemoView.swift in Sources */,
-				1B9C5F074013802781D8AB36 /* AppAnalytics.swift in Sources */,
 				1B9C53A9FA73E75A29CBC3D9 /* FeedbackModal.swift in Sources */,
 				1B9C5D45C2C5694A631F985D /* ReminderNotificationScheduler.swift in Sources */,
 				1B9C57766D3E5EB9442E78B3 /* NotificationConfigurationButtonRow.swift in Sources */,
+				1B9C5A82FBF9A31C6787912C /* UsageAnalytics.swift in Sources */,
+				1B9C5C82F7DA0C098BB12A86 /* IdentifiedDevice.swift in Sources */,
+				1B9C5ACF258CC71CE02AE8A5 /* TrackedEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

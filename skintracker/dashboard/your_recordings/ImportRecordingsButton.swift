@@ -15,7 +15,7 @@ struct ImportRecordingsButton: View {
 
     var body: some View {
         Button(action: {
-            AppAnalytics.event(.tapImportRecordings)
+            UsageAnalytics.event(.tapImportRecordings)
             print("Importing recordings")
             isImporting = true
         }) {

@@ -42,7 +42,7 @@ struct TimeOfDayToggle: View {
         Toggle("Time of day", isOn: $toggleIsOn)
                 .toggleStyle(TimeOfDayToggleStyle())
                 .onReceive([toggleIsOn].publisher.first()) { value in
-                    AppAnalytics.event(.toggleRecordingTimeOfDay)
+                    UsageAnalytics.event(.toggleRecordingTimeOfDay)
                     selection = toggleIsOn ? TimeOfDay.pm : TimeOfDay.am
                 }
     }

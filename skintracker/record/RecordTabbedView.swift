@@ -50,7 +50,7 @@ private struct LoggedDatePicker: View {
     var body: some View {
         DatePicker("Date", selection: $selection, displayedComponents: .date)
                 .onChange(of: selection) { newDate in
-                    AppAnalytics.event(.selectDateUsingDatePicker, properties: ["date": "\(newDate)"])
+                    UsageAnalytics.event(.selectDateUsingDatePicker, properties: ["date": "\(newDate)"])
                     print("Selected date: \(newDate)")
                 }
     }
@@ -68,7 +68,7 @@ private struct SubmitButton: View {
     var body: some View {
         let label = buttonLabel()
         return Button(label) {
-            AppAnalytics.event(label == "Update" ? .tapUpdateRecordingButton : .tapSaveRecordingButton)
+            UsageAnalytics.event(label == "Update" ? .tapUpdateRecordingButton : .tapSaveRecordingButton)
             let emptyBefore = recordingStorage.all.isEmpty
             recordingStorage.store(selectedDate, selectedTimeOfDay, selectedSpotCounts)
             let notEmptyNow = recordingStorage.all.count > 0

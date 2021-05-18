@@ -28,10 +28,10 @@ struct TabbedView<Content: View>: View {
             content()
         }
                 .sheet(isPresented: $showFeedbackModal, onDismiss: {
-                    AppAnalytics.event(.dismissFeedbackModal)
+                    UsageAnalytics.event(.dismissFeedbackModal)
                 }, content: FeedbackModal.init)
                 .sheet(isPresented: $showNotificationsModal, onDismiss: {
-                    AppAnalytics.event(TrackedEvent.dismissNotificationsModal)
+                    UsageAnalytics.event(TrackedEvent.dismissNotificationsModal)
                 }, content: {
                     VStack {
                         VStack(spacing: 0) {

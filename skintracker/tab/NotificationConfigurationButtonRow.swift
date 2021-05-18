@@ -37,7 +37,7 @@ struct NotificationConfigurationButtonRow: View {
     private func enableButton() -> some View {
         StyledButton(backgroundColor: .blue,
                 action: {
-                    AppAnalytics.event(.tapEnableNotificationsModalButton)
+                    UsageAnalytics.event(.tapEnableNotificationsModalButton)
                     reminderNotificationScheduler.scheduleReminders()
                     presentation.wrappedValue.dismiss()
                 },
@@ -49,7 +49,7 @@ struct NotificationConfigurationButtonRow: View {
     private func disableButton() -> some View {
         StyledButton(backgroundColor: .white,
                 action: {
-                    AppAnalytics.event(.tapDisableNotificationsModalButton)
+                    UsageAnalytics.event(.tapDisableNotificationsModalButton)
                     reminderNotificationScheduler.removeReminders()
                     presentation.wrappedValue.dismiss()
                 },
@@ -61,7 +61,7 @@ struct NotificationConfigurationButtonRow: View {
     private func dismissButton(text: String) -> some View {
         StyledButton(backgroundColor: .white,
                 action: {
-                    AppAnalytics.event(TrackedEvent.tapCancelNotificationsModalButton)
+                    UsageAnalytics.event(TrackedEvent.tapCancelNotificationsModalButton)
                     presentation.wrappedValue.dismiss()
                 },
                 label: {

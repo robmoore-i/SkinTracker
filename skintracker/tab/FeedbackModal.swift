@@ -30,7 +30,7 @@ struct FeedbackModal: View {
                     }
             HStack {
                 Button(action: {
-                    AppAnalytics.event(.tapSubmitFeedbackModalButton, properties: ["text": text])
+                    UsageAnalytics.event(.tapSubmitFeedbackModalButton, properties: ["text": text])
                     print("Submitted feedback '\(text)'")
                     presentation.wrappedValue.dismiss()
                 }, label: {
@@ -43,7 +43,7 @@ struct FeedbackModal: View {
                         .padding(5)
                         .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                 Button(action: {
-                    AppAnalytics.event(.tapCancelFeedbackModalButton)
+                    UsageAnalytics.event(.tapCancelFeedbackModalButton)
                     presentation.wrappedValue.dismiss()
                 }, label: {
                     Text("Cancel")
