@@ -66,9 +66,9 @@ private struct SubmitButton: View {
     @State private var showEnableNotificationsModal = false
 
     var body: some View {
-        let label = buttonLabel()
+        let (label, tapEvent) = buttonSemantics()
         return Button(label) {
-            UsageAnalytics.event(label == "Update" ? .tapUpdateRecordingButton : .tapSaveRecordingButton)
+            UsageAnalytics.event(tapEvent)
             let emptyBefore = recordingStorage.all.isEmpty
             recordingStorage.store(selectedDate, selectedTimeOfDay, selectedSpotCounts)
             let notEmptyNow = recordingStorage.all.count > 0
@@ -94,11 +94,11 @@ private struct SubmitButton: View {
                 })
     }
 
-    func buttonLabel() -> String {
+    func buttonSemantics() -> (String, TrackedEvent) {
         if (recordingStorage.hasEntryFor(date: selectedDate, time: selectedTimeOfDay)) {
-            return "Update"
+            return ("Update", .tapUpdateRecordingButton)
         } else {
-            return "Save"
+            return ("Save", .tapSaveRecordingButton)
         }
     }
 }
