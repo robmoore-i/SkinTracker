@@ -100,16 +100,16 @@
 		1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
 		1B9C5F978515BADCE4F6E651 /* AllTimeProgressDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTimeProgressDataView.swift; sourceTree = "<group>"; };
 		1B9C5FBBB71FCC7E41E0D881 /* YourRecordingsListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRecordingsListHeader.swift; sourceTree = "<group>"; };
-		D4F440882635621B00B85A1B /* skintracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skintracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F440882635621B00B85A1B /* SkinTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F4408B2635621B00B85A1B /* skintrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skintrackerApp.swift; sourceTree = "<group>"; };
 		D4F4408D2635621B00B85A1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D4F4408F2635621C00B85A1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4F440922635621C00B85A1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D4F440942635621C00B85A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4F440992635621C00B85A1B /* skintrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skintrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F440992635621C00B85A1B /* SkinTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkinTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F4409D2635621C00B85A1B /* skintrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skintrackerTests.swift; sourceTree = "<group>"; };
 		D4F4409F2635621C00B85A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4F440A42635621C00B85A1B /* skintrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skintrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F440A42635621C00B85A1B /* SkinTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkinTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F440A82635621C00B85A1B /* skintrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skintrackerUITests.swift; sourceTree = "<group>"; };
 		D4F440AA2635621C00B85A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,9 +246,9 @@
 		D4F440892635621B00B85A1B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D4F440882635621B00B85A1B /* skintracker.app */,
-				D4F440992635621C00B85A1B /* skintrackerTests.xctest */,
-				D4F440A42635621C00B85A1B /* skintrackerUITests.xctest */,
+				D4F440882635621B00B85A1B /* SkinTracker.app */,
+				D4F440992635621C00B85A1B /* SkinTrackerTests.xctest */,
+				D4F440A42635621C00B85A1B /* SkinTrackerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,9 +302,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D4F440872635621B00B85A1B /* skintracker */ = {
+		D4F440872635621B00B85A1B /* SkinTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4F440AD2635621C00B85A1B /* Build configuration list for PBXNativeTarget "skintracker" */;
+			buildConfigurationList = D4F440AD2635621C00B85A1B /* Build configuration list for PBXNativeTarget "SkinTracker" */;
 			buildPhases = (
 				D4F440842635621B00B85A1B /* Sources */,
 				D4F440852635621B00B85A1B /* Frameworks */,
@@ -314,7 +314,7 @@
 			);
 			dependencies = (
 			);
-			name = skintracker;
+			name = SkinTracker;
 			packageProductDependencies = (
 				D4E5DE5626436DDB00FB44BA /* Realm */,
 				D4E5DE5826436DDB00FB44BA /* RealmSwift */,
@@ -327,12 +327,12 @@
 				D4B1E36A26536A2B0084C820 /* Mixpanel */,
 			);
 			productName = skintracker;
-			productReference = D4F440882635621B00B85A1B /* skintracker.app */;
+			productReference = D4F440882635621B00B85A1B /* SkinTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D4F440982635621C00B85A1B /* skintrackerTests */ = {
+		D4F440982635621C00B85A1B /* SkinTrackerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4F440B02635621C00B85A1B /* Build configuration list for PBXNativeTarget "skintrackerTests" */;
+			buildConfigurationList = D4F440B02635621C00B85A1B /* Build configuration list for PBXNativeTarget "SkinTrackerTests" */;
 			buildPhases = (
 				D4F440952635621C00B85A1B /* Sources */,
 				D4F440962635621C00B85A1B /* Frameworks */,
@@ -343,14 +343,14 @@
 			dependencies = (
 				D4F4409B2635621C00B85A1B /* PBXTargetDependency */,
 			);
-			name = skintrackerTests;
+			name = SkinTrackerTests;
 			productName = skintrackerTests;
-			productReference = D4F440992635621C00B85A1B /* skintrackerTests.xctest */;
+			productReference = D4F440992635621C00B85A1B /* SkinTrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D4F440A32635621C00B85A1B /* skintrackerUITests */ = {
+		D4F440A32635621C00B85A1B /* SkinTrackerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4F440B32635621C00B85A1B /* Build configuration list for PBXNativeTarget "skintrackerUITests" */;
+			buildConfigurationList = D4F440B32635621C00B85A1B /* Build configuration list for PBXNativeTarget "SkinTrackerUITests" */;
 			buildPhases = (
 				D4F440A02635621C00B85A1B /* Sources */,
 				D4F440A12635621C00B85A1B /* Frameworks */,
@@ -361,9 +361,9 @@
 			dependencies = (
 				D4F440A62635621C00B85A1B /* PBXTargetDependency */,
 			);
-			name = skintrackerUITests;
+			name = SkinTrackerUITests;
 			productName = skintrackerUITests;
-			productReference = D4F440A42635621C00B85A1B /* skintrackerUITests.xctest */;
+			productReference = D4F440A42635621C00B85A1B /* SkinTrackerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -388,7 +388,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D4F440832635621B00B85A1B /* Build configuration list for PBXProject "skintracker" */;
+			buildConfigurationList = D4F440832635621B00B85A1B /* Build configuration list for PBXProject "SkinTracker" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -408,9 +408,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D4F440872635621B00B85A1B /* skintracker */,
-				D4F440982635621C00B85A1B /* skintrackerTests */,
-				D4F440A32635621C00B85A1B /* skintrackerUITests */,
+				D4F440872635621B00B85A1B /* SkinTracker */,
+				D4F440982635621C00B85A1B /* SkinTrackerTests */,
+				D4F440A32635621C00B85A1B /* SkinTrackerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -501,12 +501,12 @@
 /* Begin PBXTargetDependency section */
 		D4F4409B2635621C00B85A1B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D4F440872635621B00B85A1B /* skintracker */;
+			target = D4F440872635621B00B85A1B /* SkinTracker */;
 			targetProxy = D4F4409A2635621C00B85A1B /* PBXContainerItemProxy */;
 		};
 		D4F440A62635621C00B85A1B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D4F440872635621B00B85A1B /* skintracker */;
+			target = D4F440872635621B00B85A1B /* SkinTracker */;
 			targetProxy = D4F440A52635621C00B85A1B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -690,7 +690,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skintracker.app/skintracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SkinTracker.app/SkinTracker";
 			};
 			name = Debug;
 		};
@@ -712,7 +712,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/skintracker.app/skintracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SkinTracker.app/SkinTracker";
 			};
 			name = Release;
 		};
@@ -759,7 +759,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D4F440832635621B00B85A1B /* Build configuration list for PBXProject "skintracker" */ = {
+		D4F440832635621B00B85A1B /* Build configuration list for PBXProject "SkinTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4F440AB2635621C00B85A1B /* Debug */,
@@ -768,7 +768,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4F440AD2635621C00B85A1B /* Build configuration list for PBXNativeTarget "skintracker" */ = {
+		D4F440AD2635621C00B85A1B /* Build configuration list for PBXNativeTarget "SkinTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4F440AE2635621C00B85A1B /* Debug */,
@@ -777,7 +777,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4F440B02635621C00B85A1B /* Build configuration list for PBXNativeTarget "skintrackerTests" */ = {
+		D4F440B02635621C00B85A1B /* Build configuration list for PBXNativeTarget "SkinTrackerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4F440B12635621C00B85A1B /* Debug */,
@@ -786,7 +786,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4F440B32635621C00B85A1B /* Build configuration list for PBXNativeTarget "skintrackerUITests" */ = {
+		D4F440B32635621C00B85A1B /* Build configuration list for PBXNativeTarget "SkinTrackerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4F440B42635621C00B85A1B /* Debug */,
