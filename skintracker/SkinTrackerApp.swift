@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct skintrackerApp: App {
+struct SkinTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
