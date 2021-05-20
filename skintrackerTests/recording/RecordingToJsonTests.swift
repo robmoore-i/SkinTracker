@@ -42,10 +42,3 @@ class RecordingToJsonTests: XCTestCase {
         XCTAssertEqual(actualRecording, expectedRecording)
     }
 }
-
-extension Recording {
-    func toJsonV1() -> String {
-        let encodedData = try! JSONEncoder().encode(toRealmObjectV1())
-        return String(data: encodedData, encoding: .utf8)!
-    }
-}

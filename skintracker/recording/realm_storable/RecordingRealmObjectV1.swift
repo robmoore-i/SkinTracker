@@ -70,35 +70,15 @@ extension Recording {
         return Recording(r.id, r.date, timeOfDay, regionalSpotCount)
     }
 
+    func toJsonV1() -> String {
+        let encodedData = try! JSONEncoder().encode(toRealmObjectV1())
+        return String(data: encodedData, encoding: .utf8)!
+    }
+
     static func fromJsonV1(_ json: String) -> Recording {
         let dataFromJsonString = json.data(using: .utf8)!
         let realmObjectV1 = try! JSONDecoder().decode(RecordingRealmObjectV1.self, from: dataFromJsonString)
         return Recording.fromRealmObjectV1(realmObjectV1)
-    }
-}
-
-extension RecordingStorage {
-    func importFromJsonV1(_ json: String) {
-        print("Using JSON: \(json)")
-        let jsonData = json.data(using: .utf8)!
-        let v1JsonRecordings = try! JSONDecoder().decode([RecordingRealmObjectV1].self, from: jsonData)
-        let importedRecordings = v1JsonRecordings.map {
-            Recording.fromRealmObjectV1($0)
-        }
-        print("Using parsed recordings: \(importedRecordings)")
-        let realm = realmForRecordingObjectImport()
-        do {
-            try realm.write {
-                realm.deleteAll()
-                importedRecordings.forEach { recording in
-                    realm.add(recording.toRealmObjectV1())
-                }
-                print("Wrote successfully")
-                refresh(recordings: importedRecordings)
-            }
-        } catch let error {
-            print(error.localizedDescription)
-        }
     }
 }
 

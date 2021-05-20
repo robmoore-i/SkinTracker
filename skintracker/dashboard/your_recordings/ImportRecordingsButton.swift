@@ -31,9 +31,15 @@ struct ImportRecordingsButton: View {
             do {
                 let selectedFile: URL = try result.get().first!
                 if selectedFile.startAccessingSecurityScopedResource() {
-                    defer { selectedFile.stopAccessingSecurityScopedResource() }
-                    json = String(data: try Data(contentsOf: selectedFile), encoding: .utf8)!
-                    recordingStorage.importFromJsonV1(json)
+                    defer {
+                        selectedFile.stopAccessingSecurityScopedResource()
+                    }
+                    if let selectedFileContent = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) {
+                        json = selectedFileContent
+                        recordingStorage.importAllFromJson(selectedFileContent)
+                    } else {
+                        print("Couldn't read content of selected file")
+                    }
                 } else {
                     print("Access denied to file \(selectedFile)")
                 }

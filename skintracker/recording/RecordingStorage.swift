@@ -107,12 +107,30 @@ class RecordingStorage: ObservableObject {
         return recordToDelete
     }
 
-    func allAsJson() -> String {
-        "[\(all.map { $0.toJson() }.joined(separator: ", "))]"
+    func exportAllToJson() -> String {
+        let commandSeparatedJsonObjects = all.map { (recording: Recording) in
+            recording.toLatestJson()
+        }.joined(separator: ", ")
+        return "[\(commandSeparatedJsonObjects)]"
     }
 
-    func realmForRecordingObjectImport() -> Realm {
-        realm
+    func importAllFromJson(_ json: String) {
+        print("Importing JSON: \(json)")
+        let jsonData: Data = json.data(using: .utf8)!
+        let importedRecordings = versionedStorage.recordingsFromData(data: jsonData)
+        print("Parsed recordings: \(importedRecordings)")
+        do {
+            try realm.write {
+                realm.deleteAll()
+                importedRecordings.forEach { (recording: Recording) in
+                    versionedStorage.insert(realm, record: recording)
+                }
+                print("Saved imported recordings successfully")
+                refresh(recordings: importedRecordings)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 }
 

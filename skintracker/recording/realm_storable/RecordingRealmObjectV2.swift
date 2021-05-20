@@ -73,6 +73,17 @@ extension Recording {
         let timeOfDay: TimeOfDay = TimeOfDay.init(rawValue: r.timeOfDay)!
         return Recording(r.id, r.date, timeOfDay, regionalSpotCount)
     }
+
+    func toJsonV2() -> String {
+        let encodedData = try! JSONEncoder().encode(toRealmObjectV2())
+        return String(data: encodedData, encoding: .utf8)!
+    }
+
+    static func fromJsonV2(_ json: String) -> Recording {
+        let dataFromJsonString = json.data(using: .utf8)!
+        let realmObjectV2 = try! JSONDecoder().decode(RecordingRealmObjectV2.self, from: dataFromJsonString)
+        return Recording.fromRealmObjectV2(realmObjectV2)
+    }
 }
 
 extension VersionedRecordingRealmStorage {

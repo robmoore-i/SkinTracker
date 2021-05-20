@@ -14,8 +14,6 @@ struct ExportRecordingsButton: View {
     var body: some View {
         Button(action: {
             UsageAnalytics.event(.tapExportRecordings)
-            print("Exporting recordings")
-            print(recordingStorage.allAsJson())
             isExporting = true
         }) {
             HStack {
@@ -25,7 +23,7 @@ struct ExportRecordingsButton: View {
             }
         }.fileExporter(
                 isPresented: $isExporting,
-                document: RecordingsBackupDocument(json: recordingStorage.allAsJson()),
+                document: RecordingsBackupDocument(json: recordingStorage.exportAllToJson()),
                 contentType: .json,
                 defaultFilename: RecordingsBackupDocument.defaultFilename()) { result in
             if case .success = result {
