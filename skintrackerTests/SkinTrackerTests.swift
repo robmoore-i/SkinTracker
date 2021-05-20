@@ -1,14 +1,14 @@
 //
-//  skintrackerTests.swift
-//  skintrackerTests
+//  SkinTrackerTests.swift
+//  SkinTrackerTests
 //
 //  Created by Rob on 25/4/21.
 //
 
 import XCTest
-@testable import skintracker
+@testable import SkinTracker
 
-class skintrackerTests: XCTestCase {
+class SkinTrackerTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

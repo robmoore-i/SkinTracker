@@ -4,7 +4,7 @@
 
 import XCTest
 import SwiftDate
-@testable import skintracker
+@testable import SkinTracker
 
 class RecordingIsForTests: XCTestCase {
     func testRecordingMatchesOwnDate() throws {
