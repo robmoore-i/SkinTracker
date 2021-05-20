@@ -101,3 +101,9 @@ extension RecordingStorage {
         }
     }
 }
+
+extension VersionedRecordingRealmStorage {
+    func readAllV1(_ realm: Realm) -> Results<RecordingRealmObjectV1> {
+        realm.objects(RecordingRealmObjectV1.self)
+    }
+}

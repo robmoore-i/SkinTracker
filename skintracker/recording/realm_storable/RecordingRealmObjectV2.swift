@@ -74,3 +74,9 @@ extension Recording {
         return Recording(r.id, r.date, timeOfDay, regionalSpotCount)
     }
 }
+
+extension VersionedRecordingRealmStorage {
+    func readAllV2(_ realm: Realm) -> Results<RecordingRealmObjectV2> {
+        realm.objects(RecordingRealmObjectV2.self)
+    }
+}
