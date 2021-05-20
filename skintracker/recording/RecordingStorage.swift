@@ -107,26 +107,8 @@ class RecordingStorage: ObservableObject {
         "[\(all.map { $0.toJson() }.joined(separator: ", "))]"
     }
 
-    func importFromJsonV1(_ json: String) {
-        print("Using JSON: \(json)")
-        let jsonData = json.data(using: .utf8)!
-        let v1JsonRecordings = try! JSONDecoder().decode([RecordingRealmObjectV1].self, from: jsonData)
-        let importedRecordings = v1JsonRecordings.map {
-            Recording.fromRealmObjectV1($0)
-        }
-        print("Using parsed recordings: \(importedRecordings)")
-        do {
-            try realm.write {
-                realm.deleteAll()
-                importedRecordings.forEach { recording in
-                    realm.add(recording.toRealmObjectV1())
-                }
-                print("Wrote successfully")
-                refresh(recordings: importedRecordings)
-            }
-        } catch let error {
-            print(error.localizedDescription)
-        }
+    func realmForRecordingObjectImport() -> Realm {
+        realm
     }
 }
 

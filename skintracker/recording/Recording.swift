@@ -78,12 +78,6 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         return String(data: encodedData, encoding: .utf8)!
     }
 
-    static func fromJsonV1(_ json: String) -> Recording {
-        let dataFromJsonString = json.data(using: .utf8)!
-        let realmObjectV1 = try! JSONDecoder().decode(RecordingRealmObjectV1.self, from: dataFromJsonString)
-        return Recording.fromRealmObjectV1(realmObjectV1)
-    }
-
     func toAnalyticsJson() -> String {
         "{\"date\": \"\(date)\", \"timeOfDay\": \"\(timeOfDay.rawValue)\"}"
     }
