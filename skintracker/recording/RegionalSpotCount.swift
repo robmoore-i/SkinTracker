@@ -60,7 +60,7 @@ class RegionalSpotCount: Equatable, Hashable, CustomStringConvertible {
     }
 
     private func regionDescription(side: String, region: FaceRegion) -> String {
-        if ([.cheek, .eye].contains(region)) {
+        if ([FaceRegion.cheek, FaceRegion.eyebrows].contains(region)) {
             return "\(side.capitalized) \(region.rawValue)"
         } else if ([.mouth, .chin, .jawline, .forehead, .nose].contains(region)) {
             return "\(side.capitalized) side of \(region.rawValue)"

@@ -4,7 +4,7 @@
 
 enum FaceRegion: String, CaseIterable {
     case forehead = "forehead"
-    case eye = "eye"
+    case eyebrows = "eyebrows"
     case nose = "nose"
     case mouth = "mouth"
     case cheek = "cheek"
