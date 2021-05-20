@@ -20,7 +20,7 @@ class RecordingStorage: ObservableObject {
     }
 
     func refresh() {
-        refresh(recordings: realm.objects(RecordingRealmObjectV1.self).map(Recording.fromRealmObjectV1))
+        refresh(recordings: readAll())
     }
 
     func refresh(recordings: [Recording]) {
@@ -55,13 +55,9 @@ class RecordingStorage: ObservableObject {
         print("Saving updated entry: \(newRecord)")
         do {
             try realm.write {
-                realm.delete(realm.objects(RecordingRealmObjectV1.self).filter {
-                    $0.id == existingRecord.id
-                })
-                all.removeAll {
-                    $0.id == existingRecord.id
-                }
-                realm.add(newRecord.toRealmObjectV1())
+                delete(id: existingRecord.id)
+                all.remove(id: existingRecord.id)
+                insert(record: newRecord)
                 all.insertSorted(newRecord)
                 print("Wrote successfully")
             }
@@ -74,7 +70,7 @@ class RecordingStorage: ObservableObject {
         print("Saving new entry: \(newRecord)")
         do {
             try realm.write {
-                realm.add(newRecord.toRealmObjectV1())
+                insert(record: newRecord)
                 all.insertSorted(newRecord)
                 print("Wrote successfully")
             }
@@ -89,12 +85,8 @@ class RecordingStorage: ObservableObject {
         print("Deleting record: \(recordToDelete)")
         do {
             try realm.write {
-                realm.delete(realm.objects(RecordingRealmObjectV1.self).filter {
-                    $0.id == recordToDelete.id
-                })
-                all.removeAll {
-                    $0.id == recordToDelete.id
-                }
+                delete(id: recordToDelete.id)
+                all.remove(id: recordToDelete.id)
                 print("Wrote successfully")
             }
         } catch let error {
@@ -105,6 +97,24 @@ class RecordingStorage: ObservableObject {
 
     func allAsJson() -> String {
         "[\(all.map { $0.toJson() }.joined(separator: ", "))]"
+    }
+
+    private func readAll() -> [Recording] {
+        readAllV1().map(Recording.fromRealmObjectV1)
+    }
+
+    private func insert(record: Recording) {
+        realm.add(record.toRealmObjectV1())
+    }
+
+    private func delete(id: Int) {
+        realm.delete(readAllV1().filter {
+            $0.id == id
+        })
+    }
+
+    private func readAllV1() -> Results<RecordingRealmObjectV1> {
+        realm.objects(RecordingRealmObjectV1.self)
     }
 
     func realmForRecordingObjectImport() -> Realm {
@@ -124,5 +134,11 @@ extension Array where Element == Recording {
     mutating func insertSorted(_ r: Recording) {
         append(r)
         sort(by: Recording.chronologicalSortCriteria)
+    }
+
+    mutating func remove(id: Int) {
+        removeAll {
+            $0.id == id
+        }
     }
 }
