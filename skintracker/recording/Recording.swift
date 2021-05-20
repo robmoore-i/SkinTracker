@@ -73,11 +73,6 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         regionalSpotCount.mostAffectedRegions()
     }
 
-    func toJson() -> String {
-        let encodedData = try! JSONEncoder().encode(toRealmObjectV1())
-        return String(data: encodedData, encoding: .utf8)!
-    }
-
     func toAnalyticsJson() -> String {
         "{\"date\": \"\(date)\", \"timeOfDay\": \"\(timeOfDay.rawValue)\"}"
     }

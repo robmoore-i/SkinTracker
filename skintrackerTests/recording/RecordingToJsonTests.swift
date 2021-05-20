@@ -13,7 +13,7 @@ class RecordingToJsonTests: XCTestCase {
         regionalSpotCount.put(region: .cheek, left: 3)
         regionalSpotCount.put(region: .cheek, right: 1)
         let recording = Recording(-6800752135313250389, Date(year: 2021, month: 5, day: 7, hour: 3, minute: 29), .am, regionalSpotCount)
-        let actualJson = recording.toJson()
+        let actualJson = recording.toJsonV1()
         let expectedJson = """
                            {
                              "id": -6800752135313250389,
@@ -40,5 +40,12 @@ class RecordingToJsonTests: XCTestCase {
         let actualRecording = Recording.fromJsonV1(actualJson)
         let expectedRecording = Recording.fromJsonV1(expectedJson)
         XCTAssertEqual(actualRecording, expectedRecording)
+    }
+}
+
+extension Recording {
+    func toJsonV1() -> String {
+        let encodedData = try! JSONEncoder().encode(toRealmObjectV1())
+        return String(data: encodedData, encoding: .utf8)!
     }
 }
