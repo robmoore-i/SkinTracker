@@ -16,6 +16,7 @@
 		1B9C529D1F6877DDC83E9BFA /* RecordingToJsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */; };
 		1B9C53A9FA73E75A29CBC3D9 /* FeedbackModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5BF899437DEB8E0EE090 /* FeedbackModal.swift */; };
 		1B9C53C49A7DC93C4522F103 /* FaceRegionSpotCountGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */; };
+		1B9C542CC0A23D2EACB8FBCE /* RecordingsBackupDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5FE839D1AF0522795A72 /* RecordingsBackupDocument.swift */; };
 		1B9C54968C6D6224044C912D /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53A262ECA94894B87166 /* TabbedView.swift */; };
 		1B9C54A630C304DA942E7794 /* AddRecordingFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C540D8E7A51C6A28C7046 /* AddRecordingFloatingActionButton.swift */; };
 		1B9C5508D9C19AC3C2AA7728 /* DateRangeLengthDescriptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */; };
@@ -28,14 +29,15 @@
 		1B9C588F62E88DA3128CED07 /* RegionalSpotCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */; };
 		1B9C59D85F0AB7E6F7179E45 /* RecordingIsForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52AFF554CCB28DC5A8CC /* RecordingIsForTests.swift */; };
 		1B9C5A82FBF9A31C6787912C /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */; };
+		1B9C5A927F2F3094BD190B0F /* ExportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C555A9CA3C1C278ED50AC /* ExportRecordingsButton.swift */; };
 		1B9C5ACF258CC71CE02AE8A5 /* TrackedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C561BAF6FF09E645CDFD5 /* TrackedEvent.swift */; };
 		1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */; };
+		1B9C5BA1DF38729863E99104 /* ExportRecordingsFilenameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5C82A4F9B29DA691735D /* ExportRecordingsFilenameTest.swift */; };
 		1B9C5C82F7DA0C098BB12A86 /* IdentifiedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C544709B1E9D7300F5A9D /* IdentifiedDevice.swift */; };
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
 		1B9C5D45C2C5694A631F985D /* ReminderNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C55479508AA4E2DAA30D1 /* ReminderNotificationScheduler.swift */; };
 		1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C593352F029084B32DD55 /* TabHeader.swift */; };
 		1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53AA81780815A3FDEE84 /* Recording.swift */; };
-		1B9C5F7723F95FD5A789E186 /* ExportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C531C60E59F6A394A77E2 /* ExportRecordingsButton.swift */; };
 		D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5D926457D7F00BBAD0D /* SwiftDate */; };
 		D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */; };
 		D42CC5E126494F4000BBAD0D /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5E026494F4000BBAD0D /* SwiftUICharts */; };
@@ -49,7 +51,7 @@
 		D4F4408E2635621B00B85A1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4408D2635621B00B85A1B /* MainView.swift */; };
 		D4F440902635621C00B85A1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F4408F2635621C00B85A1B /* Assets.xcassets */; };
 		D4F440932635621C00B85A1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F440922635621C00B85A1B /* Preview Assets.xcassets */; };
-		D4F4409E2635621C00B85A1B /* skintrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4409D2635621C00B85A1B /* skintrackerTests.swift */; };
+		D4F4409E2635621C00B85A1B /* SkinTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4409D2635621C00B85A1B /* SkinTrackerTests.swift */; };
 		D4F440A92635621C00B85A1B /* skintrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F440A82635621C00B85A1B /* skintrackerUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +79,6 @@
 		1B9C52C1ED55C5F77349A9FB /* FaceRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegion.swift; sourceTree = "<group>"; };
 		1B9C52F9AD1F4A6E642E1AB7 /* YourRecordingsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRecordingsListView.swift; sourceTree = "<group>"; };
 		1B9C53089B2E49AAAE1B633C /* NotificationConfigurationButtonRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConfigurationButtonRow.swift; sourceTree = "<group>"; };
-		1B9C531C60E59F6A394A77E2 /* ExportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportRecordingsButton.swift; sourceTree = "<group>"; };
 		1B9C53A262ECA94894B87166 /* TabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
 		1B9C53AA81780815A3FDEE84 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		1B9C540D8E7A51C6A28C7046 /* AddRecordingFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordingFloatingActionButton.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
 		1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeLengthDescriptionTests.swift; sourceTree = "<group>"; };
 		1B9C55479508AA4E2DAA30D1 /* ReminderNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderNotificationScheduler.swift; sourceTree = "<group>"; };
+		1B9C555A9CA3C1C278ED50AC /* ExportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportRecordingsButton.swift; sourceTree = "<group>"; };
 		1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportRecordingsButton.swift; sourceTree = "<group>"; };
 		1B9C561BAF6FF09E645CDFD5 /* TrackedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackedEvent.swift; sourceTree = "<group>"; };
 		1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingStorage.swift; sourceTree = "<group>"; };
@@ -96,10 +98,12 @@
 		1B9C59E9E166D07EDC11C294 /* RecordingLessThanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingLessThanTests.swift; sourceTree = "<group>"; };
 		1B9C5BF899437DEB8E0EE090 /* FeedbackModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackModal.swift; sourceTree = "<group>"; };
 		1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalSpotCount.swift; sourceTree = "<group>"; };
+		1B9C5C82A4F9B29DA691735D /* ExportRecordingsFilenameTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportRecordingsFilenameTest.swift; sourceTree = "<group>"; };
 		1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTabbedView.swift; sourceTree = "<group>"; };
 		1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
 		1B9C5F978515BADCE4F6E651 /* AllTimeProgressDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTimeProgressDataView.swift; sourceTree = "<group>"; };
 		1B9C5FBBB71FCC7E41E0D881 /* YourRecordingsListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRecordingsListHeader.swift; sourceTree = "<group>"; };
+		1B9C5FE839D1AF0522795A72 /* RecordingsBackupDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsBackupDocument.swift; sourceTree = "<group>"; };
 		D4F440882635621B00B85A1B /* SkinTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F4408B2635621B00B85A1B /* SkinTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTrackerApp.swift; sourceTree = "<group>"; };
 		D4F4408D2635621B00B85A1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -107,7 +111,7 @@
 		D4F440922635621C00B85A1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D4F440942635621C00B85A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F440992635621C00B85A1B /* SkinTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkinTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4F4409D2635621C00B85A1B /* skintrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skintrackerTests.swift; sourceTree = "<group>"; };
+		D4F4409D2635621C00B85A1B /* SkinTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTrackerTests.swift; sourceTree = "<group>"; };
 		D4F4409F2635621C00B85A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F440A42635621C00B85A1B /* SkinTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkinTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F440A82635621C00B85A1B /* skintrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skintrackerUITests.swift; sourceTree = "<group>"; };
@@ -151,13 +155,22 @@
 		1B9C51664D0D12F26BCFF420 /* your_recordings */ = {
 			isa = PBXGroup;
 			children = (
-				1B9C531C60E59F6A394A77E2 /* ExportRecordingsButton.swift */,
 				1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */,
 				1B9C52F9AD1F4A6E642E1AB7 /* YourRecordingsListView.swift */,
 				1B9C5FBBB71FCC7E41E0D881 /* YourRecordingsListHeader.swift */,
 				1B9C540D8E7A51C6A28C7046 /* AddRecordingFloatingActionButton.swift */,
+				1B9C52028FD4FEAF8F60B1E6 /* export */,
 			);
 			path = your_recordings;
+			sourceTree = "<group>";
+		};
+		1B9C52028FD4FEAF8F60B1E6 /* export */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C555A9CA3C1C278ED50AC /* ExportRecordingsButton.swift */,
+				1B9C5FE839D1AF0522795A72 /* RecordingsBackupDocument.swift */,
+			);
+			path = export;
 			sourceTree = "<group>";
 		};
 		1B9C56D3607E509136C02655 /* recording */ = {
@@ -207,8 +220,17 @@
 			isa = PBXGroup;
 			children = (
 				1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */,
+				1B9C5ACFD66C505EB498FFAA /* your_recordings */,
 			);
 			path = dashboard;
+			sourceTree = "<group>";
+		};
+		1B9C5ACFD66C505EB498FFAA /* your_recordings */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C5C82A4F9B29DA691735D /* ExportRecordingsFilenameTest.swift */,
+			);
+			path = your_recordings;
 			sourceTree = "<group>";
 		};
 		1B9C5E65B3A26C4DB8C3A8FA /* tab */ = {
@@ -282,7 +304,7 @@
 		D4F4409C2635621C00B85A1B /* skintrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				D4F4409D2635621C00B85A1B /* skintrackerTests.swift */,
+				D4F4409D2635621C00B85A1B /* SkinTrackerTests.swift */,
 				D4F4409F2635621C00B85A1B /* Info.plist */,
 				1B9C593E7BCA12EB9718C330 /* recording */,
 				1B9C5AB1A73548E153B4BE17 /* dashboard */,
@@ -461,7 +483,6 @@
 				1B9C54968C6D6224044C912D /* TabbedView.swift in Sources */,
 				1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */,
 				1B9C57C994F163DA93101740 /* AllTimeProgressDataView.swift in Sources */,
-				1B9C5F7723F95FD5A789E186 /* ExportRecordingsButton.swift in Sources */,
 				1B9C51503383B2C84146CC50 /* ImportRecordingsButton.swift in Sources */,
 				1B9C5595117FC10898B6BF6E /* YourRecordingsListView.swift in Sources */,
 				1B9C56E7188685973886EBFD /* YourRecordingsListHeader.swift in Sources */,
@@ -473,6 +494,8 @@
 				1B9C5A82FBF9A31C6787912C /* UsageAnalytics.swift in Sources */,
 				1B9C5C82F7DA0C098BB12A86 /* IdentifiedDevice.swift in Sources */,
 				1B9C5ACF258CC71CE02AE8A5 /* TrackedEvent.swift in Sources */,
+				1B9C5A927F2F3094BD190B0F /* ExportRecordingsButton.swift in Sources */,
+				1B9C542CC0A23D2EACB8FBCE /* RecordingsBackupDocument.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,11 +503,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F4409E2635621C00B85A1B /* skintrackerTests.swift in Sources */,
+				D4F4409E2635621C00B85A1B /* SkinTrackerTests.swift in Sources */,
 				1B9C59D85F0AB7E6F7179E45 /* RecordingIsForTests.swift in Sources */,
 				1B9C522291AB526BC943D998 /* RecordingLessThanTests.swift in Sources */,
 				1B9C529D1F6877DDC83E9BFA /* RecordingToJsonTests.swift in Sources */,
 				1B9C5508D9C19AC3C2AA7728 /* DateRangeLengthDescriptionTests.swift in Sources */,
+				1B9C5BA1DF38729863E99104 /* ExportRecordingsFilenameTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

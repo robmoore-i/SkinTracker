@@ -56,30 +56,30 @@
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>11</integer>
-		</dict>
-		<key>RecordingIsForTests.testSingaporeTimezone.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>7</integer>
-		</dict>
-		<key>RecordingIsForTests.testSingaporeTimezoneWithTimeOfDay.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>9</integer>
 		</dict>
 		<key>RecordingLessThanTests.testWorksForDaysWhoseDateVariesAcrossTimezones.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>7</integer>
 		</dict>
 		<key>RecordingToJsonTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>ExportRecordingsFilenameTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>DateRangeLengthDescriptionTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

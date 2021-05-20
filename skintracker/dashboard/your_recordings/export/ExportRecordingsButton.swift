@@ -27,7 +27,7 @@ struct ExportRecordingsButton: View {
                 isPresented: $isExporting,
                 document: RecordingsBackupDocument(json: recordingStorage.allAsJson()),
                 contentType: .json,
-                defaultFilename: defaultFilename()) { result in
+                defaultFilename: RecordingsBackupDocument.defaultFilename()) { result in
             if case .success = result {
                 print("Exported file successfully")
             } else {
@@ -35,40 +35,4 @@ struct ExportRecordingsButton: View {
             }
         }
     }
-
-    private func defaultFilename() -> String {
-        let d = Date().convertTo(region: Region.current)
-        return "SkinTracker_recordings_backup_\(d.year)-\(d.month)-\(d.day)_\(d.hour).\(d.minute).\(d.second)"
-    }
-}
-
-import UniformTypeIdentifiers
-
-private struct RecordingsBackupDocument: FileDocument {
-    static var readableContentTypes: [UTType] {
-        [.json]
-    }
-
-    var recordingsJson: String
-
-    init(json: String) {
-        recordingsJson = json
-    }
-
-    init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents,
-              let string = String(data: data, encoding: .utf8)
-                else {
-            throw RecordingsBackupError.fileReadMisconfiguration
-        }
-        recordingsJson = string
-    }
-
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        FileWrapper(regularFileWithContents: recordingsJson.data(using: .utf8)!)
-    }
-}
-
-private enum RecordingsBackupError: Error {
-    case fileReadMisconfiguration
 }

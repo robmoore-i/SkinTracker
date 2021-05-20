@@ -4,7 +4,7 @@
 
 import XCTest
 import SwiftDate
-@testable import skintracker
+@testable import SkinTracker
 
 class RecordingLessThanTests: XCTestCase {
     func testRecordingComparisonUsesYear() throws {
