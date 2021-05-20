@@ -187,7 +187,7 @@
 				1B9C52C1ED55C5F77349A9FB /* FaceRegion.swift */,
 				1B9C59B5059330F1D6E5C7E0 /* TimeOfDay.swift */,
 				1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */,
-				1B9C5EB172833C8315CC366F /* realm_storable */,
+				1B9C5EB172833C8315CC366F /* versioned */,
 			);
 			path = recording;
 			sourceTree = "<group>";
@@ -260,14 +260,14 @@
 			path = tab;
 			sourceTree = "<group>";
 		};
-		1B9C5EB172833C8315CC366F /* realm_storable */ = {
+		1B9C5EB172833C8315CC366F /* versioned */ = {
 			isa = PBXGroup;
 			children = (
 				1B9C5B7A96937BD743EE4121 /* RecordingRealmObjectV1.swift */,
 				1B9C5F15FE768187F63243DD /* RecordingRealmObjectV2.swift */,
 				1B9C58B68E005E8BF1CE7562 /* VersionedRecordingRealmStorage.swift */,
 			);
-			path = realm_storable;
+			path = versioned;
 			sourceTree = "<group>";
 		};
 		D44C092F263EA2A100DBD819 /* record */ = {
