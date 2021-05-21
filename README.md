@@ -33,3 +33,5 @@ Ad-hoc tracking solutions suffer from all but the last of those problems.
    see it processing there. If it disappears, that might mean it failed some automatic checks. Apple will email you 
    about that, so check your email.
    
+8. Pretty quickly the processing should complete. You might have to do some compliance stuff related to encryption and
+   US export regulations. Generally you are subject to these regulations. It's not a problem.
