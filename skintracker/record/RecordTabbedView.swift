@@ -75,6 +75,7 @@ private struct SubmitButton: View {
             if (emptyBefore && notEmptyNow) {
                 showEnableNotificationsModal = true
             }
+            hideKeyboard()
         }.frame(maxWidth: 100).padding(10.0)
                 .sheet(isPresented: $showEnableNotificationsModal, content: {
                     VStack {
