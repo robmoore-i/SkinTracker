@@ -62,7 +62,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
 
     func dateDescription() -> String {
         let convertedDate = date.convertTo(region: Region.current)
-        return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.month) \(convertedDate.year)"
+        return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.monthName(.short)) \(convertedDate.year)"
     }
 
     func totalSpotCount() -> Int {
