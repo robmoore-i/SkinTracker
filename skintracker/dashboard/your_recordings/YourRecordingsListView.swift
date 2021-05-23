@@ -12,7 +12,9 @@ struct YourRecordingsListView: View {
     var body: some View {
         ZStack {
             RecordingsList(recordingStorage: recordingStorage).padding(5)
-            AddRecordingFloatingActionButton(selectedTab: $selectedTab)
+            if (!recordingStorage.all.isEmpty) {
+                AddRecordingFloatingActionButton(selectedTab: $selectedTab)
+            }
         }
     }
 }
