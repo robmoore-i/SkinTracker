@@ -15,7 +15,7 @@ struct MainView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             DashboardTabbedView(recordingStorage: recordingStorage, selectedTab: $selectedTab)
-            RecordTabbedView(recordingStorage)
+            RecordTabbedView.usingStorage(recordingStorage)
         }.animation(.linear)
     }
 }

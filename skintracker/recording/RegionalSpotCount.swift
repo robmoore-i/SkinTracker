@@ -5,16 +5,20 @@
 import Foundation
 
 class RegionalSpotCount: Equatable, Hashable, CustomStringConvertible {
-    private var map: [FaceRegion: (left: Int, right: Int)] = [:]
+    private var map: [FaceRegion: (left: Int?, right: Int?)] = [:]
 
     init() {
         FaceRegion.allCases.forEach { region in
-            map[region] = (left: 0, right: 0)
+            map[region] = (left: nil, right: nil)
         }
     }
 
+    private init(_ map: [FaceRegion: (left: Int?, right: Int?)]) {
+        self.map = map
+    }
+
     func get(_ region: FaceRegion) -> (left: Int, right: Int) {
-        map[region] ?? (left: 0, right: 0)
+        (left: map[region]?.left ?? 0, right: map[region]?.right ?? 0)
     }
 
     func put(region: FaceRegion, left: Int, right: Int) {
@@ -30,16 +34,41 @@ class RegionalSpotCount: Equatable, Hashable, CustomStringConvertible {
         map[region]?.right = right
     }
 
+    func delete(leftEntryFor: FaceRegion) {
+        map[leftEntryFor]?.left = nil
+    }
+
+    func delete(rightEntryFor: FaceRegion) {
+        map[rightEntryFor]?.right = nil
+    }
+
+    /**
+     Impose the non-nil values of this map onto the values of the other map, and return the result.
+     */
+    func imposedOnto(_ other: RegionalSpotCount) -> RegionalSpotCount {
+        var map: [FaceRegion: (left: Int?, right: Int?)] = [:]
+        FaceRegion.allCases.forEach { region in
+            map[region] = (
+                    left: self.map[region]?.left ?? other.map[region]?.left,
+                    right: self.map[region]?.right ?? other.map[region]?.right)
+        }
+        return RegionalSpotCount(map)
+    }
+
     func totalSpots() -> Int {
         map.values.map { pair in
-            pair.left + pair.right
+            (pair.left ?? 0) + (pair.right ?? 0)
         }.reduce(0) { (result: Int, next: Int) -> Int in
             result + next
         }
     }
 
     func mostAffectedRegions() -> [String] {
-        map.reduce((n: 1, regionDescriptions: [])) {
+        var realisedMap: [FaceRegion: (left: Int, right: Int)] = [:]
+        FaceRegion.allCases.forEach { region in
+            realisedMap[region] = (left: map[region]?.left ?? 0, right: map[region]?.right ?? 0)
+        }
+        return realisedMap.reduce((n: 1, regionDescriptions: [])) {
             (result: (n: Int, regionDescriptions: [String]),
              tuple: (key: FaceRegion, value: (left: Int, right: Int))) -> (n: Int, regionDescriptions: [String]) in
             var nextResult = result
@@ -60,7 +89,7 @@ class RegionalSpotCount: Equatable, Hashable, CustomStringConvertible {
     }
 
     private func regionDescription(side: String, region: FaceRegion) -> String {
-        if ([FaceRegion.cheek, FaceRegion.eyebrows].contains(region)) {
+        if ([FaceRegion.cheek, FaceRegion.jawline].contains(region)) {
             return "\(side.capitalized) \(region.rawValue)"
         } else if ([.mouth, .chin, .jawline, .forehead, .nose].contains(region)) {
             return "\(side.capitalized) side of \(region.rawValue)"
@@ -70,7 +99,11 @@ class RegionalSpotCount: Equatable, Hashable, CustomStringConvertible {
     }
 
     var description: String {
-        "RegionalSpotCount(map: \(map))"
+        var d = "RegionalSpotCount("
+        FaceRegion.allCases.forEach { region in
+            d.append("[\(region): (\(map[region]?.left?.description ?? "nil"), \(map[region]?.right?.description ?? "nil"))],")
+        }
+        return "\(d))"
     }
 
     func hash(into hasher: inout Hasher) {

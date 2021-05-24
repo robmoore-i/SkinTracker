@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B9C504F84DEAFDC13EFDFE6 /* RecordingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */; };
+		1B9C5069CA5C1D2C68B932D2 /* RegionalSpotCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */; };
 		1B9C514F9091A8F841020FC5 /* ExportRecordingsFilenameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C58085C5F8E157E03410F /* ExportRecordingsFilenameTest.swift */; };
 		1B9C51503383B2C84146CC50 /* ImportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */; };
 		1B9C5177C2FF02D0179EE654 /* UserActivationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C59196EC3AD3DA7A1FFAD /* UserActivationDemoView.swift */; };
@@ -92,6 +93,7 @@
 		1B9C555A9CA3C1C278ED50AC /* ExportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportRecordingsButton.swift; sourceTree = "<group>"; };
 		1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportRecordingsButton.swift; sourceTree = "<group>"; };
 		1B9C561BAF6FF09E645CDFD5 /* TrackedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackedEvent.swift; sourceTree = "<group>"; };
+		1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalSpotCountTests.swift; sourceTree = "<group>"; };
 		1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingStorage.swift; sourceTree = "<group>"; };
 		1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingToJsonTests.swift; sourceTree = "<group>"; };
 		1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayToggle.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				1B9C52AFF554CCB28DC5A8CC /* RecordingIsForTests.swift */,
 				1B9C59E9E166D07EDC11C294 /* RecordingLessThanTests.swift */,
 				1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */,
+				1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */,
 			);
 			path = recording;
 			sourceTree = "<group>";
@@ -445,10 +448,10 @@
 			);
 			mainGroup = D4F4407F2635621A00B85A1B;
 			packageReferences = (
-				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */,
 				D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				D42CC5DF26494F4000BBAD0D /* XCRemoteSwiftPackageReference "ChartView" */,
-				D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
+				D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */,
 				D4B1E36926536A2B0084C820 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = D4F440892635621B00B85A1B /* Products */;
@@ -537,6 +540,7 @@
 				1B9C529D1F6877DDC83E9BFA /* RecordingToJsonTests.swift in Sources */,
 				1B9C5508D9C19AC3C2AA7728 /* DateRangeLengthDescriptionTests.swift in Sources */,
 				1B9C514F9091A8F841020FC5 /* ExportRecordingsFilenameTest.swift in Sources */,
+				1B9C5069CA5C1D2C68B932D2 /* RegionalSpotCountTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,7 +874,7 @@
 				minimumVersion = 1.5.5;
 			};
 		};
-		D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */ = {
+		D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/microsoft/appcenter-sdk-apple.git";
 			requirement = {
@@ -886,7 +890,7 @@
 				minimumVersion = 2.9.3;
 			};
 		};
-		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
@@ -914,17 +918,17 @@
 		};
 		D452D145264FFB7900B210E7 /* AppCenterDistribute */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
 			productName = AppCenterDistribute;
 		};
 		D452D147264FFB7900B210E7 /* AppCenterCrashes */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
 			productName = AppCenterCrashes;
 		};
 		D452D149264FFB7900B210E7 /* AppCenterAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
 			productName = AppCenterAnalytics;
 		};
 		D4B1E36A26536A2B0084C820 /* Mixpanel */ = {
@@ -934,12 +938,12 @@
 		};
 		D4E5DE5626436DDB00FB44BA /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
 			productName = Realm;
 		};
 		D4E5DE5826436DDB00FB44BA /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

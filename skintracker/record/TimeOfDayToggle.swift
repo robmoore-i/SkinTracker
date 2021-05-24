@@ -36,14 +36,26 @@ struct TimeOfDayToggleStyle: ToggleStyle {
 
 struct TimeOfDayToggle: View {
     @Binding var selection: TimeOfDay
+    @Binding var selectedDate: Date
+    @Binding var storedSpotCountsForDateAndTime: RegionalSpotCount
+
+    @ObservedObject var recordingStorage: RecordingStorage
+
     @State private var toggleIsOn = false
 
     var body: some View {
         Toggle("Time of day", isOn: $toggleIsOn)
                 .toggleStyle(TimeOfDayToggleStyle())
                 .onReceive([toggleIsOn].publisher.first()) { value in
-                    UsageAnalytics.event(.toggleRecordingTimeOfDay)
                     selection = toggleIsOn ? TimeOfDay.pm : TimeOfDay.am
                 }
+                .onChange(of: selection, perform: onTimeOfDayChange)
+    }
+
+    private func onTimeOfDayChange(_ timeOfDay: TimeOfDay) {
+        UsageAnalytics.event(.toggleRecordingTimeOfDay, properties: ["timeOfDay": timeOfDay.rawValue])
+        storedSpotCountsForDateAndTime = (recordingStorage.entryFor(date: selectedDate, time: selection)
+                ?? Recording(selectedDate, selection, RegionalSpotCount(/* All Zeros */))
+        ).regionalSpotCount
     }
 }

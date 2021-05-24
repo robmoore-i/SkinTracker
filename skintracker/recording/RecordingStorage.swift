@@ -46,6 +46,12 @@ class RecordingStorage: ObservableObject {
         }
     }
 
+    func entryFor(date: Date, time: TimeOfDay) -> Recording? {
+        all.first(where: { recording in
+            recording.isFor(date: date, time: time)
+        })
+    }
+
     func dateRange() -> Range<Date> {
         // The 'all' collection is ordered from most recent to least recent.
         all.last!.until(all.first!)

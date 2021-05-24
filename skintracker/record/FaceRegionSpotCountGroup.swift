@@ -5,18 +5,23 @@
 import SwiftUI
 
 struct FaceRegionSpotCountGroup: View {
-    @Binding var selection: RegionalSpotCount
+    @Binding var defaultSpotCounts: RegionalSpotCount
+    @Binding var selectedSpotCounts: RegionalSpotCount
 
     var body: some View {
         List(FaceRegion.allCases, id: \.rawValue) { region in
-            FaceRegionSpotCountField(region: region, regionalSpotCount: $selection)
+            FaceRegionSpotCountField(
+                    region: region,
+                    defaultRegionalSpotCount: $defaultSpotCounts,
+                    selectedRegionalSpotCount: $selectedSpotCounts)
         }
     }
 }
 
 private struct FaceRegionSpotCountField: View {
     let region: FaceRegion
-    @Binding var regionalSpotCount: RegionalSpotCount
+    @Binding var defaultRegionalSpotCount: RegionalSpotCount
+    @Binding var selectedRegionalSpotCount: RegionalSpotCount
 
     var body: some View {
         HStack {
@@ -25,43 +30,78 @@ private struct FaceRegionSpotCountField: View {
                 hideKeyboard()
             }
             Spacer()
-            SpotCountTextField(sideLabel: "Left", region: region, regionalSpotCount: $regionalSpotCount,
-                    updateSpotCountsForRegion: { regionalSpotCounts, spotCountInput in
-                        regionalSpotCounts.put(region: region, left: spotCountInput)
-                    })
-            SpotCountTextField(sideLabel: "Right", region: region, regionalSpotCount: $regionalSpotCount,
-                    updateSpotCountsForRegion: { regionalSpotCount, spotCountInput in
-                        regionalSpotCount.put(region: region, right: spotCountInput)
-                    })
+            SpotCountTextField(sideLabel: SideLabel.left, region: region,
+                    defaultRegionalSpotCount: $defaultRegionalSpotCount,
+                    selectedRegionalSpotCount: $selectedRegionalSpotCount)
+            SpotCountTextField(sideLabel: SideLabel.right, region: region,
+                    defaultRegionalSpotCount: $defaultRegionalSpotCount,
+                    selectedRegionalSpotCount: $selectedRegionalSpotCount)
         }
     }
 }
 
+private enum SideLabel: String {
+    case left = "Left"
+    case right = "Right"
+}
+
 private struct SpotCountTextField: View {
-    let sideLabel: String
+    let sideLabel: SideLabel
     let region: FaceRegion
-    @Binding var regionalSpotCount: RegionalSpotCount
-    let updateSpotCountsForRegion: (_: inout RegionalSpotCount, _: Int) -> ()
+    @Binding var defaultRegionalSpotCount: RegionalSpotCount
+    @Binding var selectedRegionalSpotCount: RegionalSpotCount
 
     @State private var text: String = ""
 
     var body: some View {
-        Text(sideLabel).onTapGesture {
-            UsageAnalytics.event(.tapFaceRegionSpotCountFieldSideLabel, properties: ["side": sideLabel.lowercased()])
+        Text(sideLabel.rawValue).onTapGesture {
+            UsageAnalytics.event(.tapFaceRegionSpotCountFieldSideLabel, properties: ["side": sideLabel.rawValue.lowercased()])
             hideKeyboard()
         }
-        TextField("0", text: $text)
+        TextField(placeholderText(), text: $text)
                 .keyboardType(.numberPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(maxWidth: 40)
                 .onChange(of: text) { newText in
                     UsageAnalytics.event(.changeRecordingSpotCountEntry,
                             properties: [
-                                "side": "\(sideLabel.lowercased())",
+                                "side": "\(sideLabel.rawValue.lowercased())",
                                 "region": "\(region.rawValue)",
                                 "count": newText])
-                    updateSpotCountsForRegion(&regionalSpotCount, Int(newText) ?? 0)
-                    print("Selection[\(region)] is \(regionalSpotCount.get(region))")
+                    if (newText.isEmpty) {
+                        clearEntry()
+                    } else {
+                        updateSelection(spotCountInput: Int(newText) ?? 0)
+                    }
+                    print("Selection[\(region)] is \(selectedRegionalSpotCount.get(region))")
                 }
+    }
+
+    private func clearEntry() {
+        switch sideLabel {
+        case .left:
+            selectedRegionalSpotCount.delete(leftEntryFor: region)
+        case .right:
+            selectedRegionalSpotCount.delete(rightEntryFor: region)
+        }
+    }
+
+    private func updateSelection(spotCountInput: Int) {
+        switch sideLabel {
+        case .left:
+            selectedRegionalSpotCount.put(region: region, left: spotCountInput)
+        case .right:
+            selectedRegionalSpotCount.put(region: region, right: spotCountInput)
+        }
+    }
+
+    private func placeholderText() -> String {
+        let counts: (left: Int, right: Int) = defaultRegionalSpotCount.get(region)
+        switch sideLabel {
+        case .left:
+            return "\(counts.left)"
+        case .right:
+            return "\(counts.right)"
+        }
     }
 }

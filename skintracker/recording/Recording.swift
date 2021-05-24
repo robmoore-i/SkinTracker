@@ -10,7 +10,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
 
     private let date: Date
     private let timeOfDay: TimeOfDay
-    private let regionalSpotCount: RegionalSpotCount
+    let regionalSpotCount: RegionalSpotCount
 
     convenience init(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
         self.init(UUID().hashValue, date, timeOfDay, regionalSpotCount)
