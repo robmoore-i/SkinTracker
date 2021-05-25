@@ -33,5 +33,8 @@ Ad-hoc tracking solutions suffer from all but the last of those problems.
    see it processing there. If it disappears, that might mean it failed some automatic checks. Apple will email you 
    about that, so check your email.
    
-8. Pretty quickly the processing should complete. You might have to do some compliance stuff related to encryption and
+8. Pretty quickly the processing should complete. You'll have to do some compliance stuff related to encryption and
    US export regulations. Generally you are subject to these regulations. It's not a problem.
+   
+9. Your build will spend some time waiting for review from Apple. After that, you can enable the public link and people
+   can start using and testing the app through TestFlight.
