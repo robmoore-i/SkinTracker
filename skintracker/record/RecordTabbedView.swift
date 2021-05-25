@@ -9,24 +9,24 @@ struct RecordTabbedView: View {
 
     @State private var selectedDate: Date
     @State private var selectedTimeOfDay: TimeOfDay
-    @State private var storedRecording: FormDefaultRecording
+    @State private var formRecording: FormRecording
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
     @State private var showFeedbackModal = false
 
     private init(_ recordingStorage: RecordingStorage,
                  initialDate: Date,
                  initialTimeOfDay: TimeOfDay,
-                 initialRecording: FormDefaultRecording) {
+                 initialRecording: FormRecording) {
         self.recordingStorage = recordingStorage
         _selectedDate = .init(initialValue: initialDate)
         _selectedTimeOfDay = .init(initialValue: initialTimeOfDay)
-        _storedRecording = .init(initialValue: initialRecording)
+        _formRecording = .init(initialValue: initialRecording)
     }
 
     static func usingStorage(_ recordingStorage: RecordingStorage) -> RecordTabbedView {
         let initialDate = Date()
         let initialTimeOfDay = TimeOfDay.am
-        let formDefaultRecording = FormDefaultRecording(date: initialDate, timeOfDay: initialTimeOfDay, recordingStorage: recordingStorage)
+        let formDefaultRecording = FormRecording(date: initialDate, timeOfDay: initialTimeOfDay, recordingStorage: recordingStorage)
         return RecordTabbedView(recordingStorage,
                 initialDate: initialDate,
                 initialTimeOfDay: initialTimeOfDay,
@@ -39,18 +39,18 @@ struct RecordTabbedView: View {
                 Section {
                     LoggedDatePicker(
                             selection: $selectedDate,
-                            storedRecording: $storedRecording,
+                            formRecording: $formRecording,
                             recordingStorage: recordingStorage)
                     TimeOfDayToggle(
                             selection: $selectedTimeOfDay,
-                            storedRecording: $storedRecording,
+                            formRecording: $formRecording,
                             recordingStorage: recordingStorage)
                 }
 
                 Section {
                     FaceRegionSpotCountGroup(
-                            storedRecording: $storedRecording,
-                            selectedSpotCounts: $selectedSpotCounts)
+                            selectedSpotCounts: $selectedSpotCounts,
+                            formRecording: $formRecording)
                 }
 
                 Section {
@@ -59,8 +59,8 @@ struct RecordTabbedView: View {
                         SubmitButton(
                                 selectedDate: $selectedDate,
                                 selectedTimeOfDay: $selectedTimeOfDay,
-                                storedRecording: $storedRecording,
                                 selectedSpotCounts: $selectedSpotCounts,
+                                formRecording: $formRecording,
                                 recordingStorage: recordingStorage)
                         Spacer()
                     }
@@ -72,7 +72,7 @@ struct RecordTabbedView: View {
 
 private struct LoggedDatePicker: View {
     @Binding var selection: Date
-    @Binding var storedRecording: FormDefaultRecording
+    @Binding var formRecording: FormRecording
 
     @ObservedObject var recordingStorage: RecordingStorage
 
@@ -84,15 +84,15 @@ private struct LoggedDatePicker: View {
     private func onDateChange(_ date: Date) {
         UsageAnalytics.event(.selectDateUsingDatePicker, properties: ["date": "\(date)"])
         print("Selected date: \(date)")
-        storedRecording.refresh(date: date)
+        formRecording.refresh(date: date)
     }
 }
 
 private struct SubmitButton: View {
     @Binding var selectedDate: Date
     @Binding var selectedTimeOfDay: TimeOfDay
-    @Binding var storedRecording: FormDefaultRecording
     @Binding var selectedSpotCounts: RegionalSpotCount
+    @Binding var formRecording: FormRecording
 
     @ObservedObject var recordingStorage: RecordingStorage
 
@@ -103,7 +103,7 @@ private struct SubmitButton: View {
         return Button(label) {
             UsageAnalytics.event(tapEvent)
             let emptyBefore = recordingStorage.all.isEmpty
-            recordingStorage.store(selectedDate, selectedTimeOfDay, storedRecording.mergeSpotCounts(with: selectedSpotCounts))
+            formRecording.store(withUserSelectedSpotCounts: selectedSpotCounts)
             let notEmptyNow = recordingStorage.all.count > 0
             if (emptyBefore && notEmptyNow) {
                 showEnableNotificationsModal = true

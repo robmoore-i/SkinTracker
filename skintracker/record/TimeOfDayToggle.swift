@@ -36,7 +36,7 @@ struct TimeOfDayToggleStyle: ToggleStyle {
 
 struct TimeOfDayToggle: View {
     @Binding var selection: TimeOfDay
-    @Binding var storedRecording: FormDefaultRecording
+    @Binding var formRecording: FormRecording
 
     @ObservedObject var recordingStorage: RecordingStorage
 
@@ -53,6 +53,6 @@ struct TimeOfDayToggle: View {
 
     private func onTimeOfDayChange(_ timeOfDay: TimeOfDay) {
         UsageAnalytics.event(.toggleRecordingTimeOfDay, properties: ["timeOfDay": timeOfDay.rawValue])
-        storedRecording.refresh(timeOfDay: timeOfDay)
+        formRecording.refresh(timeOfDay: timeOfDay)
     }
 }

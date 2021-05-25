@@ -60,6 +60,14 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         timeOfDay == time
     }
 
+    func isForSameDateAndTimeAs(other: Recording) -> Bool {
+        isFor(date: other.date, time: other.timeOfDay)
+    }
+
+    func withImposedSpotCounts(_ selectedSpotCount: RegionalSpotCount) -> Recording {
+        Recording(date, timeOfDay, selectedSpotCount.imposedOnto(regionalSpotCount))
+    }
+
     func dateDescription() -> String {
         let convertedDate = date.convertTo(region: Region.current)
         return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.monthName(.short)) \(convertedDate.year)"

@@ -8,9 +8,9 @@ import Foundation
  This represents the Recording whose values will be used as defaults in the form if it is submitted. In particular, if a
  given time and day are selected, and a Recording already exists for that combination, then the spot counts for it will
  be considered as the defaults in the form. This struct is responsible for playing the role of this implicit, default
- Recording entry, that underlies the form changes made by the user. The name could certainly be better.
+ Recording entry, that underlies the form changes made by the user.
  */
-struct FormDefaultRecording {
+struct FormRecording {
     private var date: Date
     private var timeOfDay: TimeOfDay
 
@@ -27,12 +27,20 @@ struct FormDefaultRecording {
                 ?? Recording(date, timeOfDay, RegionalSpotCount(/* All Zeros */))
     }
 
-    func spotCountFor(region: FaceRegion) -> (left: Int, right: Int) {
-        recording.regionalSpotCount.get(region)
+    /**
+     - Parameter spotCounts: The spot counts to overlay on top of the default values provided by the underlying
+      Recording that is encapsulated by this object.
+
+     This method persists this object using its given RecordingStorage, after applying the user's spot count field
+     changes, which are represented by the parameter. If the Recording existed before, it will be overwritten. Otherwise
+     a new entry will be added.
+     */
+    func store(withUserSelectedSpotCounts spotCounts: RegionalSpotCount) {
+        recordingStorage.store(recording.withImposedSpotCounts(spotCounts))
     }
 
-    func mergeSpotCounts(with: RegionalSpotCount) -> RegionalSpotCount {
-        recording.regionalSpotCount.imposedOnto(with)
+    func placeholderSpotCount(forRegion region: FaceRegion) -> (left: Int, right: Int) {
+        recording.regionalSpotCount.get(region)
     }
 
     mutating func refresh(date: Date) {
@@ -45,7 +53,7 @@ struct FormDefaultRecording {
         refreshRecording()
     }
 
-    mutating func refreshRecording() {
+    private mutating func refreshRecording() {
         recording = recordingStorage.entryFor(date: date, time: timeOfDay)
                 ?? Recording(date, timeOfDay, RegionalSpotCount(/* All Zeros */))
     }

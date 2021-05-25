@@ -57,10 +57,9 @@ class RecordingStorage: ObservableObject {
         all.last!.until(all.first!)
     }
 
-    func store(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
-        let newRecord = Recording(date, timeOfDay, regionalSpotCount)
-        if let existingRecord = all.first(where: { recording in
-            recording.isFor(date: date, time: timeOfDay)
+    func store(_ newRecord: Recording) {
+        if let existingRecord = all.first(where: { (recording: Recording) in
+            recording.isForSameDateAndTimeAs(other: newRecord)
         }) {
             overwrite(existingRecord: existingRecord, newRecord: newRecord)
         } else {
