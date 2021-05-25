@@ -51,35 +51,35 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>RecordingLessThanTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>7</integer>
-		</dict>
 		<key>ExportRecordingsFilenameTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
-		<key>DateRangeLengthDescriptionTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>DateRangeLengthDescriptionTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>RegionalSpotCountTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>RegionalSpotCountTests.testMergingTogether.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>RegionalSpotCountTests.testMergingTogether.xcscheme</key>
+		<key>TimeOfDayFromGuessTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

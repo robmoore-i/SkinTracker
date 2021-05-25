@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1B9C504F84DEAFDC13EFDFE6 /* RecordingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */; };
 		1B9C5069CA5C1D2C68B932D2 /* RegionalSpotCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */; };
+		1B9C511CB888839BB003DC3A /* TimeOfDayFromGuessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C504CCA1039F34EB5327B /* TimeOfDayFromGuessTests.swift */; };
 		1B9C514F9091A8F841020FC5 /* ExportRecordingsFilenameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C58085C5F8E157E03410F /* ExportRecordingsFilenameTest.swift */; };
 		1B9C51503383B2C84146CC50 /* ImportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */; };
 		1B9C5177C2FF02D0179EE654 /* UserActivationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C59196EC3AD3DA7A1FFAD /* UserActivationDemoView.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B9C504CCA1039F34EB5327B /* TimeOfDayFromGuessTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayFromGuessTests.swift; sourceTree = "<group>"; };
 		1B9C50734FD2384D8B7B4AF8 /* DashboardTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTabbedView.swift; sourceTree = "<group>"; };
 		1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegionSpotCountGroup.swift; sourceTree = "<group>"; };
 		1B9C52AFF554CCB28DC5A8CC /* RecordingIsForTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingIsForTests.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				1B9C59E9E166D07EDC11C294 /* RecordingLessThanTests.swift */,
 				1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */,
 				1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */,
+				1B9C504CCA1039F34EB5327B /* TimeOfDayFromGuessTests.swift */,
 			);
 			path = recording;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				1B9C5508D9C19AC3C2AA7728 /* DateRangeLengthDescriptionTests.swift in Sources */,
 				1B9C514F9091A8F841020FC5 /* ExportRecordingsFilenameTest.swift in Sources */,
 				1B9C5069CA5C1D2C68B932D2 /* RegionalSpotCountTests.swift in Sources */,
+				1B9C511CB888839BB003DC3A /* TimeOfDayFromGuessTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

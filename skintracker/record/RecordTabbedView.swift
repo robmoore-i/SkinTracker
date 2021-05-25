@@ -15,7 +15,7 @@ struct RecordTabbedView: View {
     init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage
         let initialDate = Date()
-        let initialTimeOfDay = TimeOfDay.am
+        let initialTimeOfDay = TimeOfDay.fromGuess(basedOn: initialDate)
         let initialFormRecording = FormRecording(date: initialDate, timeOfDay: initialTimeOfDay, recordingStorage: recordingStorage)
         _selectedDate = .init(initialValue: initialDate)
         _selectedTimeOfDay = .init(initialValue: initialTimeOfDay)
@@ -28,12 +28,10 @@ struct RecordTabbedView: View {
                 Section {
                     LoggedDatePicker(
                             selection: $selectedDate,
-                            formRecording: $formRecording,
-                            recordingStorage: recordingStorage)
+                            formRecording: $formRecording)
                     TimeOfDayToggle(
                             selection: $selectedTimeOfDay,
-                            formRecording: $formRecording,
-                            recordingStorage: recordingStorage)
+                            formRecording: $formRecording)
                 }
 
                 Section {
@@ -62,8 +60,6 @@ struct RecordTabbedView: View {
 private struct LoggedDatePicker: View {
     @Binding var selection: Date
     @Binding var formRecording: FormRecording
-
-    @ObservedObject var recordingStorage: RecordingStorage
 
     var body: some View {
         DatePicker("Date", selection: $selection, displayedComponents: .date)

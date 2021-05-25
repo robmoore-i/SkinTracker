@@ -38,9 +38,7 @@ struct TimeOfDayToggle: View {
     @Binding var selection: TimeOfDay
     @Binding var formRecording: FormRecording
 
-    @ObservedObject var recordingStorage: RecordingStorage
-
-    @State private var toggleIsOn = false
+    @State private var toggleIsOn: Bool = TimeOfDayToggle.initialToggleState()
 
     var body: some View {
         Toggle("Time of day", isOn: $toggleIsOn)
@@ -54,5 +52,9 @@ struct TimeOfDayToggle: View {
     private func onTimeOfDayChange(_ timeOfDay: TimeOfDay) {
         UsageAnalytics.event(.toggleRecordingTimeOfDay, properties: ["timeOfDay": timeOfDay.rawValue])
         formRecording.refresh(timeOfDay: timeOfDay)
+    }
+
+    private static func initialToggleState() -> Bool {
+        TimeOfDay.presentlyAssumedValue() == .pm
     }
 }
