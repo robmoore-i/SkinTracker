@@ -40,7 +40,7 @@ struct FormRecording {
     }
 
     func placeholderSpotCount(forRegion region: FaceRegion) -> (left: Int, right: Int) {
-        recording.regionalSpotCount.get(region)
+        recording.spotCount(forRegion: region)
     }
 
     mutating func refresh(date: Date) {

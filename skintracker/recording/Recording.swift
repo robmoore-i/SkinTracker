@@ -10,7 +10,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
 
     private let date: Date
     private let timeOfDay: TimeOfDay
-    let regionalSpotCount: RegionalSpotCount
+    private let regionalSpotCount: RegionalSpotCount
 
     convenience init(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
         self.init(UUID().hashValue, date, timeOfDay, regionalSpotCount)
@@ -62,6 +62,10 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
 
     func isForSameDateAndTimeAs(other: Recording) -> Bool {
         isFor(date: other.date, time: other.timeOfDay)
+    }
+
+    func spotCount(forRegion region: FaceRegion) -> (left: Int, right: Int) {
+        regionalSpotCount.get(region)
     }
 
     func withImposedSpotCounts(_ selectedSpotCount: RegionalSpotCount) -> Recording {
