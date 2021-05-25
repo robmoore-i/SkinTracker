@@ -11,7 +11,6 @@ struct RecordTabbedView: View {
     @State private var selectedTimeOfDay: TimeOfDay
     @State private var formRecording: FormRecording
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
-    @State private var showFeedbackModal = false
 
     init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage
