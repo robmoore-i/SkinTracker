@@ -13,24 +13,14 @@ struct RecordTabbedView: View {
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
     @State private var showFeedbackModal = false
 
-    private init(_ recordingStorage: RecordingStorage,
-                 initialDate: Date,
-                 initialTimeOfDay: TimeOfDay,
-                 initialRecording: FormRecording) {
+    init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage
-        _selectedDate = .init(initialValue: initialDate)
-        _selectedTimeOfDay = .init(initialValue: initialTimeOfDay)
-        _formRecording = .init(initialValue: initialRecording)
-    }
-
-    static func usingStorage(_ recordingStorage: RecordingStorage) -> RecordTabbedView {
         let initialDate = Date()
         let initialTimeOfDay = TimeOfDay.am
-        let formDefaultRecording = FormRecording(date: initialDate, timeOfDay: initialTimeOfDay, recordingStorage: recordingStorage)
-        return RecordTabbedView(recordingStorage,
-                initialDate: initialDate,
-                initialTimeOfDay: initialTimeOfDay,
-                initialRecording: formDefaultRecording)
+        let initialFormRecording = FormRecording(date: initialDate, timeOfDay: initialTimeOfDay, recordingStorage: recordingStorage)
+        _selectedDate = .init(initialValue: initialDate)
+        _selectedTimeOfDay = .init(initialValue: initialTimeOfDay)
+        _formRecording = .init(initialValue: initialFormRecording)
     }
 
     var body: some View {
