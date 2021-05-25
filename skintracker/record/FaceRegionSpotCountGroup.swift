@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct FaceRegionSpotCountGroup: View {
-    @Binding var storedRecording: Recording
+    @Binding var storedRecording: FormDefaultRecording
     @Binding var selectedSpotCounts: RegionalSpotCount
 
     var body: some View {
@@ -20,7 +20,7 @@ struct FaceRegionSpotCountGroup: View {
 
 private struct FaceRegionSpotCountField: View {
     let region: FaceRegion
-    @Binding var storedRecording: Recording
+    @Binding var storedRecording: FormDefaultRecording
     @Binding var selectedRegionalSpotCount: RegionalSpotCount
 
     var body: some View {
@@ -48,7 +48,7 @@ private enum SideLabel: String {
 private struct SpotCountTextField: View {
     let sideLabel: SideLabel
     let region: FaceRegion
-    @Binding var storedRecording: Recording
+    @Binding var storedRecording: FormDefaultRecording
     @Binding var selectedRegionalSpotCount: RegionalSpotCount
 
     @State private var text: String = ""
@@ -96,7 +96,7 @@ private struct SpotCountTextField: View {
     }
 
     private func placeholderText() -> String {
-        let counts: (left: Int, right: Int) = storedRecording.regionalSpotCount.get(region)
+        let counts: (left: Int, right: Int) = storedRecording.spotCountFor(region: region)
         switch sideLabel {
         case .left:
             return "\(counts.left)"

@@ -9,14 +9,14 @@ struct RecordTabbedView: View {
 
     @State private var selectedDate: Date
     @State private var selectedTimeOfDay: TimeOfDay
-    @State private var storedRecording: Recording
+    @State private var storedRecording: FormDefaultRecording
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
     @State private var showFeedbackModal = false
 
     private init(_ recordingStorage: RecordingStorage,
                  initialDate: Date,
                  initialTimeOfDay: TimeOfDay,
-                 initialRecording: Recording) {
+                 initialRecording: FormDefaultRecording) {
         self.recordingStorage = recordingStorage
         _selectedDate = .init(initialValue: initialDate)
         _selectedTimeOfDay = .init(initialValue: initialTimeOfDay)
@@ -26,13 +26,11 @@ struct RecordTabbedView: View {
     static func usingStorage(_ recordingStorage: RecordingStorage) -> RecordTabbedView {
         let initialDate = Date()
         let initialTimeOfDay = TimeOfDay.am
-        let initialRecording = (recordingStorage.entryFor(date: initialDate, time: initialTimeOfDay)
-                ?? Recording(initialDate, initialTimeOfDay, RegionalSpotCount(/* All Zeros */))
-        )
+        let formDefaultRecording = FormDefaultRecording(date: initialDate, timeOfDay: initialTimeOfDay, recordingStorage: recordingStorage)
         return RecordTabbedView(recordingStorage,
                 initialDate: initialDate,
                 initialTimeOfDay: initialTimeOfDay,
-                initialRecording: initialRecording)
+                initialRecording: formDefaultRecording)
     }
 
     var body: some View {
@@ -41,12 +39,10 @@ struct RecordTabbedView: View {
                 Section {
                     LoggedDatePicker(
                             selection: $selectedDate,
-                            selectedTimeOfDay: $selectedTimeOfDay,
                             storedRecording: $storedRecording,
                             recordingStorage: recordingStorage)
                     TimeOfDayToggle(
                             selection: $selectedTimeOfDay,
-                            selectedDate: $selectedDate,
                             storedRecording: $storedRecording,
                             recordingStorage: recordingStorage)
                 }
@@ -76,8 +72,7 @@ struct RecordTabbedView: View {
 
 private struct LoggedDatePicker: View {
     @Binding var selection: Date
-    @Binding var selectedTimeOfDay: TimeOfDay
-    @Binding var storedRecording: Recording
+    @Binding var storedRecording: FormDefaultRecording
 
     @ObservedObject var recordingStorage: RecordingStorage
 
@@ -89,16 +84,14 @@ private struct LoggedDatePicker: View {
     private func onDateChange(_ date: Date) {
         UsageAnalytics.event(.selectDateUsingDatePicker, properties: ["date": "\(date)"])
         print("Selected date: \(date)")
-        storedRecording = (recordingStorage.entryFor(date: date, time: selectedTimeOfDay)
-                ?? Recording(date, selectedTimeOfDay, RegionalSpotCount(/* All Zeros */))
-        )
+        storedRecording.refresh(date: date)
     }
 }
 
 private struct SubmitButton: View {
     @Binding var selectedDate: Date
     @Binding var selectedTimeOfDay: TimeOfDay
-    @Binding var storedRecording: Recording
+    @Binding var storedRecording: FormDefaultRecording
     @Binding var selectedSpotCounts: RegionalSpotCount
 
     @ObservedObject var recordingStorage: RecordingStorage
@@ -110,12 +103,7 @@ private struct SubmitButton: View {
         return Button(label) {
             UsageAnalytics.event(tapEvent)
             let emptyBefore = recordingStorage.all.isEmpty
-            print("Merging spot counts:")
-            print("selected: \(selectedSpotCounts)")
-            print("stored:   \(storedRecording.regionalSpotCount)")
-            let merged = selectedSpotCounts.imposedOnto(storedRecording.regionalSpotCount)
-            print("merged:   \(merged)")
-            recordingStorage.store(selectedDate, selectedTimeOfDay, merged)
+            recordingStorage.store(selectedDate, selectedTimeOfDay, storedRecording.mergeSpotCounts(with: selectedSpotCounts))
             let notEmptyNow = recordingStorage.all.count > 0
             if (emptyBefore && notEmptyNow) {
                 showEnableNotificationsModal = true
