@@ -9,30 +9,30 @@ struct RecordTabbedView: View {
 
     @State private var selectedDate: Date
     @State private var selectedTimeOfDay: TimeOfDay
-    @State private var storedSpotCountsForDateAndTime: RegionalSpotCount
+    @State private var storedRecording: Recording
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
     @State private var showFeedbackModal = false
 
     private init(_ recordingStorage: RecordingStorage,
                  initialDate: Date,
                  initialTimeOfDay: TimeOfDay,
-                 initialSpotCounts: RegionalSpotCount) {
+                 initialRecording: Recording) {
         self.recordingStorage = recordingStorage
         _selectedDate = .init(initialValue: initialDate)
         _selectedTimeOfDay = .init(initialValue: initialTimeOfDay)
-        _storedSpotCountsForDateAndTime = .init(initialValue: initialSpotCounts)
+        _storedRecording = .init(initialValue: initialRecording)
     }
 
     static func usingStorage(_ recordingStorage: RecordingStorage) -> RecordTabbedView {
         let initialDate = Date()
         let initialTimeOfDay = TimeOfDay.am
-        let initialSpotCounts = (recordingStorage.entryFor(date: initialDate, time: initialTimeOfDay)
+        let initialRecording = (recordingStorage.entryFor(date: initialDate, time: initialTimeOfDay)
                 ?? Recording(initialDate, initialTimeOfDay, RegionalSpotCount(/* All Zeros */))
-        ).regionalSpotCount
+        )
         return RecordTabbedView(recordingStorage,
                 initialDate: initialDate,
                 initialTimeOfDay: initialTimeOfDay,
-                initialSpotCounts: initialSpotCounts)
+                initialRecording: initialRecording)
     }
 
     var body: some View {
@@ -42,18 +42,18 @@ struct RecordTabbedView: View {
                     LoggedDatePicker(
                             selection: $selectedDate,
                             selectedTimeOfDay: $selectedTimeOfDay,
-                            storedSpotCountsForDateAndTime: $storedSpotCountsForDateAndTime,
+                            storedRecording: $storedRecording,
                             recordingStorage: recordingStorage)
                     TimeOfDayToggle(
                             selection: $selectedTimeOfDay,
                             selectedDate: $selectedDate,
-                            storedSpotCountsForDateAndTime: $storedSpotCountsForDateAndTime,
+                            storedRecording: $storedRecording,
                             recordingStorage: recordingStorage)
                 }
 
                 Section {
                     FaceRegionSpotCountGroup(
-                            defaultSpotCounts: $storedSpotCountsForDateAndTime,
+                            storedRecording: $storedRecording,
                             selectedSpotCounts: $selectedSpotCounts)
                 }
 
@@ -63,7 +63,7 @@ struct RecordTabbedView: View {
                         SubmitButton(
                                 selectedDate: $selectedDate,
                                 selectedTimeOfDay: $selectedTimeOfDay,
-                                storedSpotCounts: $storedSpotCountsForDateAndTime,
+                                storedRecording: $storedRecording,
                                 selectedSpotCounts: $selectedSpotCounts,
                                 recordingStorage: recordingStorage)
                         Spacer()
@@ -77,7 +77,7 @@ struct RecordTabbedView: View {
 private struct LoggedDatePicker: View {
     @Binding var selection: Date
     @Binding var selectedTimeOfDay: TimeOfDay
-    @Binding var storedSpotCountsForDateAndTime: RegionalSpotCount
+    @Binding var storedRecording: Recording
 
     @ObservedObject var recordingStorage: RecordingStorage
 
@@ -89,16 +89,16 @@ private struct LoggedDatePicker: View {
     private func onDateChange(_ date: Date) {
         UsageAnalytics.event(.selectDateUsingDatePicker, properties: ["date": "\(date)"])
         print("Selected date: \(date)")
-        storedSpotCountsForDateAndTime = (recordingStorage.entryFor(date: date, time: selectedTimeOfDay)
+        storedRecording = (recordingStorage.entryFor(date: date, time: selectedTimeOfDay)
                 ?? Recording(date, selectedTimeOfDay, RegionalSpotCount(/* All Zeros */))
-        ).regionalSpotCount
+        )
     }
 }
 
 private struct SubmitButton: View {
     @Binding var selectedDate: Date
     @Binding var selectedTimeOfDay: TimeOfDay
-    @Binding var storedSpotCounts: RegionalSpotCount
+    @Binding var storedRecording: Recording
     @Binding var selectedSpotCounts: RegionalSpotCount
 
     @ObservedObject var recordingStorage: RecordingStorage
@@ -112,8 +112,8 @@ private struct SubmitButton: View {
             let emptyBefore = recordingStorage.all.isEmpty
             print("Merging spot counts:")
             print("selected: \(selectedSpotCounts)")
-            print("stored:   \(storedSpotCounts)")
-            let merged = selectedSpotCounts.imposedOnto(storedSpotCounts)
+            print("stored:   \(storedRecording.regionalSpotCount)")
+            let merged = selectedSpotCounts.imposedOnto(storedRecording.regionalSpotCount)
             print("merged:   \(merged)")
             recordingStorage.store(selectedDate, selectedTimeOfDay, merged)
             let notEmptyNow = recordingStorage.all.count > 0

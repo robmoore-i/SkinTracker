@@ -5,14 +5,14 @@
 import SwiftUI
 
 struct FaceRegionSpotCountGroup: View {
-    @Binding var defaultSpotCounts: RegionalSpotCount
+    @Binding var storedRecording: Recording
     @Binding var selectedSpotCounts: RegionalSpotCount
 
     var body: some View {
         List(FaceRegion.allCases, id: \.rawValue) { region in
             FaceRegionSpotCountField(
                     region: region,
-                    defaultRegionalSpotCount: $defaultSpotCounts,
+                    storedRecording: $storedRecording,
                     selectedRegionalSpotCount: $selectedSpotCounts)
         }
     }
@@ -20,7 +20,7 @@ struct FaceRegionSpotCountGroup: View {
 
 private struct FaceRegionSpotCountField: View {
     let region: FaceRegion
-    @Binding var defaultRegionalSpotCount: RegionalSpotCount
+    @Binding var storedRecording: Recording
     @Binding var selectedRegionalSpotCount: RegionalSpotCount
 
     var body: some View {
@@ -31,10 +31,10 @@ private struct FaceRegionSpotCountField: View {
             }
             Spacer()
             SpotCountTextField(sideLabel: SideLabel.left, region: region,
-                    defaultRegionalSpotCount: $defaultRegionalSpotCount,
+                    storedRecording: $storedRecording,
                     selectedRegionalSpotCount: $selectedRegionalSpotCount)
             SpotCountTextField(sideLabel: SideLabel.right, region: region,
-                    defaultRegionalSpotCount: $defaultRegionalSpotCount,
+                    storedRecording: $storedRecording,
                     selectedRegionalSpotCount: $selectedRegionalSpotCount)
         }
     }
@@ -48,7 +48,7 @@ private enum SideLabel: String {
 private struct SpotCountTextField: View {
     let sideLabel: SideLabel
     let region: FaceRegion
-    @Binding var defaultRegionalSpotCount: RegionalSpotCount
+    @Binding var storedRecording: Recording
     @Binding var selectedRegionalSpotCount: RegionalSpotCount
 
     @State private var text: String = ""
@@ -96,7 +96,7 @@ private struct SpotCountTextField: View {
     }
 
     private func placeholderText() -> String {
-        let counts: (left: Int, right: Int) = defaultRegionalSpotCount.get(region)
+        let counts: (left: Int, right: Int) = storedRecording.regionalSpotCount.get(region)
         switch sideLabel {
         case .left:
             return "\(counts.left)"

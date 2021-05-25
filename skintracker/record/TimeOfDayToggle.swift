@@ -37,7 +37,7 @@ struct TimeOfDayToggleStyle: ToggleStyle {
 struct TimeOfDayToggle: View {
     @Binding var selection: TimeOfDay
     @Binding var selectedDate: Date
-    @Binding var storedSpotCountsForDateAndTime: RegionalSpotCount
+    @Binding var storedRecording: Recording
 
     @ObservedObject var recordingStorage: RecordingStorage
 
@@ -54,8 +54,8 @@ struct TimeOfDayToggle: View {
 
     private func onTimeOfDayChange(_ timeOfDay: TimeOfDay) {
         UsageAnalytics.event(.toggleRecordingTimeOfDay, properties: ["timeOfDay": timeOfDay.rawValue])
-        storedSpotCountsForDateAndTime = (recordingStorage.entryFor(date: selectedDate, time: selection)
+        storedRecording = (recordingStorage.entryFor(date: selectedDate, time: selection)
                 ?? Recording(selectedDate, selection, RegionalSpotCount(/* All Zeros */))
-        ).regionalSpotCount
+        )
     }
 }
