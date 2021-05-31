@@ -10,7 +10,7 @@ struct DashboardTabbedView: View {
 
     var body: some View {
         TabbedView(tabName: "Dashboard", tabIconSfImageName: "chart.bar.xaxis") {
-            MostAffectedRegionsDataView(recordingStorage: recordingStorage, selectedTab: $selectedTab).padding()
+            AllTimeProgressDataView(recordingStorage: recordingStorage, selectedTab: $selectedTab).padding()
             YourRecordingsListHeader(recordingStorage: recordingStorage)
             YourRecordingsListView(recordingStorage: recordingStorage, selectedTab: $selectedTab)
         }
