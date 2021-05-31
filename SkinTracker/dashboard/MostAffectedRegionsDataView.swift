@@ -14,14 +14,38 @@ struct MostAffectedRegionsDataView: View {
             if (recordingStorage.all.isEmpty) {
                 UserActivationDemoView(selectedTab: $selectedTab)
             } else {
-                let data: [(String, Int)] = [("2018 Q4", 63150), ("2019 Q1", 50900), ("2019 Q2", 77550), ("2019 Q3", 79600), ("2019 Q4", 92550)]
+                let data: [(String, Int)] = mostAffectedRegionsAggregated()
                 BarChartView(data: ChartData(values: data),
-                        title: "Sales",
-                        legend: "Quarterly",
+                        title: "Most Affected Areas",
+                        legend: "Aggregate of all recordings",
                         cornerImage: nil,
                         valueSpecifier: "%.0f")
             }
             Spacer()
+        }
+    }
+
+    /**
+     A sorted list of tuples, linking the identifying name of a side-specific face region, to the number of times that
+     region was among the most affected, across all recordings.
+     */
+    func mostAffectedRegionsAggregated() -> [(String, Int)] {
+        // Maps the identifying name of a region, to the number of days on which it has been among the most affected.
+        var regions: [String: Int] = [:]
+        recordingStorage.all.forEach({ (recording: Recording) in
+            recording.mostAffectedRegions().forEach({ (region: String) in
+                if let currentCount = regions[region] {
+                    regions[region] = currentCount + 1
+                } else {
+                    regions[region] = 1
+                }
+            })
+        })
+        return regions.map { (key: String, value: Int) in
+            (key, value)
+        }.sorted { tuple1, tuple2 in
+            // Sorted by the number of times the region has been among the most affected
+            tuple1.1 > tuple2.1
         }
     }
 }
