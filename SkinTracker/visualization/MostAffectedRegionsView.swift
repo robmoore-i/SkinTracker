@@ -5,22 +5,17 @@
 import SwiftUI
 import SwiftUICharts
 
-struct MostAffectedRegionsDataView: View {
+struct MostAffectedRegionsView: View {
     @ObservedObject var recordingStorage: RecordingStorage
-    @Binding var selectedTab: Int
 
     var body: some View {
         HStack {
-            if (recordingStorage.all.isEmpty) {
-                UserActivationDemoView(selectedTab: $selectedTab)
-            } else {
-                let data: [(String, Int)] = mostAffectedRegionsAggregated()
-                BarChartView(data: ChartData(values: data),
-                        title: "Most Affected Areas",
-                        legend: "Aggregate of all recordings",
-                        cornerImage: nil,
-                        valueSpecifier: "%.0f")
-            }
+            let data: [(String, Int)] = mostAffectedRegionsAggregated()
+            BarChartView(data: ChartData(values: data),
+                    title: "Most Affected Areas",
+                    legend: "Aggregate of all recordings",
+                    cornerImage: nil,
+                    valueSpecifier: "%.0f")
             Spacer()
         }
     }

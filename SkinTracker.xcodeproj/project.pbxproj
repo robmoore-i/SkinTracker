@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B9C503429F17AB8AF3C76A1 /* VisualizeTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C545335DB6C1A7D798B6F /* VisualizeTabbedView.swift */; };
 		1B9C504F84DEAFDC13EFDFE6 /* RecordingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */; };
 		1B9C5069CA5C1D2C68B932D2 /* RegionalSpotCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */; };
 		1B9C511CB888839BB003DC3A /* TimeOfDayFromGuessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C504CCA1039F34EB5327B /* TimeOfDayFromGuessTests.swift */; };
@@ -30,9 +31,9 @@
 		1B9C56E7188685973886EBFD /* YourRecordingsListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5FBBB71FCC7E41E0D881 /* YourRecordingsListHeader.swift */; };
 		1B9C576FC9D66BD41EA5B8F5 /* DashboardTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C50734FD2384D8B7B4AF8 /* DashboardTabbedView.swift */; };
 		1B9C57766D3E5EB9442E78B3 /* NotificationConfigurationButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53089B2E49AAAE1B633C /* NotificationConfigurationButtonRow.swift */; };
-		1B9C5791E52E1980DCED9D5C /* MostAffectedRegionsDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C54D1CE6A680753146C67 /* MostAffectedRegionsDataView.swift */; };
-		1B9C57C994F163DA93101740 /* AllTimeProgressDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F978515BADCE4F6E651 /* AllTimeProgressDataView.swift */; };
+		1B9C57C994F163DA93101740 /* DashboardDataVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F978515BADCE4F6E651 /* DashboardDataVisualizationView.swift */; };
 		1B9C588F62E88DA3128CED07 /* RegionalSpotCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */; };
+		1B9C595C823F76F674A65D18 /* AllTimeProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5535C9D016607C3C1957 /* AllTimeProgressView.swift */; };
 		1B9C59D85F0AB7E6F7179E45 /* RecordingIsForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52AFF554CCB28DC5A8CC /* RecordingIsForTests.swift */; };
 		1B9C5A82FBF9A31C6787912C /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */; };
 		1B9C5A927F2F3094BD190B0F /* ExportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C555A9CA3C1C278ED50AC /* ExportRecordingsButton.swift */; };
@@ -45,6 +46,7 @@
 		1B9C5D45C2C5694A631F985D /* ReminderNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C55479508AA4E2DAA30D1 /* ReminderNotificationScheduler.swift */; };
 		1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C593352F029084B32DD55 /* TabHeader.swift */; };
 		1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53AA81780815A3FDEE84 /* Recording.swift */; };
+		1B9C5F63F8E83DD305A32035 /* MostAffectedRegionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C55A7C7B27050E99AAFD9 /* MostAffectedRegionsView.swift */; };
 		D42CC5DA26457D7F00BBAD0D /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5D926457D7F00BBAD0D /* SwiftDate */; };
 		D42CC5DC26457D7F00BBAD0D /* SwiftDateStatic in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5DB26457D7F00BBAD0D /* SwiftDateStatic */; };
 		D42CC5E126494F4000BBAD0D /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D42CC5E026494F4000BBAD0D /* SwiftUICharts */; };
@@ -92,10 +94,12 @@
 		1B9C540D8E7A51C6A28C7046 /* AddRecordingFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordingFloatingActionButton.swift; sourceTree = "<group>"; };
 		1B9C544709B1E9D7300F5A9D /* IdentifiedDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiedDevice.swift; sourceTree = "<group>"; };
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
-		1B9C54D1CE6A680753146C67 /* MostAffectedRegionsDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostAffectedRegionsDataView.swift; sourceTree = "<group>"; };
+		1B9C545335DB6C1A7D798B6F /* VisualizeTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizeTabbedView.swift; sourceTree = "<group>"; };
 		1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeLengthDescriptionTests.swift; sourceTree = "<group>"; };
+		1B9C5535C9D016607C3C1957 /* AllTimeProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTimeProgressView.swift; sourceTree = "<group>"; };
 		1B9C55479508AA4E2DAA30D1 /* ReminderNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderNotificationScheduler.swift; sourceTree = "<group>"; };
 		1B9C555A9CA3C1C278ED50AC /* ExportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportRecordingsButton.swift; sourceTree = "<group>"; };
+		1B9C55A7C7B27050E99AAFD9 /* MostAffectedRegionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostAffectedRegionsView.swift; sourceTree = "<group>"; };
 		1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportRecordingsButton.swift; sourceTree = "<group>"; };
 		1B9C561BAF6FF09E645CDFD5 /* TrackedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackedEvent.swift; sourceTree = "<group>"; };
 		1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalSpotCountTests.swift; sourceTree = "<group>"; };
@@ -115,7 +119,7 @@
 		1B9C5F15FE768187F63243DD /* RecordingRealmObjectV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingRealmObjectV2.swift; sourceTree = "<group>"; };
 		1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTabbedView.swift; sourceTree = "<group>"; };
 		1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
-		1B9C5F978515BADCE4F6E651 /* AllTimeProgressDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTimeProgressDataView.swift; sourceTree = "<group>"; };
+		1B9C5F978515BADCE4F6E651 /* DashboardDataVisualizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardDataVisualizationView.swift; sourceTree = "<group>"; };
 		1B9C5FBBB71FCC7E41E0D881 /* YourRecordingsListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRecordingsListHeader.swift; sourceTree = "<group>"; };
 		1B9C5FE839D1AF0522795A72 /* RecordingsBackupDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsBackupDocument.swift; sourceTree = "<group>"; };
 		D4F440882635621B00B85A1B /* SkinTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +191,14 @@
 			path = export;
 			sourceTree = "<group>";
 		};
+		1B9C538BC546487118E470F1 /* visualize */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C545335DB6C1A7D798B6F /* VisualizeTabbedView.swift */,
+			);
+			path = visualize;
+			sourceTree = "<group>";
+		};
 		1B9C56D3607E509136C02655 /* recording */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,10 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				1B9C50734FD2384D8B7B4AF8 /* DashboardTabbedView.swift */,
-				1B9C5F978515BADCE4F6E651 /* AllTimeProgressDataView.swift */,
+				1B9C5F978515BADCE4F6E651 /* DashboardDataVisualizationView.swift */,
 				1B9C51664D0D12F26BCFF420 /* your_recordings */,
 				1B9C59196EC3AD3DA7A1FFAD /* UserActivationDemoView.swift */,
-				1B9C54D1CE6A680753146C67 /* MostAffectedRegionsDataView.swift */,
 			);
 			path = dashboard;
 			sourceTree = "<group>";
@@ -257,6 +268,15 @@
 				1B9C5860E4ABF95B08DB81BD /* export */,
 			);
 			path = your_recordings;
+			sourceTree = "<group>";
+		};
+		1B9C5DCCE6731E5F1EECDEF3 /* visualization */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C5535C9D016607C3C1957 /* AllTimeProgressView.swift */,
+				1B9C55A7C7B27050E99AAFD9 /* MostAffectedRegionsView.swift */,
+			);
+			path = visualization;
 			sourceTree = "<group>";
 		};
 		1B9C5E65B3A26C4DB8C3A8FA /* tab */ = {
@@ -326,6 +346,8 @@
 				1B9C56D3607E509136C02655 /* recording */,
 				1B9C5E65B3A26C4DB8C3A8FA /* tab */,
 				1B9C583A512DD73713814EFF /* usage_analytics */,
+				1B9C538BC546487118E470F1 /* visualize */,
+				1B9C5DCCE6731E5F1EECDEF3 /* visualization */,
 			);
 			path = SkinTracker;
 			sourceTree = "<group>";
@@ -457,10 +479,10 @@
 			);
 			mainGroup = D4F4407F2635621A00B85A1B;
 			packageReferences = (
-				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */,
+				D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				D42CC5D826457D7F00BBAD0D /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				D42CC5DF26494F4000BBAD0D /* XCRemoteSwiftPackageReference "ChartView" */,
-				D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */,
+				D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
 				D4B1E36926536A2B0084C820 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = D4F440892635621B00B85A1B /* Products */;
@@ -519,7 +541,7 @@
 				1B9C588F62E88DA3128CED07 /* RegionalSpotCount.swift in Sources */,
 				1B9C54968C6D6224044C912D /* TabbedView.swift in Sources */,
 				1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */,
-				1B9C57C994F163DA93101740 /* AllTimeProgressDataView.swift in Sources */,
+				1B9C57C994F163DA93101740 /* DashboardDataVisualizationView.swift in Sources */,
 				1B9C51503383B2C84146CC50 /* ImportRecordingsButton.swift in Sources */,
 				1B9C5595117FC10898B6BF6E /* YourRecordingsListView.swift in Sources */,
 				1B9C56E7188685973886EBFD /* YourRecordingsListHeader.swift in Sources */,
@@ -537,7 +559,9 @@
 				1B9C51C0E5221714F43315F7 /* RecordingRealmObjectV2.swift in Sources */,
 				1B9C5B3A13463E011FF6B177 /* VersionedRecordingRealmStorage.swift in Sources */,
 				1B9C554DA3BD3BBDEF22C64F /* FormRecording.swift in Sources */,
-				1B9C5791E52E1980DCED9D5C /* MostAffectedRegionsDataView.swift in Sources */,
+				1B9C503429F17AB8AF3C76A1 /* VisualizeTabbedView.swift in Sources */,
+				1B9C595C823F76F674A65D18 /* AllTimeProgressView.swift in Sources */,
+				1B9C5F63F8E83DD305A32035 /* MostAffectedRegionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,7 +910,7 @@
 				minimumVersion = 1.5.5;
 			};
 		};
-		D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */ = {
+		D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/microsoft/appcenter-sdk-apple.git";
 			requirement = {
@@ -902,7 +926,7 @@
 				minimumVersion = 2.9.3;
 			};
 		};
-		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */ = {
+		D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
@@ -930,17 +954,17 @@
 		};
 		D452D145264FFB7900B210E7 /* AppCenterDistribute */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
 			productName = AppCenterDistribute;
 		};
 		D452D147264FFB7900B210E7 /* AppCenterCrashes */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
 			productName = AppCenterCrashes;
 		};
 		D452D149264FFB7900B210E7 /* AppCenterAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple.git" */;
+			package = D452D144264FFB7900B210E7 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
 			productName = AppCenterAnalytics;
 		};
 		D4B1E36A26536A2B0084C820 /* Mixpanel */ = {
@@ -950,12 +974,12 @@
 		};
 		D4E5DE5626436DDB00FB44BA /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
+			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = Realm;
 		};
 		D4E5DE5826436DDB00FB44BA /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
+			package = D4E5DE5526436DDB00FB44BA /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

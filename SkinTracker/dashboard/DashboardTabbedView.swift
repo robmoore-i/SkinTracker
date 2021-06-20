@@ -9,8 +9,8 @@ struct DashboardTabbedView: View {
     @Binding var selectedTab: Int
 
     var body: some View {
-        TabbedView(tabName: "Dashboard", tabIconSfImageName: "chart.bar.xaxis") {
-            AllTimeProgressDataView(recordingStorage: recordingStorage, selectedTab: $selectedTab).padding()
+        TabbedView(tabName: "Dashboard", tabIconSfImageName: "newspaper") {
+            DashboardDataVisualizationView(recordingStorage: recordingStorage, selectedTab: $selectedTab).padding()
             YourRecordingsListHeader(recordingStorage: recordingStorage)
             YourRecordingsListView(recordingStorage: recordingStorage, selectedTab: $selectedTab)
         }

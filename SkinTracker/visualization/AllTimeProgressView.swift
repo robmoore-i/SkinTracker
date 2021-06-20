@@ -1,39 +1,34 @@
 //
-// Created by Rob on 10/5/21.
+// Created by Rob on 20/6/21.
 //
 
 import SwiftUI
 import SwiftUICharts
 import SwiftDate
 
-struct AllTimeProgressDataView: View {
+struct AllTimeProgressView: View {
     @ObservedObject var recordingStorage: RecordingStorage
-    @Binding var selectedTab: Int
 
     var body: some View {
         HStack {
-            if (recordingStorage.all.isEmpty) {
-                UserActivationDemoView(selectedTab: $selectedTab)
-            } else {
-                // Requires region-aware interpolation to gracefully account for any potentially missing readings.
-                let twiceDailyTotals: [Double] = recordingStorage.all.map {
-                    Double($0.totalSpotCount())
-                }.reversed()
-                LineChartView(data: twiceDailyTotals,
-                        title: "All time",
-                        legend: "Total spot count",
-                        rateValue: nil,
-                        dropShadow: false,
-                        valueSpecifier: "%.0f spots")
-                TrendIndicator(
-                        percentageChange: 100 * (twiceDailyTotals.last! - twiceDailyTotals.first!) / twiceDailyTotals.first!,
-                        dateRange: recordingStorage.dateRange()
-                ).padding(.leading)
-            }
-            Spacer()
+            // Requires region-aware interpolation to gracefully account for any potentially missing readings.
+            let twiceDailyTotals: [Double] = recordingStorage.all.map {
+                Double($0.totalSpotCount())
+            }.reversed()
+            LineChartView(data: twiceDailyTotals,
+                    title: "All time",
+                    legend: "Total spot count",
+                    rateValue: nil,
+                    dropShadow: false,
+                    valueSpecifier: "%.0f spots")
+            TrendIndicator(
+                    percentageChange: 100 * (twiceDailyTotals.last! - twiceDailyTotals.first!) / twiceDailyTotals.first!,
+                    dateRange: recordingStorage.dateRange()
+            ).padding(.leading)
         }
     }
 }
+
 
 private struct TrendIndicator: View {
     let percentageChange: Double
