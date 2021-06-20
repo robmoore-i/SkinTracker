@@ -16,6 +16,7 @@ struct MostAffectedRegionsView: View {
             BarChartView(data: ChartData(values: data),
                     title: "Most Affected Areas",
                     legend: "Aggregate of all recordings",
+                    dropShadow: false,
                     cornerImage: nil,
                     valueSpecifier: "%.0f")
             VStack {
