@@ -88,10 +88,14 @@ class RegionalSpotCount: Equatable, Hashable, CustomStringConvertible {
         }.regionDescriptions
     }
 
+    /**
+     The String returned by this function is a description of this specific part of the face. It must contain the
+     `rawValue` of the associated FaceRegion, `region`.
+     */
     private func regionDescription(side: String, region: FaceRegion) -> String {
         if ([FaceRegion.cheek, FaceRegion.jawline].contains(region)) {
             return "\(side.capitalized) \(region.rawValue)"
-        } else if ([.mouth, .chin, .jawline, .forehead, .nose].contains(region)) {
+        } else if ([FaceRegion.mouth, FaceRegion.chin, FaceRegion.jawline, FaceRegion.forehead, FaceRegion.nose].contains(region)) {
             return "\(side.capitalized) side of \(region.rawValue)"
         } else {
             return "\(region.rawValue.capitalized) \(side)"
