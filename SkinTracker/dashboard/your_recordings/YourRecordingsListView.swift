@@ -11,33 +11,10 @@ struct YourRecordingsListView: View {
 
     var body: some View {
         ZStack {
-            RecordingsList(recordingStorage: recordingStorage).padding(5)
+            PagedRecordingList(recordingStorage: recordingStorage).padding(5)
             if (!recordingStorage.all.isEmpty) {
                 AddRecordingFloatingActionButton(selectedTab: $selectedTab)
             }
-        }
-    }
-}
-
-private struct RecordingsList: View {
-    @ObservedObject var recordingStorage: RecordingStorage
-
-    var body: some View {
-        List {
-            ForEach(recordingStorage.all) { value in
-                RecordingsListEntry(recording: value).padding(10)
-            }.onDelete(perform: onDelete)
-        }.background(Color.white)
-    }
-
-    func onDelete(v: IndexSet) {
-        if (v.count != 1) {
-            print("Unexpectedly tried to delete \(v.count) recordings at a time, rather than the expected, 1.")
-            print("Offending IndexSet of offsets: \(v)")
-        } else if let index = v.first {
-            UsageAnalytics.event(.swipeToDeleteRecording, properties: ["index": "\(index)"])
-            let recording = recordingStorage.deleteItem(atIndex: index)
-            UsageAnalytics.event(.deleteRecording, properties: ["recording": "\(recording.toAnalyticsJson())"])
         }
     }
 }
@@ -69,6 +46,56 @@ private struct RecordingsListEntry: View {
                 }
                 Spacer()
             }
+        }
+    }
+}
+
+/**
+ This is a recording list which lazily loads the list, rather than trying to load everything at once.
+ */
+private struct PagedRecordingList: View {
+    @ObservedObject var recordingStorage: RecordingStorage
+
+    private let pageSize = 10
+
+    @State private var indices = PagedRecordingList.initiallyLoadedIndices()
+
+    var body: some View {
+        List {
+            ForEach(indices, id: \.self) { index in
+                RecordingsListEntry(recording: recordingStorage.all[index]).padding(10)
+                        .onAppear {
+                            // Load the next page when the fourth to last entry appears
+                            let preloadIndex = 4
+                            if indices.last == index + preloadIndex && index + preloadIndex < maxLoadedEntries() {
+                                let next = maxLoadedEntries() - index
+                                indices.append(contentsOf: Array(index + 1..<index + (next > pageSize ? pageSize : next)))
+                            }
+                        }
+            }.onDelete(perform: onDelete)
+        }
+    }
+
+    /**
+     These are the indices of the recordings list which are initially loaded.
+     */
+    static func initiallyLoadedIndices() -> [Int] {
+        let numberOfRecordingsToLoadInitially = 15
+        return Array(0..<(numberOfRecordingsToLoadInitially - 1))
+    }
+
+    func maxLoadedEntries() -> Int {
+        recordingStorage.all.count
+    }
+
+    func onDelete(v: IndexSet) {
+        if (v.count != 1) {
+            print("Unexpectedly tried to delete \(v.count) recordings at a time, rather than the expected, 1.")
+            print("Offending IndexSet of offsets: \(v)")
+        } else if let index = v.first {
+            UsageAnalytics.event(.swipeToDeleteRecording, properties: ["index": "\(index)"])
+            let recording = recordingStorage.deleteItem(atIndex: index)
+            UsageAnalytics.event(.deleteRecording, properties: ["recording": "\(recording.toAnalyticsJson())"])
         }
     }
 }
