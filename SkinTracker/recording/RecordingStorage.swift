@@ -57,6 +57,11 @@ class RecordingStorage: ObservableObject {
         all.last!.until(all.first!)
     }
 
+    func dateRange(_ recordings: [Recording]) -> Range<Date> {
+        // Assumes that the 'recordings' collection is ordered from most recent to least recent.
+        recordings.last!.until(recordings.first!)
+    }
+
     func store(_ newRecord: Recording) {
         if let existingRecord = all.first(where: { (recording: Recording) in
             recording.isForSameDateAndTimeAs(other: newRecord)
