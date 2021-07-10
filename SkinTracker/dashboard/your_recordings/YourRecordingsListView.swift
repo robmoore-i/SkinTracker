@@ -65,9 +65,8 @@ private struct PagedRecordingList: View {
             ForEach(indices, id: \.self) { index in
                 RecordingsListEntry(recording: recordingStorage.all[index]).padding(10)
                         .onAppear {
-                            // Load the next page when the fourth to last entry appears
-                            let preloadIndex = 4
-                            if indices.last == index + preloadIndex && index + preloadIndex < maxLoadedEntries() {
+                            // Load the next page when the last entry appears
+                            if indices.last == index && index < maxLoadedEntries() {
                                 let next = maxLoadedEntries() - index
                                 indices.append(contentsOf: Array(index + 1..<index + (next > pageSize ? pageSize : next)))
                             }
