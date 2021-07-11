@@ -16,11 +16,10 @@ class RecordingStorage: ObservableObject {
         versionedStorage = realm.versionedRecordingStorage
 
         do {
-            // It guarantees that all operations in this class are done on top of the latest version of the data model.
             try versionedStorage.migration()
         } catch let error {
             print(error.localizedDescription)
-            print("Recording data migration failed. Despite this, no disruption should take place.")
+            fatalError("Recording data migration failed.")
         }
 
         refresh()
