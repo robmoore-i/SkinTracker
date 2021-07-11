@@ -45,12 +45,12 @@ class RecordingLessThanTests: XCTestCase {
     }
 
     func testWorksForDaysWhoseDateVariesAcrossTimezones() throws {
-        let recording1 = recordingOn(day: 13, hour: 2, timeOfDay: .am)
-        let recording2 = recordingOn(day: 12, hour: 22, timeOfDay: .pm)
+        let recording1 = recordingOn(day: 13, hour: 2, timeOfDay: .am, timezone: Zones.australiaBrisbane)
+        let recording2 = recordingOn(day: 12, hour: 22, timeOfDay: .pm, timezone: Zones.gmt)
         XCTAssert(recording1 < recording2)
     }
 
-    private func recordingOn(year: Int = 2021, month: Int = 1, day: Int = 1, hour: Int = 1, timeOfDay: TimeOfDay = .am) -> Recording {
-        Recording(Date(year: year, month: month, day: day, hour: hour, minute: 15), timeOfDay, RegionalSpotCount())
+    private func recordingOn(year: Int = 2021, month: Int = 1, day: Int = 1, hour: Int = 1, timeOfDay: TimeOfDay = .am, timezone: ZoneConvertible = Zones.gmt) -> Recording {
+        Recording(Date(year: year, month: month, day: day, hour: hour, minute: 15, region: Region(zone: timezone)), timeOfDay, RegionalSpotCount())
     }
 }

@@ -139,27 +139,13 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
      Interpretation: R1 < R2 <=> R1 is for an earlier date/time than R2.
      */
     static func <(lhs: Recording, rhs: Recording) -> Bool {
-        let convertedLhs = lhs.date.convertTo(region: Region.current)
-        let convertedRhs = rhs.date.convertTo(region: Region.current)
-        if (convertedLhs.year < convertedRhs.year) {
-            return true
+        let localLhs = lhs.date.convertTo(region: Region.current)
+        let localRhs = rhs.date.convertTo(region: Region.current)
+        if lhs.timeOfDay == rhs.timeOfDay {
+            return localLhs < localRhs
+        } else {
+            return localLhs <= localRhs
         }
-        if (convertedLhs.year == convertedRhs.year
-                && convertedLhs.month < convertedRhs.month) {
-            return true
-        }
-        if (convertedLhs.year == convertedRhs.year
-                && convertedLhs.month == convertedRhs.month
-                && convertedLhs.day < convertedRhs.day) {
-            return true
-        }
-        if (convertedLhs.year == convertedRhs.year
-                && convertedLhs.month == convertedRhs.month
-                && convertedLhs.day == convertedRhs.day
-                && lhs.timeOfDay == .am && rhs.timeOfDay == .pm) {
-            return true
-        }
-        return false
     }
 }
 
