@@ -20,7 +20,7 @@ class RecordingStorage: ObservableObject {
             try versionedStorage.migration()
         } catch let error {
             print(error.localizedDescription)
-            print("Recording data migration failed. No disruption should take place.")
+            print("Recording data migration failed. Despite this, no disruption should take place.")
         }
 
         refresh()
