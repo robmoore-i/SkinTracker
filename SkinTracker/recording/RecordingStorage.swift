@@ -10,8 +10,8 @@ class RecordingStorage: ObservableObject {
     private let storageProvider: StorageProvider
     private let versionedStorage: VersionedRecordingStorage
 
-    init() {
-        storageProvider = RealmStorageProvider()
+    init(_ storageProvider: StorageProvider) {
+        self.storageProvider = storageProvider
         versionedStorage = storageProvider.versionedRecordingStorage
 
         do {
