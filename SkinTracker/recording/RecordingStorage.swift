@@ -9,7 +9,7 @@ class RecordingStorage: ObservableObject {
     private let realm: Realm
     @Published public private(set) var all: [Recording] = []
 
-    private let versionedStorage: VersionedRecordingRealmStorage
+    private let versionedStorage: VersionedRecordingStorage
 
     init() {
         do {
