@@ -52,6 +52,7 @@
 		1B9C5D3F21BFB0E3A103A9FD /* ProgressLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5DCFA0B1217C9C6814DC /* ProgressLineChartView.swift */; };
 		1B9C5D45C2C5694A631F985D /* ReminderNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C55479508AA4E2DAA30D1 /* ReminderNotificationScheduler.swift */; };
 		1B9C5E274518ECA0E2021F93 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C593352F029084B32DD55 /* TabHeader.swift */; };
+		1B9C5E2D75E9C7A03C4FCEA1 /* EmptyRealmStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C514E7A1EFFEFB69A5176 /* EmptyRealmStorageProvider.swift */; };
 		1B9C5EB161063F2BAA1367F2 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53AA81780815A3FDEE84 /* Recording.swift */; };
 		1B9C5F63F8E83DD305A32035 /* MostAffectedRegionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C55A7C7B27050E99AAFD9 /* MostAffectedRegionsView.swift */; };
 		1B9C5FAC1434B37FBD5728BB /* LastTwoWeeksProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5ED7AC183693F8D93FEA /* LastTwoWeeksProgressView.swift */; };
@@ -93,6 +94,7 @@
 		1B9C504CCA1039F34EB5327B /* TimeOfDayFromGuessTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayFromGuessTests.swift; sourceTree = "<group>"; };
 		1B9C50734FD2384D8B7B4AF8 /* DashboardTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTabbedView.swift; sourceTree = "<group>"; };
 		1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegionSpotCountGroup.swift; sourceTree = "<group>"; };
+		1B9C514E7A1EFFEFB69A5176 /* EmptyRealmStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyRealmStorageProvider.swift; sourceTree = "<group>"; };
 		1B9C52AFF554CCB28DC5A8CC /* RecordingIsForTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingIsForTests.swift; sourceTree = "<group>"; };
 		1B9C52C1ED55C5F77349A9FB /* FaceRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegion.swift; sourceTree = "<group>"; };
 		1B9C52F9AD1F4A6E642E1AB7 /* YourRecordingsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRecordingsListView.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			children = (
 				1B9C5EBB112A8E03ED0D579C /* EmptyTabbedView.swift */,
 				1B9C5BBD8262F4F7BF6C8880 /* EmptyStorageProvider.swift */,
+				1B9C514E7A1EFFEFB69A5176 /* EmptyRealmStorageProvider.swift */,
 			);
 			path = performance_test;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				1B9C5BD32662FAEDD4590314 /* RealmStorageProvider.swift in Sources */,
 				1B9C5D2B90094C28EAA584E0 /* EmptyStorageProvider.swift in Sources */,
 				1B9C539C2C0B1300B9C96E7A /* StorageProvider.swift in Sources */,
+				1B9C5E2D75E9C7A03C4FCEA1 /* EmptyRealmStorageProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
