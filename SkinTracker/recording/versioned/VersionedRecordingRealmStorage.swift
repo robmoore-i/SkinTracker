@@ -48,7 +48,8 @@ class VersionedRecordingRealmStorage : VersionedRecordingStorage {
         })
     }
 
-    func recordingsFromData(data: Data) -> [Recording] {
+    func recordingsFromJson(json: String) -> [Recording] {
+        let data: Data = json.data(using: .utf8)!
         let decoder = JSONDecoder()
         if let recordings = try? decoder.decode([RecordingRealmObjectV1].self, from: data) {
             print("Data parsed successfully as V1 Recordings")

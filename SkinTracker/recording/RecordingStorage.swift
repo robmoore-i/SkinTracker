@@ -22,7 +22,6 @@ class RecordingStorage: ObservableObject {
         versionedStorage = VersionedRecordingRealmStorage(realm)
 
         do {
-            // This will execute any data migrations that need to happen.
             // It guarantees that all operations in this class are done on top of the latest version of the data model.
             try versionedStorage.migration()
         } catch let error {
@@ -123,8 +122,7 @@ class RecordingStorage: ObservableObject {
 
     func importAllFromJson(_ json: String) {
         print("Importing JSON: \(json)")
-        let jsonData: Data = json.data(using: .utf8)!
-        let importedRecordings = versionedStorage.recordingsFromData(data: jsonData)
+        let importedRecordings = versionedStorage.recordingsFromJson(json: json)
         print("Parsed recordings: \(importedRecordings)")
         do {
             try realm.write {

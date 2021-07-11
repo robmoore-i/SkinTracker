@@ -5,6 +5,10 @@
 import Foundation
 
 protocol VersionedRecordingStorage {
+    /**
+     Execute any data migrations that need to happen. After this method has been called, all recordings will be stored
+     under the latest model version.
+     */
     func migration() throws
 
     func readAll() -> [Recording]
@@ -13,5 +17,5 @@ protocol VersionedRecordingStorage {
 
     func delete(id: Int)
 
-    func recordingsFromData(data: Data) -> [Recording]
+    func recordingsFromJson(json: String) -> [Recording]
 }
