@@ -38,3 +38,18 @@ Ad-hoc tracking solutions suffer from all but the last of those problems.
    
 9. Your build will spend some time waiting for review from Apple. After that, you can enable the public link and people
    can start using and testing the app through TestFlight.
+   
+### What's up next
+
+I wrote this down on the July 11th, 2021.
+
+- New Feature - Photo taking
+- Defect - Intuitive way to dismiss the text popup when adding entries for recording
+- Defect - If it's past midnight, but the time of day toggle still defaults to PM, then it should also default to the previous date
+- Defect - More feedback when pressing the save/update button
+- Feature Enhancement - Showing users how to set up proper lighting for photo taking
+- Feature Enhancement - Per-region charts for spot counts
+- Performance - Remove the need to load all the data into memory immediately
+- Performance - Remove the need to sort all the data after it gets loaded into memory
+- Onboarding - Tips for those who are new to looking after their skin
+- Onboarding - Graph doesn't make sense until you have a decent amount of data. Do something more engaging for new users
