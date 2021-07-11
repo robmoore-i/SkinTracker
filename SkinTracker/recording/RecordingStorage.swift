@@ -33,11 +33,11 @@ class RecordingStorage: ObservableObject {
         refresh()
     }
 
-    func refresh() {
+    private func refresh() {
         refresh(recordings: versionedStorage.readAll())
     }
 
-    func refresh(recordings: [Recording]) {
+    private func refresh(recordings: [Recording]) {
         all = recordings.sorted(by: Recording.chronologicalSortCriteria)
         print("Recordings(RecordingStorage): \(all)")
     }
@@ -52,11 +52,6 @@ class RecordingStorage: ObservableObject {
         all.first(where: { recording in
             recording.isFor(date: date, time: time)
         })
-    }
-
-    func dateRange() -> Range<Date> {
-        // The 'all' collection is ordered from most recent to least recent.
-        all.last!.until(all.first!)
     }
 
     func dateRange(_ recordings: [Recording]) -> Range<Date> {
