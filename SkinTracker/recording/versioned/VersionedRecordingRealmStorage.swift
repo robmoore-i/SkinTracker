@@ -5,8 +5,14 @@
 import RealmSwift
 import Foundation
 
-class VersionedRecordingRealmStorage {
-    func migration(_ realm: Realm) throws {
+class VersionedRecordingRealmStorage : VersionedRecordingStorage {
+    private let realm: Realm
+
+    init(_ realm: Realm) {
+        self.realm = realm
+    }
+
+    func migration() throws {
         // Collect all older versions all together into the 'all' variable.
         let all: [Recording] = realm.objects(RecordingRealmObjectV1.self).map(Recording.fromRealmObjectV1)
         print("Un-migrated records: \(all)")
@@ -28,15 +34,15 @@ class VersionedRecordingRealmStorage {
         }
     }
 
-    func readAll(_ realm: Realm) -> [Recording] {
+    func readAll() -> [Recording] {
         readAllV2(realm).map(Recording.fromRealmObjectV2)
     }
 
-    func insert(_ realm: Realm, record: Recording) {
+    func insert(record: Recording) {
         realm.add(record.toRealmObjectV2())
     }
 
-    func delete(_ realm: Realm, id: Int) {
+    func delete(id: Int) {
         realm.delete(readAllV2(realm).filter {
             $0.id == id
         })

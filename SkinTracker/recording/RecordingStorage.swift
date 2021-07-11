@@ -9,7 +9,7 @@ class RecordingStorage: ObservableObject {
     private let realm: Realm
     @Published public private(set) var all: [Recording] = []
 
-    private let versionedStorage = VersionedRecordingRealmStorage()
+    private let versionedStorage: VersionedRecordingRealmStorage
 
     init() {
         do {
@@ -19,10 +19,12 @@ class RecordingStorage: ObservableObject {
             fatalError("Couldn't initialise Realm")
         }
 
+        versionedStorage = VersionedRecordingRealmStorage(realm)
+
         do {
             // This will execute any data migrations that need to happen.
             // It guarantees that all operations in this class are done on top of the latest version of the data model.
-            try versionedStorage.migration(realm)
+            try versionedStorage.migration()
         } catch let error {
             print(error.localizedDescription)
             print("Recording data migration failed. No disruption should take place.")
@@ -32,7 +34,7 @@ class RecordingStorage: ObservableObject {
     }
 
     func refresh() {
-        refresh(recordings: versionedStorage.readAll(realm))
+        refresh(recordings: versionedStorage.readAll())
     }
 
     func refresh(recordings: [Recording]) {
@@ -77,9 +79,9 @@ class RecordingStorage: ObservableObject {
         print("Saving updated entry: \(newRecord)")
         do {
             try realm.write {
-                versionedStorage.delete(realm, id: existingRecord.id)
+                versionedStorage.delete(id: existingRecord.id)
                 all.remove(id: existingRecord.id)
-                versionedStorage.insert(realm, record: newRecord)
+                versionedStorage.insert(record: newRecord)
                 all.insertSorted(newRecord)
                 print("Wrote successfully")
             }
@@ -92,7 +94,7 @@ class RecordingStorage: ObservableObject {
         print("Saving new entry: \(newRecord)")
         do {
             try realm.write {
-                versionedStorage.insert(realm, record: newRecord)
+                versionedStorage.insert(record: newRecord)
                 all.insertSorted(newRecord)
                 print("Wrote successfully")
             }
@@ -107,7 +109,7 @@ class RecordingStorage: ObservableObject {
         print("Deleting record: \(recordToDelete)")
         do {
             try realm.write {
-                versionedStorage.delete(realm, id: recordToDelete.id)
+                versionedStorage.delete(id: recordToDelete.id)
                 all.remove(id: recordToDelete.id)
                 print("Wrote successfully")
             }
@@ -133,7 +135,7 @@ class RecordingStorage: ObservableObject {
             try realm.write {
                 realm.deleteAll()
                 importedRecordings.forEach { (recording: Recording) in
-                    versionedStorage.insert(realm, record: recording)
+                    versionedStorage.insert(record: recording)
                 }
                 print("Saved imported recordings successfully")
                 refresh(recordings: importedRecordings)
