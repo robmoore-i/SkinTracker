@@ -58,7 +58,7 @@ class RecordingStorage: ObservableObject {
     private func overwrite(existingRecord: Recording, newRecord: Recording) {
         print("Overwriting existing entry: \(existingRecord)")
         print("Saving updated entry: \(newRecord)")
-        storageProvider.withinWriteTransaction {
+        storageProvider.atomicWrite {
             versionedStorage.delete(id: existingRecord.id)
             all.remove(id: existingRecord.id)
             versionedStorage.insert(record: newRecord)
@@ -69,7 +69,7 @@ class RecordingStorage: ObservableObject {
 
     private func add(newRecord: Recording) {
         print("Saving new entry: \(newRecord)")
-        storageProvider.withinWriteTransaction {
+        storageProvider.atomicWrite {
             versionedStorage.insert(record: newRecord)
             all.insertSorted(newRecord)
             print("Wrote successfully")
@@ -80,7 +80,7 @@ class RecordingStorage: ObservableObject {
         print("Deleting record at index \(index)")
         let recordToDelete = all[index]
         print("Deleting record: \(recordToDelete)")
-        storageProvider.withinWriteTransaction {
+        storageProvider.atomicWrite {
             versionedStorage.delete(id: recordToDelete.id)
             all.remove(id: recordToDelete.id)
             print("Wrote successfully")
@@ -99,7 +99,7 @@ class RecordingStorage: ObservableObject {
         print("Importing JSON: \(json)")
         let importedRecordings = versionedStorage.recordingsFromJson(json: json)
         print("Parsed recordings: \(importedRecordings)")
-        storageProvider.withinWriteTransaction {
+        storageProvider.atomicWrite {
             storageProvider.deleteEverything()
             importedRecordings.forEach { (recording: Recording) in
                 versionedStorage.insert(record: recording)

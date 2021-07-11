@@ -5,7 +5,7 @@
 protocol StorageProvider {
     var versionedRecordingStorage: VersionedRecordingStorage { get }
 
-    func withinWriteTransaction(_ closure: () throws -> ())
+    func atomicWrite(_ closure: () throws -> ())
 
     func deleteEverything()
 }

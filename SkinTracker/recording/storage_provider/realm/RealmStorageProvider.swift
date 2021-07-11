@@ -20,7 +20,7 @@ class RealmStorageProvider : StorageProvider {
         }
     }
 
-    func withinWriteTransaction(_ closure: () throws -> ()) {
+    func atomicWrite(_ closure: () throws -> ()) {
         do {
             try realm.write { try closure() }
         } catch let error {

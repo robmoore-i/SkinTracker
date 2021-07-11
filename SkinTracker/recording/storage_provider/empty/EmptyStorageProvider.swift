@@ -5,7 +5,7 @@
 class EmptyStorageProvider : StorageProvider {
     private(set) var versionedRecordingStorage: VersionedRecordingStorage = EmptyVersionedRecordingStorage()
 
-    func withinWriteTransaction(_ closure: () throws -> ()) {
+    func atomicWrite(_ closure: () throws -> ()) {
         do {
             try closure()
         } catch let error {
