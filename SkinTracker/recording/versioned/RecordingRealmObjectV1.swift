@@ -82,7 +82,7 @@ extension Recording {
     }
 }
 
-extension VersionedRecordingRealmStorage {
+extension RealmVersionedRecordingStorage {
     func readAllV1(_ realm: Realm) -> Results<RecordingRealmObjectV1> {
         realm.objects(RecordingRealmObjectV1.self)
     }

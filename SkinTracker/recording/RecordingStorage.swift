@@ -5,15 +5,14 @@
 import Foundation
 
 class RecordingStorage: ObservableObject {
-    private let realm: RealmAdapter
     @Published public private(set) var all: [Recording] = []
 
+    private let storageProvider: StorageProvider
     private let versionedStorage: VersionedRecordingStorage
 
     init() {
-        realm = RealmAdapter()
-
-        versionedStorage = realm.versionedRecordingStorage
+        storageProvider = RealmStorageProvider()
+        versionedStorage = storageProvider.versionedRecordingStorage
 
         do {
             try versionedStorage.migration()
@@ -59,7 +58,7 @@ class RecordingStorage: ObservableObject {
     private func overwrite(existingRecord: Recording, newRecord: Recording) {
         print("Overwriting existing entry: \(existingRecord)")
         print("Saving updated entry: \(newRecord)")
-        realm.withinWriteTransaction {
+        storageProvider.withinWriteTransaction {
             versionedStorage.delete(id: existingRecord.id)
             all.remove(id: existingRecord.id)
             versionedStorage.insert(record: newRecord)
@@ -70,7 +69,7 @@ class RecordingStorage: ObservableObject {
 
     private func add(newRecord: Recording) {
         print("Saving new entry: \(newRecord)")
-        realm.withinWriteTransaction {
+        storageProvider.withinWriteTransaction {
             versionedStorage.insert(record: newRecord)
             all.insertSorted(newRecord)
             print("Wrote successfully")
@@ -81,7 +80,7 @@ class RecordingStorage: ObservableObject {
         print("Deleting record at index \(index)")
         let recordToDelete = all[index]
         print("Deleting record: \(recordToDelete)")
-        realm.withinWriteTransaction {
+        storageProvider.withinWriteTransaction {
             versionedStorage.delete(id: recordToDelete.id)
             all.remove(id: recordToDelete.id)
             print("Wrote successfully")
@@ -100,8 +99,8 @@ class RecordingStorage: ObservableObject {
         print("Importing JSON: \(json)")
         let importedRecordings = versionedStorage.recordingsFromJson(json: json)
         print("Parsed recordings: \(importedRecordings)")
-        realm.withinWriteTransaction {
-            realm.deleteEverything()
+        storageProvider.withinWriteTransaction {
+            storageProvider.deleteEverything()
             importedRecordings.forEach { (recording: Recording) in
                 versionedStorage.insert(record: recording)
             }

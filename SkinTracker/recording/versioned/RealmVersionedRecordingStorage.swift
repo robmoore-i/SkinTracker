@@ -5,7 +5,7 @@
 import RealmSwift
 import Foundation
 
-class VersionedRecordingRealmStorage : VersionedRecordingStorage {
+class RealmVersionedRecordingStorage: VersionedRecordingStorage {
     private let realm: Realm
 
     init(_ realm: Realm) {
