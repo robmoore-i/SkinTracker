@@ -15,6 +15,7 @@ struct VisualizeTabbedView: View {
         TabbedView(tabName: "Visualize", tabIconSfImageName: "chart.bar.xaxis") {
             AllTimeProgressView(recordingStorage: recordingStorage).padding()
             MostAffectedRegionsView(recordingStorage: recordingStorage).padding()
+            LastTwoWeeksProgressView(recordingStorage: recordingStorage).padding()
         }
     }
 }

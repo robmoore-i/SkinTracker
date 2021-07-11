@@ -10,8 +10,13 @@ struct LastTwoWeeksProgressView: View {
     var body: some View {
         ProgressLineChartView(
                 recordingStorage: recordingStorage,
-                // TODO: Implement
-                recordingsSelector: { recordings in recordings },
-                chartAnnotations: ChartAnnotations(title: "Last 2 weeks", legend: "Total spot count"))
+                recordingsSelector: { $0.filter { $0.isInLastTwoWeeks() } },
+                chartAnnotations: ChartAnnotations(title: "Two weeks", legend: "Total spot count"))
+    }
+}
+
+extension Recording {
+    func isInLastTwoWeeks() -> Bool {
+        isInLast(numberOfDays: 14, beforeDate: Date())
     }
 }

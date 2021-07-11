@@ -13,7 +13,7 @@ struct DashboardDataVisualizationView: View {
             if (recordingStorage.all.isEmpty) {
                 UserActivationDemoView(selectedTab: $selectedTab)
             } else {
-                AllTimeProgressView(recordingStorage: recordingStorage)
+                LastTwoWeeksProgressView(recordingStorage: recordingStorage)
             }
             Spacer()
         }
