@@ -3,23 +3,17 @@
 //
 
 import Foundation
-import RealmSwift
 
 class RecordingStorage: ObservableObject {
-    private let realm: Realm
+    private let realm: RealmAdapter
     @Published public private(set) var all: [Recording] = []
 
     private let versionedStorage: VersionedRecordingStorage
 
     init() {
-        do {
-            realm = try Realm()
-        } catch let error {
-            print(error.localizedDescription)
-            fatalError("Couldn't initialise Realm")
-        }
+        realm = RealmAdapter()
 
-        versionedStorage = VersionedRecordingRealmStorage(realm)
+        versionedStorage = realm.versionedRecordingStorage
 
         do {
             // It guarantees that all operations in this class are done on top of the latest version of the data model.
@@ -53,11 +47,6 @@ class RecordingStorage: ObservableObject {
         })
     }
 
-    func dateRange(_ recordings: [Recording]) -> Range<Date> {
-        // Assumes that the 'recordings' collection is ordered from most recent to least recent.
-        recordings.last!.until(recordings.first!)
-    }
-
     func store(_ newRecord: Recording) {
         if let existingRecord = all.first(where: { (recording: Recording) in
             recording.isForSameDateAndTimeAs(other: newRecord)
@@ -71,29 +60,21 @@ class RecordingStorage: ObservableObject {
     private func overwrite(existingRecord: Recording, newRecord: Recording) {
         print("Overwriting existing entry: \(existingRecord)")
         print("Saving updated entry: \(newRecord)")
-        do {
-            try realm.write {
-                versionedStorage.delete(id: existingRecord.id)
-                all.remove(id: existingRecord.id)
-                versionedStorage.insert(record: newRecord)
-                all.insertSorted(newRecord)
-                print("Wrote successfully")
-            }
-        } catch let error {
-            print(error.localizedDescription)
+        realm.withinWriteTransaction {
+            versionedStorage.delete(id: existingRecord.id)
+            all.remove(id: existingRecord.id)
+            versionedStorage.insert(record: newRecord)
+            all.insertSorted(newRecord)
+            print("Wrote successfully")
         }
     }
 
     private func add(newRecord: Recording) {
         print("Saving new entry: \(newRecord)")
-        do {
-            try realm.write {
-                versionedStorage.insert(record: newRecord)
-                all.insertSorted(newRecord)
-                print("Wrote successfully")
-            }
-        } catch let error {
-            print(error.localizedDescription)
+        realm.withinWriteTransaction {
+            versionedStorage.insert(record: newRecord)
+            all.insertSorted(newRecord)
+            print("Wrote successfully")
         }
     }
 
@@ -101,14 +82,10 @@ class RecordingStorage: ObservableObject {
         print("Deleting record at index \(index)")
         let recordToDelete = all[index]
         print("Deleting record: \(recordToDelete)")
-        do {
-            try realm.write {
-                versionedStorage.delete(id: recordToDelete.id)
-                all.remove(id: recordToDelete.id)
-                print("Wrote successfully")
-            }
-        } catch let error {
-            print(error.localizedDescription)
+        realm.withinWriteTransaction {
+            versionedStorage.delete(id: recordToDelete.id)
+            all.remove(id: recordToDelete.id)
+            print("Wrote successfully")
         }
         return recordToDelete
     }
@@ -124,17 +101,13 @@ class RecordingStorage: ObservableObject {
         print("Importing JSON: \(json)")
         let importedRecordings = versionedStorage.recordingsFromJson(json: json)
         print("Parsed recordings: \(importedRecordings)")
-        do {
-            try realm.write {
-                realm.deleteAll()
-                importedRecordings.forEach { (recording: Recording) in
-                    versionedStorage.insert(record: recording)
-                }
-                print("Saved imported recordings successfully")
-                refresh(recordings: importedRecordings)
+        realm.withinWriteTransaction {
+            realm.deleteEverything()
+            importedRecordings.forEach { (recording: Recording) in
+                versionedStorage.insert(record: recording)
             }
-        } catch let error {
-            print(error.localizedDescription)
+            print("Saved imported recordings successfully")
+            refresh(recordings: importedRecordings)
         }
     }
 }
@@ -157,5 +130,10 @@ extension Array where Element == Recording {
         removeAll {
             $0.id == id
         }
+    }
+
+    func dateRange() -> Range<Date> {
+        // Assumes that the array is ordered from most recent to least recent.
+        last!.until(first!)
     }
 }

@@ -5,12 +5,11 @@
 import SwiftUI
 
 struct LastTwoWeeksProgressView: View {
-    @ObservedObject var recordingStorage: RecordingStorage
+    var recordingStorage: RecordingStorage
 
     var body: some View {
         ProgressLineChartView(
-                recordingStorage: recordingStorage,
-                recordingsSelector: { $0.filter { $0.isInLastTwoWeeks() } },
+                recordings: recordingStorage.all.filter { $0.isInLastTwoWeeks() },
                 chartAnnotations: ChartAnnotations(title: "Two weeks", legend: "Total spot count"))
     }
 }

@@ -12,8 +12,10 @@ struct DashboardDataVisualizationView: View {
         HStack {
             if (recordingStorage.all.isEmpty) {
                 UserActivationDemoView(selectedTab: $selectedTab)
-            } else {
+            } else if (recordingStorage.all.first!.isInLastTwoWeeks()) {
                 LastTwoWeeksProgressView(recordingStorage: recordingStorage)
+            } else {
+                AllTimeProgressView(recordingStorage: recordingStorage)
             }
             Spacer()
         }

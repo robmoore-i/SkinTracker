@@ -7,16 +7,14 @@ import SwiftUICharts
 import SwiftDate
 
 struct ProgressLineChartView: View {
-    @ObservedObject var recordingStorage: RecordingStorage
-    let recordingsSelector: ([Recording]) -> [Recording]
+    let recordings: [Recording]
     let chartAnnotations: ChartAnnotations
 
     var body: some View {
         HStack {
             // At some point, this will require region-aware interpolation to gracefully account for any potentially
             // missing readings.
-            let selectedRecordings = recordingsSelector(recordingStorage.all)
-            let twiceDailyTotals: [Double] = selectedRecordings.map {
+            let twiceDailyTotals: [Double] = recordings.map {
                 Double($0.totalSpotCount())
             }.reversed()
             LineChartView(data: twiceDailyTotals,
@@ -27,7 +25,7 @@ struct ProgressLineChartView: View {
                     valueSpecifier: "%.0f spots")
             TrendIndicator(
                     percentageChange: 100 * (twiceDailyTotals.last! - twiceDailyTotals.first!) / twiceDailyTotals.first!,
-                    dateRange: recordingStorage.dateRange(selectedRecordings)
+                    dateRange: recordings.dateRange()
             ).padding(.leading)
         }
     }

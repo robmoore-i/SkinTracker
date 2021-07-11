@@ -5,12 +5,11 @@
 import SwiftUI
 
 struct AllTimeProgressView: View {
-    @ObservedObject var recordingStorage: RecordingStorage
+    var recordingStorage: RecordingStorage
 
     var body: some View {
         ProgressLineChartView(
-                recordingStorage: recordingStorage,
-                recordingsSelector: { recordings in recordings },
+                recordings: recordingStorage.all,
                 chartAnnotations: ChartAnnotations(title: "All time", legend: "Total spot count"))
     }
 }
