@@ -59,10 +59,11 @@ private struct PagedRecordingList: View {
     private let pageSize = 10
 
     @State private var indices = PagedRecordingList.initiallyLoadedIndices()
+    private static let numberOfRecordingsToLoadInitially = 15
 
     var body: some View {
         List {
-            ForEach(indices, id: \.self) { index in
+            ForEach(safeIndices(), id: \.self) { index in
                 RecordingsListEntry(recording: recordingStorage.all[index]).padding(10)
                         .onAppear {
                             // Load the next page when the last entry appears
@@ -79,8 +80,15 @@ private struct PagedRecordingList: View {
      These are the indices of the recordings list which are initially loaded.
      */
     static func initiallyLoadedIndices() -> [Int] {
-        let numberOfRecordingsToLoadInitially = 15
-        return Array(0..<(numberOfRecordingsToLoadInitially - 1))
+        Array(0..<(PagedRecordingList.numberOfRecordingsToLoadInitially - 1))
+    }
+
+    func safeIndices() -> [Int] {
+        if (recordingStorage.all.count <= PagedRecordingList.numberOfRecordingsToLoadInitially) {
+            return Array(0..<recordingStorage.all.count)
+        } else {
+            return indices
+        }
     }
 
     func maxLoadedEntries() -> Int {
