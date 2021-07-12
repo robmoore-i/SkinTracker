@@ -49,9 +49,11 @@ Ad-hoc tracking solutions suffer from all but the last of those problems.
    
 ### What's up next
 
-I wrote this down on the July 11th, 2021.
+I wrote this down in July 2021.
 
 - New Feature - Photo taking
+- New Feature - View photos in a gallery
+- New Feature - View a timelapse of your photos
 - Defect - Intuitive way to dismiss the text popup when adding entries for recording
 - Defect - If it's past midnight, but the time of day toggle still defaults to PM, then it should also default to the previous date
 - Defect - More feedback when pressing the save/update button
