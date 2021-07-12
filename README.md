@@ -35,9 +35,17 @@ Ad-hoc tracking solutions suffer from all but the last of those problems.
    
 8. Pretty quickly the processing should complete. You'll have to do some compliance stuff related to encryption and
    US export regulations. Generally you are subject to these regulations. It's not a problem.
+   - Does your app use encryption? **Yes**
+   - Does your app qualify for exemptions? **No**
+   - Does your app implement proprietary encryption algorithms? **No**
+   - Does your app implement standard encryption algorithms instead of using Apple implementations? **No**
    
-9. Your build will spend some time waiting for review from Apple. After that, you can enable the public link and people
-   can start using and testing the app through TestFlight.
+9. Submit your app for review. To do this, click the name of your "External Testing" group. At the bottom of the page, 
+   you should see a list titled "Builds". On the right of that title should be a "+" button. Select your recently 
+   uploaded and processed build, and then click "Add".
+
+9. Your build will spend some time waiting for review from Apple. After that, with the public link enabled, people can
+   start using and testing the app through Apple's TestFlight app.
    
 ### What's up next
 
