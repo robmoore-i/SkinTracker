@@ -4,7 +4,11 @@
 
 struct RecordingsInterpolator {
     func twiceDailyTotals(fromRecordings recordings: [Recording]) -> [Double] {
-        recordings.map {
+        if (recordings.isEmpty) {
+            return []
+        }
+
+        return recordings.map {
             Double($0.totalSpotCount())
         }.reversed()
     }

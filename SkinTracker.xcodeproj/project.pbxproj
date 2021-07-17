@@ -39,6 +39,7 @@
 		1B9C57C994F163DA93101740 /* DashboardDataVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F978515BADCE4F6E651 /* DashboardDataVisualizationView.swift */; };
 		1B9C58754AE06B6E3FE33D7D /* RecordingRealmObjectV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C588EA37488E6DEB92739 /* RecordingRealmObjectV1.swift */; };
 		1B9C588F62E88DA3128CED07 /* RegionalSpotCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */; };
+		1B9C58EEC8E9B079C99188ED /* RecordingsInterpolatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5968E9C22AA60C614779 /* RecordingsInterpolatorTests.swift */; };
 		1B9C5952535AB70FFA10AAE2 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5A08A45EBA23555CFAFB /* StorageProvider.swift */; };
 		1B9C595C823F76F674A65D18 /* AllTimeProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5535C9D016607C3C1957 /* AllTimeProgressView.swift */; };
 		1B9C59D3C93E6E132CB7A650 /* RecordingIsInLastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C542C9E2E38FF3DFBF4BB /* RecordingIsInLastTests.swift */; };
@@ -127,6 +128,7 @@
 		1B9C590141591DEB2542EC53 /* FormRecording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormRecording.swift; sourceTree = "<group>"; };
 		1B9C59196EC3AD3DA7A1FFAD /* UserActivationDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivationDemoView.swift; sourceTree = "<group>"; };
 		1B9C593352F029084B32DD55 /* TabHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabHeader.swift; sourceTree = "<group>"; };
+		1B9C5968E9C22AA60C614779 /* RecordingsInterpolatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsInterpolatorTests.swift; sourceTree = "<group>"; };
 		1B9C59B5059330F1D6E5C7E0 /* TimeOfDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
 		1B9C59E9E166D07EDC11C294 /* RecordingLessThanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingLessThanTests.swift; sourceTree = "<group>"; };
 		1B9C5A08A45EBA23555CFAFB /* StorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
@@ -361,6 +363,14 @@
 			path = tab;
 			sourceTree = "<group>";
 		};
+		1B9C5ED9C6A07A6B8A8F9E34 /* visualization */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C5968E9C22AA60C614779 /* RecordingsInterpolatorTests.swift */,
+			);
+			path = visualization;
+			sourceTree = "<group>";
+		};
 		D44C092F263EA2A100DBD819 /* record */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +439,7 @@
 				1B9C593E7BCA12EB9718C330 /* recording */,
 				1B9C5AB1A73548E153B4BE17 /* dashboard */,
 				1B9C5D2EFBE71384F9A9A691 /* record */,
+				1B9C5ED9C6A07A6B8A8F9E34 /* visualization */,
 			);
 			path = SkinTrackerTests;
 			sourceTree = "<group>";
@@ -649,6 +660,7 @@
 				1B9C511CB888839BB003DC3A /* TimeOfDayFromGuessTests.swift in Sources */,
 				1B9C59D3C93E6E132CB7A650 /* RecordingIsInLastTests.swift in Sources */,
 				1B9C535368CF92E2A83D8821 /* InitialDateTimeGuessTests.swift in Sources */,
+				1B9C58EEC8E9B079C99188ED /* RecordingsInterpolatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
