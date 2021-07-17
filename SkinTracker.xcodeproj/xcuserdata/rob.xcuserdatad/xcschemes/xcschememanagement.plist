@@ -58,28 +58,28 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>RecordingIsInLastTests.testRecordingIsInLastTwoWeeks.xcscheme</key>
+		<key>RecordingIsInLastTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>RecordingIsInLastTests.xcscheme</key>
+		<key>RecordingLessThanTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>RecordingLessThanTests.xcscheme</key>
+		<key>RecordingToJsonTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>RecordingToJsonTests.xcscheme</key>
+		<key>InitialDateTimeGuessTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

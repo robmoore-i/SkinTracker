@@ -77,12 +77,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     }
 
     func dateHumanReadableFormat() -> String {
-        let convertedDate = date.convertTo(region: Region.current)
-        return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.monthName(.short)) \(convertedDate.year)"
-    }
-
-    private func datePreciseFormat() -> String {
-        "\(date.toFormat("yyyy-MM-dd'T'HH:mm:ssZ")).\(date.nanosecond)"
+        date.toHumanReadableFormat()
     }
 
     func totalSpotCount() -> Int {
@@ -152,8 +147,8 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         if lhs.timeOfDay != rhs.timeOfDay {
             return "TimeOfDay mismatch. Lhs: \(lhs.timeOfDay) , Rhs: \(rhs.timeOfDay)"
         }
-        if lhs.datePreciseFormat() != rhs.datePreciseFormat() {
-            return "Date mismatch. Lhs: \(lhs.datePreciseFormat()) , Rhs: \(rhs.datePreciseFormat())"
+        if lhs.date.toPreciseFormat() != rhs.date.toPreciseFormat() {
+            return "Date mismatch. Lhs: \(lhs.date.toPreciseFormat()) , Rhs: \(rhs.date.toPreciseFormat())"
         }
         if rhs.regionalSpotCount != lhs.regionalSpotCount {
             return "RegionalSpotCount mismatch. Lhs: \(lhs.regionalSpotCount) , Rhs: \(rhs.regionalSpotCount)"
@@ -164,4 +159,22 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
 
 private enum SerializationError: Error {
     case couldNotSerialize
+}
+
+extension Date {
+    func toHumanReadableFormat() -> String {
+        let convertedDate = convertTo(region: Region.current)
+        return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.monthName(.short)) \(convertedDate.year)"
+    }
+
+    func toPreciseFormat() -> String {
+        "\(toFormat("yyyy-MM-dd'T'HH:mm:ssZ")).\(nanosecond)"
+    }
+
+    static func differenceDescription(lhs: Date, rhs: Date) -> String? {
+        if lhs.toPreciseFormat() != rhs.toPreciseFormat() {
+            return "Date mismatch. Lhs: \(lhs.toPreciseFormat()) , Rhs: \(rhs.toPreciseFormat())"
+        }
+        return nil
+    }
 }

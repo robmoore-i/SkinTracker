@@ -14,7 +14,7 @@ struct RecordTabbedView: View {
 
     init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage
-        let initialDate = Date()
+        let initialDate = Date.fromGuess(basedOn: Date())
         let initialTimeOfDay = TimeOfDay.fromGuess(basedOn: initialDate)
         let initialFormRecording = FormRecording(date: initialDate, timeOfDay: initialTimeOfDay, recordingStorage: recordingStorage)
         _selectedDate = .init(initialValue: initialDate)
@@ -119,5 +119,16 @@ private struct SubmitButton: View {
         } else {
             return ("Save", .tapSaveRecordingButton)
         }
+    }
+}
+
+import SwiftDate
+
+extension Date {
+    static func fromGuess(basedOn currentDate: Date) -> Date {
+        if (currentDate.convertTo(region: Region.current).hour < 4) {
+            return currentDate - 1.days
+        }
+        return currentDate
     }
 }
