@@ -36,7 +36,6 @@ struct ChartAnnotations {
     let legend: String
 }
 
-
 struct TrendIndicator: View {
     let percentageChange: Double
     let dateRange: Range<Date>
