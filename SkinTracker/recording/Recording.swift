@@ -123,18 +123,9 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
      Interpretation: R1 < R2 <=> R1 is an earlier recording than R2.
      */
     static func <(lhs: Recording, rhs: Recording) -> Bool {
-        let localLhs = lhs.date.convertTo(region: Region.current)
-        let localRhs = rhs.date.convertTo(region: Region.current)
-        let onSameDate = localLhs.year == localRhs.year &&
-                localLhs.month == localRhs.month &&
-                localLhs.ordinalDay == localRhs.ordinalDay
-        if (onSameDate) {
-            return lhs.timeOfDay < rhs.timeOfDay
-        } else if lhs.timeOfDay < rhs.timeOfDay {
-            return localLhs <= localRhs
-        } else {
-            return localLhs < localRhs
-        }
+        let dateComparison = Region.current.calendar.compare(lhs.date, to: rhs.date, toGranularity: .day)
+        return dateComparison == ComparisonResult.orderedSame && lhs.timeOfDay < rhs.timeOfDay
+                || dateComparison == .orderedAscending
     }
 
     static func differenceDescription(_ lhs: Recording, _ rhs: Recording) -> String? {
