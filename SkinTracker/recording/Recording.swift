@@ -125,7 +125,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     }
 
     /**
-     Interpretation: R1 < R2 <=> R1 is for an earlier date/time than R2.
+     Interpretation: R1 < R2 <=> R1 is an earlier recording than R2.
      */
     static func <(lhs: Recording, rhs: Recording) -> Bool {
         let localLhs = lhs.date.convertTo(region: Region.current)
