@@ -4,11 +4,11 @@
 
 import RealmSwift
 
-class RealmStorageProvider : StorageProvider {
+class RealmStorageProvider: StorageProvider {
     private let realm: Realm
 
     lazy var versionedRecordingStorage: VersionedRecordingStorage = {
-         RealmVersionedRecordingStorage(realm)
+        RealmVersionedRecordingStorage(realm)
     }()
 
     init() {

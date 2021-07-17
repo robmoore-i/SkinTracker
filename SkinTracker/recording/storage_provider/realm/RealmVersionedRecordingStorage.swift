@@ -4,12 +4,14 @@
 
 import RealmSwift
 import Foundation
+import SwiftDate
 
 class RealmVersionedRecordingStorage: VersionedRecordingStorage {
     private let realm: Realm
 
     init(_ realm: Realm) {
         self.realm = realm
+        print("Initialised versioned storage. Current timezone is '\(Region.current.timeZone)'")
     }
 
     func migration() throws {

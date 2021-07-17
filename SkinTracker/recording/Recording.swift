@@ -76,9 +76,13 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         Recording(date, timeOfDay, selectedSpotCount.imposedOnto(regionalSpotCount))
     }
 
-    func dateDescription() -> String {
+    func dateHumanReadableFormat() -> String {
         let convertedDate = date.convertTo(region: Region.current)
         return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.monthName(.short)) \(convertedDate.year)"
+    }
+
+    private func datePreciseFormat() -> String {
+        "\(date.toFormat("yyyy-MM-dd'T'HH:mm:ssZ")).\(date.nanosecond)"
     }
 
     func totalSpotCount() -> Int {
@@ -126,17 +130,18 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     static func <(lhs: Recording, rhs: Recording) -> Bool {
         let localLhs = lhs.date.convertTo(region: Region.current)
         let localRhs = rhs.date.convertTo(region: Region.current)
-        if lhs.timeOfDay == rhs.timeOfDay {
-            return localLhs < localRhs
-        } else {
+        let onSameDate = localLhs.year == localRhs.year &&
+                localLhs.month == localRhs.month &&
+                localLhs.ordinalDay == localRhs.ordinalDay
+        if (onSameDate) {
+            return lhs.timeOfDay < rhs.timeOfDay
+        } else if lhs.timeOfDay < rhs.timeOfDay {
             return localLhs <= localRhs
+        } else {
+            return localLhs < localRhs
         }
     }
-    
-    private func dateRepresentation() -> String {
-        "\(date.toFormat("yyyy-MM-dd'T'HH:mm:ssZ")).\(date.nanosecond)"
-    }
-    
+
     static func differenceDescription(_ lhs: Recording, _ rhs: Recording) -> String? {
         if type(of: lhs) != type(of: rhs) {
             return "Type mismatch. Lhs: \(type(of: lhs)) , Rhs: \(type(of: rhs))"
@@ -147,8 +152,8 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         if lhs.timeOfDay != rhs.timeOfDay {
             return "TimeOfDay mismatch. Lhs: \(lhs.timeOfDay) , Rhs: \(rhs.timeOfDay)"
         }
-        if lhs.dateRepresentation() != rhs.dateRepresentation() {
-            return "Date mismatch. Lhs: \(lhs.dateRepresentation()) , Rhs: \(rhs.dateRepresentation())"
+        if lhs.datePreciseFormat() != rhs.datePreciseFormat() {
+            return "Date mismatch. Lhs: \(lhs.datePreciseFormat()) , Rhs: \(rhs.datePreciseFormat())"
         }
         if rhs.regionalSpotCount != lhs.regionalSpotCount {
             return "RegionalSpotCount mismatch. Lhs: \(lhs.regionalSpotCount) , Rhs: \(rhs.regionalSpotCount)"

@@ -50,6 +50,18 @@ class RecordingLessThanTests: XCTestCase {
         XCTAssert(recording1 < recording2)
     }
 
+    func testWorksWhenMorningRecordingIsAddedAfterEveningRecording() throws {
+        let recording1 = recordingOn(month: 7, day: 16, hour: 11, timeOfDay: .am, timezone: Zones.asiaSingapore)
+        let recording2 = recordingOn(month: 7, day: 16, hour: 0, timeOfDay: .pm, timezone: Zones.asiaSingapore)
+        XCTAssert(recording1 < recording2)
+    }
+
+    func testDatesInGmt() throws {
+        let recording1 = recordingOn(month: 7, day: 14, hour: 15, timeOfDay: .pm, timezone: Zones.gmt)
+        let recording2 = recordingOn(month: 7, day: 16, hour: 3, timeOfDay: .am, timezone: Zones.gmt)
+        XCTAssert(recording1 < recording2)
+    }
+
     private func recordingOn(year: Int = 2021, month: Int = 1, day: Int = 1, hour: Int = 1, timeOfDay: TimeOfDay = .am, timezone: ZoneConvertible = Zones.gmt) -> Recording {
         Recording(Date(year: year, month: month, day: day, hour: hour, minute: 15, region: Region(zone: timezone)), timeOfDay, RegionalSpotCount())
     }

@@ -11,7 +11,7 @@ struct YourRecordingsListView: View {
 
     var body: some View {
         ZStack {
-            PagedRecordingList(recordingStorage: recordingStorage).padding(5)
+            RecordingList(recordingStorage: recordingStorage).padding(5)
             if (!recordingStorage.all.isEmpty) {
                 AddRecordingFloatingActionButton(selectedTab: $selectedTab)
             }
@@ -25,7 +25,7 @@ private struct RecordingsListEntry: View {
     var body: some View {
         VStack {
             HStack {
-                Text(recording.dateDescription())
+                Text(recording.dateHumanReadableFormat())
                 if (recording.isFor(time: .am)) {
                     Image(systemName: "sun.max").accentColor(.yellow)
                 } else {
@@ -50,49 +50,15 @@ private struct RecordingsListEntry: View {
     }
 }
 
-/**
- This is a recording list which lazily loads the list, rather than trying to load everything at once.
- */
-private struct PagedRecordingList: View {
+private struct RecordingList: View {
     @ObservedObject var recordingStorage: RecordingStorage
-
-    private let pageSize = 10
-
-    @State private var indices = PagedRecordingList.initiallyLoadedIndices()
-    private static let numberOfRecordingsToLoadInitially = 15
 
     var body: some View {
         List {
-            ForEach(safeIndices(), id: \.self) { index in
+            ForEach(recordingStorage.all.indices, id: \.self) { index in
                 RecordingsListEntry(recording: recordingStorage.all[index]).padding(10)
-                        .onAppear {
-                            // Load the next page when the last entry appears
-                            if indices.last == index && index < maxLoadedEntries() {
-                                let next = maxLoadedEntries() - index
-                                indices.append(contentsOf: Array(index + 1..<index + (next > pageSize ? pageSize : next)))
-                            }
-                        }
             }.onDelete(perform: onDelete)
         }
-    }
-
-    /**
-     These are the indices of the recordings list which are initially loaded.
-     */
-    static func initiallyLoadedIndices() -> [Int] {
-        Array(0..<(PagedRecordingList.numberOfRecordingsToLoadInitially - 1))
-    }
-
-    func safeIndices() -> [Int] {
-        if (recordingStorage.all.count <= PagedRecordingList.numberOfRecordingsToLoadInitially) {
-            return Array(0..<recordingStorage.all.count)
-        } else {
-            return indices
-        }
-    }
-
-    func maxLoadedEntries() -> Int {
-        recordingStorage.all.count
     }
 
     func onDelete(v: IndexSet) {

@@ -5,7 +5,7 @@
 import Foundation
 import SwiftDate
 
-enum TimeOfDay: String {
+enum TimeOfDay: String, Comparable {
     case am = "am"
     case pm = "pm"
 
@@ -20,5 +20,9 @@ enum TimeOfDay: String {
         } else {
             return .am
         }
+    }
+
+    static func <(lhs: TimeOfDay, rhs: TimeOfDay) -> Bool {
+        lhs == .am && rhs == .pm
     }
 }
