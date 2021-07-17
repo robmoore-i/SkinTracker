@@ -10,13 +10,13 @@ struct ProgressLineChartView: View {
     let recordings: [Recording]
     let chartAnnotations: ChartAnnotations
 
+    let interpolator = RecordingsInterpolator()
+
     var body: some View {
         HStack {
             // At some point, this will require region-aware interpolation to gracefully account for any potentially
             // missing readings.
-            let twiceDailyTotals: [Double] = recordings.map {
-                Double($0.totalSpotCount())
-            }.reversed()
+            let twiceDailyTotals: [Double] = interpolator.twiceDailyTotals(fromRecordings: recordings)
             LineChartView(data: twiceDailyTotals,
                     title: chartAnnotations.title,
                     legend: chartAnnotations.legend,
