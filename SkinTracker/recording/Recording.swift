@@ -117,22 +117,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         if lhs === rhs {
             return true
         }
-        if type(of: lhs) != type(of: rhs) {
-            return false
-        }
-        if lhs.id != rhs.id {
-            return false
-        }
-        if lhs.date != rhs.date {
-            return false
-        }
-        if lhs.timeOfDay != rhs.timeOfDay {
-            return false
-        }
-        if rhs.regionalSpotCount != lhs.regionalSpotCount {
-            return false
-        }
-        return true
+        return differenceDescription(lhs, rhs) == nil
     }
 
     /**
@@ -146,6 +131,29 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         } else {
             return localLhs <= localRhs
         }
+    }
+    
+    private func dateRepresentation() -> String {
+        "\(date.toFormat("yyyy-MM-dd'T'HH:mm:ssZ")).\(date.nanosecond)"
+    }
+    
+    static func differenceDescription(_ lhs: Recording, _ rhs: Recording) -> String? {
+        if type(of: lhs) != type(of: rhs) {
+            return "Type mismatch. Lhs: \(type(of: lhs)) , Rhs: \(type(of: rhs))"
+        }
+        if lhs.id != rhs.id {
+            return "Id mismatch. Lhs: \(lhs.id) , Rhs: \(rhs.id)"
+        }
+        if lhs.timeOfDay != rhs.timeOfDay {
+            return "TimeOfDay mismatch. Lhs: \(lhs.timeOfDay) , Rhs: \(rhs.timeOfDay)"
+        }
+        if lhs.dateRepresentation() != rhs.dateRepresentation() {
+            return "Date mismatch. Lhs: \(lhs.dateRepresentation()) , Rhs: \(rhs.dateRepresentation())"
+        }
+        if rhs.regionalSpotCount != lhs.regionalSpotCount {
+            return "RegionalSpotCount mismatch. Lhs: \(lhs.regionalSpotCount) , Rhs: \(rhs.regionalSpotCount)"
+        }
+        return nil
     }
 }
 
