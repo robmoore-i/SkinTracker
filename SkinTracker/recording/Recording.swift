@@ -8,6 +8,7 @@ import SwiftDate
 class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     let id: Int
 
+    // TODO: Pull out RecordingTime class and shift date-related responsibilities to it
     private let date: Date
     private let timeOfDay: TimeOfDay
     private let regionalSpotCount: RegionalSpotCount
@@ -146,10 +147,6 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         }
         return nil
     }
-}
-
-private enum SerializationError: Error {
-    case couldNotSerialize
 }
 
 extension Date {
