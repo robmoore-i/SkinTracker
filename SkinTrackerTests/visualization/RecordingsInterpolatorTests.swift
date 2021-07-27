@@ -3,6 +3,7 @@
 //
 
 import XCTest
+import Foundation
 import SwiftDate
 @testable import SkinTracker
 

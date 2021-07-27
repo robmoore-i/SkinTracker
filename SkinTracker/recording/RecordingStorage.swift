@@ -131,7 +131,12 @@ extension Array where Element == Recording {
     }
 
     func dateRange() -> Range<Date> {
+        if (isEmpty) {
+            let arbitraryDate = Date(year: 2021, month: 7, day: 28, hour: 12, minute: 0)
+            let emptyRange = arbitraryDate..<arbitraryDate
+            return emptyRange
+        }
         // Assumes that the array is ordered from most recent to least recent.
-        last!.until(first!)
+        return (last!).recordingTime.until((first!).recordingTime)
     }
 }

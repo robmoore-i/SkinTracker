@@ -28,17 +28,8 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         "Recording(id: \(id), date: \(date), timeOfDay: \(timeOfDay), regionalSpotCounts: \(regionalSpotCount))"
     }
 
-    /**
-     The date, with the hour adjusted to match an assumed value based on the time of day for the recording.
-     */
-    private func assumedDate() -> Date {
-        let localDate = date.convertTo(region: Region.current)
-        let hour = timeOfDay == .am ? 7 : 22
-        return Date(year: localDate.year, month: localDate.month, day: localDate.day, hour: hour, minute: 0, region: Region.current)
-    }
-
-    func until(_ laterRecording: Recording) -> Range<Date> {
-        assumedDate()..<laterRecording.assumedDate()
+    var recordingTime: RecordingTime {
+        RecordingTime(date, timeOfDay)
     }
 
     /**
