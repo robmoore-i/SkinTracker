@@ -9,6 +9,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     let id: Int
 
     // TODO: Pull out RecordingTime class and shift date-related responsibilities to it
+    // TODO: Next methods up are the `isFor` methods.
     private let date: Date
     private let timeOfDay: TimeOfDay
     private let regionalSpotCount: RegionalSpotCount
