@@ -26,7 +26,7 @@ private struct RecordingsListEntry: View {
         VStack {
             HStack {
                 Text(recording.dateHumanReadableFormat())
-                if (recording.isFor(time: .am)) {
+                if (recording.recordingTime.isFor(time: .am)) {
                     Image(systemName: "sun.max").accentColor(.yellow)
                 } else {
                     Image(systemName: "moon").accentColor(.black)

@@ -58,35 +58,35 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>RecordingLessThanTests.xcscheme</key>
+		<key>RecordingListDateRangeTests.testSingletonListDateRange.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>RecordingsInterpolatorTests.xcscheme</key>
+		<key>RecordingIsForTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>RecordingsInterpolatorTests.testEmptyListDateRange.xcscheme</key>
+		<key>RecordingStorageStoreTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>RecordingListDateRangeTests.xcscheme</key>
+		<key>RecordingTimeIsForTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
-		<key>RecordingListDateRangeTests.testSingletonListDateRange.xcscheme</key>
+		<key>RecordingTimeEquatableTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

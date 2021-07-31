@@ -35,6 +35,30 @@ class RecordingTime: CustomStringConvertible, Equatable {
         return assumedDate()..<laterTime.assumedDate()
     }
 
+    /**
+      For the user's timezone, if the date of this instance is the same as the date given, and the time of day of this
+      instance is the same as the time of day given, then true. Otherwise false.
+     */
+    func isFor(date: Date, time: TimeOfDay) -> Bool {
+        isFor(date: date) && isFor(time: time)
+    }
+
+    func isFor(date: Date) -> Bool {
+        let convertedOtherDate = date.convertTo(region: Region.current)
+        let convertedSelfDate = self.date.convertTo(region: Region.current)
+        return convertedSelfDate.year == convertedOtherDate.year
+                && convertedSelfDate.month == convertedOtherDate.month
+                && convertedSelfDate.day == convertedOtherDate.day
+    }
+
+    func isFor(time: TimeOfDay) -> Bool {
+        timeOfDay == time
+    }
+
+    /**
+     Two RecordingTime instances are considered equal if they represent the same date & time, regardless of whether
+     there is an exact match on the date, or the location in memory.
+     */
     static func ==(lhs: RecordingTime, rhs: RecordingTime) -> Bool {
         differenceDescription(lhs, rhs) == nil
     }
@@ -46,7 +70,7 @@ class RecordingTime: CustomStringConvertible, Equatable {
         if lhs.timeOfDay != rhs.timeOfDay {
             return "TimeOfDay mismatch. Lhs: \(lhs.timeOfDay) , Rhs: \(rhs.timeOfDay)"
         }
-        if lhs.date.toPreciseFormat() != rhs.date.toPreciseFormat() {
+        if lhs.assumedDate().toPreciseFormat() != rhs.assumedDate().toPreciseFormat() {
             return "Date mismatch. Lhs: \(lhs.date.toPreciseFormat()) , Rhs: \(rhs.date.toPreciseFormat())"
         }
         return nil

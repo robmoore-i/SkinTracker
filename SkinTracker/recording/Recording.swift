@@ -9,7 +9,6 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     let id: Int
 
     // TODO: Pull out RecordingTime class and shift date-related responsibilities to it
-    // TODO: Next methods up are the `isFor` methods.
     private let date: Date
     private let timeOfDay: TimeOfDay
     private let regionalSpotCount: RegionalSpotCount
@@ -31,30 +30,6 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
 
     var recordingTime: RecordingTime {
         RecordingTime(date, timeOfDay)
-    }
-
-    /**
-      For the user's timezone, if the date of this instance is the same as the date given, and the time of day of this
-      instance is the same as the time of day given, then true. Otherwise false.
-     */
-    func isFor(date: Date, time: TimeOfDay) -> Bool {
-        isFor(date: date) && isFor(time: time)
-    }
-
-    func isFor(date: Date) -> Bool {
-        let convertedOtherDate = date.convertTo(region: Region.current)
-        let convertedSelfDate = self.date.convertTo(region: Region.current)
-        return convertedSelfDate.year == convertedOtherDate.year
-                && convertedSelfDate.month == convertedOtherDate.month
-                && convertedSelfDate.day == convertedOtherDate.day
-    }
-
-    func isFor(time: TimeOfDay) -> Bool {
-        timeOfDay == time
-    }
-
-    func isForSameDateAndTimeAs(other: Recording) -> Bool {
-        isFor(date: other.date, time: other.timeOfDay)
     }
 
     func isInLast(numberOfDays: Int, beforeDate: Date) -> Bool {

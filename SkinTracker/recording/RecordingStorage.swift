@@ -35,57 +35,57 @@ class RecordingStorage: ObservableObject {
 
     func hasEntryFor(date: Date, time: TimeOfDay) -> Bool {
         all.anySatisfy { recording in
-            recording.isFor(date: date, time: time)
+            recording.recordingTime.isFor(date: date, time: time)
         }
     }
 
     func entryFor(date: Date, time: TimeOfDay) -> Recording? {
         all.first(where: { recording in
-            recording.isFor(date: date, time: time)
+            recording.recordingTime.isFor(date: date, time: time)
         })
     }
 
-    func store(_ newRecord: Recording) {
-        if let existingRecord = all.first(where: { (recording: Recording) in
-            recording.isForSameDateAndTimeAs(other: newRecord)
+    func store(_ newRecording: Recording) {
+        if let existingRecording = all.first(where: { (recording: Recording) in
+            recording.recordingTime == newRecording.recordingTime
         }) {
-            overwrite(existingRecord: existingRecord, newRecord: newRecord)
+            overwrite(existingRecording: existingRecording, newRecording: newRecording)
         } else {
-            add(newRecord: newRecord)
+            add(newRecording: newRecording)
         }
     }
 
-    private func overwrite(existingRecord: Recording, newRecord: Recording) {
-        print("Overwriting existing entry: \(existingRecord)")
-        print("Saving updated entry: \(newRecord)")
+    private func overwrite(existingRecording: Recording, newRecording: Recording) {
+        print("Overwriting existing entry: \(existingRecording)")
+        print("Saving updated entry: \(newRecording)")
         storageProvider.atomicWrite {
-            versionedStorage.delete(id: existingRecord.id)
-            all.remove(id: existingRecord.id)
-            versionedStorage.insert(record: newRecord)
-            all.insertSorted(newRecord)
+            versionedStorage.delete(id: existingRecording.id)
+            all.remove(id: existingRecording.id)
+            versionedStorage.insert(record: newRecording)
+            all.insertSorted(newRecording)
             print("Wrote successfully")
         }
     }
 
-    private func add(newRecord: Recording) {
-        print("Saving new entry: \(newRecord)")
+    private func add(newRecording: Recording) {
+        print("Saving new entry: \(newRecording)")
         storageProvider.atomicWrite {
-            versionedStorage.insert(record: newRecord)
-            all.insertSorted(newRecord)
+            versionedStorage.insert(record: newRecording)
+            all.insertSorted(newRecording)
             print("Wrote successfully")
         }
     }
 
     func deleteItem(atIndex index: Int) -> Recording {
-        print("Deleting record at index \(index)")
-        let recordToDelete = all[index]
-        print("Deleting record: \(recordToDelete)")
+        print("Deleting recording at index \(index)")
+        let recordingToDelete = all[index]
+        print("Deleting recording: \(recordingToDelete)")
         storageProvider.atomicWrite {
-            versionedStorage.delete(id: recordToDelete.id)
-            all.remove(id: recordToDelete.id)
+            versionedStorage.delete(id: recordingToDelete.id)
+            all.remove(id: recordingToDelete.id)
             print("Wrote successfully")
         }
-        return recordToDelete
+        return recordingToDelete
     }
 
     func exportAllToJson() -> String {
@@ -132,6 +132,8 @@ extension Array where Element == Recording {
 
     func dateRange() -> Range<Date> {
         if (isEmpty) {
+            // Not really a beautiful piece of code. I hope it works correctly, but honestly I'm not sure.
+            // Sorry, future me.
             let arbitraryDate = Date(year: 2021, month: 7, day: 28, hour: 12, minute: 0)
             let emptyRange = arbitraryDate..<arbitraryDate
             return emptyRange
