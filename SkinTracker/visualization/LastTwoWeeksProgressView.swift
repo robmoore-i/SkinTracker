@@ -16,6 +16,6 @@ struct LastTwoWeeksProgressView: View {
 
 extension Recording {
     func isInLastTwoWeeks() -> Bool {
-        isInLast(numberOfDays: 14, beforeDate: Date())
+        recordingTime.isInLast(numberOfDays: 14, beforeDate: Date())
     }
 }

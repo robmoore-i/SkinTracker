@@ -45,7 +45,7 @@
 		1B9C58EEC8E9B079C99188ED /* RecordingsInterpolatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5968E9C22AA60C614779 /* RecordingsInterpolatorTests.swift */; };
 		1B9C5952535AB70FFA10AAE2 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5A08A45EBA23555CFAFB /* StorageProvider.swift */; };
 		1B9C595C823F76F674A65D18 /* AllTimeProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5535C9D016607C3C1957 /* AllTimeProgressView.swift */; };
-		1B9C59D3C93E6E132CB7A650 /* RecordingIsInLastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C542C9E2E38FF3DFBF4BB /* RecordingIsInLastTests.swift */; };
+		1B9C59D3C93E6E132CB7A650 /* RecordingTimeIsInLastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C542C9E2E38FF3DFBF4BB /* RecordingTimeIsInLastTests.swift */; };
 		1B9C59D85F0AB7E6F7179E45 /* RecordingTimeIsForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52AFF554CCB28DC5A8CC /* RecordingTimeIsForTests.swift */; };
 		1B9C5A82FBF9A31C6787912C /* UsageAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */; };
 		1B9C5A927F2F3094BD190B0F /* ExportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C555A9CA3C1C278ED50AC /* ExportRecordingsButton.swift */; };
@@ -112,7 +112,7 @@
 		1B9C53AA81780815A3FDEE84 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		1B9C53CE7CDF66B2B7962A26 /* RecordingListDateRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingListDateRangeTests.swift; sourceTree = "<group>"; };
 		1B9C540D8E7A51C6A28C7046 /* AddRecordingFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordingFloatingActionButton.swift; sourceTree = "<group>"; };
-		1B9C542C9E2E38FF3DFBF4BB /* RecordingIsInLastTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingIsInLastTests.swift; sourceTree = "<group>"; };
+		1B9C542C9E2E38FF3DFBF4BB /* RecordingTimeIsInLastTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingTimeIsInLastTests.swift; sourceTree = "<group>"; };
 		1B9C54352B27CE0A7D659980 /* RecordingTimeEquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingTimeEquatableTests.swift; sourceTree = "<group>"; };
 		1B9C544709B1E9D7300F5A9D /* IdentifiedDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiedDevice.swift; sourceTree = "<group>"; };
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 				1B9C57A65871DE5AF972DD5D /* RecordingToJsonTests.swift */,
 				1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */,
 				1B9C504CCA1039F34EB5327B /* TimeOfDayFromGuessTests.swift */,
-				1B9C542C9E2E38FF3DFBF4BB /* RecordingIsInLastTests.swift */,
+				1B9C542C9E2E38FF3DFBF4BB /* RecordingTimeIsInLastTests.swift */,
 				1B9C53CE7CDF66B2B7962A26 /* RecordingListDateRangeTests.swift */,
 				1B9C570C0BAB84F86A4ED769 /* RecordingStorageStoreTests.swift */,
 				1B9C569904A28BEE0B5D909F /* MockStorageProvider.swift */,
@@ -674,7 +674,7 @@
 				1B9C514F9091A8F841020FC5 /* ExportRecordingsFilenameTest.swift in Sources */,
 				1B9C5069CA5C1D2C68B932D2 /* RegionalSpotCountTests.swift in Sources */,
 				1B9C511CB888839BB003DC3A /* TimeOfDayFromGuessTests.swift in Sources */,
-				1B9C59D3C93E6E132CB7A650 /* RecordingIsInLastTests.swift in Sources */,
+				1B9C59D3C93E6E132CB7A650 /* RecordingTimeIsInLastTests.swift in Sources */,
 				1B9C535368CF92E2A83D8821 /* InitialDateTimeGuessTests.swift in Sources */,
 				1B9C58EEC8E9B079C99188ED /* RecordingsInterpolatorTests.swift in Sources */,
 				1B9C53CBCEEA143DD355E3E7 /* RecordingListDateRangeTests.swift in Sources */,

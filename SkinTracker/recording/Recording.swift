@@ -32,10 +32,6 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         RecordingTime(date, timeOfDay)
     }
 
-    func isInLast(numberOfDays: Int, beforeDate: Date) -> Bool {
-        date.isInRange(date: beforeDate - numberOfDays.days, and: beforeDate, orEqual: true, granularity: .day)
-    }
-
     func spotCount(forRegion region: FaceRegion) -> (left: Int, right: Int) {
         regionalSpotCount.get(region)
     }

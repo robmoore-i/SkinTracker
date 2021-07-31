@@ -55,6 +55,10 @@ class RecordingTime: CustomStringConvertible, Equatable {
         timeOfDay == time
     }
 
+    func isInLast(numberOfDays: Int, beforeDate: Date) -> Bool {
+        date.isInRange(date: beforeDate - numberOfDays.days, and: beforeDate, orEqual: true, granularity: .day)
+    }
+
     /**
      Two RecordingTime instances are considered equal if they represent the same date & time, regardless of whether
      there is an exact match on the date, or the location in memory.
