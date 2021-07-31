@@ -7,6 +7,7 @@ import SwiftDate
 
 class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     let id: Int
+    var recordingTime: RecordingTime
 
     // TODO: Pull out RecordingTime class and shift date-related responsibilities to it
     private let date: Date
@@ -21,15 +22,12 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         self.id = id
         self.date = date
         self.timeOfDay = timeOfDay
+        self.recordingTime = RecordingTime(date, timeOfDay)
         self.regionalSpotCount = regionalSpotCount
     }
 
     var description: String {
         "Recording(id: \(id), date: \(date), timeOfDay: \(timeOfDay), regionalSpotCounts: \(regionalSpotCount))"
-    }
-
-    var recordingTime: RecordingTime {
-        RecordingTime(date, timeOfDay)
     }
 
     func spotCount(forRegion region: FaceRegion) -> (left: Int, right: Int) {
