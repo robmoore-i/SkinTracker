@@ -1,3 +1,5 @@
 .idea
 .build
 SkinTracker.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+.gradle
+build
