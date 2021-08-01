@@ -5,7 +5,7 @@
 import Foundation
 import SwiftDate
 
-class RecordingTime: CustomStringConvertible, Equatable {
+class RecordingTime: CustomStringConvertible, Equatable, Hashable, Comparable {
     private let date: Date
     private let timeOfDay: TimeOfDay
 
@@ -59,6 +59,27 @@ class RecordingTime: CustomStringConvertible, Equatable {
         date.isInRange(date: beforeDate - numberOfDays.days, and: beforeDate, orEqual: true, granularity: .day)
     }
 
+    func realmObjectConversionParts() -> (Date, TimeOfDay) {
+        (date, timeOfDay)
+    }
+
+    func formatReadable() -> String {
+        date.toHumanReadableFormat()
+    }
+
+    func toAnalyticsJson() -> String {
+        "{\"date\": \"\(date)\", \"timeOfDay\": \"\(timeOfDay.rawValue)\"}"
+    }
+
+    /**
+     R1 < R2 <=> R1 is earlier than R2.
+     */
+    static func <(lhs: RecordingTime, rhs: RecordingTime) -> Bool {
+        let dateComparison = Region.current.calendar.compare(lhs.date, to: rhs.date, toGranularity: .day)
+        return dateComparison == ComparisonResult.orderedSame && lhs.timeOfDay < rhs.timeOfDay
+                || dateComparison == .orderedAscending
+    }
+
     /**
      Two RecordingTime instances are considered equal if they represent the same date & time, regardless of whether
      there is an exact match on the date, or the location in memory.
@@ -76,6 +97,29 @@ class RecordingTime: CustomStringConvertible, Equatable {
         }
         if lhs.assumedDate().toPreciseFormat() != rhs.assumedDate().toPreciseFormat() {
             return "Date mismatch. Lhs: \(lhs.date.toPreciseFormat()) , Rhs: \(rhs.date.toPreciseFormat())"
+        }
+        return nil
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(date)
+        hasher.combine(timeOfDay)
+    }
+}
+
+extension Date {
+    func toHumanReadableFormat() -> String {
+        let convertedDate = convertTo(region: Region.current)
+        return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.monthName(.short)) \(convertedDate.year)"
+    }
+
+    func toPreciseFormat() -> String {
+        "\(toFormat("yyyy-MM-dd'T'HH:mm:ssZ")).\(nanosecond)"
+    }
+
+    static func differenceDescription(lhs: Date, rhs: Date) -> String? {
+        if lhs.toPreciseFormat() != rhs.toPreciseFormat() {
+            return "Date mismatch. Lhs: \(lhs.toPreciseFormat()) , Rhs: \(rhs.toPreciseFormat())"
         }
         return nil
     }

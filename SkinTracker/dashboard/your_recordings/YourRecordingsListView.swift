@@ -25,7 +25,7 @@ private struct RecordingsListEntry: View {
     var body: some View {
         VStack {
             HStack {
-                Text(recording.dateHumanReadableFormat())
+                Text(recording.recordingTime.formatReadable())
                 if (recording.recordingTime.isFor(time: .am)) {
                     Image(systemName: "sun.max").accentColor(.yellow)
                 } else {
@@ -68,7 +68,7 @@ private struct RecordingList: View {
         } else if let index = v.first {
             UsageAnalytics.event(.swipeToDeleteRecording, properties: ["index": "\(index)"])
             let recording = recordingStorage.deleteItem(atIndex: index)
-            UsageAnalytics.event(.deleteRecording, properties: ["recording": "\(recording.toAnalyticsJson())"])
+            UsageAnalytics.event(.deleteRecording, properties: ["recording": "\(recording.recordingTime.toAnalyticsJson())"])
         }
     }
 }

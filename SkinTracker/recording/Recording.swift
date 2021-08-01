@@ -27,7 +27,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     }
 
     var description: String {
-        "Recording(id: \(id), date: \(date), timeOfDay: \(timeOfDay), regionalSpotCounts: \(regionalSpotCount))"
+        "Recording(id: \(id), time: \(recordingTime), regionalSpotCounts: \(regionalSpotCount))"
     }
 
     func spotCount(forRegion region: FaceRegion) -> (left: Int, right: Int) {
@@ -38,20 +38,12 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         Recording(date, timeOfDay, selectedSpotCount.imposedOnto(regionalSpotCount))
     }
 
-    func dateHumanReadableFormat() -> String {
-        date.toHumanReadableFormat()
-    }
-
     func totalSpotCount() -> Int {
         regionalSpotCount.totalSpots()
     }
 
     func mostAffectedRegions() -> [String] {
         regionalSpotCount.mostAffectedRegions()
-    }
-
-    func toAnalyticsJson() -> String {
-        "{\"date\": \"\(date)\", \"timeOfDay\": \"\(timeOfDay.rawValue)\"}"
     }
 
     static let chronologicalSortCriteria: (Recording, Recording) -> Bool = { recording1, recording2 in
@@ -64,13 +56,13 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
       into Realm objects, and certainly not for anything else.
      */
     func realmObjectConversionParts() -> (Date, TimeOfDay, RegionalSpotCount) {
-        (date, timeOfDay, regionalSpotCount)
+        let timeParts = recordingTime.realmObjectConversionParts()
+        return (timeParts.0, timeParts.1, regionalSpotCount)
     }
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-        hasher.combine(date)
-        hasher.combine(timeOfDay)
+        hasher.combine(recordingTime)
         hasher.combine(regionalSpotCount)
     }
 
@@ -85,9 +77,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
      Interpretation: R1 < R2 <=> R1 is an earlier recording than R2.
      */
     static func <(lhs: Recording, rhs: Recording) -> Bool {
-        let dateComparison = Region.current.calendar.compare(lhs.date, to: rhs.date, toGranularity: .day)
-        return dateComparison == ComparisonResult.orderedSame && lhs.timeOfDay < rhs.timeOfDay
-                || dateComparison == .orderedAscending
+        lhs.recordingTime < rhs.recordingTime
     }
 
     static func differenceDescription(_ lhs: Recording, _ rhs: Recording) -> String? {
@@ -97,32 +87,11 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
         if lhs.id != rhs.id {
             return "Id mismatch. Lhs: \(lhs.id) , Rhs: \(rhs.id)"
         }
-        if lhs.timeOfDay != rhs.timeOfDay {
-            return "TimeOfDay mismatch. Lhs: \(lhs.timeOfDay) , Rhs: \(rhs.timeOfDay)"
-        }
-        if lhs.date.toPreciseFormat() != rhs.date.toPreciseFormat() {
-            return "Date mismatch. Lhs: \(lhs.date.toPreciseFormat()) , Rhs: \(rhs.date.toPreciseFormat())"
+        if (lhs.recordingTime != rhs.recordingTime) {
+            return "RecordingTime mismatch. \(String(describing: RecordingTime.differenceDescription(lhs.recordingTime, rhs.recordingTime)))"
         }
         if rhs.regionalSpotCount != lhs.regionalSpotCount {
             return "RegionalSpotCount mismatch. Lhs: \(lhs.regionalSpotCount) , Rhs: \(rhs.regionalSpotCount)"
-        }
-        return nil
-    }
-}
-
-extension Date {
-    func toHumanReadableFormat() -> String {
-        let convertedDate = convertTo(region: Region.current)
-        return "\(convertedDate.weekdayName(.short)) \(convertedDate.ordinalDay) \(convertedDate.monthName(.short)) \(convertedDate.year)"
-    }
-
-    func toPreciseFormat() -> String {
-        "\(toFormat("yyyy-MM-dd'T'HH:mm:ssZ")).\(nanosecond)"
-    }
-
-    static func differenceDescription(lhs: Date, rhs: Date) -> String? {
-        if lhs.toPreciseFormat() != rhs.toPreciseFormat() {
-            return "Date mismatch. Lhs: \(lhs.toPreciseFormat()) , Rhs: \(rhs.toPreciseFormat())"
         }
         return nil
     }
