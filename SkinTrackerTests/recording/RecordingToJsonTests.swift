@@ -12,7 +12,7 @@ class RecordingToJsonTests: XCTestCase {
         regionalSpotCount.put(region: .chin, right: 1)
         regionalSpotCount.put(region: .cheek, left: 3)
         regionalSpotCount.put(region: .cheek, right: 1)
-        let recording = Recording(-6800752135313250389, Date(year: 2021, month: 5, day: 7, hour: 3, minute: 29), .am, regionalSpotCount)
+        let recording = Recording(-6800752135313250389, RecordingTime(Date(year: 2021, month: 5, day: 7, hour: 3, minute: 29), .am), regionalSpotCount)
         let actualJson = recording.toJsonV1()
         let expectedJson = """
                            {
@@ -52,10 +52,12 @@ class RecordingToJsonTests: XCTestCase {
         regionalSpotCount.put(region: .cheek, right: 4)
         regionalSpotCount.put(region: .jawline, right: 3)
         let recording = Recording(422722367996623605,
-                Date(year: 2021, month: 7, day: 17,
-                        hour: 2, minute: 22, second: 10, nanosecond: 20504951,
-                        region: Region(zone: Zones.gmt)),
-                .am, regionalSpotCount)
+                RecordingTime(
+                        Date(year: 2021, month: 7, day: 17,
+                                hour: 2, minute: 22, second: 10, nanosecond: 20504951,
+                                region: Region(zone: Zones.gmt)),
+                        .am),
+                regionalSpotCount)
         let actualJson = recording.toJsonV2()
         let expectedJson = """
                            {

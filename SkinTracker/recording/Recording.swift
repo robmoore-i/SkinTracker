@@ -3,31 +3,25 @@
 //
 
 import Foundation
-import SwiftDate
 
-class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
+class Recording: CustomStringConvertible, Identifiable, Hashable {
     let id: Int
     var recordingTime: RecordingTime
 
-    // TODO: Pull out RecordingTime class and shift date-related responsibilities to it
-    private let date: Date
-    private let timeOfDay: TimeOfDay
     private let regionalSpotCount: RegionalSpotCount
 
-    convenience init(_ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
-        self.init(UUID().hashValue, date, timeOfDay, regionalSpotCount)
+    convenience init(_ recordingTime: RecordingTime, _ regionalSpotCount: RegionalSpotCount) {
+        self.init(UUID().hashValue, recordingTime, regionalSpotCount)
     }
 
-    init(_ id: Int, _ date: Date, _ timeOfDay: TimeOfDay, _ regionalSpotCount: RegionalSpotCount) {
+    init(_ id: Int, _ recordingTime: RecordingTime, _ regionalSpotCount: RegionalSpotCount) {
         self.id = id
-        self.date = date
-        self.timeOfDay = timeOfDay
-        self.recordingTime = RecordingTime(date, timeOfDay)
+        self.recordingTime = recordingTime
         self.regionalSpotCount = regionalSpotCount
     }
 
     var description: String {
-        "Recording(id: \(id), time: \(recordingTime), regionalSpotCounts: \(regionalSpotCount))"
+        "Recording{id: \(id), time: \(recordingTime), regionalSpotCounts: \(regionalSpotCount)}"
     }
 
     func spotCount(forRegion region: FaceRegion) -> (left: Int, right: Int) {
@@ -35,7 +29,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     }
 
     func withImposedSpotCounts(_ selectedSpotCount: RegionalSpotCount) -> Recording {
-        Recording(date, timeOfDay, selectedSpotCount.imposedOnto(regionalSpotCount))
+        Recording(recordingTime, selectedSpotCount.imposedOnto(regionalSpotCount))
     }
 
     func totalSpotCount() -> Int {
@@ -47,7 +41,7 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
     }
 
     static let chronologicalSortCriteria: (Recording, Recording) -> Bool = { recording1, recording2 in
-        recording1 > recording2
+        recording1.recordingTime > recording2.recordingTime
     }
 
     /**
@@ -71,13 +65,6 @@ class Recording: CustomStringConvertible, Identifiable, Hashable, Comparable {
             return true
         }
         return differenceDescription(lhs, rhs) == nil
-    }
-
-    /**
-     Interpretation: R1 < R2 <=> R1 is an earlier recording than R2.
-     */
-    static func <(lhs: Recording, rhs: Recording) -> Bool {
-        lhs.recordingTime < rhs.recordingTime
     }
 
     static func differenceDescription(_ lhs: Recording, _ rhs: Recording) -> String? {

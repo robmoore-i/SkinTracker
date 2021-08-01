@@ -67,7 +67,7 @@ extension Recording {
         regionalSpotCount.put(region: .mouth, left: r.mouthLeft, right: r.mouthRight)
         regionalSpotCount.put(region: .chin, left: r.chinLeft, right: r.chinRight)
         let timeOfDay: TimeOfDay = TimeOfDay.init(rawValue: r.timeOfDay)!
-        return Recording(r.id, r.date, timeOfDay, regionalSpotCount)
+        return Recording(r.id, RecordingTime(r.date, timeOfDay), regionalSpotCount)
     }
 
     func toJsonV1() -> String {

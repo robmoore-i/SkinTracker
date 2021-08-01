@@ -24,7 +24,7 @@ struct FormRecording {
         self.recordingStorage = recordingStorage
 
         recording = recordingStorage.entryFor(date: date, time: timeOfDay)
-                ?? Recording(date, timeOfDay, RegionalSpotCount(/* All Zeros */))
+                ?? Recording(RecordingTime(date, timeOfDay), RegionalSpotCount(/* All Zeros */))
     }
 
     /**
@@ -55,6 +55,6 @@ struct FormRecording {
 
     private mutating func refreshRecording() {
         recording = recordingStorage.entryFor(date: date, time: timeOfDay)
-                ?? Recording(date, timeOfDay, RegionalSpotCount(/* All Zeros */))
+                ?? Recording(RecordingTime(date, timeOfDay), RegionalSpotCount(/* All Zeros */))
     }
 }
