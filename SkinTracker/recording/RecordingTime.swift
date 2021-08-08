@@ -71,6 +71,14 @@ class RecordingTime: CustomStringConvertible, Equatable, Hashable, Comparable {
         "{\"date\": \"\(date)\", \"timeOfDay\": \"\(timeOfDay.rawValue)\"}"
     }
 
+    func next() -> RecordingTime {
+        if (timeOfDay == .am) {
+            return RecordingTime(date, .pm)
+        } else {
+            return RecordingTime(date + 1.days, .am)
+        }
+    }
+
     /**
      R1 < R2 <=> R1 is earlier than R2.
      */
