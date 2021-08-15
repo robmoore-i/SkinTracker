@@ -32,6 +32,8 @@ struct RecordTabbedView: View {
                     TimeOfDayToggle(
                             selection: $selectedTimeOfDay,
                             formRecording: $formRecording)
+                    AddPhotoButton(
+                            selectedDate: $selectedDate)
                 }
 
                 Section {
@@ -70,6 +72,24 @@ private struct LoggedDatePicker: View {
         UsageAnalytics.event(.selectDateUsingDatePicker, properties: ["date": "\(date)"])
         print("Selected date: \(date)")
         formRecording.refresh(date: date)
+    }
+}
+
+private struct AddPhotoButton: View {
+    @Binding var selectedDate: Date
+
+    var body: some View {
+        Button(action: {
+            UsageAnalytics.event(.tapAddRecordingPhotoButton, properties: ["date": "\(selectedDate)"])
+        }, label: {
+            HStack {
+                Text("Photo").foregroundColor(.black)
+                Spacer()
+                Image(systemName: "camera")
+                        .scaleEffect(1.5, anchor: .center)
+                        .foregroundColor(.blue)
+            }
+        })
     }
 }
 

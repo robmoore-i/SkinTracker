@@ -26,4 +26,5 @@ enum TrackedEvent: String {
     case dismissNotificationsModal = "dismissNotificationsModal"
     case swipeToDeleteRecording = "swipeToDeleteRecording"
     case deleteRecording = "deleteRecording"
+    case tapAddRecordingPhotoButton = "tapAddRecordingPhotoButton"
 }
