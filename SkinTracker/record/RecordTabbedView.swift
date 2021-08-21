@@ -77,7 +77,7 @@ private struct LoggedDatePicker: View {
     private func onDateChange(_ date: Date) {
         UsageAnalytics.event(.selectDateUsingDatePicker, properties: ["date": "\(date)"])
         print("Selected date: \(date)")
-        formRecording.refresh(date: date)
+        formRecording.setDate(date: date)
     }
 }
 

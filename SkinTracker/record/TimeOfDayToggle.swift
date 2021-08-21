@@ -51,7 +51,7 @@ struct TimeOfDayToggle: View {
 
     private func onTimeOfDayChange(_ timeOfDay: TimeOfDay) {
         UsageAnalytics.event(.toggleRecordingTimeOfDay, properties: ["timeOfDay": timeOfDay.rawValue])
-        formRecording.refresh(timeOfDay: timeOfDay)
+        formRecording.setTimeOfDay(timeOfDay: timeOfDay)
     }
 
     private static func initialToggleState() -> Bool {

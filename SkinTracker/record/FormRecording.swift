@@ -43,12 +43,12 @@ struct FormRecording {
         recording.spotCount(forRegion: region)
     }
 
-    mutating func refresh(date: Date) {
+    mutating func setDate(date: Date) {
         self.date = date
         refreshRecording()
     }
 
-    mutating func refresh(timeOfDay: TimeOfDay) {
+    mutating func setTimeOfDay(timeOfDay: TimeOfDay) {
         self.timeOfDay = timeOfDay
         refreshRecording()
     }
