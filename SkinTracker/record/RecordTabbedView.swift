@@ -12,6 +12,9 @@ struct RecordTabbedView: View {
     @State private var formRecording: FormRecording
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
 
+    @State private var isImageBeingSelected = false
+    @State private var selectedImage = UIImage()
+
     init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage
         let initialDate = Date.fromGuess(basedOn: Date())
@@ -33,7 +36,8 @@ struct RecordTabbedView: View {
                             selection: $selectedTimeOfDay,
                             formRecording: $formRecording)
                     AddPhotoButton(
-                            selectedDate: $selectedDate)
+                            selectedDate: $selectedDate,
+                            isImageBeingSelected: $isImageBeingSelected)
                 }
 
                 Section {
@@ -54,6 +58,8 @@ struct RecordTabbedView: View {
                         Spacer()
                     }
                 }
+            }.sheet(isPresented: $isImageBeingSelected) {
+                ImagePicker(sourceType: .camera, selectedImage: $selectedImage)
             }
         }
     }
@@ -75,23 +81,7 @@ private struct LoggedDatePicker: View {
     }
 }
 
-private struct AddPhotoButton: View {
-    @Binding var selectedDate: Date
 
-    var body: some View {
-        Button(action: {
-            UsageAnalytics.event(.tapAddRecordingPhotoButton, properties: ["date": "\(selectedDate)"])
-        }, label: {
-            HStack {
-                Text("Photo").foregroundColor(.black)
-                Spacer()
-                Image(systemName: "camera")
-                        .scaleEffect(1.5, anchor: .center)
-                        .foregroundColor(.blue)
-            }
-        })
-    }
-}
 
 private struct SubmitButton: View {
     @Binding var selectedDate: Date
