@@ -67,6 +67,13 @@ class RecordingTime: CustomStringConvertible, Equatable, Hashable, Comparable {
         date.toHumanReadableFormat()
     }
 
+    /**
+     Returns the basename for a file storing data related to this recording time.
+     */
+    func formatFilename() -> String {
+        "\(date.year)-\(date.month)-\(date.day)_\(timeOfDay.rawValue)"
+    }
+
     func toAnalyticsJson() -> String {
         "{\"date\": \"\(date)\", \"timeOfDay\": \"\(timeOfDay.rawValue)\"}"
     }

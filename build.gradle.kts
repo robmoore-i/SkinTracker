@@ -39,7 +39,7 @@ val test = tasks.register("test") {
         val reportOutputPath = "build/reports/tests.html"
         val sdk: String = sdks()[0]
         val device: IPhoneDevice = devices()[0]
-
+        logger.quiet("Using device $device")
         val lsResult = exec {
             isIgnoreExitValue = true
             setCommandLine("ls", schemeFile)
@@ -55,22 +55,19 @@ val test = tasks.register("test") {
             )
         }
         val xcodebuildOutput = java.io.ByteArrayOutputStream()
+        val xcodebuildCommand = "xcodebuild -project ${xcodeProjectName}.xcodeproj -scheme ${xcodeProjectName}Tests -sdk ${sdk} -destination platform=iOS,id=${device.deviceId} test"
+        logger.quiet("Running command '$xcodebuildCommand'")
         exec {
-            setCommandLine(
-                "xcodebuild",
-                "-project", "${xcodeProjectName}.xcodeproj",
-                "-scheme", "${xcodeProjectName}Tests",
-                "-sdk", sdk,
-                "-destination", "platform=iOS,id=${device.deviceId}",
-                "test"
-            )
+            setCommandLine(xcodebuildCommand.split(" "))
             standardOutput = xcodebuildOutput
             errorOutput = xcodebuildOutput
             isIgnoreExitValue = true
         }
+        val xcprettyCommand = "xcpretty -r html -o ${reportOutputPath}"
+        logger.quiet("Running command '$xcprettyCommand'")
         exec {
             standardInput = java.io.ByteArrayInputStream(xcodebuildOutput.toString().toByteArray())
-            setCommandLine("xcpretty", "-r", "html", "-o", reportOutputPath)
+            setCommandLine(xcprettyCommand.split(" "))
         }
         print("HTML test report written to $reportOutputPath")
     }

@@ -6,12 +6,12 @@ import SwiftUI
 
 struct AddPhotoButton: View {
     @Binding var selectedDate: Date
-    @Binding var isImageBeingSelected: Bool
+    @Binding var isPhotoBeingSelected: Bool
 
     var body: some View {
         Button(action: {
             UsageAnalytics.event(.tapAddRecordingPhotoButton, properties: ["date": "\(selectedDate)"])
-            isImageBeingSelected = true
+            isPhotoBeingSelected = true
         }, label: {
             HStack {
                 Text("Photo").foregroundColor(.black)

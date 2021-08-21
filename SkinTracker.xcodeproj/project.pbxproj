@@ -10,8 +10,9 @@
 		1B9C503429F17AB8AF3C76A1 /* VisualizeTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C545335DB6C1A7D798B6F /* VisualizeTabbedView.swift */; };
 		1B9C504F84DEAFDC13EFDFE6 /* RecordingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5761EF0B2CFB776D0C2C /* RecordingStorage.swift */; };
 		1B9C5069CA5C1D2C68B932D2 /* RegionalSpotCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */; };
-		1B9C50A48992C3AA94D96F1C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C54EF1F8928C4937DF29E /* ImagePicker.swift */; };
+		1B9C50A48992C3AA94D96F1C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C54EF1F8928C4937DF29E /* PhotoPicker.swift */; };
 		1B9C511CB888839BB003DC3A /* TimeOfDayFromGuessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C504CCA1039F34EB5327B /* TimeOfDayFromGuessTests.swift */; };
+		1B9C512D6AF06687A60D6009 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5604D59F518E58701480 /* FileSystem.swift */; };
 		1B9C514F9091A8F841020FC5 /* ExportRecordingsFilenameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C58085C5F8E157E03410F /* ExportRecordingsFilenameTest.swift */; };
 		1B9C51503383B2C84146CC50 /* ImportRecordingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */; };
 		1B9C516DEECE90387AF17CD2 /* RealmVersionedRecordingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5C5DAF6CAC639A3BE16B /* RealmVersionedRecordingStorage.swift */; };
@@ -55,6 +56,7 @@
 		1B9C5B22DE32EEB42BE28A2F /* EmptyTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5B3FDF8CD894FBFAA3D2 /* EmptyTabbedView.swift */; };
 		1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */; };
 		1B9C5B53DDECDEC667021EED /* RecordingStorageStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C570C0BAB84F86A4ED769 /* RecordingStorageStoreTests.swift */; };
+		1B9C5BCFFA8ABD67127AE0F2 /* PhotoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5377771724E94E8E599C /* PhotoStorage.swift */; };
 		1B9C5C82F7DA0C098BB12A86 /* IdentifiedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C544709B1E9D7300F5A9D /* IdentifiedDevice.swift */; };
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
 		1B9C5CF50EF966D13C9D6022 /* RecordingTimeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52BC975238A6257CE505 /* RecordingTimeFactory.swift */; };
@@ -114,6 +116,7 @@
 		1B9C53089B2E49AAAE1B633C /* NotificationConfigurationButtonRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConfigurationButtonRow.swift; sourceTree = "<group>"; };
 		1B9C532372174494DF1C9B68 /* RealmStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmStorageProvider.swift; sourceTree = "<group>"; };
 		1B9C53440A52CD93490D48C6 /* RecordingsInterpolator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsInterpolator.swift; sourceTree = "<group>"; };
+		1B9C5377771724E94E8E599C /* PhotoStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStorage.swift; sourceTree = "<group>"; };
 		1B9C53A262ECA94894B87166 /* TabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
 		1B9C53AA81780815A3FDEE84 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		1B9C53BEF0BB203E657E6605 /* ExperimentTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentTabbedView.swift; sourceTree = "<group>"; };
@@ -125,7 +128,7 @@
 		1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
 		1B9C545335DB6C1A7D798B6F /* VisualizeTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizeTabbedView.swift; sourceTree = "<group>"; };
 		1B9C547D5A2C7A4BB73D8735 /* VersionedRecordingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionedRecordingStorage.swift; sourceTree = "<group>"; };
-		1B9C54EF1F8928C4937DF29E /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		1B9C54EF1F8928C4937DF29E /* PhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeLengthDescriptionTests.swift; sourceTree = "<group>"; };
 		1B9C5535C9D016607C3C1957 /* AllTimeProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTimeProgressView.swift; sourceTree = "<group>"; };
 		1B9C55479508AA4E2DAA30D1 /* ReminderNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderNotificationScheduler.swift; sourceTree = "<group>"; };
@@ -133,6 +136,7 @@
 		1B9C5595D52A7430DB0E1F4F /* RecordingRealmObjectV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingRealmObjectV2.swift; sourceTree = "<group>"; };
 		1B9C55A7C7B27050E99AAFD9 /* MostAffectedRegionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MostAffectedRegionsView.swift; sourceTree = "<group>"; };
 		1B9C55B5F8DA369061145FB5 /* ImportRecordingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportRecordingsButton.swift; sourceTree = "<group>"; };
+		1B9C5604D59F518E58701480 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		1B9C561BAF6FF09E645CDFD5 /* TrackedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackedEvent.swift; sourceTree = "<group>"; };
 		1B9C5674203AC20E91420C50 /* RegionalSpotCountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionalSpotCountTests.swift; sourceTree = "<group>"; };
 		1B9C569904A28BEE0B5D909F /* MockStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockStorageProvider.swift; sourceTree = "<group>"; };
@@ -212,11 +216,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B9C5018B5D4A9912EDC31F8 /* storage */ = {
+			isa = PBXGroup;
+			children = (
+				1B9C5377771724E94E8E599C /* PhotoStorage.swift */,
+				1B9C5604D59F518E58701480 /* FileSystem.swift */,
+			);
+			path = storage;
+			sourceTree = "<group>";
+		};
 		1B9C50AF381932920148DFAB /* photo */ = {
 			isa = PBXGroup;
 			children = (
 				1B9C56E57EC4858F9C32BB9E /* AddPhotoButton.swift */,
-				1B9C54EF1F8928C4937DF29E /* ImagePicker.swift */,
+				1B9C54EF1F8928C4937DF29E /* PhotoPicker.swift */,
+				1B9C5018B5D4A9912EDC31F8 /* storage */,
 			);
 			path = photo;
 			sourceTree = "<group>";
@@ -684,7 +698,9 @@
 				1B9C5E2F9FFA8D023E8AE00F /* AddPhotoButton.swift in Sources */,
 				1B9C5B22DE32EEB42BE28A2F /* EmptyTabbedView.swift in Sources */,
 				1B9C579E50C74E1D064C0373 /* ExperimentTabbedView.swift in Sources */,
-				1B9C50A48992C3AA94D96F1C /* ImagePicker.swift in Sources */,
+				1B9C50A48992C3AA94D96F1C /* PhotoPicker.swift in Sources */,
+				1B9C5BCFFA8ABD67127AE0F2 /* PhotoStorage.swift in Sources */,
+				1B9C512D6AF06687A60D6009 /* FileSystem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

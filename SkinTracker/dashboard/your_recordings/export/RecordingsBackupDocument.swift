@@ -30,10 +30,12 @@ struct RecordingsBackupDocument: FileDocument {
         FileWrapper(regularFileWithContents: recordingsJson.data(using: .utf8)!)
     }
 
-    static func defaultFilename(_ d: DateInRegion = Date().convertTo(region: Region.current)) -> String {
-        let yearAsString = "\(d.year)"
-        let lastTwoYearDigits = yearAsString[yearAsString.index(yearAsString.startIndex, offsetBy: 2)..<yearAsString.endIndex]
-        return "backup\(lastTwoYearDigits)-\(d.month)-\(d.day)_\(d.hour).\(d.minute).\(d.second)_SkinTracker"
+    static func defaultFilename() -> String {
+        filenameBasedOnDate(Date().convertTo(region: Region.current))
+    }
+
+    static func filenameBasedOnDate(_ d: DateInRegion = Date().convertTo(region: Region.current)) -> String {
+        "saved_\(d.year)-\(d.month)-\(d.day)_\(d.hour).\(d.minute).\(d.second)_SkinTracker"
     }
 }
 

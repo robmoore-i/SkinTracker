@@ -2,10 +2,12 @@
 // Created by Rob on 2/5/21.
 //
 
+import UIKit
 import SwiftUI
 
 struct RecordTabbedView: View {
-    private var recordingStorage: RecordingStorage
+    private let recordingStorage: RecordingStorage
+    private let photoStorage: PhotoStorage
 
     @State private var selectedDate: Date
     @State private var selectedTimeOfDay: TimeOfDay
@@ -13,13 +15,14 @@ struct RecordTabbedView: View {
     @State private var selectedSpotCounts: RegionalSpotCount = RegionalSpotCount()
 
     @State private var isImageBeingSelected = false
-    @State private var selectedImage = UIImage()
 
-    init(_ recordingStorage: RecordingStorage) {
+    init(_ recordingStorage: RecordingStorage, _ photoStorage: PhotoStorage) {
         self.recordingStorage = recordingStorage
+        self.photoStorage = photoStorage
         let initialDate = Date.fromGuess(basedOn: Date())
         let initialTimeOfDay = TimeOfDay.fromGuess(basedOn: initialDate)
-        let initialFormRecording = FormRecording(date: initialDate, timeOfDay: initialTimeOfDay, recordingStorage: recordingStorage)
+        let initialFormRecording = FormRecording(date: initialDate, timeOfDay: initialTimeOfDay,
+                recordingStorage: recordingStorage, photoStorage: photoStorage)
         _selectedDate = .init(initialValue: initialDate)
         _selectedTimeOfDay = .init(initialValue: initialTimeOfDay)
         _formRecording = .init(initialValue: initialFormRecording)
@@ -37,7 +40,7 @@ struct RecordTabbedView: View {
                             formRecording: $formRecording)
                     AddPhotoButton(
                             selectedDate: $selectedDate,
-                            isImageBeingSelected: $isImageBeingSelected)
+                            isPhotoBeingSelected: $isImageBeingSelected)
                 }
 
                 Section {
@@ -59,7 +62,7 @@ struct RecordTabbedView: View {
                     }
                 }
             }.sheet(isPresented: $isImageBeingSelected) {
-                ImagePicker(sourceType: .camera, selectedImage: $selectedImage)
+                PhotoPicker(sourceType: .camera, formRecording: $formRecording)
             }
         }
     }
@@ -135,7 +138,7 @@ private struct SubmitButton: View {
 import SwiftDate
 
 extension Date {
-    static func fromGuess(basedOn currentDate: Date) -> Date {
+    static func fromGuess(basedOn currentDate: Date = Date()) -> Date {
         if (currentDate.convertTo(region: Region.current).hour < 4) {
             return currentDate - 1.days
         }

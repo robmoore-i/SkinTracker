@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  This represents the Recording whose values will be used as defaults in the form if it is submitted. In particular, if a
@@ -13,16 +14,18 @@ import Foundation
 struct FormRecording {
     private var date: Date
     private var timeOfDay: TimeOfDay
+    private var photo: UIImage? = nil
 
-    private var recordingStorage: RecordingStorage
+    private let recordingStorage: RecordingStorage
+    private let photoStorage: PhotoStorage
 
     private var recording: Recording
 
-    init(date: Date, timeOfDay: TimeOfDay, recordingStorage: RecordingStorage) {
+    init(date: Date, timeOfDay: TimeOfDay, recordingStorage: RecordingStorage, photoStorage: PhotoStorage) {
         self.date = date
         self.timeOfDay = timeOfDay
         self.recordingStorage = recordingStorage
-
+        self.photoStorage = photoStorage
         recording = recordingStorage.entryFor(date: date, time: timeOfDay)
                 ?? Recording(RecordingTime(date, timeOfDay), RegionalSpotCount(/* All Zeros */))
     }
@@ -37,6 +40,9 @@ struct FormRecording {
      */
     func store(withUserSelectedSpotCounts spotCounts: RegionalSpotCount) {
         recordingStorage.store(recording.withImposedSpotCounts(spotCounts))
+        if let photo = photo {
+            photoStorage.storePhoto(photo: photo, forRecordingTime: recording.recordingTime)
+        }
     }
 
     func placeholderSpotCount(forRegion region: FaceRegion) -> (left: Int, right: Int) {
@@ -51,6 +57,10 @@ struct FormRecording {
     mutating func setTimeOfDay(timeOfDay: TimeOfDay) {
         self.timeOfDay = timeOfDay
         refreshRecording()
+    }
+
+    mutating func setPhoto(photo: UIImage) {
+        self.photo = photo
     }
 
     private mutating func refreshRecording() {

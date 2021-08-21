@@ -11,12 +11,14 @@ struct MainView: View {
     @State private var selectedTab = 1
 
     private let recordingStorage: RecordingStorage = RecordingStorage(RealmStorageProvider())
+    private let photoStorage: PhotoStorage = PhotoStorage(FileSystem(FileManager.default))
 
     var body: some View {
         TabView(selection: $selectedTab) {
             DashboardTabbedView(recordingStorage: recordingStorage, selectedTab: $selectedTab)
-            RecordTabbedView(recordingStorage)
+            RecordTabbedView(recordingStorage, photoStorage)
             VisualizeTabbedView(recordingStorage)
+            ExperimentTabbedView(photoStorage: photoStorage)
         }.animation(.linear)
     }
 }
