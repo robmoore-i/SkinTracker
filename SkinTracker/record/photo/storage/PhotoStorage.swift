@@ -39,6 +39,12 @@ class PhotoStorage {
         }
     }
 
+    func deletePhoto(forRecordingTime recordingTime: RecordingTime) {
+        if (hasPhoto(forRecordingTime: recordingTime)) {
+            fileSystem.deleteFile(fileUrl: pngFileUrl(forRecordingTime: recordingTime))
+        }
+    }
+
     private func facePhotosDirectoryUrl() -> URL {
         fileSystem.userHomeDirectory().appendingPathComponent("SkinTracker App").appendingPathComponent("Photos")
     }

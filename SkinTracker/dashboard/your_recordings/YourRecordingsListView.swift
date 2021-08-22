@@ -1,17 +1,17 @@
 //
-// Created by Rob on 7/5/21.
-// Copied from the HTML, and modified slightly, from https://kavsoft.dev/SwiftUI_2.0/Pull_To_Refresh/
+// Created by Rob on 7/5/21
 //
 
 import SwiftUI
 
 struct YourRecordingsListView: View {
     @ObservedObject var recordingStorage: RecordingStorage
+    let photoStorage: PhotoStorage
     @Binding var selectedTab: Int
 
     var body: some View {
         ZStack {
-            RecordingList(recordingStorage: recordingStorage).padding(5)
+            RecordingList(recordingStorage: recordingStorage, photoStorage: photoStorage).padding(5)
             if (!recordingStorage.all.isEmpty) {
                 AddRecordingFloatingActionButton(selectedTab: $selectedTab)
             }
@@ -52,6 +52,7 @@ private struct RecordingsListEntry: View {
 
 private struct RecordingList: View {
     @ObservedObject var recordingStorage: RecordingStorage
+    let photoStorage: PhotoStorage
 
     var body: some View {
         List {
@@ -68,6 +69,7 @@ private struct RecordingList: View {
         } else if let index = v.first {
             UsageAnalytics.event(.swipeToDeleteRecording, properties: ["index": "\(index)"])
             let recording = recordingStorage.deleteItem(atIndex: index)
+            photoStorage.deletePhoto(forRecordingTime: recording.recordingTime)
             UsageAnalytics.event(.deleteRecording, properties: ["recording": "\(recording.recordingTime.toAnalyticsJson())"])
         }
     }

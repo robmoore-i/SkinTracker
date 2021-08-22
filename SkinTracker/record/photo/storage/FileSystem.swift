@@ -26,4 +26,17 @@ class FileSystem {
             print(error.localizedDescription)
         }
     }
+
+    /**
+     Deletes the file at the given URL. If the URL is nil, this method does nothing.
+     */
+    func deleteFile(fileUrl: URL?) {
+        if let fileUrl = fileUrl {
+            do {
+                try fileManager.removeItem(at: fileUrl)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
