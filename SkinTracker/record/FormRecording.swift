@@ -10,6 +10,10 @@ import UIKit
  given time and day are selected, and a Recording already exists for that combination, then the spot counts for it will
  be considered as the defaults in the form. This struct is responsible for playing the role of this implicit, default
  Recording entry, that underlies the form changes made by the user.
+
+ With time, it has also become the place where drafted Recording changes are accumulated before they are submitted.
+ The responsibility of committing the content of the drafted Recording data into the app's storage is also held by this
+ object, since it privately holds the data in its internal state, and it also has access to the relevant storage media.
  */
 struct FormRecording {
     private var date: Date
