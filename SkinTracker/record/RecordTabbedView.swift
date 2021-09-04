@@ -41,6 +41,8 @@ struct RecordTabbedView: View {
                     AddPhotoButton(
                             selectedDate: $selectedDate,
                             isPhotoBeingSelected: $isImageBeingSelected)
+                    PhotoPreview(
+                            formRecording: $formRecording)
                 }
 
                 Section {

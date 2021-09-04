@@ -14,7 +14,7 @@ import UIKit
 struct FormRecording {
     private var date: Date
     private var timeOfDay: TimeOfDay
-    private var photo: UIImage? = nil
+    public var photo: UIImage? = nil
 
     private let recordingStorage: RecordingStorage
     private let photoStorage: PhotoStorage
@@ -61,6 +61,10 @@ struct FormRecording {
 
     mutating func setPhoto(photo: UIImage) {
         self.photo = photo
+    }
+
+    mutating func removePhoto() {
+        self.photo = nil
     }
 
     private mutating func refreshRecording() {
