@@ -25,7 +25,7 @@ struct FormRecording {
 
     private var recording: Recording
 
-    private let photoResizer = PhotoResizer()
+    private let photoPresenter = PhotoPresenter()
 
     init(date: Date, timeOfDay: TimeOfDay, recordingStorage: RecordingStorage, photoStorage: PhotoStorage) {
         self.date = date
@@ -75,7 +75,7 @@ struct FormRecording {
 
     func getPhoto(atSize size: CGSize) -> UIImage? {
         self.photo.map({ photo in
-            photoResizer.scale(photo: photo, toSize: size)
+            photoPresenter.scale(photo: photo, toSize: size)
         })
     }
 

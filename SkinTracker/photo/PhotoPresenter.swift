@@ -4,7 +4,7 @@
 
 import UIKit
 
-struct PhotoResizer {
+struct PhotoPresenter {
     func scale(photo: UIImage, toSize targetSize: CGSize) -> UIImage {
         // Scaling code taken from: https://www.advancedswift.com/resize-uiimage-no-stretching-swift/
 
