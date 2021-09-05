@@ -15,9 +15,15 @@ struct GalleryTabbedView: View {
 
     var body: some View {
         TabbedView(tabName: "Gallery", tabIconSfImageName: "photo.on.rectangle.angled") {
-            List(photoStorage.allSorted(), id: \.hash) { photo in
+            List(allPhotos(), id: \.hash) { photo in
                 Image(uiImage: photoPresenter.scale(photo: photo, toSize: CGSize(width: 100, height: 100)))
             }
+        }
+    }
+
+    private func allPhotos() -> [UIImage] {
+        photoStorage.allSorted().compactMap { photo in
+            photoPresenter.upright(photo: photo)
         }
     }
 }

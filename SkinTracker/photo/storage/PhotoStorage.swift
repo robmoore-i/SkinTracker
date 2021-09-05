@@ -15,22 +15,17 @@ class PhotoStorage {
     /**
      - Returns: A list of the available UIImages, sorted in increasing order of date i.e. the most recent photo is at
       the end of the list.
+
+     Images come out of this method in the exact way that they come out of the storage. I think they come out rotated
+     to the side. PhotoPresenter has a method 'upright' which can sort this out for you.
      */
     func allSorted() -> [UIImage] {
         fileSystem.listFileUrls(facePhotosDirectoryUrl())
                 .sorted(by: { $0.path < $1.path })
-                .map({ (url: URL) -> CGImage? in
-                    if let fileData = fileSystem.fileData(fileUrl: url) {
-                        return UIImage(data: fileData)?.cgImage
-                    } else {
-                        return nil
-                    }
-                })
-                // I have no doubt that there's a way to do this more gracefully
-                .filter({ $0 != nil })
-                .map({ $0! })
-                .map({ cgImage in
-                    UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
+                .compactMap({ (url: URL) -> UIImage? in
+                    fileSystem.fileData(fileUrl: url).flatMap({ fileData in
+                        UIImage(data: fileData)
+                    })
                 })
     }
 
