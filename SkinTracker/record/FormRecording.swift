@@ -73,9 +73,9 @@ struct FormRecording {
         self.photo = nil
     }
 
-    func scalePhoto(toSize targetSize: CGSize) -> UIImage? {
+    func getPhoto(atSize size: CGSize) -> UIImage? {
         self.photo.map({ photo in
-            photoResizer.scale(photo: photo, toSize: targetSize)
+            photoResizer.scale(photo: photo, toSize: size)
         })
     }
 

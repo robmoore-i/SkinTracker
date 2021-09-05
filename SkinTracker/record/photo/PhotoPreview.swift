@@ -8,7 +8,7 @@ struct PhotoPreview: View {
     @Binding var formRecording: FormRecording
 
     var body: some View {
-        if let scaledPhoto = formRecording.scalePhoto(toSize: CGSize(width: 100, height: 100)) {
+        if let scaledPhoto = formRecording.getPhoto(atSize: CGSize(width: 100, height: 100)) {
             HStack {
                 Spacer()
                 Image(uiImage: scaledPhoto)
