@@ -18,7 +18,7 @@ struct MainView: View {
             DashboardTabbedView(recordingStorage, photoStorage, $selectedTab)
             RecordTabbedView(recordingStorage, photoStorage)
             VisualizeTabbedView(recordingStorage)
-            ExperimentTabbedView(photoStorage: photoStorage)
+            GalleryTabbedView(photoStorage)
         }.animation(.linear)
     }
 }
