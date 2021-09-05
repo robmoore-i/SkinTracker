@@ -19,6 +19,26 @@ class FileSystem {
         fileManager.urls(for: .documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first!
     }
 
+    func listFileUrls(_ url: URL) -> [URL] {
+        do {
+            return try fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
+        } catch let error {
+            print(error.localizedDescription)
+            return []
+        }
+    }
+
+    func rename(from: String, to: String, inDirectory directory: URL) {
+        var fromUrl = directory.appendingPathComponent(from)
+        var updatedResourceValues = URLResourceValues()
+        updatedResourceValues.name = to
+        do {
+            try fromUrl.setResourceValues(updatedResourceValues)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+
     func createDirectory(directoryUrl: URL) {
         do {
             try fileManager.createDirectory(at: directoryUrl, withIntermediateDirectories: true)

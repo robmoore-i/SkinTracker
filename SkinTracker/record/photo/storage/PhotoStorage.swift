@@ -9,7 +9,29 @@ class PhotoStorage {
 
     init(_ fileManager: FileSystem) {
         self.fileSystem = fileManager
-        ensureSkinTrackerDirectoriesAreCreated()
+        fileSystem.createDirectory(directoryUrl: facePhotosDirectoryUrl())
+    }
+
+    /**
+     - Returns: A list of the available UIImages, sorted in increasing order of date i.e. the most recent photo is at
+      the end of the list.
+     */
+    func allSorted() -> [UIImage] {
+        fileSystem.listFileUrls(facePhotosDirectoryUrl())
+                .sorted(by: { $0.path < $1.path })
+                .map({ (url: URL) -> CGImage? in
+                    if let fileData = fileSystem.fileData(fileUrl: url) {
+                        return UIImage(data: fileData)?.cgImage
+                    } else {
+                        return nil
+                    }
+                })
+                // I have no doubt that there's a way to do this more gracefully
+                .filter({ $0 != nil })
+                .map({ $0! })
+                .map({ cgImage in
+                    UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
+                })
     }
 
     func storePhoto(photo: UIImage, forRecordingTime recordingTime: RecordingTime) {
@@ -52,9 +74,5 @@ class PhotoStorage {
     private func pngFileUrl(forRecordingTime recordingTime: RecordingTime) -> URL? {
         let fileBaseName = "photo_\(recordingTime.formatFilename())"
         return facePhotosDirectoryUrl().appendingPathComponent(fileBaseName + ".png")
-    }
-
-    private func ensureSkinTrackerDirectoriesAreCreated() {
-        fileSystem.createDirectory(directoryUrl: facePhotosDirectoryUrl())
     }
 }

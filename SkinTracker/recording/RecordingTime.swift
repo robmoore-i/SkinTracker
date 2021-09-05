@@ -71,7 +71,11 @@ class RecordingTime: CustomStringConvertible, Equatable, Hashable, Comparable {
      Returns the basename for a file storing data related to this recording time.
      */
     func formatFilename() -> String {
-        "\(date.year)-\(date.month)-\(date.day)_\(timeOfDay.rawValue)"
+        let month = date.month
+        let monthString = month < 10 ? "0\(month)" : "\(month)"
+        let day = date.day
+        let dayString = day < 10 ? "0\(day)" : "\(day)"
+        return "\(date.year)-\(monthString)-\(dayString)_\(timeOfDay.rawValue)"
     }
 
     func toAnalyticsJson() -> String {

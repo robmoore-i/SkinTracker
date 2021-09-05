@@ -5,7 +5,9 @@
 import SwiftUI
 
 struct GalleryTabbedView: View {
-    let photoStorage: PhotoStorage
+    private let photoStorage: PhotoStorage
+
+    private let photoResizer = PhotoResizer()
 
     init(_ photoStorage: PhotoStorage) {
         self.photoStorage = photoStorage
@@ -13,7 +15,9 @@ struct GalleryTabbedView: View {
 
     var body: some View {
         TabbedView(tabName: "Gallery", tabIconSfImageName: "photo.on.rectangle.angled") {
-            Text("Memes")
+            List(photoStorage.allSorted(), id: \.hash) { photo in
+                Image(uiImage: photoResizer.scale(photo: photo, toSize: CGSize(width: 100, height: 100)))
+            }
         }
     }
 }
