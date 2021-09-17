@@ -1,6 +1,6 @@
 # SkinTracker
 
-Chronic acne status tracking
+Skin condition development, tracked over time
 
 ## Problem: Tracking
 
