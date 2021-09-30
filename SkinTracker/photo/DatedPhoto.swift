@@ -24,18 +24,12 @@ struct DatedPhoto: CustomStringConvertible {
     static func fromFileSystem(fileSystem: FileSystem, url: URL) -> DatedPhoto? {
         if
                 let fileData = fileSystem.fileData(fileUrl: url),
-                let image = UIImage(data: fileData),
+                let image = UIImage(data: fileData)?.upright(),
                 let fileName = url.pathComponents.last,
                 let recordingTime = recordingTimeForFilename(fileName: fileName) {
             return DatedPhoto(photo: image, recordingTime: recordingTime)
         }
         return nil
-    }
-
-    func upright() -> DatedPhoto? {
-        photo.cgImage.map({ cgImage in
-            DatedPhoto(photo: UIImage(cgImage: cgImage, scale: 1.0, orientation: .right), recordingTime: recordingTime)
-        })
     }
 
     func scaledImage(toSize targetSize: CGSize) -> UIImage {
@@ -76,5 +70,11 @@ struct DatedPhoto: CustomStringConvertible {
             print("Warning: Malformed recording photo filename: '\(fileName)'")
             return nil
         }
+    }
+}
+
+private extension UIImage {
+    func upright() -> UIImage? {
+        cgImage.map({ UIImage(cgImage: $0, scale: 1.0, orientation: .right) })
     }
 }

@@ -22,7 +22,6 @@ class PhotoStorage {
                 .compactMap({ (url: URL) -> DatedPhoto? in
                     DatedPhoto.fromFileSystem(fileSystem: fileSystem, url: url)
                 })
-                .compactMap { $0.upright() }
     }
 
     func store(_ datedPhoto: DatedPhoto) {
