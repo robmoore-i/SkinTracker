@@ -23,10 +23,4 @@ struct PhotoPresenter {
             photo.draw(in: CGRect(origin: .zero, size: scaledImageSize))
         }
     }
-
-    func upright(photo: UIImage?) -> UIImage? {
-        photo.flatMap({ $0.cgImage }).map({ cgImage in
-            UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
-        })
-    }
 }

@@ -25,4 +25,12 @@ enum TimeOfDay: String, Comparable {
     static func <(lhs: TimeOfDay, rhs: TimeOfDay) -> Bool {
         lhs == .am && rhs == .pm
     }
+
+    static func guessHourOfDay(basedOn timeOfDay: TimeOfDay) -> Int {
+        if (timeOfDay == .am) {
+            return 7
+        } else {
+            return 22
+        }
+    }
 }

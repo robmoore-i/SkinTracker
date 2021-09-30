@@ -7,9 +7,9 @@ import SwiftDate
 @testable import SkinTracker
 
 class RecordingFactory {
-    static func get(year: Int = 2021, month: Int = 1, day: Int = 1, hour: Int = 1, timeOfDay: TimeOfDay = .am,
+    static func get(year: Int = 2021, month: Int = 1, day: Int = 1, hour: Int = 1, minute: Int = 15, timeOfDay: TimeOfDay = .am,
                     timezone: ZoneConvertible = Zones.gmt) -> Recording {
-        let recordingTime = RecordingTime(Date(year: year, month: month, day: day, hour: hour, minute: 15,
+        let recordingTime = RecordingTime(Date(year: year, month: month, day: day, hour: hour, minute: minute,
                 region: Region(zone: timezone)), timeOfDay)
         return Recording(recordingTime, RegionalSpotCount())
     }

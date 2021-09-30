@@ -3,6 +3,8 @@
 //
 
 import UIKit
+import Foundation
+import SwiftDate
 
 class PhotoStorage {
     private let fileSystem: FileSystem
@@ -19,12 +21,16 @@ class PhotoStorage {
      Images come out of this method in the exact way that they come out of the storage. I think they come out rotated
      to the side. PhotoPresenter has a method 'upright' which can sort this out for you.
      */
-    func allSorted() -> [UIImage] {
+    func allSorted() -> [DatedPhoto] {
         fileSystem.listFileUrls(facePhotosDirectoryUrl())
-                .sorted(by: { $0.path < $1.path })
-                .compactMap({ (url: URL) -> UIImage? in
+                .sorted(by: { $0.path > $1.path })
+                .compactMap({ (url: URL) -> DatedPhoto? in
                     fileSystem.fileData(fileUrl: url).flatMap({ fileData in
-                        UIImage(data: fileData)
+                        UIImage(data: fileData).map({ image in
+                            DatedPhoto(photo: image, dateTag: url.pathComponents.last.map({ fileName in
+                                PhotoStorage.recordingTimeForFilename(fileName: fileName).formatReadable()
+                            }) ?? "<unknown>")
+                        })
                     })
                 })
     }
@@ -69,5 +75,16 @@ class PhotoStorage {
     private func pngFileUrl(forRecordingTime recordingTime: RecordingTime) -> URL? {
         let fileBaseName = "photo_\(recordingTime.formatFilename())"
         return facePhotosDirectoryUrl().appendingPathComponent(fileBaseName + ".png")
+    }
+
+    static func recordingTimeForFilename(fileName: String) -> RecordingTime {
+        let partSplit = fileName.split(separator: "_")
+        let dateSplit = partSplit[1].split(separator: "-")
+        let year = Int(dateSplit[0])!
+        let month = Int(dateSplit[1])!
+        let day = Int(dateSplit[2])!
+        let timeOfDay = TimeOfDay(rawValue: String(partSplit[2].dropLast(".png".count)))!
+        let date = Date(year: year, month: month, day: day, hour: TimeOfDay.guessHourOfDay(basedOn: timeOfDay), minute: 30)
+        return RecordingTime(date, .pm)
     }
 }
