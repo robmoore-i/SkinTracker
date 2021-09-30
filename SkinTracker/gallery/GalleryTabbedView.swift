@@ -13,18 +13,12 @@ struct GalleryTabbedView: View {
 
     var body: some View {
         TabbedView(tabName: "Gallery", tabIconSfImageName: "photo.on.rectangle.angled") {
-            List(allPhotos(), id: \.hash) { photo in
+            List(photoStorage.allSorted(), id: \.hash) { photo in
                 HStack {
                     Image(uiImage: photo.scaledImage(toSize: CGSize(width: 100, height: 100)))
                     Text(photo.descriptionText())
                 }
             }
-        }
-    }
-
-    private func allPhotos() -> [DatedPhoto] {
-        photoStorage.allSorted().compactMap { photo in
-            photo.upright()
         }
     }
 }

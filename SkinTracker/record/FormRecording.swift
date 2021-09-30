@@ -47,7 +47,7 @@ struct FormRecording {
     func store(withUserSelectedSpotCounts spotCounts: RegionalSpotCount) {
         recordingStorage.store(recording.withImposedSpotCounts(spotCounts))
         if let photo = photo {
-            photoStorage.storePhoto(photo: photo, forRecordingTime: recording.recordingTime)
+            photoStorage.store(DatedPhoto(photo: photo, recordingTime: recording.recordingTime))
         }
     }
 
