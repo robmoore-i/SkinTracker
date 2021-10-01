@@ -63,7 +63,7 @@ class RecordingTime: CustomStringConvertible, Equatable, Hashable, Comparable {
         (date, timeOfDay)
     }
 
-    func formatReadable() -> String {
+    func formatReadableDateOnly() -> String {
         date.toHumanReadableFormat()
     }
 

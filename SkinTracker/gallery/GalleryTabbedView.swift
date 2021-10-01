@@ -13,10 +13,11 @@ struct GalleryTabbedView: View {
 
     var body: some View {
         TabbedView(tabName: "Gallery", tabIconSfImageName: "photo.on.rectangle.angled") {
-            List(photoStorage.allSorted(), id: \.hash) { photo in
+            List(photoStorage.allSorted(), id: \.hash) { (photo: DatedPhoto) in
                 HStack {
                     Image(uiImage: photo.scaledImage(toSize: CGSize(width: 100, height: 100)))
-                    Text(photo.descriptionText())
+                    Text(photo.recordingTime.formatReadableDateOnly())
+                    TimeOfDayIcon(recordingTime: photo.recordingTime)
                 }
             }
         }

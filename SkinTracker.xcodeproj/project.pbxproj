@@ -31,6 +31,7 @@
 		1B9C542CC0A23D2EACB8FBCE /* RecordingsBackupDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5FE839D1AF0522795A72 /* RecordingsBackupDocument.swift */; };
 		1B9C54968C6D6224044C912D /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C53A262ECA94894B87166 /* TabbedView.swift */; };
 		1B9C54A630C304DA942E7794 /* AddRecordingFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C540D8E7A51C6A28C7046 /* AddRecordingFloatingActionButton.swift */; };
+		1B9C54BEBBA4DAEAEBDF824B /* TimeOfDayIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52F650F946C146A5808D /* TimeOfDayIcon.swift */; };
 		1B9C5508D9C19AC3C2AA7728 /* DateRangeLengthDescriptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C551D2AC6ADA635DEF1E4 /* DateRangeLengthDescriptionTests.swift */; };
 		1B9C550DF791D4A957CC1DAB /* TimeOfDayToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C57E7783B79690A4D6573 /* TimeOfDayToggle.swift */; };
 		1B9C5544F0B883E59350F29D /* RecordingTimeFormatFilenameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C523BE01EE54B8F158E38 /* RecordingTimeFormatFilenameTest.swift */; };
@@ -118,6 +119,7 @@
 		1B9C52AFF554CCB28DC5A8CC /* RecordingTimeIsForTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingTimeIsForTests.swift; sourceTree = "<group>"; };
 		1B9C52BC975238A6257CE505 /* RecordingTimeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingTimeFactory.swift; sourceTree = "<group>"; };
 		1B9C52C1ED55C5F77349A9FB /* FaceRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegion.swift; sourceTree = "<group>"; };
+		1B9C52F650F946C146A5808D /* TimeOfDayIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayIcon.swift; sourceTree = "<group>"; };
 		1B9C52F9AD1F4A6E642E1AB7 /* YourRecordingsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRecordingsListView.swift; sourceTree = "<group>"; };
 		1B9C53089B2E49AAAE1B633C /* NotificationConfigurationButtonRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConfigurationButtonRow.swift; sourceTree = "<group>"; };
 		1B9C532372174494DF1C9B68 /* RealmStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmStorageProvider.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				1B9C5C52F11A9DEE5182CD08 /* RegionalSpotCount.swift */,
 				1B9C5AB6CB4364A4F55CC6D7 /* storage_provider */,
 				1B9C51F93B5D79EAA0C8F113 /* RecordingTime.swift */,
+				1B9C52F650F946C146A5808D /* TimeOfDayIcon.swift */,
 			);
 			path = recording;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				1B9C58B26C904C345234C147 /* PhotoStorage.swift in Sources */,
 				1B9C5056E12863A8AE9AFF2F /* FileSystem.swift in Sources */,
 				1B9C5DEC4B13F616F36872A0 /* DatedPhoto.swift in Sources */,
+				1B9C54BEBBA4DAEAEBDF824B /* TimeOfDayIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

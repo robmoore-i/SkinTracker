@@ -11,8 +11,8 @@ struct DatedPhoto: CustomStringConvertible {
     private let photoPresenter = PhotoPresenter()
 
     private let photo: UIImage
-    private let recordingTime: RecordingTime
 
+    public let recordingTime: RecordingTime
     public let hash: Int
 
     init(photo: UIImage, recordingTime: RecordingTime) {
@@ -36,16 +36,12 @@ struct DatedPhoto: CustomStringConvertible {
         photoPresenter.scale(photo: photo, toSize: targetSize)
     }
 
-    func descriptionText() -> String {
-        recordingTime.formatReadable()
-    }
-
-    var description: String {
-        "DatedPhoto{recordingTime=\(recordingTime.formatReadable()), imageHash=\(hash)}"
-    }
-
     static func ==(lhs: DatedPhoto, rhs: DatedPhoto) -> Bool {
         lhs.photo == rhs.photo && lhs.recordingTime == rhs.recordingTime
+    }
+
+    static func laterThan(lhs: DatedPhoto, rhs: DatedPhoto) -> Bool {
+        lhs.recordingTime > rhs.recordingTime
     }
 
     func pngData() -> Data? {
@@ -65,11 +61,15 @@ struct DatedPhoto: CustomStringConvertible {
         let dateSplit = partSplit[1].split(separator: "-")
         if let year = Int(dateSplit[0]), let month = Int(dateSplit[1]), let day = Int(dateSplit[2]), let timeOfDay = TimeOfDay(rawValue: String(partSplit[2].dropLast(".png".count))) {
             let date = Date(year: year, month: month, day: day, hour: TimeOfDay.guessHourOfDay(basedOn: timeOfDay), minute: 30)
-            return RecordingTime(date, .pm)
+            return RecordingTime(date, timeOfDay)
         } else {
             print("Warning: Malformed recording photo filename: '\(fileName)'")
             return nil
         }
+    }
+
+    var description: String {
+        "DatedPhoto{recordingTime=\(recordingTime.formatFilename()), imageHash=\(hash)}"
     }
 }
 

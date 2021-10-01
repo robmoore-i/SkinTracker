@@ -25,12 +25,8 @@ private struct RecordingsListEntry: View {
     var body: some View {
         VStack {
             HStack {
-                Text(recording.recordingTime.formatReadable())
-                if (recording.recordingTime.isFor(time: .am)) {
-                    Image(systemName: "sun.max").accentColor(.yellow)
-                } else {
-                    Image(systemName: "moon").accentColor(.black)
-                }
+                Text(recording.recordingTime.formatReadableDateOnly())
+                TimeOfDayIcon(recordingTime: recording.recordingTime)
                 Spacer()
             }
             HStack {

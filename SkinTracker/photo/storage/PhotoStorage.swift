@@ -18,10 +18,10 @@ class PhotoStorage {
      */
     func allSorted() -> [DatedPhoto] {
         fileSystem.listFileUrls(facePhotosDirectoryUrl())
-                .sorted(by: { $0.path > $1.path })
                 .compactMap({ (url: URL) -> DatedPhoto? in
                     DatedPhoto.fromFileSystem(fileSystem: fileSystem, url: url)
                 })
+                .sorted(by: DatedPhoto.laterThan)
     }
 
     func store(_ datedPhoto: DatedPhoto) {
