@@ -10,28 +10,36 @@ struct TabHeader: View {
     @Binding var showNotificationsModal: Bool
 
     var body: some View {
+        let configureNotificationsButtonAccessibilityText = "Configure notifications"
+        let feedbackButtonAccessibilityText = "Send feedback about the app"
         HStack {
             Text("\(text)")
                     .font(.largeTitle)
                     .fontWeight(.medium)
                     .foregroundColor(.black)
             Spacer()
-            Image(systemName: "bell")
-                    .scaleEffect(1.4, anchor: .center)
-                    .foregroundColor(Color.blue)
+            Button(action: {
+                UsageAnalytics.event(.tapNotificationsButton)
+                showNotificationsModal = true
+            }, label: {
+                Image(systemName: "bell")
+                        .scaleEffect(1.4, anchor: .center)
+                        .foregroundColor(Color.blue)
+            })
                     .padding([.leading, .trailing])
-                    .onTapGesture {
-                        UsageAnalytics.event(.tapNotificationsButton)
-                        showNotificationsModal = true
-                    }
-            Image(systemName: "rectangle.and.pencil.and.ellipsis")
-                    .scaleEffect(1.4, anchor: .center)
-                    .foregroundColor(Color.blue)
+                    .accessibility(label: Text(configureNotificationsButtonAccessibilityText))
+                    .accessibilityIdentifier(configureNotificationsButtonAccessibilityText)
+            Button(action: {
+                UsageAnalytics.event(.tapFeedbackButton)
+                showFeedbackModal = true
+            }, label: {
+                Image(systemName: "rectangle.and.pencil.and.ellipsis")
+                        .scaleEffect(1.4, anchor: .center)
+                        .foregroundColor(Color.blue)
+            })
                     .padding([.leading, .trailing])
-                    .onTapGesture {
-                        UsageAnalytics.event(.tapFeedbackButton)
-                        showFeedbackModal = true
-                    }
+                    .accessibility(label: Text(feedbackButtonAccessibilityText))
+                    .accessibilityIdentifier(feedbackButtonAccessibilityText)
         }.padding()
         Divider()
     }

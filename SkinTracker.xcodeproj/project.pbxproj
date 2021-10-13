@@ -61,6 +61,7 @@
 		1B9C5ACF258CC71CE02AE8A5 /* TrackedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C561BAF6FF09E645CDFD5 /* TrackedEvent.swift */; };
 		1B9C5B22DE32EEB42BE28A2F /* EmptyTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5B3FDF8CD894FBFAA3D2 /* EmptyTabbedView.swift */; };
 		1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */; };
+		1B9C5B416132BDF96341EB9D /* NotificationConfigurationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C503C1177B449AE0CE891 /* NotificationConfigurationUITests.swift */; };
 		1B9C5B53DDECDEC667021EED /* RecordingStorageStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C570C0BAB84F86A4ED769 /* RecordingStorageStoreTests.swift */; };
 		1B9C5C82F7DA0C098BB12A86 /* IdentifiedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C544709B1E9D7300F5A9D /* IdentifiedDevice.swift */; };
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
@@ -90,7 +91,7 @@
 		D4F440902635621C00B85A1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F4408F2635621C00B85A1B /* Assets.xcassets */; };
 		D4F440932635621C00B85A1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F440922635621C00B85A1B /* Preview Assets.xcassets */; };
 		D4F4409E2635621C00B85A1B /* SkinTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4409D2635621C00B85A1B /* SkinTrackerTests.swift */; };
-		D4F440A92635621C00B85A1B /* skintrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F440A82635621C00B85A1B /* skintrackerUITests.swift */; };
+		D4F440A92635621C00B85A1B /* SkinTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F440A82635621C00B85A1B /* SkinTrackerUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B9C503C1177B449AE0CE891 /* NotificationConfigurationUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConfigurationUITests.swift; sourceTree = "<group>"; };
 		1B9C504CCA1039F34EB5327B /* TimeOfDayFromGuessTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDayFromGuessTests.swift; sourceTree = "<group>"; };
 		1B9C50734FD2384D8B7B4AF8 /* DashboardTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTabbedView.swift; sourceTree = "<group>"; };
 		1B9C510934421AF68EF9BAF6 /* FaceRegionSpotCountGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRegionSpotCountGroup.swift; sourceTree = "<group>"; };
@@ -190,7 +192,7 @@
 		D4F4409D2635621C00B85A1B /* SkinTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTrackerTests.swift; sourceTree = "<group>"; };
 		D4F4409F2635621C00B85A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F440A42635621C00B85A1B /* SkinTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkinTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4F440A82635621C00B85A1B /* skintrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skintrackerUITests.swift; sourceTree = "<group>"; };
+		D4F440A82635621C00B85A1B /* SkinTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTrackerUITests.swift; sourceTree = "<group>"; };
 		D4F440AA2635621C00B85A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -533,8 +535,9 @@
 		D4F440A72635621C00B85A1B /* SkinTrackerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				D4F440A82635621C00B85A1B /* skintrackerUITests.swift */,
+				D4F440A82635621C00B85A1B /* SkinTrackerUITests.swift */,
 				D4F440AA2635621C00B85A1B /* Info.plist */,
+				1B9C503C1177B449AE0CE891 /* NotificationConfigurationUITests.swift */,
 			);
 			path = SkinTrackerUITests;
 			sourceTree = "<group>";
@@ -772,7 +775,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F440A92635621C00B85A1B /* skintrackerUITests.swift in Sources */,
+				D4F440A92635621C00B85A1B /* SkinTrackerUITests.swift in Sources */,
+				1B9C5B416132BDF96341EB9D /* NotificationConfigurationUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,9 +1018,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rm.skintrackerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = skintracker;
+				TEST_TARGET_NAME = SkinTracker;
 			};
 			name = Debug;
 		};
@@ -1034,9 +1039,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rm.skintrackerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = skintracker;
+				TEST_TARGET_NAME = SkinTracker;
 			};
 			name = Release;
 		};

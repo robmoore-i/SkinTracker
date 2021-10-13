@@ -35,27 +35,31 @@ struct NotificationConfigurationButtonRow: View {
     }
 
     private func enableButton() -> some View {
-        StyledButton(backgroundColor: .blue,
+        let text = "Enable"
+        return StyledButton(backgroundColor: .blue,
                 action: {
                     UsageAnalytics.event(.tapEnableNotificationsModalButton)
                     reminderNotificationScheduler.scheduleReminders()
                     presentation.wrappedValue.dismiss()
                 },
                 label: {
-                    StyledIconLabel(text: "Enable", foregroundColor: .white, iconSfImageName: "bell.fill")
-                })
+                    StyledIconLabel(text: text, foregroundColor: .white, iconSfImageName: "bell.fill")
+                },
+                accessibilityIdentifier: text)
     }
 
     private func disableButton() -> some View {
-        StyledButton(backgroundColor: .white,
+        let text = "Disable"
+        return StyledButton(backgroundColor: .white,
                 action: {
                     UsageAnalytics.event(.tapDisableNotificationsModalButton)
                     reminderNotificationScheduler.removeReminders()
                     presentation.wrappedValue.dismiss()
                 },
                 label: {
-                    StyledIconLabel(text: "Disable", foregroundColor: .red, iconSfImageName: "bell.slash.fill")
-                })
+                    StyledIconLabel(text: text, foregroundColor: .red, iconSfImageName: "bell.slash.fill")
+                },
+                accessibilityIdentifier: text)
     }
 
     private func dismissButton(text: String) -> some View {
@@ -66,7 +70,8 @@ struct NotificationConfigurationButtonRow: View {
                 },
                 label: {
                     Text(text).font(.subheadline).foregroundColor(Color.blue).padding(10)
-                })
+                },
+                accessibilityIdentifier: text)
     }
 }
 
@@ -74,12 +79,14 @@ private struct StyledButton<Label: View>: View {
     let backgroundColor: Color
     let action: () -> Void
     let label: () -> Label
+    let accessibilityIdentifier: String
 
     var body: some View {
         Button(action: action, label: label)
                 .background(backgroundColor)
                 .cornerRadius(5)
                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                .accessibilityIdentifier(accessibilityIdentifier)
     }
 }
 
