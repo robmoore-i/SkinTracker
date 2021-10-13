@@ -1,9 +1,12 @@
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+
 val xcodeProjectName = "SkinTracker"
 
 data class IPhoneDevice(val name: String, val iOSVersion: String, val deviceId: String)
 
 fun devices(): List<IPhoneDevice> {
-    val output = java.io.ByteArrayOutputStream()
+    val output = ByteArrayOutputStream()
     exec {
         workingDir(".")
         commandLine("xcrun", "xctrace", "list", "devices")
@@ -18,7 +21,7 @@ fun devices(): List<IPhoneDevice> {
 }
 
 fun sdks(): List<String> {
-    val output = java.io.ByteArrayOutputStream()
+    val output = ByteArrayOutputStream()
     exec {
         workingDir(".")
         commandLine("xcodebuild", "-showsdks")
@@ -31,21 +34,24 @@ fun sdks(): List<String> {
         .map { it.substring(it.indexOf("iphoneos")) }
 }
 
+val testScheme = "Tests"
+
 val test = tasks.register("test") {
     group = "xcode"
 
     doFirst {
-        val schemeFile = "${xcodeProjectName}.xcodeproj/xcshareddata/xcschemes/${xcodeProjectName}Tests.xcscheme"
+        val schemeFile = "${xcodeProjectName}.xcodeproj/xcshareddata/xcschemes/${xcodeProjectName}${testScheme}.xcscheme"
         val reportOutputPath = "build/reports/tests.html"
         val sdk: String = sdks()[0]
+        logger.quiet("Using sdk '$sdk'")
         val device: IPhoneDevice = devices()[0]
-        logger.quiet("Using device $device")
+        logger.quiet("Using device '$device'")
         val lsResult = exec {
             isIgnoreExitValue = true
-            setCommandLine("ls", schemeFile)
+            commandLine = listOf("ls", schemeFile)
         }
         if (lsResult.exitValue != 0) {
-            print(
+            throw RuntimeException(
                 "Couldn't find expected scheme file $schemeFile. To create it, follow these instructions:\n" +
                         "    1. Open the project in XCode\n" +
                         "    2. Go to Product > Scheme > Manage Schemes\n" +
@@ -54,11 +60,16 @@ val test = tasks.register("test") {
                         "    5. Verify that the file $schemeFile has been created\n"
             )
         }
-        val xcodebuildOutput = java.io.ByteArrayOutputStream()
-        val xcodebuildCommand = "xcodebuild -project ${xcodeProjectName}.xcodeproj -scheme ${xcodeProjectName}Tests -sdk ${sdk} -destination platform=iOS,id=${device.deviceId} test"
+        val xcodebuildOutput = ByteArrayOutputStream()
+        val xcodebuildCommand = "xcodebuild " +
+                "-project ${xcodeProjectName}.xcodeproj " +
+                "-scheme ${xcodeProjectName}${testScheme} " +
+                "-sdk ${sdk} " +
+                "-destination platform=iOS,id=${device.deviceId} " +
+                "test"
         logger.quiet("Running command '$xcodebuildCommand'")
         exec {
-            setCommandLine(xcodebuildCommand.split(" "))
+            commandLine = xcodebuildCommand.split(" ")
             standardOutput = xcodebuildOutput
             errorOutput = xcodebuildOutput
             isIgnoreExitValue = true
@@ -66,9 +77,9 @@ val test = tasks.register("test") {
         val xcprettyCommand = "xcpretty -r html -o ${reportOutputPath}"
         logger.quiet("Running command '$xcprettyCommand'")
         exec {
-            standardInput = java.io.ByteArrayInputStream(xcodebuildOutput.toString().toByteArray())
-            setCommandLine(xcprettyCommand.split(" "))
+            standardInput = ByteArrayInputStream(xcodebuildOutput.toString().toByteArray())
+            commandLine = xcprettyCommand.split(" ")
         }
-        print("HTML test report written to $reportOutputPath")
+        logger.quiet("HTML test report written to $reportOutputPath")
     }
 }
