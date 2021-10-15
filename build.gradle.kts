@@ -1,52 +1,21 @@
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 
-val xcodeProjectName = "SkinTracker"
-
 data class IPhoneDevice(val name: String, val iOSVersion: String, val deviceId: String)
 
-fun devices(): List<IPhoneDevice> {
-    val output = ByteArrayOutputStream()
-    exec {
-        workingDir(".")
-        commandLine("xcrun", "xctrace", "list", "devices")
-        standardOutput = output
-    }
-    val stdout = output.toString()
-    val physicalDevices: List<String> = stdout.lines().takeWhile { !it.contains("Simulators") }.drop(1)
-    return physicalDevices.filter { it.startsWith("iPhone") }.map {
-        val split = it.split(" ")
-        IPhoneDevice(split[0], split[1].drop(1).dropLast(1), split[2].drop(1).dropLast(1))
-    }
-}
-
-fun sdks(): List<String> {
-    val output = ByteArrayOutputStream()
-    exec {
-        workingDir(".")
-        commandLine("xcodebuild", "-showsdks")
-        standardOutput = output
-    }
-
-    val stdout = output.toString()
-    return stdout.lines()
-        .filter { it.contains("iphoneos") }
-        .map { it.substring(it.indexOf("iphoneos")) }
-}
-
-val testScheme = "Tests"
-
-val test = tasks.register("test") {
-    group = "xcode"
-
-    doFirst {
-        val schemeFile = "${xcodeProjectName}.xcodeproj/xcshareddata/xcschemes/${xcodeProjectName}${testScheme}.xcscheme"
+abstract class IosTest : DefaultTask() {
+    @TaskAction
+    fun runTests() {
+        val xcodeProjectName = "SkinTracker"
+        val testScheme = "Tests"
+        val schemeFile =
+            "${xcodeProjectName}.xcodeproj/xcshareddata/xcschemes/${xcodeProjectName}${testScheme}.xcscheme"
         val reportOutputPath = "build/reports/tests.html"
         val sdk: String = sdks()[0]
-        logger.quiet("Using sdk '$sdk'")
+        this.logger.quiet("Using sdk '$sdk'")
         val device: IPhoneDevice = devices()[0]
-        logger.quiet("Using device '$device'")
-        val lsResult = exec {
+        this.logger.quiet("Using device '$device'")
+        val lsResult = this.project.exec {
             isIgnoreExitValue = true
             commandLine = listOf("ls", schemeFile)
         }
@@ -67,19 +36,52 @@ val test = tasks.register("test") {
                 "-sdk ${sdk} " +
                 "-destination platform=iOS,id=${device.deviceId} " +
                 "test"
-        logger.quiet("Running command '$xcodebuildCommand'")
-        exec {
+        this.logger.quiet("Running command '$xcodebuildCommand'")
+        this.project.exec {
             commandLine = xcodebuildCommand.split(" ")
             standardOutput = xcodebuildOutput
             errorOutput = xcodebuildOutput
             isIgnoreExitValue = true
         }
         val xcprettyCommand = "xcpretty -r html -o ${reportOutputPath}"
-        logger.quiet("Running command '$xcprettyCommand'")
-        exec {
+        this.logger.quiet("Running command '$xcprettyCommand'")
+        this.project.exec {
             standardInput = ByteArrayInputStream(xcodebuildOutput.toString().toByteArray())
             commandLine = xcprettyCommand.split(" ")
         }
-        logger.quiet("HTML test report written to $reportOutputPath")
+        this.logger.quiet("HTML test report written to $reportOutputPath")
     }
+
+    private fun devices(): List<IPhoneDevice> {
+        val output = ByteArrayOutputStream()
+        this.project.exec {
+            workingDir(".")
+            commandLine("xcrun", "xctrace", "list", "devices")
+            standardOutput = output
+        }
+        val stdout = output.toString()
+        val physicalDevices: List<String> = stdout.lines().takeWhile { !it.contains("Simulators") }.drop(1)
+        return physicalDevices.filter { it.startsWith("iPhone") }.map {
+            val split = it.split(" ")
+            IPhoneDevice(split[0], split[1].drop(1).dropLast(1), split[2].drop(1).dropLast(1))
+        }
+    }
+
+    private fun sdks(): List<String> {
+        val output = ByteArrayOutputStream()
+        this.project.exec {
+            workingDir(".")
+            commandLine("xcodebuild", "-showsdks")
+            standardOutput = output
+        }
+
+        val stdout = output.toString()
+        return stdout.lines()
+            .filter { it.contains("iphoneos") }
+            .map { it.substring(it.indexOf("iphoneos")) }
+    }
+}
+
+tasks.create<IosTest>("test") {
+    group = "xcode"
 }
