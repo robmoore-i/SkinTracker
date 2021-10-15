@@ -4,12 +4,15 @@ import java.io.ByteArrayOutputStream
 data class IPhoneDevice(val name: String, val iOSVersion: String, val deviceId: String)
 
 abstract class IosTest : DefaultTask() {
+
+    @get:Input
+    abstract var scheme: String
+
     @TaskAction
     fun runTests() {
         val xcodeProjectName = "SkinTracker"
-        val testScheme = "Tests"
         val schemeFile =
-            "${xcodeProjectName}.xcodeproj/xcshareddata/xcschemes/${xcodeProjectName}${testScheme}.xcscheme"
+            "${xcodeProjectName}.xcodeproj/xcshareddata/xcschemes/${xcodeProjectName}${scheme}.xcscheme"
         val reportOutputPath = "build/reports/tests.html"
         val sdk: String = sdks()[0]
         this.logger.quiet("Using sdk '$sdk'")
@@ -32,7 +35,7 @@ abstract class IosTest : DefaultTask() {
         val xcodebuildOutput = ByteArrayOutputStream()
         val xcodebuildCommand = "xcodebuild " +
                 "-project ${xcodeProjectName}.xcodeproj " +
-                "-scheme ${xcodeProjectName}${testScheme} " +
+                "-scheme ${xcodeProjectName}${scheme} " +
                 "-sdk ${sdk} " +
                 "-destination platform=iOS,id=${device.deviceId} " +
                 "test"
@@ -82,6 +85,12 @@ abstract class IosTest : DefaultTask() {
     }
 }
 
-tasks.create<IosTest>("test") {
+tasks.register<IosTest>("test") {
     group = "xcode"
+    scheme = "Tests"
+}
+
+tasks.register<IosTest>("uiTest") {
+    group = "xcode"
+    scheme = "UITests"
 }
