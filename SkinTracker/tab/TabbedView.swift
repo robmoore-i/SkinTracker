@@ -44,7 +44,7 @@ struct TabbedView<Content: View>: View {
                             Text("Would you like them?").font(font)
                         }.padding()
                         Text("This app sends no other notifications.").foregroundColor(.gray).padding(.bottom)
-                        NotificationConfigurationButtonRow(buttons: [.enable, .disable, .cancel])
+                        NotificationConfigurationButtonRow(buttons: [.enable, .disable, .dismiss])
                         Spacer()
                     }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)

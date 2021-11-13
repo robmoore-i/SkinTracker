@@ -13,7 +13,7 @@ struct VisualizeTabbedView: View {
 
     var body: some View {
         TabbedView(tabName: "Visualize", tabIconSfImageName: "chart.bar.xaxis") {
-            if (!recordingStorage.all.isEmpty) {
+            if ((!recordingStorage.all.isEmpty) && (recordingStorage.all.totalSpotCount() > 0)) {
                 AllTimeProgressView(recordingStorage: recordingStorage).padding()
                 MostAffectedRegionsView(recordingStorage: recordingStorage).padding()
             }

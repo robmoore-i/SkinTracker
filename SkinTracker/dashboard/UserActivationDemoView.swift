@@ -60,7 +60,7 @@ private struct CopyLine1: View {
     let color: Color
 
     var body: some View {
-        Text("Are you trending towards zero outbreaks?")
+        Text("This app lets you track your outbreaks, so you can focus on getting better.")
                 .foregroundColor(color)
                 .font(.headline)
                 .fontWeight(.bold)
@@ -73,7 +73,7 @@ private struct CopyLine2: View {
     let color: Color
 
     var body: some View {
-        Text("...Do you know?")
+        Text("You've got this!")
                 .foregroundColor(color)
                 .font(.headline)
                 .padding()

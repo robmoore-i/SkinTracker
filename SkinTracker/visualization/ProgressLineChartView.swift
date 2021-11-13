@@ -14,8 +14,6 @@ struct ProgressLineChartView: View {
 
     var body: some View {
         HStack {
-            // At some point, this will require region-aware interpolation to gracefully account for any potentially
-            // missing readings.
             let twiceDailyTotals: [Double] = interpolator.twiceDailyTotals(fromRecordings: recordings)
             LineChartView(data: twiceDailyTotals,
                     title: chartAnnotations.title,

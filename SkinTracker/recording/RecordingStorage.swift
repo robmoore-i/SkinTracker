@@ -141,4 +141,8 @@ extension Array where Element == Recording {
         // Assumes that the array is ordered from most recent to least recent.
         return (last!).recordingTime.until((first!).recordingTime)
     }
+
+    func totalSpotCount() -> Int {
+        map({ r in r.totalSpotCount() }).reduce(0, { acc, next in acc + next})
+    }
 }

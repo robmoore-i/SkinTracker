@@ -18,7 +18,13 @@ struct MainView: View {
             DashboardTabbedView(recordingStorage, photoStorage, $selectedTab)
             RecordTabbedView(recordingStorage, photoStorage)
             VisualizeTabbedView(recordingStorage)
-            GalleryTabbedView(photoStorage)
+
+            // Disabled because it's not well integrated into the rest of the app, and hurts the overall quality of the
+            // user experience, such as when importing/exporting data, and also with respect to the speed of the app,
+            // because the gallery view is not optimised to be lazy, so when the number of photos reaches a certain,
+            // fairly low, number, the performance will start to really hurt. It also isn't well integrated into usage
+            // analytics capture.
+            // GalleryTabbedView(photoStorage)
         }.animation(.linear)
     }
 }

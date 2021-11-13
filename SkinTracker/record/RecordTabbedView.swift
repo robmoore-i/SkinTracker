@@ -7,7 +7,6 @@ import SwiftUI
 
 struct RecordTabbedView: View {
     private let recordingStorage: RecordingStorage
-    private let photoStorage: PhotoStorage
 
     @State private var selectedDate: Date
     @State private var selectedTimeOfDay: TimeOfDay
@@ -18,7 +17,6 @@ struct RecordTabbedView: View {
 
     init(_ recordingStorage: RecordingStorage, _ photoStorage: PhotoStorage) {
         self.recordingStorage = recordingStorage
-        self.photoStorage = photoStorage
         let initialDate = Date.fromGuess(basedOn: Date())
         let initialTimeOfDay = TimeOfDay.fromGuess(basedOn: initialDate)
         let initialFormRecording = FormRecording(date: initialDate, timeOfDay: initialTimeOfDay,
@@ -38,11 +36,13 @@ struct RecordTabbedView: View {
                     TimeOfDayToggle(
                             selection: $selectedTimeOfDay,
                             formRecording: $formRecording)
-                    AddPhotoButton(
-                            selectedDate: $selectedDate,
-                            isPhotoBeingSelected: $isImageBeingSelected)
-                    PhotoPreview(
-                            formRecording: $formRecording)
+
+                    // Photo capture is disabled for the reasons listed in MainView.swift
+                    // AddPhotoButton(
+                    //         selectedDate: $selectedDate,
+                    //         isPhotoBeingSelected: $isImageBeingSelected)
+                    // PhotoPreview(
+                    //         formRecording: $formRecording)
                 }
 
                 Section {
@@ -63,9 +63,11 @@ struct RecordTabbedView: View {
                         Spacer()
                     }
                 }
-            }.sheet(isPresented: $isImageBeingSelected) {
-                PhotoPicker(sourceType: .camera, formRecording: $formRecording)
             }
+            // // Photo capture is disabled for the reasons listed in MainView.swift
+            // .sheet(isPresented: $isImageBeingSelected) {
+            //    PhotoPicker(sourceType: .camera, formRecording: $formRecording)
+            // }
         }
     }
 }

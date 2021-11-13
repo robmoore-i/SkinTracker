@@ -55,6 +55,9 @@ struct FeedbackModal: View {
                         .padding(5)
                         .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
             }
+            Text("You can also go to the app store to submit feedback, if you want other people to see it.")
+                    .multilineTextAlignment(.center)
+                    .padding()
             Spacer()
         }
     }

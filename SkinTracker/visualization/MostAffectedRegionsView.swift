@@ -20,11 +20,18 @@ struct MostAffectedRegionsView: View {
                     cornerImage: nil,
                     valueSpecifier: "%.0f")
             VStack {
-                Text("The areas of your face most likely to be the most affected area on any given day:")
+                Text("The areas of your face most likely to be the most affected area on any given day\(descriptionSuffixPunctuation(data))")
                 Text(dataProcessor.mostAffectedRegionDescription(data))
             }.padding(.leading)
             Spacer()
         }
+    }
+
+    private func descriptionSuffixPunctuation(_ data: [(String, Int)]) -> String {
+        if (data.isEmpty) {
+            return ""
+        }
+        return ":"
     }
 }
 
@@ -55,18 +62,18 @@ struct MostAffectedRegionsViewDataProcessor {
 
     /**
      A string with a list of the areas of the face most likely to be most affected area on any given day. Lists the
-     most significant areas with their percentage likelihood, in order, down until at least 80% of recordings have been
+     most significant areas with their percentage likelihood, in order, down until at least 90% of recordings have been
      accounted for.
 
      Take an example like this one:
-        Cheeks: 80%
-        Right Jawline: 10%
-        Other: 10%
+        Cheeks: 90%
+        Right Jawline: 5%
+        Other: 5%
 
-     The 'Other' category will never have more than 20% of the recordings.
+     The 'Other' category will never have more than 10% of the recordings.
 
      There is an exception to this though! If the list would contain more than five elements (i.e. more than four
-     specific regions), then it would be truncated and the 'Other' category would contain more than 20% of the
+     specific regions), then it would be truncated and the 'Other' category would contain more than 10% of the
      recordings.
 
      The 'data' parameter that is passed in, is a sorted list of tuples, which map the name of a region onto the
@@ -75,11 +82,17 @@ struct MostAffectedRegionsViewDataProcessor {
      */
     func mostAffectedRegionDescription(_ data: [(String, Int)]) -> String {
         func mostAffectedRegionDescription(_ data: [(String, Int)], _ fullTotal: Int, _ totalRemaining: Int, _ aggregator: String) -> String {
-            // If the totalRemaining is less than 20% of the full total, or the number of entries is more than 4,
+            // This conditional handles edge cases that might never happen, however,
+            // if I made a mistake, I don't want the app to crash.
+            if (fullTotal == 0 || data.isEmpty) {
+                return aggregator
+            }
+
+            // If the totalRemaining is less than 10% of the full total, or the number of entries is more than 4,
             // then append 'Other' and call it a day
             let percentageRemaining: Int = Int(100 * (Double(totalRemaining) / Double(fullTotal)))
             let numberOfEntries = aggregator.split(whereSeparator: { $0 == "\n" }).count
-            if (percentageRemaining < 20 || numberOfEntries == 4) {
+            if (percentageRemaining < 10 || numberOfEntries == 4) {
                 return aggregator
                         + "\nOther: \(percentageRemaining)%"
             }
@@ -87,11 +100,13 @@ struct MostAffectedRegionsViewDataProcessor {
             // Check if the first two are the same. If they are, we'll consume both of them.
             var regionalMatch: (Bool, FaceRegion?) = (false, nil)
             FaceRegion.allCases.forEach { (region: FaceRegion) in
-                let firstTwoAreForThisRegion = [0, 1].allSatisfy({ (i: Int) -> Bool in
-                    data[i].0.lowercased().contains(region.rawValue.lowercased())
-                })
-                if (firstTwoAreForThisRegion) {
-                    regionalMatch = (true, region)
+                if (data.count >= 2) {
+                    let firstTwoAreForThisRegion = [0, 1].allSatisfy({ (i: Int) -> Bool in
+                        data[i].0.lowercased().contains(region.rawValue.lowercased())
+                    })
+                    if (firstTwoAreForThisRegion) {
+                        regionalMatch = (true, region)
+                    }
                 }
             }
             let regionDescriptor: String
