@@ -6,7 +6,7 @@ import UIKit
 import SwiftUI
 
 struct RecordTabbedView: View {
-    private let recordingStorage: RecordingStorage
+    @ObservedObject var recordingStorage: RecordingStorage
 
     @State private var selectedDate: Date
     @State private var selectedTimeOfDay: TimeOfDay

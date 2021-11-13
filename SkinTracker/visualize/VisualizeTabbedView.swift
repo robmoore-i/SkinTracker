@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct VisualizeTabbedView: View {
-    private let recordingStorage: RecordingStorage
+    @ObservedObject var recordingStorage: RecordingStorage
 
     init(_ recordingStorage: RecordingStorage) {
         self.recordingStorage = recordingStorage

@@ -7,7 +7,7 @@ import SwiftUI
 import SwiftDate
 
 struct ExportRecordingsButton: View {
-    let recordingStorage: RecordingStorage
+    @ObservedObject var recordingStorage: RecordingStorage
 
     @State private var isExporting = false
 

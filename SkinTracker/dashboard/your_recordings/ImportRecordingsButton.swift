@@ -8,7 +8,7 @@ import SwiftUI
 import SwiftDate
 
 struct ImportRecordingsButton: View {
-    let recordingStorage: RecordingStorage
+    @ObservedObject var recordingStorage: RecordingStorage
 
     @State private var isImporting = false
     @State private var json = ""

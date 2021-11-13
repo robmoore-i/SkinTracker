@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct LastTwoWeeksProgressView: View {
-    var recordingStorage: RecordingStorage
+    @ObservedObject var recordingStorage: RecordingStorage
 
     var body: some View {
         ProgressLineChartView(

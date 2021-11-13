@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct YourRecordingsListHeader: View {
-    var recordingStorage: RecordingStorage
+    @ObservedObject var recordingStorage: RecordingStorage
 
     var body: some View {
         HStack {

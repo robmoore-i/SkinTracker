@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct AllTimeProgressView: View {
-    var recordingStorage: RecordingStorage
+    @ObservedObject var recordingStorage: RecordingStorage
 
     var body: some View {
         ProgressLineChartView(

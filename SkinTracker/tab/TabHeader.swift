@@ -44,11 +44,3 @@ struct TabHeader: View {
         Divider()
     }
 }
-
-private struct RandomEmoji {
-    private static var emojis = ["🙏", "👊", "🙌", "👏", "👑", "🌞", "⭐️", "☀️", "🌈"]
-
-    static func get() -> String {
-        emojis.remove(at: emojis.indices.randomElement()!)
-    }
-}
