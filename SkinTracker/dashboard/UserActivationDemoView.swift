@@ -40,15 +40,15 @@ struct UserActivationDemoView: View {
 
     private func updateDisplayedCopy(output: Date) {
         let difference = output.difference(in: .second, from: initialDate)
-        if difference == 2 {
+        if difference == 1 {
             withAnimation {
                 self.showCopyLine1 = true
             }
-        } else if difference == 4 {
+        } else if difference == 3 {
             withAnimation {
                 self.showCopyLine2 = true
             }
-        } else if (difference == 6) {
+        } else if (difference == 5) {
             withAnimation {
                 self.showCallToAction = true
             }
