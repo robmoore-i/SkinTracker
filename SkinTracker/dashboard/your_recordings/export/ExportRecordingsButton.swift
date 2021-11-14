@@ -16,10 +16,11 @@ struct ExportRecordingsButton: View {
             UsageAnalytics.event(.tapExportRecordings)
             isExporting = true
         }) {
-            HStack {
+            VStack {
                 Image(systemName: "square.and.arrow.up")
                         .scaleEffect(1.5, anchor: .center)
                         .accentColor(Color.blue)
+                Text("Export")
             }
         }.fileExporter(
                 isPresented: $isExporting,

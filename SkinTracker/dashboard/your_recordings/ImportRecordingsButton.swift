@@ -19,10 +19,11 @@ struct ImportRecordingsButton: View {
             print("Importing recordings")
             isImporting = true
         }) {
-            HStack {
+            VStack {
                 Image(systemName: "square.and.arrow.down")
                         .scaleEffect(1.5, anchor: .center)
                         .accentColor(Color.blue)
+                Text("Import")
             }
         }.fileImporter(
                 isPresented: $isImporting,
