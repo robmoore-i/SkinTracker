@@ -66,8 +66,7 @@ private struct SpotCountTextField: View {
                     UsageAnalytics.event(.changeRecordingSpotCountEntry,
                             properties: [
                                 "side": "\(sideLabel.rawValue.lowercased())",
-                                "region": "\(region.rawValue)",
-                                "count": newText])
+                                "region": "\(region.rawValue)"])
                     if (newText.isEmpty) {
                         clearEntry()
                     } else {
