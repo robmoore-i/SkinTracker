@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct DashboardTabbedView: View {
-    @ObservedObject var recordingStorage: RecordingStorage
+    var recordingStorage: RecordingStorage
     let photoStorage: PhotoStorage
     @Binding var selectedTab: Int
 
