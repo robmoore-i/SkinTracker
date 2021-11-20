@@ -1,19 +1,25 @@
 # SkinTracker
 
-Skin condition development, tracked over time
+Skin outbreak tracking
 
-## Problem: Tracking
+## Problem: Outbreak Tracking
 
-- Existing managed solutions, have these problems:
+When it came to my skin, I always found it hard to answer these questions:
+- Is my skin actually getting better or will I look like a spotty 18 year old forever?
+- Are my theories about my skin actually true, or could they be disproved by actually recording data about my skin's health over time?
+
+Existing managed solutions, have these problems:
     - Bad form factor
     - Require excessive customization
     - Lack visualizations
     - Fail to motivate commitment
     - Try to sell things to me
 
-Ad-hoc tracking solutions suffer from all but the last of those problems.
+Ad-hoc tracking solutions suffer from all but the last of those problems. I never created one because of their main problem: Like many ad-hoc solutions in general, they are high-effort, low-reward.
 
-## Release to TestFlight
+## Developer Documentation
+
+### Release to TestFlight
 
 1. In Xcode, ensure that the (Version Number, Build Version) pair is unique. In Xcode if you select the "SkinTracker"
    blue document icon at the top of the left-side file-tree view, and go to the 'General' tab, there is a section called
@@ -49,22 +55,3 @@ Ad-hoc tracking solutions suffer from all but the last of those problems.
 
 11. Your build will spend some time waiting for review from Apple. After that, with the public link enabled, people can
     start using and testing the app through Apple's TestFlight app.
-
-## Release to the app store
-
-1. Release to TestFlight.
-
-### What's up next
-
-- New Feature - View a timelapse of your photos
-- Defect - Intuitive way to dismiss the text popup when adding entries for recording
-- Defect - More feedback when pressing the save/update button
-- Defect - Gallery doesn't update with the latest entry when one is added
-- Defect - Graphs don't update according to the latest entry when one is added
-- Feature Enhancement - Showing users how to set up proper lighting for photo taking
-- Feature Enhancement - Per-region charts for spot counts
-- Performance - Remove the need to load all the data into memory immediately
-- Performance - Remove the need to sort all the data after it gets loaded into memory
-- Onboarding - Tips for those who are new to looking after their skin
-- Onboarding - Graph doesn't make sense until you have a decent amount of data. Do something more engaging for new users
-- Maintenance - UI tests
