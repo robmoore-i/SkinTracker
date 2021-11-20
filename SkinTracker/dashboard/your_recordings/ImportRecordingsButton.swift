@@ -17,7 +17,11 @@ struct ImportRecordingsButton: View {
         Button(action: {
             UsageAnalytics.event(.tapImportRecordings)
             print("Importing recordings")
-            isImporting = true
+            // Fixes broken fileImporter sheet not resetting on swipe-down. See: https://stackoverflow.com/a/69757562
+            isImporting = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                isImporting = true
+            })
         }) {
             VStack {
                 Image(systemName: "square.and.arrow.down")
