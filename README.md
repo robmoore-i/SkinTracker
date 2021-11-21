@@ -1,6 +1,6 @@
 # SkinTracker
 
-Skin outbreak tracking
+Track your skin's breakouts
 
 ## Problem: Outbreak Tracking
 
