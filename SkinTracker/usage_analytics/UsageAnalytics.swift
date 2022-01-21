@@ -1,7 +1,7 @@
 //
 // Created by Rob on 15/5/21.
-// The AppCenter dashboard is here: https://appcenter.ms/users/robmoore121/apps/SkinTracker/analytics/overview
-// The Mixpanel dashboard is here: https://mixpanel.com/report/2373265
+// The AppCenter dashboard is here (log in with Google): https://appcenter.ms/users/robmoore121/apps/SkinTracker/analytics/overview
+// The Mixpanel dashboard is here (log in with Google): https://mixpanel.com/report/2373265
 //
 
 struct UsageAnalytics {
