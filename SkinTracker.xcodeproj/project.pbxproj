@@ -64,6 +64,7 @@
 		1B9C5B3FF03615AE28F4F0C8 /* hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5448D870B5D3D85461CD /* hideKeyboard.swift */; };
 		1B9C5B416132BDF96341EB9D /* NotificationConfigurationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C503C1177B449AE0CE891 /* NotificationConfigurationUITests.swift */; };
 		1B9C5B53DDECDEC667021EED /* RecordingStorageStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C570C0BAB84F86A4ED769 /* RecordingStorageStoreTests.swift */; };
+		1B9C5BDB89C056C5B3452236 /* ANALYTICS.md in Resources */ = {isa = PBXBuildFile; fileRef = 1B9C5DE0F477D432CCFFEE0F /* ANALYTICS.md */; };
 		1B9C5C82F7DA0C098BB12A86 /* IdentifiedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C544709B1E9D7300F5A9D /* IdentifiedDevice.swift */; };
 		1B9C5CA6BDD20A8DC15DB239 /* RecordTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */; };
 		1B9C5CF50EF966D13C9D6022 /* RecordingTimeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C52BC975238A6257CE505 /* RecordingTimeFactory.swift */; };
@@ -85,6 +86,8 @@
 		D452D148264FFB7900B210E7 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = D452D147264FFB7900B210E7 /* AppCenterCrashes */; };
 		D452D14A264FFB7900B210E7 /* AppCenterAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D452D149264FFB7900B210E7 /* AppCenterAnalytics */; };
 		D4B1E36B26536A2B0084C820 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = D4B1E36A26536A2B0084C820 /* Mixpanel */; };
+		D4C9CD5D2995CB1F003AC0C2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D4C9CD5C2995CB1F003AC0C2 /* README.md */; };
+		D4C9CD5F2995CB29003AC0C2 /* TESTFLIGHT.md in Resources */ = {isa = PBXBuildFile; fileRef = D4C9CD5E2995CB29003AC0C2 /* TESTFLIGHT.md */; };
 		D4E5DE5726436DDB00FB44BA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5626436DDB00FB44BA /* Realm */; };
 		D4E5DE5926436DDB00FB44BA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4E5DE5826436DDB00FB44BA /* RealmSwift */; };
 		D4F4408C2635621B00B85A1B /* SkinTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4408B2635621B00B85A1B /* SkinTrackerApp.swift */; };
@@ -178,12 +181,15 @@
 		1B9C5CE4845ACAF8E069DF54 /* PhotoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPresenter.swift; sourceTree = "<group>"; };
 		1B9C5D44C8AEC861672499FE /* RecordingFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingFactory.swift; sourceTree = "<group>"; };
 		1B9C5DCFA0B1217C9C6814DC /* ProgressLineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressLineChartView.swift; sourceTree = "<group>"; };
+		1B9C5DE0F477D432CCFFEE0F /* ANALYTICS.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = ANALYTICS.md; sourceTree = "<group>"; };
 		1B9C5ED7AC183693F8D93FEA /* LastTwoWeeksProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTwoWeeksProgressView.swift; sourceTree = "<group>"; };
 		1B9C5F6466ACBE2909042048 /* RecordTabbedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTabbedView.swift; sourceTree = "<group>"; };
 		1B9C5F759F7954EDE0083559 /* UsageAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageAnalytics.swift; sourceTree = "<group>"; };
 		1B9C5F978515BADCE4F6E651 /* DashboardDataVisualizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardDataVisualizationView.swift; sourceTree = "<group>"; };
 		1B9C5FBBB71FCC7E41E0D881 /* YourRecordingsListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRecordingsListHeader.swift; sourceTree = "<group>"; };
 		1B9C5FE839D1AF0522795A72 /* RecordingsBackupDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsBackupDocument.swift; sourceTree = "<group>"; };
+		D4C9CD5C2995CB1F003AC0C2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D4C9CD5E2995CB29003AC0C2 /* TESTFLIGHT.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TESTFLIGHT.md; sourceTree = "<group>"; };
 		D4F440882635621B00B85A1B /* SkinTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F4408B2635621B00B85A1B /* SkinTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTrackerApp.swift; sourceTree = "<group>"; };
 		D4F4408D2635621B00B85A1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -477,6 +483,9 @@
 				D4F4409C2635621C00B85A1B /* SkinTrackerTests */,
 				D4F440A72635621C00B85A1B /* SkinTrackerUITests */,
 				D4F440892635621B00B85A1B /* Products */,
+				D4C9CD5C2995CB1F003AC0C2 /* README.md */,
+				1B9C5DE0F477D432CCFFEE0F /* ANALYTICS.md */,
+				D4C9CD5E2995CB29003AC0C2 /* TESTFLIGHT.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -666,8 +675,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C9CD5F2995CB29003AC0C2 /* TESTFLIGHT.md in Resources */,
 				D4F440932635621C00B85A1B /* Preview Assets.xcassets in Resources */,
 				D4F440902635621C00B85A1B /* Assets.xcassets in Resources */,
+				D4C9CD5D2995CB1F003AC0C2 /* README.md in Resources */,
+				1B9C5BDB89C056C5B3452236 /* ANALYTICS.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
